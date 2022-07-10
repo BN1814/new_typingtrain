@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.text {
+    background: pink;
+}
+
+.text, textarea {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 1em;
+    height: calc(50vh - 5px);
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+.progress-bar {
+    height: 10px;
+    background: rgb(0, 244, 0);
+}

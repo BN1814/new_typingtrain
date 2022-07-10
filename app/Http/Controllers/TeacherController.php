@@ -15,4 +15,10 @@ class TeacherController extends Controller
     function settings() {
         return view('dashboards.teachers.settings');
     }
+    public function AddDataStudent() {
+        return view('Teacher.addDataSTD');
+    }
+    public function ClassRoom() {
+        return view('Teacher.classRoom');
+    }
 }
