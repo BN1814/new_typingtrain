@@ -3,7 +3,7 @@
 @section('content')
     <link rel="stylesheet" href="css/hex.css">
     <body>  
-    <div class="container">
+    <div class="containers">
             <div class="head-container">
                 <p class="score">คะแนน : <span>0</span></p>
                 <p class="topic">แบบฝึกหัดภาษาไทย</p>
