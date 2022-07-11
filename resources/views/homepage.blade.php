@@ -25,7 +25,7 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-50 middle-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-lg">หน้าแรก</a>
+                        <a href="{{ url('login') }}" class="text-lg">หน้าแรก</a>
                     @else
                         <a href="{{ route('login') }}" class="text-lg">เข้าสู่ระบบ</a>
 

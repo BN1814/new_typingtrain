@@ -34,30 +34,27 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin', 'PreventB
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('settings', [AdminController::class, 'settings'])->name('admin.settings');
-    Route::get('admin/addDataTeacher', [HomeController::class, 'adminAddTeacher'])->name('admin.addTeacher')->middleware('is_admin');
-    Route::get('admin/addDataSTD', [HomeController::class, 'adminAddSTD'])->name('admin.addSTD')->middleware('is_admin');
-    Route::get('admin/addDataEx', [HomeController::class, 'adminAddEx'])->name('admin.addEx')->middleware('is_admin');
 });
 
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'PreventBackHistory']], function() {
     Route::get('dashboard', [TeacherController::class, 'index'])->name('teacher.dashboard');
     Route::get('profile', [TeacherController::class, 'profile'])->name('teacher.profile');
     Route::get('settings', [TeacherController::class, 'settings'])->name('teacher.settings');
-    Route::get('addDataSTD', [TeacherController::class, 'AddDataStudent'])->name('AddSTD');
-    Route::get('classRoom', [TeacherController::class, 'ClassRoom'])->name('classroom');
 });
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory']], function() {
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
-    Route::get('studentHome', [HomeController::class, 'studentHome'])->name('hstd');
+
+    // Exercise of Student
+    Route::get('hExEn', [ExerciseController::class, 'HomeExEN'])->name('homeExEN');
+    Route::get('hExTh', [ExerciseController::class, 'HomeExTh'])->name('homeExTh');
+    Route::get('ex_FJ', [ExerciseController::class, 'EX_FJ'])->name('E-FJ');
+    Route::get('ex_DK', [ExerciseController::class, 'EX_DK'])->name('E-DK');
+    Route::get('ex_SL', [ExerciseController::class, 'EX_SL'])->name('E-SL');
+    Route::get('test02', [ExerciseController::class, 'EX_TEST02'])->name('TEST02');
 });
 
+
 // ExerciseController
-Route::get('ex_FJ', [ExerciseController::class, 'EX_FJ'])->name('E-FJ');
-Route::get('ex_DK', [ExerciseController::class, 'EX_DK'])->name('E-DK');
-Route::get('ex_SL', [ExerciseController::class, 'EX_SL'])->name('E-SL');
-Route::get('hExEn', [ExerciseController::class, 'HomeExEN'])->name('homeExEN');
-Route::get('hExTh', [ExerciseController::class, 'HomeExTh'])->name('homeExTh');
-Route::get('test02', [ExerciseController::class, 'EX_TEST02'])->name('TEST02');

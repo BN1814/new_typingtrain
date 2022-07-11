@@ -5,10 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                <h4>Hi Admin : {{ Auth()->user()->name}}</h4>
-                <hr>
-                DASHBOARD ADMIN
+                <div class="card-header">
+                    <p class="h3">Admin Dashboard</p>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,7 +16,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <button class="btn btn-primary"><a href="{{route('user.dashboard')}}" style="color: #fff; text-decoration: none;">Go to User</a></button>
                 </div>
             </div>
         </div>

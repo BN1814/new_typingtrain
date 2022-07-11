@@ -83,10 +83,7 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background: url('https://i.pinimg.com/originals/e6/79/aa/e679aafc3babfaad994ffa73d7b2d9e4.jpg')no-repeat;
-  background-size: cover;
   min-height: 100vh;
-  min-width: 100vw;
 }
 
 hr {

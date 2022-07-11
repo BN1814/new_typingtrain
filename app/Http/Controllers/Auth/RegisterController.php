@@ -57,18 +57,18 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->role = 2;
-        $user->password = \Hash::make($request->password);
+        // $user = new User();
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->role = 2;
+        // $user->password = \Hash::make($request->password);
 
-        if($user -> save()) {
-            return $redirect()->back()->with('success', 'ลงทะเบียนสำเร็จ');
-        }
-        else {
-            return $redirect()->back()->with('error', 'ลงทะเบียนไม่สำเร็จ');
-        }
+        // if($user -> save()) {
+        //     return $redirect()->back()->with('success', 'ลงทะเบียนสำเร็จ');
+        // }
+        // else {
+        //     return $redirect()->back()->with('error', 'ลงทะเบียนไม่สำเร็จ');
+        // }
     }
 
     /**
@@ -77,15 +77,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'role' => 3,
-    //         'password' => Hash::make($data['password']),
-    //     ]);
-    // }
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'role' => 3,
+            'password' => Hash::make($data['password']),
+        ]);
+    }
 
     // function register(Request $request) {
     //     $request -> validate( [
