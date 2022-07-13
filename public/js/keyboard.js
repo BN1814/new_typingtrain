@@ -19,7 +19,7 @@ var keydown,
 
 document.addEventListener("keydown", function onKeydown(e1) {
     keydown = e1;
-    document.getElementById('audio').play();
+    
 }, false);
 
 document.addEventListener("keypress", function onKeypress(e2) {
@@ -36,6 +36,7 @@ document.addEventListener("keypress", function onKeypress(e2) {
     if (element) {
         element.style.backgroundColor = "#05e924";
         keypress.push(record);
+        document.getElementById('audio').play();
     }
 }, false);
 
