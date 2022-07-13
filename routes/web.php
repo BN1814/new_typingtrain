@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Response;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('homepage');
+    return view('welcome');
 });
 
 Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
