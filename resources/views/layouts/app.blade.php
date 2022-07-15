@@ -57,9 +57,11 @@
                                 <li><a href="#" class="nav-link">เพิ่มนักศึกษา</a></li>
                                 <li><a href="#" class="nav-link">เพิ่มแบบทดสอบ</a></li>
                             @elseif (auth()->user()->role == 2)
-                                <li><a href="#" class="nav-link">ดูข้อมูลนักศึกษา</a></li>
+                                <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
+                                <li><a href="{{ route('teacher.dataSTD') }}" class="nav-link">ดูข้อมูลนักศึกษา</a></li>
                             @else
-                                <li><a href="#" class="nav-link">profile</a></li>
+                                <li><a href="{{ route('user.dashboard') }}" class="nav-link">หน้าแรก</a></li>
+                                <li><a href="{{ route('user.profile') }}" class="nav-link">profile</a></li>
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -71,8 +73,6 @@
                                     <a href="#" class="dropdown-item">profile</a>
                                 @elseif (auth()->user()->role == 2)
                                     <a href="#" class="dropdown-item">profile</a>
-                                @else
-                                    <a href="#" class="dropdown-item">profile</a></li>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();

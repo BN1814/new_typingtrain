@@ -22,7 +22,16 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // if(Auth::user()->$role == 1){
+    //     return redirect()->route('admin.dashboard');
+    // }
+    // else if(Auth::user()->role == 2){
+    //     return redirect()->route('teacher.dashboard');
+    // }
+    // else {
+    //     return redirect()->route('user.dashboard');
+    // }
+    return redirect()->route('login');
 });
 
 Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
@@ -41,6 +50,9 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
     Route::get('dashboard', [TeacherController::class, 'index'])->name('teacher.dashboard');
     Route::get('profile', [TeacherController::class, 'profile'])->name('teacher.profile');
     Route::get('settings', [TeacherController::class, 'settings'])->name('teacher.settings');
+    Route::get('dataSTD', [TeacherController::class, 'dataStudent'])->name('teacher.dataSTD');
+
+    Route::post('createCode', [TeacherController::class, 'createCode'])->name('setDeadline');
 });
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory']], function() {
