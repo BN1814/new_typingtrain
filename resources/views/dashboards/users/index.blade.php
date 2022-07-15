@@ -35,7 +35,7 @@
                     <img src="https://www.nicepng.com/png/detail/67-675294_keyboard-typing.png" class="img-fluid">
                     <p class="h5 mt-1">คะแนน : <span>0</span></p>
                 </div>
-                <button class="btn btn-dark"><a href="{{ route('homeExTh') }}">เริ่ม</a></button>
+                <button class="btn btn-dark"><a href="{{ route('hExTH') }}">เริ่ม</a></button>
             </div>
             <div class="card">
                 <div class="card-header">EXERCISE ENGLISH</div>
@@ -43,7 +43,7 @@
                     <img src="https://www.nicepng.com/png/detail/67-675294_keyboard-typing.png" class="img-fluid">
                     <p class="h5 mt-1">SCORE : <span>0</span></p>
                 </div>
-                <button type="submit" class="btn btn-dark"><a href="{{ route('homeExEN') }}">START</a></button>
+                <button type="submit" class="btn btn-dark"><a href="{{ route('hExEN') }}">START</a></button>
                 
             </div>
         </div>

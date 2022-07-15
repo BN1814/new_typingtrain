@@ -61,8 +61,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
 
     // Exercise of Student
-    Route::get('hExEn', [ExerciseController::class, 'HomeExEN'])->name('homeExEN');
-    Route::get('hExTh', [ExerciseController::class, 'HomeExTh'])->name('homeExTh');
+    Route::get('hExEn', [ExerciseController::class, 'HomeExEN'])->name('hExEN');
+    Route::get('hExTh', [ExerciseController::class, 'HomeExTh'])->name('hExTH');
+    Route::get('hExTh02', [ExerciseController::class, 'HomeExTh02'])->name('hExTH02');
+    Route::get('hExTh03', [ExerciseController::class, 'HomeExTh03'])->name('hExTH03');
     Route::get('ex_FJ', [ExerciseController::class, 'EX_FJ'])->name('E-FJ');
     Route::get('ex_DK', [ExerciseController::class, 'EX_DK'])->name('E-DK');
     Route::get('ex_SL', [ExerciseController::class, 'EX_SL'])->name('E-SL');

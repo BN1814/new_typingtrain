@@ -12,7 +12,7 @@
                         <div class="mb-2 text-center">
                             <img src="https://wl-brightside.cf.tsp.li/resize/728x/jpg/432/292/54f13b5f41bb66ade6117fe231.jpg" alt="kb" class="img-fluid border border-secondary">
                         </div>
-                        <a href="{{ route('hExTh')}}" class="btn btn-dark">เริ่ม</a>
+                        <button type="button" class="btn btn-dark btn-lg btn-block" formaction="{{route('hExTH')}}">เริ่ม</button>a>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                         <div class="mb-2 text-center">
                             <img src="https://wl-brightside.cf.tsp.li/resize/728x/jpg/432/292/54f13b5f41bb66ade6117fe231.jpg" alt="kb" class="img-fluid border border-secondary">
                         </div>
-                        <a href="{{ route('hExEN')}}" class="btn btn-dark">Start</a>
+                        <a href="{{ route('hExEN')}}" class="btn btn-dark btn-block">Start</a>
                     </div>
                 </div>
             </div>

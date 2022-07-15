@@ -155,14 +155,12 @@
             </div>
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                    <a class="page-link" href="{{ route('hExTH')}}" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
+                    <li class="page-item"><a class="page-link" href="{{ route('hExTH')}}">Previous</a></li>
                     <li class="page-item"><a class="page-link" href="{{ route('hExTH')}}">1</a></li>
                     <li class="page-item"><a class="page-link" href="{{ route('hExTH02')}}">2</a></li>
                     <li class="page-item"><a class="page-link" href="{{ route('hExTH03')}}">3</a></li>
                     <li class="page-item">
-                    <a class="page-link" href="{{ route('hExTH02')}}">Next</a>
+                    <a class="page-link" href="{{ route('hExTH03')}}">Next</a>
                     </li>
                 </ul>
             </nav>

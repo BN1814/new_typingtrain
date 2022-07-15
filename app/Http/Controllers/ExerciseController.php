@@ -21,6 +21,12 @@ class ExerciseController extends Controller
     public function HomeExTh() {
         return view('Exercise/ExThai.hExTh');
     }
+    public function HomeExTh02() {
+        return view('Exercise/ExThai.hExTh02');
+    }
+    public function HomeExTh03() {
+        return view('Exercise/ExThai.hExTh03');
+    }
     public function EX_TEST02() {
         return view('Exercise/ExThai.test02');
     }
