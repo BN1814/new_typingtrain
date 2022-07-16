@@ -1,22 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href=" {{ asset('bootstrap.min.css') }} ">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('ลงทะเบียน') }}</div>
 
+                @if($message = Session::get('success'))
+                    <div class="alert alert-success alert-block">
+                        <strong>{{ $message }}</strong>
+                        {{-- <button type="button" class="close" data-dismiss="alert">x</button> --}}
+                    </div>
+                @elseif($message = Session::get('error'))
+                    <div class="alert alert-danger alert-block">
+                        <strong>{{ $message }}</strong>
+                        {{-- <button type="button" class="close" data-dismiss="alert">x</button> --}}
+                    </div>  
+                @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
-						@if($message = Session::get('success'))
-							<div class="alert alert-success alert-block">
-								<strong>{{ $message }}</strong>
-								{{-- <button type="button" class="close" data-dismiss="alert">x</button> --}}
-							</div>
-                        @endif
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อผู้ใช้') }}</label>

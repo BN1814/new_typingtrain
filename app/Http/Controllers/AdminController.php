@@ -15,4 +15,14 @@ class AdminController extends Controller
     function settings() {
         return view('dashboards.admins.settings');
     }
+
+    function addDataTeacher() {
+        return view('dashboards.admins.add_data_teacher');
+    }
+    function addDataStudent() {
+        return view('dashboards.admins.add_data_student');
+    }
+    function addDataExercise() {
+        return view('dashboards.admins.add_data_exercise');
+    }
 }

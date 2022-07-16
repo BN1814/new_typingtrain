@@ -44,6 +44,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin', 'PreventB
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('settings', [AdminController::class, 'settings'])->name('admin.settings');
+    Route::get('add_data_teacher', [AdminController::class, 'addDataTeacher'])->name('admin.add_teacher');
+    Route::get('add_data_student', [AdminController::class, 'addDataStudent'])->name('admin.add_student');
+    Route::get('add_data_exercise', [AdminController::class, 'addDataExercise'])->name('admin.add_exercise');
 });
 
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'PreventBackHistory']], function() {

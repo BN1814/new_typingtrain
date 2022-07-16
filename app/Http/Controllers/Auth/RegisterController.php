@@ -85,6 +85,11 @@ class RegisterController extends Controller
             'role' => 3,
             'password' => Hash::make($data['password']),
         ]);
+        
+        if($data->User::create()){
+            return redirect()->back()->with('success', 'ลงทะเบียนสำเร็จแล้ว');
+        }
+        return redirect()->back()->with('error', 'ลงทะเบียนไม่สำเร็จ');
     }
 
     // function register(Request $request) {

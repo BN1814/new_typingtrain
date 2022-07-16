@@ -31,16 +31,24 @@ class TeacherController extends Controller
     }
 
     public function createCode(Request $request) {
-        $data = Deadline::all();
+        $request->validate([
+            'code_inclass' => 'required', 'unique',
+            'deadline_date' => 'required',
+            'deadline_time' => 'required'
+        ]);
         
-        $data = new Deadline();
-        $data->code_inclass = $request->code_inclass;
-        $data->deadline_date = $request->deadline_date;
-        $data->deadline_time = $request->deadline_time;
-        $data->save();
+        $request = new Deadline();
+        $request->code_inclass = $request->code_inclass;
+        $request->deadline_date = $request->deadline_date;
+        $request->deadline_time = $request->deadline_time;
+        $save = $request->save();
 
-        $response['message'] = "เพิ่มข้อมูลสำเร็จ";
-        return json_encode($response);
+        if($save) {
+            return redirect()->back()->with('success', 'สร้างห้องเรียนสำเร็จ');
+        }
+        else {
+            return redirect()->back()->with('error', 'สร้างห้องเรียนไม่สำเร็จ');
+        }
     }
 
 }

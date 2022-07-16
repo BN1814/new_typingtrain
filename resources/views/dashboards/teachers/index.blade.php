@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
 <style>
     a {
         text-decoration: none;
@@ -28,26 +29,58 @@
                     <p>สร้างห้องเรียน</p>
                 </div>
                 <div class="card-body">
-                    <form>
+
+                    @if(Session::get('success')){
+                        <div class="alert alert-success alert-block">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    }
+                    @elseif(Session::get('error')){
+                        <div class="alert alert-danger alert-block">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    }
+                    @endif
+
+                    <form action="{{ route('setDeadline') }}" method="post">
+                        @csrf
                         <div class="form-group mb-2">
                             <label for="code" class="h5"><p>รหัสเข้าห้อง : </p></label>
-                            <input type="text" class="form-control" name="code_inclass" class="genCode" disabled>
+                            <input type="text" class="form-control" name="code_inclass" class="genCode" value="{{ old('code_inclass') }}" required>
                             <button class="btn btn-primary random" onclick="create_Random_code()" type="button">สุ่มรหัส</button>
+                            @error('code-inclass')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group mb-2">
                             <label for="date" class="h5 d-flex"><p>วันที่ส่ง : </p></label>
-                            <input type="date" class="form-control" name="deadline_date">
+                            <input type="date" class="form-control" name="deadline_date"
+                            value="{{ old('deadline_date') }}" required>
+                            @error('deadline_date')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group mb-2">
                             <label for="time" class="h5"><p>เวลาที่ส่ง : </p></label>
-                            <input type="time" class="form-control" name="deadline_time">
+                            <input type="time" class="form-control" name="deadline_time" value="{{ old('deadline_time') }}" required>
+                            @error('deadline_time')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        <button class="btn btn-success mt-2 save" type="submit">
-                            <a href="#">บันทึก</a>
-                        </button>
-                        <button class="btn btn-danger mt-2 cancel" type="submit">
-                            <a href="#">ยกเลิก</a>
-                        </button>
+                        <div class="form-group">
+                            <button class="btn btn-success mt-2 save" type="submit">
+                                บันทึก
+                            </button>
+                            <button class="btn btn-danger mt-2 cancel" type="submit">
+                                ยกเลิก
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

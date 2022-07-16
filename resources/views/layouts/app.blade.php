@@ -18,13 +18,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        a {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ \URL('/') }}">
-                    {{ __('TypingTrain')}}
+                    <p style="margin: 0; padding: 0;">TypingTrain</p>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -53,9 +58,9 @@
                             @endif
                         @else
                             @if(auth()->user()->role == 1)
-                                <li><a href="#" class="nav-link">เพิ่มอาจารย์</a></li>
-                                <li><a href="#" class="nav-link">เพิ่มนักศึกษา</a></li>
-                                <li><a href="#" class="nav-link">เพิ่มแบบทดสอบ</a></li>
+                                <li><a href="{{ route('admin.add_teacher') }}" class="nav-link">เพิ่มอาจารย์</a></li>
+                                <li><a href="{{ route('admin.add_student') }}" class="nav-link">เพิ่มนักศึกษา</a></li>
+                                <li><a href="{{ route('admin.add_exercise') }}" class="nav-link">เพิ่มแบบทดสอบ</a></li>
                             @elseif (auth()->user()->role == 2)
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
                                 <li><a href="{{ route('teacher.dataSTD') }}" class="nav-link">ดูข้อมูลนักศึกษา</a></li>
@@ -70,9 +75,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 @if(auth()->user()->role == 1)
-                                    <a href="#" class="dropdown-item">profile</a>
+                                    <a href="{{ route('admin.profile') }}" class="dropdown-item">profile</a>
                                 @elseif (auth()->user()->role == 2)
-                                    <a href="#" class="dropdown-item">profile</a>
+                                    <a href="{{ route('teacher.profile') }}" class="dropdown-item">profile</a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
