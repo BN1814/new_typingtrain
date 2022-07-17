@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
 <style>
     a {
         text-decoration: none;
@@ -30,24 +29,22 @@
                 </div>
                 <div class="card-body">
 
-                    @if(Session::get('success')){
+                    @if($message = Session::get('success'))
                         <div class="alert alert-success alert-block">
                             <strong>{{ $message }}</strong>
                         </div>
-                    }
-                    @elseif(Session::get('error')){
+                    @elseif($message = Session::get('error'))
                         <div class="alert alert-danger alert-block">
                             <strong>{{ $message }}</strong>
                         </div>
-                    }
                     @endif
-
+                    {{--  action="{{ route('setDeadline') }}" method="post" --}}
                     <form action="{{ route('setDeadline') }}" method="post">
                         @csrf
                         <div class="form-group mb-2">
                             <label for="code" class="h5"><p>รหัสเข้าห้อง : </p></label>
-                            <input type="text" class="form-control" name="code_inclass" class="genCode" value="{{ old('code_inclass') }}" required>
-                            <button class="btn btn-primary random" onclick="create_Random_code()" type="button">สุ่มรหัส</button>
+                            <input type="text" class="form-control inpGencode" name="code_inclass" value="{{ old('code_inclass') }}" required autocomplete="off" placeholder="รหัสเข้าห้อง">
+                            <button class="btn btn-primary random" type="button" onclick="create_Random_code()">สุ่มรหัส</button>
                             @error('code-inclass')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -57,7 +54,7 @@
                         <div class="form-group mb-2">
                             <label for="date" class="h5 d-flex"><p>วันที่ส่ง : </p></label>
                             <input type="date" class="form-control" name="deadline_date"
-                            value="{{ old('deadline_date') }}" required>
+                            value="{{ old('deadline_date') }}" required autocomplete="off">
                             @error('deadline_date')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -66,7 +63,7 @@
                         </div>
                         <div class="form-group mb-2">
                             <label for="time" class="h5"><p>เวลาที่ส่ง : </p></label>
-                            <input type="time" class="form-control" name="deadline_time" value="{{ old('deadline_time') }}" required>
+                            <input type="time" class="form-control" name="deadline_time" value="{{ old('deadline_time') }}" required autocomplete="off">
                             @error('deadline_time')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -75,10 +72,10 @@
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success mt-2 save" type="submit">
-                                บันทึก
+                                {{ __('บันทึก') }}
                             </button>
-                            <button class="btn btn-danger mt-2 cancel" type="submit">
-                                ยกเลิก
+                            <button class="btn btn-danger mt-2 close" type="button">
+                                <a href="{{ route('teacher.dashboard') }}">ยกเลิก</a>
                             </button>
                         </div>
                     </form>
@@ -87,5 +84,5 @@
         </div>
     </div>
 </div>
-<script src="js/Teacher/teacherIndex.js"></script>
+<script src="{{ asset('js/Teacher/teacherIndex.js') }}"></script>
 @endsection

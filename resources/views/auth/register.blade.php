@@ -8,17 +8,16 @@
             <div class="card">
                 <div class="card-header">{{ __('ลงทะเบียน') }}</div>
 
-                @if($message = Session::get('success'))
+                {{-- @if($message = Session::get('success'))
                     <div class="alert alert-success alert-block">
                         <strong>{{ $message }}</strong>
-                        {{-- <button type="button" class="close" data-dismiss="alert">x</button> --}}
                     </div>
                 @elseif($message = Session::get('error'))
                     <div class="alert alert-danger alert-block">
                         <strong>{{ $message }}</strong>
-                        {{-- <button type="button" class="close" data-dismiss="alert">x</button> --}}
                     </div>  
-                @endif
+                @endif --}}
+                
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf

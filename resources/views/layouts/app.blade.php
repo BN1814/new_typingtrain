@@ -63,6 +63,7 @@
                                 <li><a href="{{ route('admin.add_exercise') }}" class="nav-link">เพิ่มแบบทดสอบ</a></li>
                             @elseif (auth()->user()->role == 2)
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
+                                <li><a href="{{ route('teacher.classroom') }}" class="nav-link">ห้องเรียน</a></li>
                                 <li><a href="{{ route('teacher.dataSTD') }}" class="nav-link">ดูข้อมูลนักศึกษา</a></li>
                             @else
                                 <li><a href="{{ route('user.dashboard') }}" class="nav-link">หน้าแรก</a></li>

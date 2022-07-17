@@ -1,5 +1,7 @@
-let inpGencode = document.querySelector('.genCode');
+let PassRandom = document.querySelector('.inpGencode');
+let close = document.querySelector('.close');
 
+// create_code
 function create_Random_code() {
     var random_code = '';
     var random_code_Length = 6;
@@ -8,5 +10,5 @@ function create_Random_code() {
         var randomCode = Math.floor(Math.random() * characters.length);
         random_code += characters.substring(randomCode, randomCode+1);
     }
-    inpGencode.value = random_code;
+    PassRandom.value = random_code;
 }

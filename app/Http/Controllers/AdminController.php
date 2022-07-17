@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Deadline;
+use App\Models\User;
+use DB;
 
 class AdminController extends Controller
 {
     function index() {
-        return view('dashboards.admins.index');
+        $deadlines = Deadline::all();
+        $users = User::all();
+        return view('dashboards.admins.index', compact('deadlines', 'users'));
     }
     function profile() {
         return view('dashboards.admins.profile');
