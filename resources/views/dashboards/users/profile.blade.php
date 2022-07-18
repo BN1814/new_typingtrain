@@ -1,22 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-  .container {
-    position: relative;
-  }
-  .card-2 {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .form-control {
-    width: 330px;
-  }
-</style>
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 mb-2">
           <div class="card card-1">
             <div class="card-header h4 bg-dark text-center text-white">ข้อมูลส่วนตัว</div>
             <div class="card-body">
@@ -30,13 +17,13 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
+
         <div class="col-md-4">
           <div class="card card-2">
             <div class="card-header h4 bg-dark text-center text-white">แก้ไขข้อมูล</div>
             <div class="card-body">
               <form>
+                {{-- @csrf --}}
                 <div class="form-group mb-2">
                     <label for="stdid">รหัสนักศึกษา</label>
                     <input type="text" class="form-control" name="stdid">
@@ -53,7 +40,7 @@
                   <label for="password">รหัสผ่าน</label>
                   <input type="password" class="form-control" name="password">
                 </div>
-                <div class="form-group mb-2" style="margin-left: 105px;">
+                <div class="form-group mb-2">
                   <button class="btn btn-success save" type="submit">บันทึก</button>
                   <button class="btn btn-danger cancel" type="submit">ยกเลิก</button>
                 </div>

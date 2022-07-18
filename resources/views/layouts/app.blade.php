@@ -26,7 +26,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ \URL('/') }}">
                     <p style="margin: 0; padding: 0;">TypingTrain</p>
@@ -58,9 +58,9 @@
                             @endif
                         @else
                             @if(auth()->user()->role == 1)
-                                <li><a href="{{ route('admin.add_teacher') }}" class="nav-link">เพิ่มอาจารย์</a></li>
-                                <li><a href="{{ route('admin.add_student') }}" class="nav-link">เพิ่มนักศึกษา</a></li>
-                                <li><a href="{{ route('admin.add_exercise') }}" class="nav-link">เพิ่มแบบทดสอบ</a></li>
+                                <li><a href="{{ route('admin.add_teacher') }}" class="nav-link">อาจารย์</a></li>
+                                <li><a href="{{ route('admin.add_student') }}" class="nav-link">นักศึกษา</a></li>
+                                <li><a href="{{ route('admin.add_exercise') }}" class="nav-link">แบบทดสอบ</a></li>
                             @elseif (auth()->user()->role == 2)
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
                                 <li><a href="{{ route('teacher.classroom') }}" class="nav-link">ห้องเรียน</a></li>

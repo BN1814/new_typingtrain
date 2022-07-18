@@ -32,4 +32,16 @@ class AdminController extends Controller
     function addDataExercise() {
         return view('dashboards.admins.add_data_exercise');
     }
+
+    function updateProfile(Request $request) {
+        $request -> validate([
+            'name' => 'required|max:255',
+            'email' => 'required|max:255'
+        ]);
+        $user = Auth::user();
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->save();
+        return back()->with('success', 'อัพเดตข้อมูลสำเร็จ');
+    }
 }

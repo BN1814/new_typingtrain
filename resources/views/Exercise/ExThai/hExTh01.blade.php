@@ -13,10 +13,10 @@
         <div class="container">
             <p class="score">คะแนน : <span>0</span></p>
             <h1 class="display-6 text-center">แบบฝึกภาษาไทย</h1>
-            <br></br>
+            <br>
         </div>
         <div class="container">
-            <div class="row g-5 ">
+            <div class="row mb-3 mt-3">
                 <div class="col-sm-4 col-md-2">
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">ระดับที่ 01</div>
@@ -71,6 +71,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-4 col-md-2">
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">ระดับที่ 07</div>
@@ -110,6 +112,15 @@
                 <div class="col-sm-4 col-md-2">
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">ระดับที่ 11</div>
+                        <div class="card-body"> 
+                            <p class="fs-4 text-center">ฌ และ _็</p>
+                            <a href="{{ route('TEST02')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="card" style="width: 150px; height: 150px;">
+                        <div class="card-header">ระดับที่ 12</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">ฌ และ _็</p>
                             <a href="{{ route('TEST02')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>

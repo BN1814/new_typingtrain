@@ -8,15 +8,15 @@
         <div class="col-md-8">
             @if(Auth::user()->role == 1)
                 <div class="card mb-3">
-                    <div class="card-header text-center text-white bg-dark h4">Table Teacher Code</div>
+                    <div class="card-header text-center text-white bg-dark h4">รหัสเข้าห้องเรียน</div>
                     <div class="card-body">
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-center">
-                                    <th>Code</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Options</th>
+                                    <th>รหัสเข้าห้อง</th>
+                                    <th>วันที่ส่ง</th>
+                                    <th>เวลาที่ส่ง</th>
+                                    <th>ตัวเลือก</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,16 +35,41 @@
                         </table>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header text-center text-white bg-dark h4">Table Student</div>
+                <div class="card mb-3">
+                    <div class="card-header text-center text-white bg-dark h4">ห้องเรียนทั้งหมด</div>
                     <div class="card-body">
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-center">
-                                    <th>ID</th>
-                                    <th>E-mail</th>
-                                    <th>Name</th>
-                                    <th>Options</th>
+                                    <th>Section</th>
+                                    <th>รหัสห้องเรียน</th>
+                                    <th>ตัวเลือก</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td>01</td>
+                                    <td>cdslmsd</td>
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-primary btn-sm">View</a>
+                                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header text-center text-white bg-dark h4">ผู้ใช้งานทั้งหมด</div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>ลำดับที่</th>
+                                    <th>อีเมล</th>
+                                    <th>ชื่อผู้ใช้</th>
+                                    <th>ตัวเลือก</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,7 +79,8 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td class="text-center">
-                                            <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="#" class="btn btn-primary btn-sm">View</a>
+                                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
                                             <a href="#" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
