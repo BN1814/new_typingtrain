@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/keyboard.css">
+<link rel="stylesheet" href="{{ asset('css/keyboard.css') }}">
     <div class="container mt-3 d-block text-center">
         <div class="row">
             <div class="col-sm">

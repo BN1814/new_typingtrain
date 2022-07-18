@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class ExerciseController extends Controller
 {
-    public function HomeExEN() {
-        return view('Exercise/ExEnglish.hExEn');
+    public function HomeExEN01() {
+        return view('Exercise/ExEnglish.hExEn01');
     }
     public function EX_FJ() {
         return view('Exercise/ExEnglish.ex_FJ');
@@ -18,8 +18,8 @@ class ExerciseController extends Controller
     public function EX_SL() {
         return view('Exercise/ExEnglish.ex_SL');
     }
-    public function HomeExTh() {
-        return view('Exercise/ExThai.hExTh');
+    public function HomeExTh01() {
+        return view('Exercise/ExThai.hExTh01');
     }
     public function HomeExTh02() {
         return view('Exercise/ExThai.hExTh02');
