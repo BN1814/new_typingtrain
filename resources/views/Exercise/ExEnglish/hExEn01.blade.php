@@ -37,7 +37,7 @@
                         <div class="card-header">Level 03</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">s & l</p>
-                            <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
+                            <a href="{{ route('E-SL')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         <div class="card-header">Level 04</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">a & ;</p>
-                            <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
+                            <a href="{{ route('E-a')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
                 </div>
@@ -55,11 +55,11 @@
                         <div class="card-header">Level 05</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">g & h</p>
-                            <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
+                            <a href="{{ route('E-GH')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-2">
+                <!-- <div class="col-sm-4 col-md-2">
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">Level 06</div>
                         <div class="card-body"> 
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center position-absolute bottom-0 start-50 translate-middle-x">
                     <li class="page-item disabled">

@@ -13,7 +13,8 @@ body {
     justify-content: center;
 }
 .wrapper {
-    width: 770px;
+    width: 780px;
+    height: 380px;
     padding: 15px;
     background: #fff;
     border-radius: 10px;
@@ -30,7 +31,7 @@ body {
     border: 1px solid #ccc;
 }
 .content-box .typing-text {
-    height: 150px;
+    height: 300px;
     overflow-y: auto;
 }
 .typing-text::-webkit-scrollbar {
