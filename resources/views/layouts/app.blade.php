@@ -19,6 +19,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
+        body {
+            background: rgb(135, 188, 231);
+        }
         a {
             color: #fff;
         }

@@ -31,9 +31,6 @@
                 </div>
             </div>
             <div class="foot-score d-flex justify-content-center">
-                <button class="btn btn-dark text-white pn-score prev">
-                    <a href="#">Previous</a>
-                </button>
                 <button class="btn btn-dark text-white ms-1 pn-score try_again">
                     {{ __('Try Again') }}
                 </button>
