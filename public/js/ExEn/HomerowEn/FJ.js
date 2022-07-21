@@ -61,7 +61,7 @@ function initTyping() {
         wpmTag.innerText = wpm;
         cpmTag.innerText = charIndex - mistakes;
     } else {
-        Open_popup();
+        Open_score();
         clearInterval(timer);
     }
 }
@@ -73,7 +73,7 @@ function initTimer() {
     } else {
         inpField.value = "";
         clearInterval(timer);
-        Open_popup();
+        Open_score();
     }
 }
 function resetTyping() {
@@ -93,27 +93,27 @@ inpField.addEventListener("input", initTyping);
 // tryAgainBtn.addEventListener("click", resetTyping);
 
 // POPUP_SCORE
-let close_popup = document.querySelector(".close_popup");
+let popup = document.getElementById("close_popup");
 let tryAgainScore = document.querySelector(".try_again");
 let next = document.querySelector(".next");
 
-function Close_popup(){
+function Close_score(){
     document.querySelector(".pop-up-score").style.display = "none";
 }
-function Open_popup(){
+function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
 }
 
-close_popup.addEventListener("click", Close_popup());
+popup.addEventListener("click", Close_score);
 tryAgainScore.addEventListener("click", function () {
     resetTyping();
-    Close_popup();
+    Close_score();
 });
-next.addEventListener("click", Close_popup());
+next.addEventListener("click", Close_score);
 // POPUP_SCORE_KEYCODE
 document.addEventListener("keydown", function (e) {
     if (e.keyCode === 27) {
-        Close_popup();
+        Close_score();
     }
 });
 

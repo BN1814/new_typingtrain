@@ -10,7 +10,7 @@
         @include('include.includeExEn')
         @include('include.includeKB')
         <div class="pop-up-score shadow-lg" style="color: #fff;">
-            <p class="close_popup">+</p>
+            <p id="close_popup">+</p>
             <div class="head-level">
                 <p>LEVEL 01 : F & J</p>
             </div>

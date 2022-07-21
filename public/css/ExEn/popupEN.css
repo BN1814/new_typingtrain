@@ -19,7 +19,7 @@
     transform: translate(-50%, -50%);
     display: none;
 }
-.pop-up-score .close_popup {
+.pop-up-score #close_popup {
     position: absolute;
     right: 0;
     top: 0;
@@ -29,7 +29,7 @@
     margin-right: 10px;
 
     transform: rotate(45deg);
-} .close_popup:hover {color: red;}
+} #close_popup:hover {color: red;}
 .pop-up-score .head-level {
     position: absolute;
     top: 0;
