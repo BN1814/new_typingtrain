@@ -23,7 +23,7 @@
                     <span>0</span>
                 </li>
             </ul>
-            <button class="butt">Try Again</button>
+            {{-- <button class="butt">Try Again</button> --}}
         </div>
     </div>
 </div>

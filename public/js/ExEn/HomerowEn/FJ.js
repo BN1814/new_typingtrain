@@ -62,6 +62,7 @@ function initTyping() {
         cpmTag.innerText = charIndex - mistakes;
     }
     else {
+        document.querySelector('.pop-up-score').style.display = "flex";
         clearInterval(timer);
     }
 }
@@ -74,6 +75,7 @@ function initTimer() {
     else {
         inpField.value = "";
         clearInterval(timer);
+        document.querySelector('.pop-up-score').style.display = "flex";
     }
 }
 function resetTyping() {
@@ -143,3 +145,23 @@ document.addEventListener("keyup", function onKeyup(e3) {
         }
     });
 }, false);
+
+// POPUP_SCORE
+let close_popup = document.querySelector('.close_popup');
+let tryAgainScore = document.querySelector('.try_again');
+let next = document.querySelector('.next');
+
+close_popup.addEventListener('click', function() {
+    document.querySelector('.pop-up-score').style.display = 'none'; 
+});
+document.addEventListener('keydown', function(e) {
+    if(e.keyCode === 27) {
+        document.querySelector('.pop-up-score').style.display = 'none';
+    }
+});
+tryAgainScore.addEventListener('click', function() {
+    resetTyping();
+    document.querySelector('.pop-up-score').style.display = 'none';
+});
+
+
