@@ -75,6 +75,9 @@ class ExerciseController extends Controller
     public function HomeExTh03() {
         return view('Exercise/ExThai.hExTh03');
     }
+    public function HomeExTh04() {
+        return view('Exercise/ExThai.hExTh04');
+    }
     // Exercise Thai homerow
     public function EX_TH01() {
         return view('Exercise/ExThai/HomerowTH.ex_TH01');
@@ -94,9 +97,67 @@ class ExerciseController extends Controller
     public function EX_TH06() {
         return view('Exercise/ExThai/HomerowTH.ex_TH06');
     }
+    public function EX_TH07() {
+        return view('Exercise/ExThai/HomerowTH.ex_TH07');
+    }
+    public function EX_TH08() {
+        return view('Exercise/ExThai/HomerowTH.ex_TH08');
+    }
+    public function EX_TH09() {
+        return view('Exercise/ExThai/HomerowTH.ex_TH09');
+    }
+    public function EX_TH10() {
+        return view('Exercise/ExThai/HomerowTH.ex_TH10');
+    }
+    public function EX_TH11() {
+        return view('Exercise/ExThai/HomerowTH.ex_TH11');
+    }
+    public function EX_TH12() {
+        return view('Exercise/ExThai/HomerowTH.ex_TH12');
+    }
     // Exercise Thai toprow
+    public function EX_TH13() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH13');
+    }
+    public function EX_TH14() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH14');
+    }
+    public function EX_TH15() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH15');
+    }
+    public function EX_TH16() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH16');
+    }
+    public function EX_TH17() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH17');
+    }
+    public function EX_TH18() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH18');
+    }
+    public function EX_TH19() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH19');
+    }
+    public function EX_TH20() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH20');
+    }
+    public function EX_TH21() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH21');
+    }
+    public function EX_TH22() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH22');
+    }
+    public function EX_TH23() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH23');
+    }
+    public function EX_TH24() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH24');
+    }
+    public function EX_TH25() {
+        return view('Exercise/ExThai/ToprowTH.ex_TH25');
+    }
+    // Exercise Thai bottomrow
     public function TEST02() {
-        return view('Exercise/ExThai.TEST02');
+        return view('Exercise/ExThai.test02');
     }
     // Exercise Thai bottomrow
     

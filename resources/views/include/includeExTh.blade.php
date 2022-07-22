@@ -23,7 +23,7 @@
                     <span>0</span>
                 </li>
             </ul>
-            <button class="butt">ลองอีกครั้ง</button>
+            <!-- <button class="butt">ลองอีกครั้ง</button> -->
         </div>
     </div>
 </div>

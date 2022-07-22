@@ -72,13 +72,13 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col-sm-4 col-md-2">
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">ระดับที่ 07</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">โ และ _๋</p>
-                            <a href="{{ route('TEST02')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
+                            <a href="{{ route('E-TH07')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                         <div class="card-header">ระดับที่ 08</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">ฏ และ ษ</p>
-                            <a href="{{ route('TEST02')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
+                            <a href="{{ route('E-TH08')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
                         </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                         <div class="card-header">ระดับที่ 09</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">ฆ และ ศ</p>
-                            <a href="{{ route('TEST02')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
+                            <a href="{{ route('E-TH09')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                         <div class="card-header">ระดับที่ 10</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">ฤ และ ซ</p>
-                            <a href="{{ route('TEST02')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
+                            <a href="{{ route('E-TH10')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                         <div class="card-header">ระดับที่ 11</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">ฌ และ _็</p>
-                            <a href="{{ route('TEST02')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
+                            <a href="{{ route('E-TH11')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
                         </div>
                     </div>
                 </div>
@@ -122,12 +122,12 @@
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">ระดับที่ 12</div>
                         <div class="card-body"> 
-                            <p class="fs-4 text-center">ฌ และ _็</p>
-                            <a href="{{ route('TEST02')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
+                            <p class="fs-4 text-center"> รวมพิเศษ </p>
+                            <a href="{{ route('E-TH12')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >เริ่ม</a>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center position-absolute bottom-0 start-50 translate-middle-x">
                     <li class="page-item disabled">
@@ -136,6 +136,7 @@
                     <li class="page-item"><a class="page-link" href="{{ route('hExTH01')}}">1</a></li>
                     <li class="page-item"><a class="page-link" href="{{ route('hExTH02')}}">2</a></li>
                     <li class="page-item"><a class="page-link" href="{{ route('hExTH03')}}">3</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ route('hExTH04')}}">4</a></li>
                     <li class="page-item">
                     <a class="page-link" href="{{ route('hExTH02')}}">Next</a>
                     </li>

@@ -11,7 +11,7 @@ body {
     width: 100%;
 }
 .wrapper {
-    width: 770px;
+    width: 800px;
     padding: 15px;
     background: #fff;
     border-radius: 10px;
@@ -41,6 +41,7 @@ body {
     letter-spacing: 1px;
     word-break: break-all;
     font-weight: bold;
+    letter-spacing: 10px;
 }
 .typing-text p span {
     position: relative;
