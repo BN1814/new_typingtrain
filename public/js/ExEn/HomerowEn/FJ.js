@@ -18,7 +18,7 @@ let timer,
 
 function randomParagraph() {
     // console.log(randomText[0]);
-    let randIndex = Math.floor(Math.random() * randomText.length)
+    let randIndex = Math.floor(Math.random() * randomText.length);
     typingText.innerHTML = "";
     randomText[randIndex].split("").forEach((span) => {
         let spanTag = `<span>${span}</span>`;
@@ -97,11 +97,15 @@ let popup = document.getElementById("close_popup");
 let tryAgainScore = document.querySelector(".try_again");
 let next = document.querySelector(".next");
 
-function Close_score(){
+function Close_score() {
     document.querySelector(".pop-up-score").style.display = "none";
 }
-function Open_score(){
+function Open_score() {
     document.querySelector(".pop-up-score").style.display = "flex";
+    timeTag.innerText = timer;
+    mistakeTag.innerText = mistakes;
+    wpmTag.innerText = wpm;
+    cpmTag.innerText = charIndex - mistakes;
 }
 
 popup.addEventListener("click", Close_score);

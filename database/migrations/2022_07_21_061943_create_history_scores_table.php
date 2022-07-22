@@ -15,7 +15,13 @@ class CreateHistoryScoresTable extends Migration
     {
         Schema::create('history_scores', function (Blueprint $table) {
             $table->id();
+            // $table->string('time');
+            // $table->string('mistake');
+            // $table->string('wpm');
+            // $table->string('cpm');
+            // $table->string('score');
             $table->timestamps();
+            // ยังไม่ได้ migrate
         });
     }
 

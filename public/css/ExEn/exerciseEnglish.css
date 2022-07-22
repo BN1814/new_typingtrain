@@ -6,6 +6,7 @@
 }
 .head {
     font-weight: bold;
+    text-transform: uppercase;
 }
 body {
     width: 100%;
@@ -31,16 +32,15 @@ body {
 }
 .content-box .typing-text {
     height: 220px;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 .typing-text::-webkit-scrollbar {
     width: 0;
 }
 .typing-text p {
     font-size: 34px;
-    text-align: justify;
-    letter-spacing: 1px;
-    word-break: break-all;
+    text-align: center;
+    /* word-break: break-all; */
     font-weight: bold;
     letter-spacing: 12px;
 }
@@ -134,6 +134,10 @@ body {
 @media (max-width: 768px) {
     .typing-text p {
         font-size: 31px;
+        letter-spacing: 13px;
+    }
+    .content-box .typing-text {
+        height: 200px;
     }
     .content button {
         width: 70px;
@@ -143,10 +147,9 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: calc(100% - 70px);
+        width: 100%;
     }
     .result-details li:not(:first-child){
-        padding-left: 40px;
         border-left: #fff;
     }
     .result-details li span {
@@ -154,7 +157,7 @@ body {
         font-size: 12px;
     }
     .result-details li p {
-        font-size: 13px;
+        font-size: 12px;
         margin: 1px 0 0 0;
     }
 }
