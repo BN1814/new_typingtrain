@@ -16,6 +16,12 @@ class ExerciseController extends Controller
     public function HomeExEN03() {
         return view('Exercise/ExEnglish.hExEn03');
     }
+    public function HomeExEN04() {
+        return view('Exercise/ExEnglish.hExEn04');
+    }
+    public function HomeExEN05() {
+        return view('Exercise/ExEnglish.hExEn05');
+    }
     // Exercise English homerow
     public function EX_FJ() {
         return view('Exercise/ExEnglish/HomerowEn.ex_FJ');
@@ -31,6 +37,21 @@ class ExerciseController extends Controller
     }
     public function EX_GH() {
         return view('Exercise/ExEnglish/HomerowEN.ex_GH');
+    }
+    public function EX_shift_FJ() {
+        return view('Exercise/ExEnglish/HomerowEn.ex_shift_FJ');
+    }
+    public function EX_shift_DK() {
+        return view('Exercise/ExEnglish/HomerowEn.ex_shift_DK');
+    }
+    public function EX_shift_SL() {
+        return view('Exercise/ExEnglish/HomerowEN.ex_shift_SL');
+    }
+    public function EX_shift_a() {
+        return view('Exercise/ExEnglish/HomerowEN.ex_shift_a');
+    }
+    public function EX_shift_GH() {
+        return view('Exercise/ExEnglish/HomerowEN.ex_shift_GH');
     }
     // Exercise English toprow
     public function EX_RU() {
@@ -64,6 +85,23 @@ class ExerciseController extends Controller
     public function EX_BN() {
         return view('Exercise/ExEnglish/BottomrowEN.ex_BN');
     }
+    // Exercise English firstrow
+    public function EX_47() {
+        return view('Exercise/ExEnglish/FirstrowEN.ex_47');
+    }
+    public function EX_38() {
+        return view('Exercise/ExEnglish/FirstrowEN.ex_38');
+    }
+    public function EX_29() {
+        return view('Exercise/ExEnglish/FirstrowEN.ex_29');
+    }
+    public function EX_10() {
+        return view('Exercise/ExEnglish/FirstrowEN.ex_10');
+    }
+    public function EX_56() {
+        return view('Exercise/ExEnglish/FirstrowEN.ex_56');
+    }
+
 
     // Exercise Thai
     public function HomeExTh01() {

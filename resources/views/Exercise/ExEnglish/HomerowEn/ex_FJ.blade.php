@@ -46,7 +46,7 @@
         <div class="pop-up-score shadow-lg" style="color: #fff;">
             <p id="close_popup">+</p>
             <div class="head-level">
-                <p>LEVEL 01 : F & J</p>
+                <p>LEVEL 01 : f & j</p>
             </div>
             <div class="history-score">
                 <div class="row justify-content-center">
@@ -54,23 +54,23 @@
                         <ul class="detail-score shadow-lg">
                             <li class="time">
                                 <p>Time : </p>
-                                <span><b>0</b></span>
+                                <span id= "poptime">0</span>
                             </li>
-                            <li class="mistake">
+                            <li class="mistake" id="mistake" >
                                 <p>Mistake : </p>
-                                <span>0</span>
+                                <span id= "popmistake" >0</span>
                             </li>
-                            <li class="wpm">
+                            <li class="wpm" id="wpm">
                                 <p>WPM : </p>
-                                <span>0</span>
+                                <span id= "popwpm">0</span>
                             </li>
-                            <li class="cpm">
+                            <li class="cpm" id="cpm">
                                 <p>CPM : </p>
-                                <span>0</span>
+                                <span id= "popcpm">0</span>
                             </li>
-                            <li class="score">
+                            <li class="score" id="score">
                                 <p>Score : </p>
-                                <span>0</span>
+                                <span id= "popscore">0</span>
                             </li>
                         </ul>
                     </div>

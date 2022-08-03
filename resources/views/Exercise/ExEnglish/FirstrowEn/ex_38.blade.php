@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/ExEn/exerciseThai.css') }}">
-<link rel="stylesheet" href="{{ asset('css/ExEn/popupTH.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ExEn/exerciseEnglish.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ExEn/popupEN.css') }}">
     <div class="container mt-1">
-        <span class="head h1 d-block text-center px-2 mb-2">ระดับ 12: รวมอักษรฝึกพิมพ์ </span>
+        <span class="head h1 d-block text-center px-2 mb-2">Level 38: 3 & 8</span>
     </div>
     <body>
-    {{-- @include('include.includeExTh') --}}
+    {{-- @include('include.includeExEn') --}}
         <form>
             @csrf
             <div class="form-group">
@@ -20,19 +20,19 @@
                         <div class="content">
                             <ul class="result-details">
                                 <li class="time" name="time">
-                                    <p>เวลาที่เหลือ :</p>
-                                    <span><b>60</b></span>
+                                    <p>Time Left:</p>
+                                    <span><b>60</b>s</span>
                                 </li>
                                 <li class="mistake" name="mistake">
-                                    <p>คำที่ผิด :</p>
+                                    <p>Mistakes:</p>
                                     <span>0</span>
                                 </li>
                                 <li class="wpm" name="wpm">
-                                    <p>ความเร็วคำต่อนาที :</p>
+                                    <p>WPM:</p>
                                     <span>0</span>
                                 </li>
                                 <li class="cpm" name="cpm">
-                                    <p>คำที่ถูกต้อง :</p>
+                                    <p>CPM:</p>
                                     <span>0</span>
                                 </li>
                             </ul>
@@ -42,34 +42,34 @@
                 </div>
             </div>
         </form>
-        @include('include.includeKBTh')
+        @include('include.includeKB')
         <div class="pop-up-score shadow-lg" style="color: #fff;">
             <p id="close_popup">+</p>
             <div class="head-level">
-                <p>ระดับ 12: รวมอักษรฝึกพิมพ์ </p>
+                <p>LEVEL 38 : 3 & 8</p>
             </div>
             <div class="history-score">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <ul class="detail-score shadow-lg">
                             <li class="timee">
-                                <p>เวลาที่เหลือ : </p>
+                                <p>Time : </p>
                                 <span><b>0</b></span>
                             </li>
                             <li class="mistakee">
-                                <p>คำที่ผิด : </p>
+                                <p>Mistake : </p>
                                 <span>0</span>
                             </li>
                             <li class="wpme">
-                                <p>ความเร็วคำต่อนาที : </p>
+                                <p>WPM : </p>
                                 <span>0</span>
                             </li>
                             <li class="cpme">
-                                <p>คำที่ถูกต้อง : </p>
+                                <p>CPM : </p>
                                 <span>0</span>
                             </li>
                             <li class="scoree">
-                                <p>คะแนน : </p>
+                                <p>Score : </p>
                                 <span>0</span>
                             </li>
                         </ul>
@@ -78,13 +78,13 @@
             </div>
             <div class="foot-score d-flex justify-content-center">
                 <button class="btn btn-dark text-white ms-1 pn-score try_again">
-                    {{ __('ลองอีกครั้ง') }}
+                    {{ __('Try Again') }}
                 </button>
                 <button class="btn btn-dark text-white pn-score ms-1 next">
-                    <a href="#">ระดับถัดไป</a>
+                    <a href="#">Next</a>
                 </button>
             </div>
         </div>
     </body>
-    <script src="{{ asset('js/ExTH/HomerowTh/TH12.js')}}" defer></script>
+    <script src="{{ asset('js/ExEn/FirstrowEn/38.js')}}" defer></script>
 @endsection

@@ -71,6 +71,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     Route::get('hExEn01', [ExerciseController::class, 'HomeExEN01'])->name('hExEN01');
     Route::get('hExEn02', [ExerciseController::class, 'HomeExEN02'])->name('hExEN02');
     Route::get('hExEn03', [ExerciseController::class, 'HomeExEN03'])->name('hExEN03');
+    Route::get('hExEn04', [ExerciseController::class, 'HomeExEN04'])->name('hExEN04');
+    Route::get('hExEn05', [ExerciseController::class, 'HomeExEN05'])->name('hExEN05');
     // Exercise English
     //Exercise English homerow 
     Route::get('ex_FJ', [ExerciseController::class, 'EX_FJ'])->name('E-FJ');
@@ -78,6 +80,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     Route::get('ex_SL', [ExerciseController::class, 'EX_SL'])->name('E-SL');
     Route::get('ex_a', [ExerciseController::class, 'EX_a'])->name('E-a');
     Route::get('ex_GH', [ExerciseController::class, 'EX_GH'])->name('E-GH');
+    Route::get('ex_shift_FJ', [ExerciseController::class, 'EX_shift_FJ'])->name('E-shift-FJ');
+    Route::get('ex_shift_DK', [ExerciseController::class, 'EX_shift_DK'])->name('E-shift-DK');
+    Route::get('ex_shift_SL', [ExerciseController::class, 'EX_shift_SL'])->name('E-shift-SL');
+    Route::get('ex_shift_a', [ExerciseController::class, 'EX_shift_a'])->name('E-shift-a');
+    Route::get('ex_shift_GH', [ExerciseController::class, 'EX_shift_GH'])->name('E-shift-GH');
     //Exercise English toprow
     Route::get('ex_RU', [ExerciseController::class, 'EX_RU'])->name('E-RU');
     Route::get('ex_EI', [ExerciseController::class, 'EX_EI'])->name('E-EI');
@@ -90,6 +97,14 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     Route::get('ex_X', [ExerciseController::class, 'EX_X'])->name('E-X');
     Route::get('ex_Z', [ExerciseController::class, 'EX_Z'])->name('E-Z');
     Route::get('ex_BN', [ExerciseController::class, 'EX_BN'])->name('E-BN');
+    //Exercise English firstrow
+    Route::get('ex_47', [ExerciseController::class, 'EX_47'])->name('E-47');
+    Route::get('ex_38', [ExerciseController::class, 'EX_38'])->name('E-38');
+    Route::get('ex_29', [ExerciseController::class, 'EX_29'])->name('E-29');
+    Route::get('ex_10', [ExerciseController::class, 'EX_10'])->name('E-10');
+    Route::get('ex_56', [ExerciseController::class, 'EX_56'])->name('E-56');
+
+
     // Exercise homeThai
     Route::get('hExTh', [ExerciseController::class, 'HomeExTh'])->name('hExTH');
     Route::get('hExTh01', [ExerciseController::class, 'HomeExTh01'])->name('hExTH01');

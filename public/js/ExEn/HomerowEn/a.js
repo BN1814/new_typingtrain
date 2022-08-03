@@ -102,6 +102,10 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
+    document.getElementById("poptime").innerHTML= timeTag.innerHTML;
+    document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
+    document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
+    document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);

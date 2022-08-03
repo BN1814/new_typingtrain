@@ -4,12 +4,17 @@ const randomText = [
     "ดด่ด่ ดด่ด่ ดด่ด่ ดด่ด่ ด่ ด่ ด่ ด่ ด่ด่ ด่ด่ ด่ด่ด่ ด่ด่ด่ ด่ด่ ด่ด่ ด่ด่ ด่ด่ ด่ ด่ ด่ ด่ ดดดด ดดด ดดดด ดดดด ด่ด่ด่ ด่ด่ด่ ด่ด่ ด่ด่"
 ];
 const typingText = document.querySelector(".typing-text p"),
-inpField = document.querySelector(".wrapper .input-field"),
-mistakeTag = document.querySelector(".mistake span"),
-timeTag = document.querySelector(".time span b"),
-wpmTag = document.querySelector(".wpm span "),
-cpmTag = document.querySelector(".cpm span "),
-tryAgainBtn = document.querySelector(".butt");
+    inpField = document.querySelector(".wrapper .input-field"),
+    mistakeTag = document.querySelector(".mistake span"),
+    timeTag = document.querySelector(".time span b"),
+    wpmTag = document.querySelector(".wpm span "),
+    cpmTag = document.querySelector(".cpm span "),
+    mistakeeTag = document.querySelector(".mistakee span"),
+    timeeTag = document.querySelector(".timee span b"),
+    wpmeTag = document.querySelector(".wpme span "),
+    cpmeTag = document.querySelector(".cpme span "),
+    scoreeTag = document.querySelector(".scoree span");
+// tryAgainBtn = document.querySelector(".butt");
 
 let timer,
     maxTime = 60,
@@ -18,7 +23,7 @@ let timer,
 
 function randomParagraph() {
     // console.log(randomText[0]);
-    let randIndex = Math.floor(Math.random() * randomText.length)
+    let randIndex = Math.floor(Math.random() * randomText.length);
     typingText.innerHTML = "";
     randomText[randIndex].split("").forEach((span) => {
         let spanTag = `<span>${span}</span>`;
@@ -54,12 +59,16 @@ function initTyping() {
         characters[charIndex].classList.add("active");
 
         let wpm = Math.round(
-            ((charIndex - mistakes) / 4 / (maxTime - timeLeft)) * 60
+            ((charIndex - mistakes) / 5 / (maxTime - timeLeft)) * 60
         );
         wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
         mistakeTag.innerText = mistakes;
         wpmTag.innerText = wpm;
         cpmTag.innerText = charIndex - mistakes;
+        scoreeTag.innerText = scoree;
+        mistakeeTag.innerText = mistakes;
+        wpmeTag.innerText = wpm;
+        cpmeTag.innerText = charIndex - mistakes;
     } else {
         Open_score();
         clearInterval(timer);
@@ -97,11 +106,15 @@ let popup = document.getElementById("close_popup");
 let tryAgainScore = document.querySelector(".try_again");
 let next = document.querySelector(".next");
 
-function Close_score(){
+function Close_score() {
     document.querySelector(".pop-up-score").style.display = "none";
 }
-function Open_score(){
+function Open_score() {
     document.querySelector(".pop-up-score").style.display = "flex";
+    // timeTag.innerText = timer;
+    // mistakeTag.innerText = mistakes;
+    // wpmTag.innerText = wpm;
+    // cpmTag.innerText = charIndex - mistakes;
 }
 
 popup.addEventListener("click", Close_score);

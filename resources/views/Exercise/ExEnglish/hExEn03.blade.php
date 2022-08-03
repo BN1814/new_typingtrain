@@ -59,11 +59,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-sm-4 col-md-2">
+                <div class="col-sm-4 col-md-2">
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">Level 30</div>
                         <div class="card-body"> 
-                            <p class="fs-4 text-center">' & "</p>
+                            <p class="fs-4 text-center">V & M</p>
                             <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">Level 31</div>
                         <div class="card-body"> 
-                            <p class="fs-4 text-center">F & J</p>
+                            <p class="fs-4 text-center">C & < </p>
                             <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">Level 32</div>
                         <div class="card-body"> 
-                            <p class="fs-4 text-center">D & K</p>
+                            <p class="fs-4 text-center">X & > </p>
                             <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">Level 33</div>
                         <div class="card-body"> 
-                            <p class="fs-4 text-center">S & L</p>
+                            <p class="fs-4 text-center">Z & ?</p>
                             <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">Level 34</div>
                         <div class="card-body"> 
-                            <p class="fs-4 text-center">A & :</p>
+                            <p class="fs-4 text-center">B & N</p>
                             <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">Level 35</div>
                         <div class="card-body"> 
-                            <p class="fs-4 text-center">G & H</p>
+                            <p class="fs-4 text-center">mix</p>
                             <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
@@ -120,12 +120,12 @@
                     <div class="card" style="width: 150px; height: 150px;">
                         <div class="card-header">Level 36</div>
                         <div class="card-body"> 
-                            <p class="fs-4 text-center">G & H</p>
+                            <p class="fs-4 text-center">mix</p>
                             <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center position-absolute bottom-0 start-50 translate-middle-x">
                     <li class="page-item">
@@ -134,8 +134,10 @@
                     <li class="page-item"><a class="page-link" href="{{ route('hExEN01')}}">1</a></li>
                     <li class="page-item"><a class="page-link" href="{{ route('hExEN02')}}">2</a></li>
                     <li class="page-item"><a class="page-link" href="{{ route('hExEN03')}}">3</a></li>
-                    <li class="page-item disabled">
-                    <a class="page-link" href="#">Next</a>
+                    <li class="page-item"><a class="page-link" href="{{ route('hExEN04')}}">4</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ route('hExEN05')}}">5</a></li>
+                    <li class="page-item">
+                    <a class="page-link" href="{{ route('hExEN04')}}">Next</a>
                     </li>
                 </ul>
             </nav>

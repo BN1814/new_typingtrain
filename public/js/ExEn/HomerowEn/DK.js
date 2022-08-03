@@ -9,6 +9,7 @@ const typingText = document.querySelector(".typing-text p"),
     timeTag = document.querySelector(".time span b"),
     wpmTag = document.querySelector(".wpm span "),
     cpmTag = document.querySelector(".cpm span ");
+    scoreTag = document.querySelector(".score span ");
 // tryAgainBtn = document.querySelector(".butt");
 
 let timer,
@@ -18,7 +19,7 @@ let timer,
 
 function randomParagraph() {
     // console.log(randomText[0]);
-    let randIndex = Math.floor(Math.random() * randomText.length)
+    let randIndex = Math.floor(Math.random() * randomText.length);
     typingText.innerHTML = "";
     randomText[randIndex].split("").forEach((span) => {
         let spanTag = `<span>${span}</span>`;
@@ -102,6 +103,10 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
+    document.getElementById("poptime").innerHTML= timeTag.innerHTML;
+    document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
+    document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
+    document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);
