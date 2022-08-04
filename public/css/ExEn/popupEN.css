@@ -17,7 +17,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
+    display: none;
 }
 .pop-up-score #close_popup {
     position: absolute;
@@ -39,24 +39,26 @@
 .pop-up-score .history-score {
     width: 400px;
     height: 220px;
-    display: block;
-    justify-content: center;
-    align-items: center;
     margin-top: 10px;
 }
-.pop-up-score ul {
+.history-score .col-md-8 .detail-score {
     display: block;
     justify-content: center;
     align-items: center;
+    padding-left: 90px;
+}
+.pop-up-score ul {
     background: #f1f1f1;
     border: 1px solid #9c9999;
     border-radius: 10px;
 }
 .pop-up-score ul li {
     display: flex;
-    /* padding-left: 25%; */
     color: black;
     margin: 0;
+}
+.pop-up-score ul li:first-child {
+    margin-top: 10px;
 }
 .pop-up-score ul li:not(:first-child) {
     margin: 0;
@@ -75,12 +77,14 @@
     height: 50px;
     position: absolute;
     bottom: 0;
+    left: 0;
     color: #000;
-    display: flex;
+    /* display: flex; */
     text-align: center;
 }
 .pn-score {
     width: 100px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 .pn-score a {

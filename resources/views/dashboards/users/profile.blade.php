@@ -9,21 +9,39 @@
             <div class="card-body">
               <div class="row justify-content-center">
                 <div class="col-md-8">
-                  <label class="control-label">ชื่อผู้ใช้งาน : <span class="fw-bold">{{ Auth::user()->name }}</span>
+                  <div class="form-group mb-2">
+                    <label for="stdid">รหัสนักศึกษา</label>
+                    <input type="text" class="form-control" disabled>
+                  </div>
+                  <div class="form-group mb-2">
+                    <label for="stdid">ชื่อผู้ใช้งาน</label>
+                    <input type="text" class="form-control" value="{{ Auth::user()->name }}" disabled>
+                  </div>
+                  <div class="form-group mb-2">
+                    <label for="name">อีเมลผู้ใช้งาน</label>
+                    <input type="text" class="form-control" value="{{ Auth::user()->email }}" disabled>
+                  </div>
                 </div>
-                <div class="col-md-8">
-                  <label class="control-label">อีเมล : <span class="fw-bold">{{ Auth::user()->email }}</span></div>
               </div>
             </div>
           </div>
         </div>
+        {{-- <div class="col-md-12">
+          <div class="card">
+            <div class="card-header h4 bg-dark text-center text-white">
+              ข้อมูลแบบฝึกหัด
+            </div>
+            <div class="card-body">
+              
+            </div>
+          </div>
+        </div> --}}
 
         <div class="col-md-4">
           <div class="card card-2">
             <div class="card-header h4 bg-dark text-center text-white">แก้ไขข้อมูล</div>
             <div class="card-body">
               <form>
-                {{-- @csrf --}}
                 <div class="form-group mb-2">
                     <label for="stdid">รหัสนักศึกษา</label>
                     <input type="text" class="form-control" name="stdid">
