@@ -74,7 +74,7 @@
                             <button class="btn btn-success mt-2 save" type="submit">
                                 {{ __('บันทึก') }}
                             </button>
-                            <button class="btn btn-danger mt-2 close" type="button">
+                            <button class="btn btn-danger mt-2 close" type="reset">
                                 <a href="{{ route('teacher.dashboard') }}">ยกเลิก</a>
                             </button>
                         </div>

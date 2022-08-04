@@ -9,7 +9,7 @@ const typingText = document.querySelector(".typing-text p"),
     timeTag = document.querySelector(".time span b"),
     wpmTag = document.querySelector(".wpm span "),
     cpmTag = document.querySelector(".cpm span ");
-    scoreTag = document.querySelector(".score span ");
+    // scoreTag = document.querySelector(".score span ");
 // tryAgainBtn = document.querySelector(".butt");
 
 let timer,

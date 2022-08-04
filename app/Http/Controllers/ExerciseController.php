@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Models\HistoryScore;
+// use App\Models\Deadline;
+// use App\Models\User;
 
 class ExerciseController extends Controller
 {
@@ -25,6 +30,19 @@ class ExerciseController extends Controller
     // Exercise English homerow
     public function EX_FJ() {
         return view('Exercise/ExEnglish/HomerowEn.ex_FJ');
+    }
+    public function SaveFJ(Request $request) {
+        $score = new HistoryScore();
+        $score->level = $request->level;
+        $score->time = $request->time;
+        $score->mistake = $request->mistake;
+        $score->wpm = $request->wpm;
+        $score->cpm = $request->cpm;
+        $save = $score->save();
+
+        if($save) {
+            return redirect()->back()->with('success', 'บันทึกข้อมูลสำเร็จ');
+        }
     }
     public function EX_DK() {
         return view('Exercise/ExEnglish/HomerowEn.ex_DK');

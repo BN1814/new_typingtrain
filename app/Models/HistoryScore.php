@@ -10,11 +10,11 @@ class HistoryScore extends Model
     use HasFactory;
 
     protected $fillable = [
+        'level',
         'time',
         'mistake',
         'wpm',
-        'cpm',
-        'score'
+        'cpm'
     ];
 
     protected $casts = [

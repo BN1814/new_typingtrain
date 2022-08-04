@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+@if($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
+        <strong>{{ $message }}</strong>
+    </div>
+@endif
     <link rel="stylesheet" href="{{ asset('css/ExEn/exerciseEnglish.css') }}">
     <link rel="stylesheet" href="{{ asset('css/ExEn/popupEN.css') }}">
     <div class="container mt-1">
@@ -17,19 +22,19 @@
                     </div>
                     <div class="content">
                         <ul class="result-details">
-                            <li class="time" name="time">
+                            <li class="time">
                                 <p>Time Left:</p>
                                 <span><b>60</b>s</span>
                             </li>
-                            <li class="mistake" name="mistake">
+                            <li class="mistake">
                                 <p>Mistakes:</p>
                                 <span>0</span>
                             </li>
-                            <li class="wpm" name="wpm">
+                            <li class="wpm">
                                 <p>WPM:</p>
                                 <span>0</span>
                             </li>
-                            <li class="cpm" name="cpm">
+                            <li class="cpm">
                                 <p>CPM:</p>
                                 <span>0</span>
                             </li>
@@ -42,34 +47,35 @@
         @include('include.includeKB')
         <div class="pop-up-score shadow-lg" style="color: #fff;">
             <p id="close_popup">+</p>
-            <div class="head-level">
-                <p>LEVEL 01 : f & j</p>
-            </div>
-            <form>
+            <form action="{{ route('saveF_J') }}" method="post">
+                @csrf
+                <div class="head-level">
+                    <p class="level" name="level">LEVEL 01 : f & j</p>
+                </div>
                 <div class="history-score">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <ul class="detail-score shadow-lg">
-                                <li class="time">
+                                <li class="time" id="time">
                                     <p>Time : </p>
-                                    <span id= "poptime">0</span>
+                                    <span id= "poptime" name="time">0</span>
                                 </li>
                                 <li class="mistake" id="mistake" >
                                     <p>Mistake : </p>
-                                    <span id= "popmistake" >0</span>
+                                    <span id= "popmistake" name="mistake">0</span>
                                 </li>
                                 <li class="wpm" id="wpm">
                                     <p>WPM : </p>
-                                    <span id= "popwpm">0</span>
+                                    <span id= "popwpm" name="wpm">0</span>
                                 </li>
                                 <li class="cpm" id="cpm">
                                     <p>CPM : </p>
-                                    <span id= "popcpm">0</span>
+                                    <span id= "popcpm" name="cpm">0</span>
                                 </li>
-                                <li class="score" id="score">
+                                {{-- <li class="score" id="score">
                                     <p>Score : </p>
                                     <span id= "popscore">0</span>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>
@@ -81,8 +87,8 @@
                     <button type="submit" class="btn btn-dark text-white ms-1 pn-score">
                         {{ __('Submit') }}
                     </button>
-                    <button class="btn btn-dark text-white pn-score ms-1 next">
-                        <a href="#">Next</a>
+                    <button class="btn btn-dark text-white pn-score ms-1 next" type="submit">
+                        <a href="{{ route('E-DK') }}">Next</a>
                     </button>
                 </div>
             </form>
