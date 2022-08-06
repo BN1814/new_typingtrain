@@ -75,8 +75,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     Route::get('hExEn05', [ExerciseController::class, 'HomeExEN05'])->name('hExEN05');
     // Exercise English
     //Exercise English homerow 
+    Route::post('saveExercise', [ExerciseController::class, 'saveExercise'])->name('saveEx');
     Route::get('ex_FJ', [ExerciseController::class, 'EX_FJ'])->name('E-FJ');
-    Route::post('saveFJ', [ExerciseController::class, 'saveFJ'])->name('saveF_J');
     Route::get('ex_DK', [ExerciseController::class, 'EX_DK'])->name('E-DK');
     Route::get('ex_SL', [ExerciseController::class, 'EX_SL'])->name('E-SL');
     Route::get('ex_a', [ExerciseController::class, 'EX_a'])->name('E-a');

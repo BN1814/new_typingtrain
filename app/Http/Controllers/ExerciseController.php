@@ -31,17 +31,20 @@ class ExerciseController extends Controller
     public function EX_FJ() {
         return view('Exercise/ExEnglish/HomerowEn.ex_FJ');
     }
-    public function SaveFJ(Request $request) {
-        $score = new HistoryScore();
-        $score->level = $request->level;
-        $score->time = $request->time;
-        $score->mistake = $request->mistake;
-        $score->wpm = $request->wpm;
-        $score->cpm = $request->cpm;
-        $save = $score->save();
+    public function SaveExercise(Request $request) {
+        $data = new HistoryScore();
+        $data->level = $request->level;
+        $data->time = $request->time;
+        $data->mistake = $request->mistake;
+        $data->wpm = $request->wpm;
+        $data->cpm = $request->cpm;        
+        $data->user_id = $request->user_id;
+        $save = $data->save();
 
         if($save) {
             return redirect()->back()->with('success', 'บันทึกข้อมูลสำเร็จ');
+            // return response()->json(['success'=>'บันทึกข้อมูลสำเร็จ']);
+            // dd($request);
         }
     }
     public function EX_DK() {

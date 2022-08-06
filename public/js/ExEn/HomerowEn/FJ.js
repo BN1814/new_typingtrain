@@ -97,16 +97,17 @@ inpField.addEventListener("input", initTyping);
 let popup = document.getElementById("close_popup");
 let tryAgainScore = document.querySelector(".try_again");
 let next = document.querySelector(".next");
+let submit = document.querySelector(".submit");
 
 function Close_score() {
     document.querySelector(".pop-up-score").style.display = "none";
 }
 function Open_score() {
     document.querySelector(".pop-up-score").style.display = "flex";
-    document.getElementById("poptime").innerHTML= 60 - timeTag.innerHTML;
-    document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
-    document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
-    document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;
+    document.getElementById("poptime").innerText= 60 - timeTag.innerHTML;
+    document.getElementById("popmistake").innerText= mistakeTag.innerHTML;
+    document.getElementById("popwpm").innerText= wpmTag.innerHTML;
+    document.getElementById("popcpm").innerText= cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);
@@ -128,8 +129,8 @@ document.addEventListener("keydown", function (e) {
 //     this.style.backgroundColor = "#004f40";
 // }, false);
 
-var start = 97,
-    end = 122;
+// var start = 97,
+//     end = 122;
 //     button;
 
 // while (start <= end) {

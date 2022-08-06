@@ -18,6 +18,7 @@ class CreateDeadlinesTable extends Migration
             $table->string('code_inclass')->unique;
             $table->date('deadline_date');
             $table->time('deadline_time');
+            // $table->foreignId('userid')->index()->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

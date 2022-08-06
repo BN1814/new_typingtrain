@@ -31,14 +31,14 @@ body {
     border: 1px solid #ccc;
 }
 .content-box .typing-text {
-    height: 220px;
-    overflow-y: scroll;
+    /* height: 220px; */
+    overflow: auto;
 }
 .typing-text::-webkit-scrollbar {
     width: 0;
 }
 .typing-text p {
-    font-size: 34px;
+    /* font-size: 34px; */
     text-align: center;
     /* word-break: break-all; */
     font-weight: bold;

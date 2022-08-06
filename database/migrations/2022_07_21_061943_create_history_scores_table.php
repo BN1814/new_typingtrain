@@ -15,14 +15,16 @@ class CreateHistoryScoresTable extends Migration
     {
         Schema::create('history_scores', function (Blueprint $table) {
             $table->id();
-            $table->string('level');
-            $table->string('time');
-            $table->string('mistake');
-            $table->string('wpm');
-            $table->string('cpm');
+            $table->string('level')->nullable();
+            $table->string('time')->nullable();
+            $table->string('mistake')->nullable();
+            $table->string('wpm')->nullable();
+            $table->string('cpm')->nullable();
+            // $table->foreign('users_id')->references('id')->on('users');
+            // $table->foreignId('userid')->index()->constrained('users')->cascadeOnDelete();
             $table->timestamps();
-            // ยังไม่ได้ migrate
         });
+        
     }
 
     /**

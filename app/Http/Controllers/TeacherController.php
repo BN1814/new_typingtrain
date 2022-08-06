@@ -40,6 +40,7 @@ class TeacherController extends Controller
         $deadline->code_inclass = $request->code_inclass;
         $deadline->deadline_date = $request->deadline_date;
         $deadline->deadline_time = $request->deadline_time;
+        $deadline->user_id = $request->user_id;
         $save = $deadline->save();
 
         if($save) {

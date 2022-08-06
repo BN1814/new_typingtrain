@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .typing-text p {
+        font-size: 34px;
+    }
+</style>
 @if($message = Session::get('success'))
     <div class="alert alert-success alert-block">
         <strong>{{ $message }}</strong>
@@ -47,7 +52,7 @@
         @include('include.includeKB')
         <div class="pop-up-score shadow-lg" style="color: #fff;">
             <p id="close_popup">+</p>
-            <form action="{{ route('saveF_J') }}" method="post">
+            <form action="{{ route('saveEx') }}" method="post">
                 @csrf
                 <div class="head-level">
                     <p class="level" name="level">LEVEL 01 : f & j</p>
@@ -72,23 +77,19 @@
                                     <p>CPM : </p>
                                     <span id= "popcpm" name="cpm">0</span>
                                 </li>
-                                {{-- <li class="score" id="score">
-                                    <p>Score : </p>
-                                    <span id= "popscore">0</span>
-                                </li> --}}
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="foot-score d-flex justify-content-center align-items-center">
                     <button class="btn btn-dark text-white ms-1 pn-score try_again">
-                        {{ __('Try Again') }}
+                        {{ __('เล่นอีกครั้ง') }}
                     </button>
-                    <button type="submit" class="btn btn-dark text-white ms-1 pn-score">
-                        {{ __('Submit') }}
+                    <button type="submit" class="btn btn-dark text-white ms-1 pn-score submit">
+                        {{ __('ส่งข้อมูล') }}
                     </button>
-                    <button class="btn btn-dark text-white pn-score ms-1 next" type="submit">
-                        <a href="{{ route('E-DK') }}">Next</a>
+                    <button class="btn btn-dark text-white pn-score ms-1 next">
+                        <a href="{{ route('E-DK') }}">หน้าต่อไป</a>
                     </button>
                 </div>
             </form>

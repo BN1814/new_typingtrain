@@ -6,23 +6,23 @@
         <div class="col-md-8">
             @if(Auth::user()->role == 1)
                 <div class="card">
-                    <div class="card-header bg-dark text-center text-white h3">ยินดีต้อนรับ</div>
+                    <div class="card-header bg-dark text-center text-white h1">ยินดีต้อนรับ</div>
                     <div class="card-body">
-                        <p> Admin : {{ Auth::user()->name }}</p>
+                        <p style="text-align: center;" class="h2"> Admin : {{ Auth::user()->name }}</p>
                     </div>
                 </div>
             @elseif(Auth::user()->role == 2)
                 <div class="card">
-                    <div class="card-header bg-dark text-center text-white h3">ยินดีต้อนรับ</div>
+                    <div class="card-header bg-dark text-center text-white h1">ยินดีต้อนรับ</div>
                     <div class="card-body">
-                        <p> Teacher : {{ Auth::user()->name }}</p>
+                        <p style="text-align: center;" class="h2"> Teacher : {{ Auth::user()->name }}</p>
                     </div>
                 </div>
             @else
                 <div class="card">
-                    <div class="card-header bg-dark text-center text-white h3">ยินดีต้อนรับ</div>
+                    <div class="card-header bg-dark text-center text-white h1">ยินดีต้อนรับ</div>
                     <div class="card-body">
-                        <p> Student : {{ Auth::user()->name }}</p>
+                        <p style="text-align: center;" class="h2"> Student : {{ Auth::user()->name }}</p>
                     </div>
                 </div>
             @endif

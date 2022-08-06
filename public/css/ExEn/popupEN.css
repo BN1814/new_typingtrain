@@ -9,7 +9,7 @@
     justify-content: center;
     width: 500px;
     height: 320px;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     /* background: linear-gradient(43, 210, 230); */
     background-image: linear-gradient(to right, rgb(145, 138, 138) , rgb(65, 59, 59));
     /* border:1px solid rgb(136, 213, 233); */
@@ -31,10 +31,12 @@
     transform: rotate(45deg);
 } #close_popup:hover {color: red;}
 .pop-up-score .head-level {
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    margin-top: 5px;
-    text-align: center; font-size: 30px; font-weight: bold;
+    margin-top: 5px; */
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
 }
 .pop-up-score .history-score {
     width: 400px;

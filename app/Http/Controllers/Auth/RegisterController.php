@@ -52,6 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'userid' => ['required', 'string', 'max:20', 'unique:users'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -80,6 +81,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'userid' => $data['userid'],
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => 3,
@@ -89,7 +91,6 @@ class RegisterController extends Controller
         if($data->User::create()){
             return redirect()->back()->with('success', 'ลงทะเบียนสำเร็จแล้ว');
         }
-        return redirect()->back()->with('error', 'ลงทะเบียนไม่สำเร็จ');
     }
 
     // function register(Request $request) {
