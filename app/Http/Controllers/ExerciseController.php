@@ -38,7 +38,7 @@ class ExerciseController extends Controller
         $data->mistake = $request->mistake;
         $data->wpm = $request->wpm;
         $data->cpm = $request->cpm;        
-        $data->user_id = $request->user_id;
+        // $data->user_id = $request->user_id;
         $save = $data->save();
 
         if($save) {

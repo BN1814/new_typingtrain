@@ -24,28 +24,43 @@ class TeacherController extends Controller
         return view('dashboards.teachers.settings');
     }
     public function dataStudent() {
-        return view('dashboards.teachers.dataSTD');
+        $users = User::all()->sortBy('asc');
+        return view('dashboards.teachers.dataSTD', compact('users'));
     }
     public function Classroom() {
         return view('dashboards.teachers.classroom');
     }
+    public function editData() {
+        return view('dashboards.teachers.editData');
+    }
 
     public function createCode(Request $request) {
         $request->validate([
+            'section_id' => 'required | max:10',
+            'section_name' => 'required | max:255',
             'code_inclass' => 'required | unique:deadlines',
             'deadline_date' => 'required',
             'deadline_time' => 'required'
         ]);
         $deadline = new Deadline();
+        $deadline->section_id = $request->section_id;
+        $deadline->section_name = $request->section_name;
         $deadline->code_inclass = $request->code_inclass;
         $deadline->deadline_date = $request->deadline_date;
         $deadline->deadline_time = $request->deadline_time;
-        $deadline->user_id = $request->user_id;
+        // $deadline->user_id = $request->user_id;
         $save = $deadline->save();
 
         if($save) {
             return redirect()->back()->with('success', 'สร้างห้องเรียนสำเร็จ');
         }
         return redirect()->back()->with('error', 'มีรหัสนี้อยู่แล้ว');
+    }
+    function edit($id) {
+        $user = User::find($id);
+        return view('dashboards\teachers.editData', compact('user', 'id'));
+    }
+    function update(Request $request, $id) {
+
     }
 }

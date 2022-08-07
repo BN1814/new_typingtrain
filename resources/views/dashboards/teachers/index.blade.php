@@ -33,14 +33,33 @@
                         <div class="alert alert-success alert-block">
                             <strong>{{ $message }}</strong>
                         </div>
-                    @elseif($message = Session::get('error'))
+                    {{-- @elseif($message = Session::get('error'))
                         <div class="alert alert-danger alert-block">
                             <strong>{{ $message }}</strong>
-                        </div>
+                        </div> --}}
                     @endif
                     {{--  action="{{ route('setDeadline') }}" method="post" --}}
                     <form action="{{ route('setDeadline') }}" method="post">
                         @csrf
+
+                        <div class="form-group mb-2">
+                            <label for="sectionid" class="h5"><p>รหัสห้องเรียน : </p></label>
+                            <input type="text" class="form-control" name="section_id" value="{{ old('sectionid') }}" required autocomplete="off" placeholder="รหัสห้องเรียน">
+                            @error('sectionid')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="sectionname" class="h5"><p>ชื่อห้องเรียน : </p></label>
+                            <input type="text" class="form-control" name="section_name" value="{{ old('sectionname') }}" required autocomplete="off" placeholder="ชื่อห้องเรียน">
+                            @error('sectionname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         <div class="form-group mb-2">
                             <label for="code" class="h5"><p>รหัสเข้าห้อง : </p></label>
                             <input type="text" class="form-control inpGencode" name="code_inclass" value="{{ old('code_inclass') }}" required autocomplete="off" placeholder="รหัสเข้าห้อง">

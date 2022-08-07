@@ -15,6 +15,8 @@ class CreateDeadlinesTable extends Migration
     {
         Schema::create('deadlines', function (Blueprint $table) {
             $table->id();
+            $table->string('section_id')->nullable();
+            $table->string('section_name');
             $table->string('code_inclass')->unique;
             $table->date('deadline_date');
             $table->time('deadline_time');

@@ -57,6 +57,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
     Route::get('settings', [TeacherController::class, 'settings'])->name('teacher.settings');
     Route::get('dataSTD', [TeacherController::class, 'dataStudent'])->name('teacher.dataSTD');
     Route::get('classroom', [TeacherController::class, 'Classroom'])->name('teacher.classroom');
+    Route::get('editData', [TeacherController::class, 'editData'])->name('teacher.edit');
 
     Route::post('createCode', [TeacherController::class, 'createCode'])->name('setDeadline');
 });

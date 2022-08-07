@@ -16,7 +16,7 @@
     <div class="container mt-1">
         <span class="head h1 d-block text-center px-2 mb-2">Level 01 : f & j</span>
     </div>
-    <body>
+    <body id="body">
         {{-- @include('include.includeExEn') --}}
         <div class="form-group">
             <div class="container wrapper mb-3 mt-1">
@@ -82,13 +82,13 @@
                     </div>
                 </div>
                 <div class="foot-score d-flex justify-content-center align-items-center">
-                    <button class="btn btn-dark text-white ms-1 pn-score try_again">
+                    <button class="btn btn-dark text-white ms-1 pn-score try_again" type="button">
                         {{ __('เล่นอีกครั้ง') }}
                     </button>
                     <button type="submit" class="btn btn-dark text-white ms-1 pn-score submit">
-                        {{ __('ส่งข้อมูล') }}
+                        {{ __('บันทึกสถิติ') }}
                     </button>
-                    <button class="btn btn-dark text-white pn-score ms-1 next">
+                    <button class="btn btn-dark text-white pn-score ms-1 next" type="button">
                         <a href="{{ route('E-DK') }}">หน้าต่อไป</a>
                     </button>
                 </div>

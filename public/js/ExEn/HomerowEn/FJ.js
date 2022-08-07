@@ -9,7 +9,6 @@ const typingText = document.querySelector(".typing-text p"),
     timeTag = document.querySelector(".time span b"),
     wpmTag = document.querySelector(".wpm span "),
     cpmTag = document.querySelector(".cpm span ");
-    // scoreTag = document.querySelector(".score span ");
 // tryAgainBtn = document.querySelector(".butt");
 
 let timer,
@@ -98,16 +97,22 @@ let popup = document.getElementById("close_popup");
 let tryAgainScore = document.querySelector(".try_again");
 let next = document.querySelector(".next");
 let submit = document.querySelector(".submit");
+let poptime = document.querySelector("#poptime");
+let popmistake = document.querySelector("#popmistake");
+let popwpm = document.querySelector("#popwpm");
+let popcpm = document.querySelector("#popcpm");
+let body = document.querySelector("#body");
 
 function Close_score() {
     document.querySelector(".pop-up-score").style.display = "none";
 }
 function Open_score() {
     document.querySelector(".pop-up-score").style.display = "flex";
-    document.getElementById("poptime").innerText= 60 - timeTag.innerHTML;
-    document.getElementById("popmistake").innerText= mistakeTag.innerHTML;
-    document.getElementById("popwpm").innerText= wpmTag.innerHTML;
-    document.getElementById("popcpm").innerText= cpmTag.innerHTML;
+    body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    poptime.innerText = 60 - timeTag.innerHTML;
+    popmistake.innerText = mistakeTag.innerHTML;
+    popwpm.innerText = wpmTag.innerHTML;
+    popcpm.innerText = cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);

@@ -10,6 +10,8 @@ class Deadline extends Model
     use HasFactory;
 
     protected $fillable = [
+        'section_id',
+        'section_name',
         'code_inclass',
         'deadline_date',
         'deadline_time',

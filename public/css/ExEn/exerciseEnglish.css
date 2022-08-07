@@ -130,6 +130,12 @@ body {
 .result-details li b {
     font-weight: 1000;
 }
+.alert-success {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 20%;
+}
 
 @media (max-width: 768px) {
     .typing-text p {
