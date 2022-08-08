@@ -93,12 +93,22 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     Route::get('ex_WO', [ExerciseController::class, 'EX_WO'])->name('E-WO');
     Route::get('ex_QY', [ExerciseController::class, 'EX_QY'])->name('E-QY');
     Route::get('ex_TP', [ExerciseController::class, 'EX_TP'])->name('E-TP');
+    Route::get('ex_shift_RU', [ExerciseController::class, 'EX_shift_RU'])->name('E-shift-RU');
+    Route::get('ex_shift_EI', [ExerciseController::class, 'EX_shift_EI'])->name('E-shift-EI');
+    Route::get('ex_shift_WO', [ExerciseController::class, 'EX_shift_WO'])->name('E-shift-WO');
+    Route::get('ex_shift_QY', [ExerciseController::class, 'EX_shift_QY'])->name('E-shift-QY');
+    Route::get('ex_shift_TP', [ExerciseController::class, 'EX_shift_TP'])->name('E-shift-TP');
     //Exercise English bottomrow
     Route::get('ex_VM', [ExerciseController::class, 'EX_VM'])->name('E-VM');
     Route::get('ex_C', [ExerciseController::class, 'EX_C'])->name('E-C');
     Route::get('ex_X', [ExerciseController::class, 'EX_X'])->name('E-X');
     Route::get('ex_Z', [ExerciseController::class, 'EX_Z'])->name('E-Z');
     Route::get('ex_BN', [ExerciseController::class, 'EX_BN'])->name('E-BN');
+    Route::get('ex_shift_VM', [ExerciseController::class, 'EX_shift_VM'])->name('E-shift-VM');
+    Route::get('ex_shift_C', [ExerciseController::class, 'EX_shift_C'])->name('E-shift-C');
+    Route::get('ex_shift_X', [ExerciseController::class, 'EX_shift_X'])->name('E-shift-X');
+    Route::get('ex_shift_Z', [ExerciseController::class, 'EX_shift_Z'])->name('E-shift-Z');
+    Route::get('ex_shift_BN', [ExerciseController::class, 'EX_shift_BN'])->name('E-shift-BN');
     //Exercise English firstrow
     Route::get('ex_47', [ExerciseController::class, 'EX_47'])->name('E-47');
     Route::get('ex_38', [ExerciseController::class, 'EX_38'])->name('E-38');

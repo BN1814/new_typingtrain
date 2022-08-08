@@ -1,7 +1,7 @@
 const randomText = [
-    "ssss ssss ssss ssss llll llll llll llll ssll ssll ssll ssll llss llss llss llss slsl slsl slsl slsl lsls lsls lsls lsls sssl sssl sssl sssl llls llls llls llls",
-    "slsl slsl lsls lsls llls llls sssl sssl slll slll lssl lssl ssss ssss llll llll ssll ssll llss llss llll ssss llll ssss lssl lssl slls slls slsl slsl lsls lsls",
-    "llll llll llll llll ssss ssss ssss ssss llls llls llls llls slll slll slll slll lssl lssl lssl lssl slls slls slls slls llss llss llss llss ssll ssll ssll ssll"
+    "ssss llll ssss llll slsl slsl slsl slsl llll ssss llll ssss lsls lsls lsls lsls ssll ssll ssll ssll llss llss llss llss",
+    "lsls lsls lsls lsls ssll ssll ssll ssll llss llss llss llss ssss llll ssss llll slsl slsl slsl slsl llll ssss llll ssss",
+    "ssll ssll ssll ssll llss llss llss llss ssss llll ssss llll ssss llll sssl sssl llls llls sssl sssl llls llls slll lsss",
 ];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
@@ -19,7 +19,7 @@ let timer,
 function randomParagraph() {
     // console.log(randomText[0]);
     let randIndex = Math.floor(Math.random() * randomText.length)
-    typingText.innerHTML = "";
+    typingText.innerHTML = " ";
     randomText[randIndex].split("").forEach((span) => {
         let spanTag = `<span>${span}</span>`;
         typingText.innerHTML += spanTag;
@@ -102,7 +102,7 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
-    document.getElementById("poptime").innerHTML= timeTag.innerHTML;
+    document.getElementById("poptime").innerHTML= 60 - timeTag.innerHTML;
     document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
     document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
     document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;

@@ -1,7 +1,7 @@
 const randomText = [
-    "wwww wwww wwww wwww oooo oooo oooo oooo wwoo wwoo wwoo wwoo ooww ooww ooww ooww wowo wowo wowo wowo ",
-    "wowo wowo owow owow ooow ooow wwwo wwwo wooo wooo owwo owwo wwww wwww oooo oooo wwoo wwoo ooww ooww ",
-    "oooo oooo oooo oooo wwww wwww wwww wwww ooow ooow ooow ooow wooo wooo wooo wooo owwo owwo owwo owwo "
+    "VVVV VVVV VVVV VVVV MMMM MMMM MMMM MMMM VVMM VVMM VVMM VVMM MMVV MMVV MMVV MMVV VVMM VVMM VVMM VVMM",
+    "VVMM VVMM MVMV MVMV MMMV MMMV VVVM VVVM VMMM VMMM MVVM MVVM VVVV VVVV MMMM MMMM VVMM VVMM MMVV MMVV",
+    "MMMM MMMM MMMM MMMM VVVV VVVV VVVV VVVV MMMV MMMV MMMV MMMV VMMM VMMM VMMM VMMM MVVM MVVM MVVM MVVM"
 ];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),

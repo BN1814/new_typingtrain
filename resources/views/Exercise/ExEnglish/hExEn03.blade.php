@@ -10,7 +10,7 @@
     </style>
     <body>
         <div class="container-sm">
-            <p class="score">SCORE : <span>0</span></p>
+            <!-- <p class="score">SCORE : <span>0</span></p> -->
             <h1 class="display-6 text-center">EXERCISE ENGLISH</h1>
             <br>
             <div class="row mb-3 mt-3">
@@ -64,7 +64,7 @@
                         <div class="card-header">Level 30</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">V & M</p>
-                            <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
+                            <a href="{{ route('E-shift-VM')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                         <div class="card-header">Level 31</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">C & < </p>
-                            <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
+                            <a href="{{ route('E-shift-C')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                         <div class="card-header">Level 32</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">X & > </p>
-                            <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
+                            <a href="{{ route('E-shift-X')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                         <div class="card-header">Level 33</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">Z & ?</p>
-                            <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
+                            <a href="{{ route('E-shift-Z')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                         <div class="card-header">Level 34</div>
                         <div class="card-body"> 
                             <p class="fs-4 text-center">B & N</p>
-                            <a href="{{ route('E-DK')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
+                            <a href="{{ route('E-shift-BN')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,7 @@
     </style>
     <body class= "body">  
         <div class="container">
-            <p class="score">คะแนน : <span>0</span></p>
+            <!-- <p class="score">คะแนน : <span>0</span></p> -->
             <h1 class="display-6 text-center">แบบฝึกภาษาไทย</h1>
             <br>
         </div>

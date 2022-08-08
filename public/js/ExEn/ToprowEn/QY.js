@@ -1,7 +1,7 @@
 const randomText = [
-    "qqqq qqqq qqqq qqqq yyyy yyyy yyyy yyyy qqyy qqyy qqyy qqyy yyqq yyqq yyqq yyqq qyqy qyqy qyqy qyqy yqyq yqyq yqyq yqyq qqqy qqqy qqqy qqqy yyyq yyyq yyyq yyyq",
-    "qyqy qyqy yqyq yqyq yyyq yyyq qqqy qqqy qyyy qyyy yqqy yqqy qqqq qqqq yyyy yyyy qqyy qqyy yyqq yyqq yyyy qqqq yyyy qqqq yqqy yqqy qyyq qyyq qyqy qyqy yqyq yqyq",
-    "yyyy uuuu uuuu uuuu qqqq qqqq qqqq qqqq yyyq yyyq yyyq yyyq qyyy qyyy qyyy qyyy yqqy yqqy yqqy yqqy qyyq qyyq qyyq qyyq yyqq yyqq yyqq yyqq qqyy qqyy qqyy qqyy"
+    "qqqq qqqq qqqq qqqq yyyy yyyy yyyy yyyy qqyy qqyy qqyy qqyy yyqq yyqq yyqq yyqq qyqy qyqy qyqy qyqy ",
+    "qyqy qyqy yqyq yqyq yyyq yyyq qqqy qqqy qyyy qyyy yqqy yqqy qqqq qqqq yyyy yyyy qqyy qqyy yyqq yyqq ",
+    "yyyy uuuu uuuu uuuu qqqq qqqq qqqq qqqq yyyq yyyq yyyq yyyq qyyy qyyy qyyy qyyy yqqy yqqy yqqy yqqy "
 ];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
@@ -102,6 +102,10 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
+    document.getElementById("poptime").innerHTML= 60 - timeTag.innerHTML;
+    document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
+    document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
+    document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);

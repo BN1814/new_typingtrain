@@ -1,7 +1,7 @@
 const randomText = [
-    "SSSS LLLL SSSS LLLL SLSL SLSL SLSL SLSL LLLL SSSS LLLL SSSS LSLS LSLS LSLS LSLS SSLL SSLL SSLL SSLL LLSS LLSS LLSS LLSS ",
-    "LSLS LSLS LSLS LSLS SSLL SSLL SSLL SSLL LLSS LLSS LLSS LLSS SSSS LLLL SSSS LLLL SLSL SLSL SLSL SLSL LLLL SSSS LLLL SSSS ",
-    "SSLL SSLL SSLL SSLL LLSS LLSS LLSS LLSS SSSS LLLL SSSS LLLL SSSS LLLL SSSL SSSL LLLS LLLS SSSL SSSL LLLS LLLS SLLL LSSS ",
+    "SSSS LLLL SSSS LLLL SLSL SLSL SLSL SLSL LLLL SSSS LLLL SSSS LSLS LSLS LSLS LSLS SSLL SSLL SSLL SSLL LLSS LLSS LLSS LLSS",
+    "LSLS LSLS LSLS LSLS SSLL SSLL SSLL SSLL LLSS LLSS LLSS LLSS SSSS LLLL SSSS LLLL SLSL SLSL SLSL SLSL LLLL SSSS LLLL SSSS",
+    "SSLL SSLL SSLL SSLL LLSS LLSS LLSS LLSS SSSS LLLL SSSS LLLL SSSS LLLL SSSL SSSL LLLS LLLS SSSL SSSL LLLS LLLS SLLL LSSS",
 ];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
@@ -102,7 +102,7 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
-    document.getElementById("poptime").innerHTML= timeTag.innerHTML;
+    document.getElementById("poptime").innerHTML= 60 - timeTag.innerHTML;
     document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
     document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
     document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;

@@ -1,7 +1,7 @@
 const randomText = [
-    "rrrr rrrr rrrr rrrr uuuu uuuu uuuu uuuu rruu rruu rruu rruu uurr uurr uurr uurr ruru ruru ruru ruru urur urur urur urur rrru rrru rrru rrru uuur uuur uuur uuur",
-    "ruru ruru urur urur uuur uuur rrru rrru ruuu ruuu urru urru rrrr rrrr uuuu uuuu rruu rruu uurr uurr uuuu rrrr uuuu rrrr urru urru ruur ruur ruru ruru urur urur",
-    "uuuu uuuu uuuu uuuu rrrr rrrr rrrr rrrr uuur uuur uuur uuur ruuu ruuu ruuu ruuu urru urru urru urru ruur ruur ruur ruur uurr uurr uurr uurr rruu rruu rruu rruu"
+    "rrrr rrrr rrrr rrrr uuuu uuuu uuuu uuuu rruu rruu rruu rruu uurr uurr uurr uurr ruru ruru ruru ruru ",
+    "ruru ruru urur urur uuur uuur rrru rrru ruuu ruuu urru urru rrrr rrrr uuuu uuuu rruu rruu uurr uurr ",
+    "uuuu uuuu uuuu uuuu rrrr rrrr rrrr rrrr uuur uuur uuur uuur ruuu ruuu ruuu ruuu urru urru urru urru "
 ];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
@@ -102,6 +102,10 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
+    document.getElementById("poptime").innerHTML= 60 - timeTag.innerHTML;
+    document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
+    document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
+    document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);

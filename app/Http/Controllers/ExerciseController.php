@@ -90,6 +90,21 @@ class ExerciseController extends Controller
     public function EX_TP() {
         return view('Exercise/ExEnglish/ToprowEN.ex_TP');
     }
+    public function EX_shift_RU() {
+        return view('Exercise/ExEnglish/ToprowEN.ex_shift_RU');
+    }
+    public function EX_shift_EI() {
+        return view('Exercise/ExEnglish/ToprowEN.ex_shift_EI');
+    }
+    public function EX_shift_WO() {
+        return view('Exercise/ExEnglish/ToprowEN.ex_shift_WO');
+    }
+    public function EX_shift_QY() {
+        return view('Exercise/ExEnglish/ToprowEN.ex_shift_QY');
+    }
+    public function EX_shift_TP() {
+        return view('Exercise/ExEnglish/ToprowEN.ex_shift_TP');
+    }
     // Exercise English bottomrow
     public function EX_VM() {
         return view('Exercise/ExEnglish/BottomrowEN.ex_VM');
@@ -105,6 +120,21 @@ class ExerciseController extends Controller
     }
     public function EX_BN() {
         return view('Exercise/ExEnglish/BottomrowEN.ex_BN');
+    }
+    public function EX_shift_VM() {
+        return view('Exercise/ExEnglish/BottomrowEN.ex_shift_VM');
+    }
+    public function EX_shift_C() {
+        return view('Exercise/ExEnglish/BottomrowEN.ex_shift_C');
+    }
+    public function EX_shift_X() {
+        return view('Exercise/ExEnglish/BottomrowEN.ex_shift_X');
+    }
+    public function EX_shift_Z() {
+        return view('Exercise/ExEnglish/BottomrowEN.ex_shift_Z');
+    }
+    public function EX_shift_BN() {
+        return view('Exercise/ExEnglish/BottomrowEN.ex_shift_BN');
     }
     // Exercise English firstrow
     public function EX_47() {

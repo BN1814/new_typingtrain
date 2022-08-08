@@ -1,7 +1,7 @@
 const randomText = [
-    "cccc cccc cccc cccc ,,,, ,,,, ,,,, ,,,, cc,, cc,, cc,, cc,, ,,cc ,,cc ,,cc ,,cc c,c, c,c, c,c, c,c, ,c,c ,c,c ,c,c ,c,c ccc, ccc, ccc, ccc, ,,,c ,,,c ,,,c ,,,c",
-    "c,c, c,c, ,c,c ,c,c ,,,c ,,,c ccc, ccc, c,,, c,,, ,cc, ,cc, cccc cccc ,,,, ,,,, cc,, cc,, ,,cc ,,cc ,,,, cccc ,,,, cccc ,cc, ,cc, c,,c c,,c c,c, c,c, ,c,c ,c,c",
-    ",,,, ,,,, ,,,, ,,,, cccc cccc cccc cccc ,,,c ,,,c ,,,c ,,,c c,,, c,,, c,,, c,,, ,cc, ,cc, ,cc, ,cc, c,,c c,,c c,,c c,,c ,,cc ,,cc ,,cc ,,cc cc,, cc,, cc,, cc,,"
+    "cccc cccc cccc cccc ,,,, ,,,, ,,,, ,,,, cc,, cc,, cc,, cc,, ,,cc ,,cc ,,cc ,,cc c,c, c,c, c,c, c,c,",
+    "c,c, c,c, ,c,c ,c,c ,,,c ,,,c ccc, ccc, c,,, c,,, ,cc, ,cc, cccc cccc ,,,, ,,,, cc,, cc,, ,,cc ,,cc",
+    ",,,, ,,,, ,,,, ,,,, cccc cccc cccc cccc ,,,c ,,,c ,,,c ,,,c c,,, c,,, c,,, c,,, ,cc, ,cc, ,cc, ,cc,"
 ];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
@@ -102,6 +102,10 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
+    document.getElementById("poptime").innerHTML= 60 - timeTag.innerHTML;
+    document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
+    document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
+    document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);

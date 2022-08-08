@@ -1,7 +1,7 @@
 const randomText = [
-    "eeee eeee eeee eeee iiii iiii iiii iiii eeii eeii eeii eeii iiee iiee iiee iiee eiei eiei eiei eiei iiee iiee iiee iiee eeei eeei eeei eeei iiie iiie iiie iiie",
-    "eiei eiei iiee iiee iiie iiie eeei eeei eiii eiii ieei ieei eeee eeee iiii iiii eeii eeii iiee iiee iiii eeee iiii eeee ieei ieei eiie eiie eiei eiei iiee iiee",
-    "iiii iiii iiii iiii eeee eeee eeee eeee iiie iiie iiie iiie eiii eiii eiii eiii ieei ieei ieei ieei eiie eiie eiie eiie iiee iiee iiee iiee eeii eeii eeii eeii"
+    "eeee eeee eeee eeee iiii iiii iiii iiii eeii eeii eeii eeii iiee iiee iiee iiee eiei eiei eiei eiei ",
+    "eiei eiei iiee iiee iiie iiie eeei eeei eiii eiii ieei ieei eeee eeee iiii iiii eeii eeii iiee iiee ",
+    "iiii iiii iiii iiii eeee eeee eeee eeee iiie iiie iiie iiie eiii eiii eiii eiii ieei ieei ieei ieei "
 ];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
@@ -102,6 +102,10 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
+    document.getElementById("poptime").innerHTML= 60 - timeTag.innerHTML;
+    document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
+    document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
+    document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);

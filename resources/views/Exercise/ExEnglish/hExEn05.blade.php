@@ -10,7 +10,7 @@
     </style>
     <body>
         <div class="container-sm">
-            <p class="score">SCORE : <span>0</span></p>
+            <!-- <p class="score">SCORE : <span>0</span></p> -->
             <h1 class="display-6 text-center">EXERCISE ENGLISH</h1>
             <br>
             <div class="row mb-3 mt-3">

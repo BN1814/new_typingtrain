@@ -4,10 +4,10 @@
 <link rel="stylesheet" href="{{ asset('css/ExEn/exerciseEnglish.css') }}">
 <link rel="stylesheet" href="{{ asset('css/ExEn/popupEN.css') }}">
     <div class="container mt-1">
-        <span class="head h1 d-block text-center px-2 mb-2">Level 05: g & h</span>
+        <span class="head h1 d-block text-center px-2 mb-2">Level 22: T & P</span>
     </div>
     <body>
-        {{-- @include('include.includeExEn') --}}
+    {{-- @include('include.includeExEn') --}}
         <form>
             @csrf
             <div class="form-group">
@@ -46,31 +46,31 @@
         <div class="pop-up-score shadow-lg" style="color: #fff;">
             <p id="close_popup">+</p>
             <div class="head-level">
-                <p>LEVEL 05 : g & h</p>
+                <p>LEVEL 22 : T & P</p>
             </div>
             <div class="history-score">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <ul class="detail-score shadow-lg">
-                            <li class="time">
+                            <li class="timee">
                                 <p>Time : </p>
-                                <span id= "poptime">0</span>
+                                <span><b>0</b></span>
                             </li>
-                            <li class="mistake" id="mistake" >
+                            <li class="mistakee">
                                 <p>Mistake : </p>
-                                <span id= "popmistake" >0</span>
+                                <span>0</span>
                             </li>
-                            <li class="wpm" id="wpm">
+                            <li class="wpme">
                                 <p>WPM : </p>
-                                <span id= "popwpm">0</span>
+                                <span>0</span>
                             </li>
-                            <li class="cpm" id="cpm">
+                            <li class="cpme">
                                 <p>CPM : </p>
-                                <span id= "popcpm">0</span>
+                                <span>0</span>
                             </li>
-                            <li class="score" id="score">
+                            <li class="scoree">
                                 <p>Score : </p>
-                                <span id= "popscore">0</span>
+                                <span>0</span>
                             </li>
                         </ul>
                     </div>
@@ -86,5 +86,5 @@
             </div>
         </div>
     </body>
-    <script src="{{ asset('js/ExEn/HomerowEn/GH.js')}}" defer></script>
+    <script src="{{ asset('js/ExEn/ToprowEn/shift_TP.js')}}" defer></script>
 @endsection

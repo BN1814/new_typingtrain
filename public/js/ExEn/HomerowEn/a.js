@@ -1,7 +1,7 @@
 const randomText = [
-    "aaaa aaaa aaaa aaaa ;;;; ;;;; ;;;; ;;;; aa;; aa;; aa;; aa;; ;;aa ;;aa ;;aa ;;aa a;a; a;a; a;a; a;a; ;a;a ;a;a ;a;a ;a;a aaa; aaa; aaa; aaa; ;aaa ;aaa ;aaa ;aaa",
-    ";;;; ;;;; ;;;; ;;;; aaaa aaaa aaaa aaaa ;aaa ;aaa ;aaa ;aaa aaa; aaa; aaa; aaa; ;a;a ;a;a ;a;a ;a;a a;a; a;a; a;a; a;a; ;;aa ;;aa ;;aa ;;aa aa;; aa;; aa;; aa;;",
-    "aaa; aaa; aaa; aaa; ;;;a ;;;a ;;;a ;;;a a;a; a;a; ;a;a ;a;a aa;; aa;; aa;; aa;; ;;aa ;;aa ;;aa ;;aa aaaa ;;;; aaaa ;;;; aaaa ;;;; aaaa ;;;; ;a;a ;a;a a;a; a;a;"
+    "aaaa aaaa aaaa aaaa ;;;; ;;;; ;;;; ;;;; aa;; aa;; aa;; aa;; ;;aa ;;aa ;;aa ;;aa a;a; a;a; a;a; a;a;",
+    ";;;; ;;;; ;;;; ;;;; aaaa aaaa aaaa aaaa ;aaa ;aaa ;aaa ;aaa aaa; aaa; aaa; aaa; ;a;a ;a;a ;a;a ;a;a",
+    "aaa; aaa; aaa; aaa; ;;;a ;;;a ;;;a ;;;a a;a; a;a; ;a;a ;a;a aa;; aa;; aa;; aa;; ;;aa ;;aa ;;aa ;;aa"
 ];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
@@ -102,7 +102,7 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
-    document.getElementById("poptime").innerHTML= timeTag.innerHTML;
+    document.getElementById("poptime").innerHTML= 60 - timeTag.innerHTML;
     document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
     document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
     document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;

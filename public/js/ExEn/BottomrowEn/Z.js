@@ -1,7 +1,7 @@
 const randomText = [
-    "zzzz zzzz zzzz zzzz //// //// //// //// zz// zz// zz// zz// //zz //zz //zz //zz z/z/ z/z/ z/z/ z/z/ /z/z /z/z /z/z /z/z zzz/ zzz/ zzz/ zzz/ ///z ///z ///z ///z",
-    "z/z/ z/z/ /z/z /z/z ///z ///z zzz/ zzz/ z/// z/// /zz/ /zz/ zzzz zzzz //// //// zz// zz// //zz //zz //// zzzz //// zzzz /zz/ /zz/ z//z z//z z/z/ z/z/ /z/z /z/z",
-    "//// //// //// //// zzzz zzzz zzzz zzzz ///z ///z ///z ///z z/// z/// z/// z/// /zz/ /zz/ /zz/ /zz/ z//z z//z z//z z//z //zz //zz //zz //zz zz// zz// zz// zz//"
+    "zzzz zzzz zzzz zzzz //// //// //// //// zz// zz// zz// zz// //zz //zz //zz //zz z/z/ z/z/ z/z/ z/z/",
+    "z/z/ z/z/ /z/z /z/z ///z ///z zzz/ zzz/ z/// z/// /zz/ /zz/ zzzz zzzz //// //// zz// zz// //zz //zz",
+    "//// //// //// //// zzzz zzzz zzzz zzzz ///z ///z ///z ///z z/// z/// z/// z/// /zz/ /zz/ /zz/ /zz/"
 ];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
@@ -102,6 +102,10 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
+    document.getElementById("poptime").innerHTML= 60 - timeTag.innerHTML;
+    document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
+    document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
+    document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);

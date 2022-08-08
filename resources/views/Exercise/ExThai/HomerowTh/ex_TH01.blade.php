@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .typing-text p {
+        font-size: 25px;
+    }
+    .content-box .typing-text {
+        height: 230px;
+    }
+</style>
 <link rel="stylesheet" href="{{ asset('css/ExEn/exerciseThai.css') }}">
 <link rel="stylesheet" href="{{ asset('css/ExEn/popupTH.css') }}">
     <div class="container mt-1">

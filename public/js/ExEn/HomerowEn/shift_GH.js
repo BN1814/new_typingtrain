@@ -1,7 +1,7 @@
 const randomText = [
-    "GGGG HHHH GGGG HHHH GHGH GHGH GHGH GHGH HHHH GGGG HHHH GGGG HGHG HGHG HGHG HGHG GGHH GGHH GGHH GGHH HHGG HHGG HHGG HHGG ",
-    "HGHG HGHG HGHG HGHG GGHH GGHH GGHH GGHH HHGG HHGG HHGG HHGG GGGG HHHH GGGG HHHH GHGH GHGH GHGH GHGH HHHH GGGG HHHH GGGG ",
-    "GGHH GGHH GGHH GGHH HHGG HHGG HHGG HHGG GGGG HHHH GGGG HHHH GGGG HHHH GGGH GGGH HHHG HHHG GGGH GGGH HHHG HHHG GHHH HGGG ",
+    "GGGG HHHH GGGG HHHH GHGH GHGH GHGH GHGH HHHH GGGG HHHH GGGG HGHG HGHG HGHG HGHG GGHH GGHH GGHH GGHH HHGG HHGG HHGG HHGG",
+    "HGHG HGHG HGHG HGHG GGHH GGHH GGHH GGHH HHGG HHGG HHGG HHGG GGGG HHHH GGGG HHHH GHGH GHGH GHGH GHGH HHHH GGGG HHHH GGGG",
+    "GGHH GGHH GGHH GGHH HHGG HHGG HHGG HHGG GGGG HHHH GGGG HHHH GGGG HHHH GGGH GGGH HHHG HHHG GGGH GGGH HHHG HHHG GHHH HGGG",
 ];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
@@ -102,7 +102,7 @@ function Close_score(){
 }
 function Open_score(){
     document.querySelector(".pop-up-score").style.display = "flex";
-    document.getElementById("poptime").innerHTML= timeTag.innerHTML;
+    document.getElementById("poptime").innerHTML= 60 - timeTag.innerHTML;
     document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
     document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
     document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;
