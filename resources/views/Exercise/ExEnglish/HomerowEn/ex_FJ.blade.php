@@ -55,7 +55,7 @@
             <form action="{{ route('saveEx') }}" method="post">
                 @csrf
                 <div class="head-level">
-                    <p class="level" name="level">LEVEL 01 : f & j</p>
+                    <input type="text" class="level" name="level" value="LEVEL 01 : f & j">
                 </div>
                 <div class="history-score">
                     <div class="row justify-content-center">
@@ -63,19 +63,19 @@
                             <ul class="detail-score shadow-lg">
                                 <li class="time" id="time">
                                     <p>Time : </p>
-                                    <span id= "poptime" name="time">0</span>
+                                    <input type="text" id="poptime" name="time">
                                 </li>
                                 <li class="mistake" id="mistake" >
                                     <p>Mistake : </p>
-                                    <span id= "popmistake" name="mistake">0</span>
+                                    <input type="text" id="popmistake" name="mistake">
                                 </li>
                                 <li class="wpm" id="wpm">
                                     <p>WPM : </p>
-                                    <span id= "popwpm" name="wpm">0</span>
+                                    <input type="text" id="popwpm" name="wpm">
                                 </li>
                                 <li class="cpm" id="cpm">
                                     <p>CPM : </p>
-                                    <span id= "popcpm" name="cpm">0</span>
+                                    <input type="text" id="popcpm" name="cpm">
                                 </li>
                             </ul>
                         </div>
@@ -88,7 +88,7 @@
                     <button type="submit" class="btn btn-dark text-white ms-1 pn-score submit">
                         {{ __('บันทึกสถิติ') }}
                     </button>
-                    <button class="btn btn-dark text-white pn-score ms-1 next" type="button">
+                    <button class="btn btn-dark text-white pn-score ms-1 next" type="submit">
                         <a href="{{ route('E-DK') }}">หน้าต่อไป</a>
                     </button>
                 </div>

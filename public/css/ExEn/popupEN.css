@@ -39,16 +39,26 @@
     font-size: 30px;
     font-weight: bold;
 }
+.level {
+    background: none;
+    border: none;
+    outline: none;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
 .pop-up-score .history-score {
     width: 400px;
     height: 220px;
     margin-top: 10px;
 }
 .history-score .col-md-8 .detail-score {
+    width: 290px;
     display: block;
     justify-content: center;
     align-items: center;
     padding-left: 90px;
+    background: #fff;
 }
 .pop-up-score ul {
     background: #f1f1f1;
@@ -69,11 +79,18 @@
 .pop-up-score ul li p {
     font-size: 15px;
     font-weight: bold;
+    letter-spacing: 2px;
 }
-.pop-up-score ul li span {
+.pop-up-score ul li input {
     margin-left: 5px;
     font-size: 15px;
     font-weight: bold;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
 }
 .pop-up-score .foot-score {
     width: 100%;

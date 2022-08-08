@@ -58,7 +58,7 @@
             <form action="{{ route('saveEx') }}" method="post">
                 @csrf
                 <div class="head-level">
-                    <p class="level" name="level">LEVEL 02 : d & k</p>
+                    <input type="text" class="level" name="level" value="LEVEL 02 : d & k">
                 </div>
                 <div class="history-score">
                     <div class="row justify-content-center">
@@ -66,36 +66,36 @@
                             <ul class="detail-score shadow-lg">
                                 <li class="time" id="time">
                                     <p>Time : </p>
-                                    <span id= "poptime" name="time">0</span>
+                                    <input type="text" id="poptime" name="time">
                                 </li>
                                 <li class="mistake" id="mistake" >
                                     <p>Mistake : </p>
-                                    <span id= "popmistake" name="mistake">0</span>
+                                    <input type="text" id="popmistake" name="mistake">
                                 </li>
                                 <li class="wpm" id="wpm">
                                     <p>WPM : </p>
-                                    <span id= "popwpm" name="wpm">0</span>
+                                    <input type="text" id="popwpm" name="wpm">
                                 </li>
                                 <li class="cpm" id="cpm">
                                     <p>CPM : </p>
-                                    <span id= "popcpm" name="cpm">0</span>
+                                    <input type="text" id="popcpm" name="cpm">
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="foot-score d-flex justify-content-center align-items-center">
-                    <button class="btn btn-dark text-white ms-1 pn-score prev">
-                        <a href="{{ route('E-FJ') }}">ย้อนกลับ</a>
+                    <button class="btn btn-dark text-white ms-1 pn-score prev" type="button">
+                        <a href="{{ route('E-DK') }}">ย้อนกลับ</a>
                     </button>
-                    <button class="btn btn-dark text-white ms-1 pn-score try_again">
+                    <button class="btn btn-dark text-white ms-1 pn-score try_again" type="button">
                         {{ __('เล่นอีกครั้ง') }}
                     </button>
                     <button type="submit" class="btn btn-dark text-white ms-1 pn-score submit">
                         {{ __('ส่งข้อมูล') }}
                     </button>
-                    <button class="btn btn-dark text-white pn-score ms-1 next">
-                        <a href="{{ route('E-DK') }}">หน้าต่อไป</a>
+                    <button class="btn btn-dark text-white pn-score ms-1 next" type="button">
+                        <a href="{{ route('E-SL') }}">หน้าต่อไป</a>
                     </button>
                 </div>
             </form>

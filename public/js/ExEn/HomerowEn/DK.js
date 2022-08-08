@@ -9,7 +9,6 @@ const typingText = document.querySelector(".typing-text p"),
     timeTag = document.querySelector(".time span b"),
     wpmTag = document.querySelector(".wpm span "),
     cpmTag = document.querySelector(".cpm span ");
-    scoreTag = document.querySelector(".score span ");
 // tryAgainBtn = document.querySelector(".butt");
 
 let timer,
@@ -97,16 +96,23 @@ inpField.addEventListener("input", initTyping);
 let popup = document.getElementById("close_popup");
 let tryAgainScore = document.querySelector(".try_again");
 let next = document.querySelector(".next");
+let submit = document.querySelector(".submit");
+let poptime = document.querySelector("#poptime");
+let popmistake = document.querySelector("#popmistake");
+let popwpm = document.querySelector("#popwpm");
+let popcpm = document.querySelector("#popcpm");
+let body = document.querySelector("#body");
 
-function Close_score(){
+function Close_score() {
     document.querySelector(".pop-up-score").style.display = "none";
 }
-function Open_score(){
+function Open_score() {
     document.querySelector(".pop-up-score").style.display = "flex";
-    document.getElementById("poptime").innerHTML= timeTag.innerHTML;
-    document.getElementById("popmistake").innerHTML= mistakeTag.innerHTML;
-    document.getElementById("popwpm").innerHTML= wpmTag.innerHTML;
-    document.getElementById("popcpm").innerHTML= cpmTag.innerHTML;
+    body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    poptime.value = 60 - timeTag.innerHTML;
+    popmistake.value = mistakeTag.innerHTML;
+    popwpm.value = wpmTag.innerHTML;
+    popcpm.value = cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);
@@ -128,8 +134,8 @@ document.addEventListener("keydown", function (e) {
 //     this.style.backgroundColor = "#004f40";
 // }, false);
 
-var start = 97,
-    end = 122;
+// var start = 97,
+//     end = 122;
 //     button;
 
 // while (start <= end) {

@@ -38,7 +38,7 @@ class AdminController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|max:255'
         ]);
-        $user = Auth::user();
+        $user = Auth::user($id);
         $user->name = $request['name'];
         $user->email = $request['email'];
         $user->save();

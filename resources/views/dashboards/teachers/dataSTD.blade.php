@@ -7,6 +7,10 @@
                 <div class="card">
                     <div class="card-header text-center text-white bg-dark h4">ข้อมูลนักศึกษา</div>
                     <div class="card-body">
+                        <div class="input-group mb-2">
+                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            <button type="button" class="btn btn-outline-primary">search</button>
+                        </div>
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-center">

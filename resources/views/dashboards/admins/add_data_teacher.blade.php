@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <nav aria-label="Page navigation example" class="mt-3">
+    {{-- <nav aria-label="Page navigation example" class="mt-3">
         <ul class="pagination justify-content-center">
             <li class="page-item disabled">
             <a class="page-link" href="{{ route('hExTH')}}" tabindex="-1" aria-disabled="true">Previous</a>
@@ -67,5 +67,5 @@
             <a class="page-link" href="{{ route('hExTH02')}}">Next</a>
             </li>
         </ul>
-    </nav>
+    </nav> --}}
 @endsection

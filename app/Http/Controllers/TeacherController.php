@@ -28,11 +28,13 @@ class TeacherController extends Controller
         return view('dashboards.teachers.dataSTD', compact('users'));
     }
     public function Classroom() {
-        return view('dashboards.teachers.classroom');
+        $deadlines = Deadline::all();
+        return view('dashboards.teachers.classroom', compact('deadlines'));
     }
-    public function editData() {
-        return view('dashboards.teachers.editData');
-    }
+    // function editData($id) {
+    //     $user = User::find($id);
+    //     return view('dashboards\teachers.editData', compact('user', 'id'));
+    // }
 
     public function createCode(Request $request) {
         $request->validate([
@@ -55,10 +57,6 @@ class TeacherController extends Controller
             return redirect()->back()->with('success', 'สร้างห้องเรียนสำเร็จ');
         }
         return redirect()->back()->with('error', 'มีรหัสนี้อยู่แล้ว');
-    }
-    function edit($id) {
-        $user = User::find($id);
-        return view('dashboards\teachers.editData', compact('user', 'id'));
     }
     function update(Request $request, $id) {
 

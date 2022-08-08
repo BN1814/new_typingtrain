@@ -70,7 +70,7 @@
                                 <li><a href="{{ route('teacher.dataSTD') }}" class="nav-link">ดูข้อมูลนักศึกษา</a></li>
                             @else
                                 <li><a href="{{ route('user.dashboard') }}" class="nav-link">หน้าแรก</a></li>
-                                <li><a href="{{ route('user.profile') }}" class="nav-link">profile</a></li>
+                                <li><a href="{{ route('user.profile') }}" class="nav-link">ข้อมูลส่วนตัว</a></li>
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -79,14 +79,14 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 @if(auth()->user()->role == 1)
-                                    <a href="{{ route('admin.profile') }}" class="dropdown-item">profile</a>
+                                    <a href="{{ route('admin.profile') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
                                 @elseif (auth()->user()->role == 2)
-                                    <a href="{{ route('teacher.profile') }}" class="dropdown-item">profile</a>
+                                    <a href="{{ route('teacher.profile') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('ออกจากระบบ') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

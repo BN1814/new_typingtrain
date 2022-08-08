@@ -109,10 +109,10 @@ function Close_score() {
 function Open_score() {
     document.querySelector(".pop-up-score").style.display = "flex";
     body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-    poptime.innerText = 60 - timeTag.innerHTML;
-    popmistake.innerText = mistakeTag.innerHTML;
-    popwpm.innerText = wpmTag.innerHTML;
-    popcpm.innerText = cpmTag.innerHTML;
+    poptime.value = 60 - timeTag.innerHTML;
+    popmistake.value = mistakeTag.innerHTML;
+    popwpm.value = wpmTag.innerHTML;
+    popcpm.value = cpmTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);

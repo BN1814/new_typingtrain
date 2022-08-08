@@ -1,138 +1,20 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
-body {
-    width: 100%;
-    height: 100vh;
-    display: block;
-    justify-content: center;
-    align-items: center;
+.card {
+    border: none;
 }
-.main-classroom {
-    width: calc(100% - 250px);
-    height: calc(100vh - 55px);
-    position: absolute;
-    top: 55px;
-    left: 250px;
-}
-.main-content-classroom {
-    position: absolute;
-    width: 70%;
-    height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.main-content-classroom .head-classroom {
-    width: 100%;
-    height: 50px;
-    margin: 0 auto;
-    text-align: center;
+
+#select {
+    width: 100px;
+    height: 40px;
     background: #333;
-    margin-top: 10px;
-    border-top-left-radius: 15px;   
-    border-top-right-radius: 15px;
-}
-.main-content-classroom .head-classroom p {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px 0;
-    color: #fff;
-    letter-spacing: 1px;
-}
-.main-content-classroom .body-classroom {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    background: antiquewhite;
-    margin: 0 auto;
-    border-bottom-left-radius: 15px;   
-    border-bottom-right-radius: 15px;
-    position: relative;
-}
-.codeClassroom {
-    position: absolute;
-    width: 25%;
-    height: 35px;
-    right: 0;
-    background: khaki;
+    color: white;
+    border-radius: 10px;
     text-align: center;
-    border-radius: 5px;
-}
-.codeClassroom p {
-    font-size: 15px;
-    font-weight: bold;
-    padding-top: 5px;
-    text-transform: uppercase;
-}
-.codeClassroom p span {
-    font-size: 15px;
-    font-weight: bold;
-    padding-top: 5px;
-    color: red;
-    letter-spacing: 2px;
-    text-decoration: underline;
-    text-transform: none;
-}
-.section-dropdown {
-    position: relative;
-    width: 59%;
-    height: 35px;
-}
-.section-dropdown:hover .dropdown-list {
-    opacity: 1;
-    visibility: visible;
-}
-.dropdown-select {
-    padding: 5px 10px;
-    border-radius: 5px;
-    background: khaki;
-    width: 100%;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    border: none;
+    outline: none;
     cursor: pointer;
-}
-.dropdown-select .select {
-    font-size: 16px;
-}
-.dropdown-list {
-    position: absolute;
-    top: 110%;
-    left: 0;
-    right: 0;
-    border-radius: 5px;
-    background: khaki;
-    opacity: 0;
-    visibility: visible;
-    transition: opacity .2s linear, visibility .2s linear;
-    padding: 10px;
-}
-.dropdowm-list-items a{
-    color: #000;
-}
-/* Media Screen */
-@media screen and (max-width: 768px){
-    .main-classroom {
-        width: calc(100% - 180px);
-        height: calc(100vh - 55px);
-        left: 180px;
-        top: 55px;
-    }
-    .main-content-classroom{
-        width: 100%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    .codeClassroom {
-        width: 40%;
-    }
-    .main-content-classroom .head-classroom,
-    .main-content-classroom .body-classroom {
-        width: 450px;
-    }
 }
