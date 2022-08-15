@@ -2,72 +2,46 @@
 
 @section('content')
     <div class="container">
-      <div class="row">
-        <div class="col-md-8 mb-2">
+      <div class="row justify-content-center">
+        <div class="col-md-6 mb-2">
           <div class="card card-1">
             <div class="card-header h4 bg-dark text-center text-white">ข้อมูลส่วนตัว</div>
             <div class="card-body">
               <div class="row justify-content-center">
-                <div class="col-md-8">
-                  <div class="form-group mb-2">
-                    <label for="stdid">รหัสนักศึกษา</label>
-                    <input type="text" class="form-control" value="{{ Auth::user()->userid }}" disabled>
-                  </div>
-                  <div class="form-group mb-2">
-                    <label for="stdid">ชื่อผู้ใช้งาน</label>
-                    <input type="text" class="form-control" value="{{ Auth::user()->name }}" disabled>
-                  </div>
-                  <div class="form-group mb-2">
-                    <label for="name">อีเมลผู้ใช้งาน</label>
-                    <input type="text" class="form-control" value="{{ Auth::user()->email }}" disabled>
-                  </div>
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                      <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสนักศึกษา') }}</label>
+
+                      <div class="col-md-6">
+                        <input type="text" class="form-control text-center" value="{{ Auth::user()->userid }}" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อผู้ใช้งาน') }}</label>
+
+                      <div class="col-md-6">
+                        <input type="text" class="form-control text-center" value="{{ Auth::user()->name }}" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมลผู้ใช้งาน') }}</label>
+
+                      <div class="col-md-6">
+                        <input type="text" class="form-control text-center" value="{{ Auth::user()->email }}" disabled>
+                      </div>
+                    </div>
                 </div>
+                <div class="col-md-4">
+                  <button type="submit" class="btn btn-primary">
+                      {{ __('แก้ไข') }}
+                  </button>
+              </div>
               </div>
             </div>
           </div>
         </div>
-        {{-- <div class="col-md-12">
-          <div class="card">
-            <div class="card-header h4 bg-dark text-center text-white">
-              ข้อมูลแบบฝึกหัด
-            </div>
-            <div class="card-body">
-              
-            </div>
-          </div>
-        </div> --}}
-
-        <div class="col-md-4">
-          <div class="card card-2">
-            <div class="card-header h4 bg-dark text-center text-white">แก้ไขข้อมูล</div>
-            <div class="card-body">
-              <form>
-                <div class="form-group mb-2">
-                    <label for="stdid">รหัสนักศึกษา</label>
-                    <input type="text" class="form-control" name="stdid">
-                  </div>
-                <div class="form-group mb-2">
-                  <label for="name">ชื่อผู้ใช้งาน</label>
-                  <input type="text" class="form-control" name="name">
-                </div>
-                <div class="form-group mb-2">
-                  <label for="email">อีเมล</label>
-                  <input type="email" class="form-control" name="email">
-                </div>
-                <div class="form-group mb-2">
-                  <label for="password">รหัสผ่าน</label>
-                  <input type="password" class="form-control" name="password">
-                </div>
-                <div class="form-group mb-2">
-                  <button class="btn btn-success save" type="submit">บันทึก</button>
-                  <button class="btn btn-danger cancel" type="submit">ยกเลิก</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="container mt-2">
       <div class="row justify-content-center">

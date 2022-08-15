@@ -33,20 +33,18 @@
         display: flex;
     }
 </style>
-<button class="btn btn-primary">เข้าห้องเรียน</button>
 <div class="container">
+    <div class="row h-25 justify-content-end">
+        <div class="col-md-2">
+            <button class="btn btn-primary">
+                <a href="{{ route('user.entclass') }}" class="text-white">เข้าห้องเรียน</a>
+            </button>
+        </div>
+    </div>
     <div class="row justify-content-center">
-        <div class="col-md-10 d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-white bg-dark">แบบทดสอบภาษาไทย</div>
-                <div class="card-body">
-                    <img src="https://www.nicepng.com/png/detail/67-675294_keyboard-typing.png" class="img-fluid">
-                    {{-- <p class="h5 mt-1">คะแนน : <span>0</span></p> --}}
-                </div>
-                <a href="{{ route('hExTH01') }}" class="btn btn-dark btn-block">เริ่ม</a>
-            </div>
-            <div class="card">
-                <div class="card-header text-white bg-dark">EXERCISE ENGLISH</div>
+                <div class="card-header text-white bg-dark ">EXERCISE ENGLISH</div>
                 <div class="card-body">
                     <img src="https://www.nicepng.com/png/detail/67-675294_keyboard-typing.png" class="img-fluid">
                     {{-- <p class="h5 mt-1">SCORE : <span>0</span></p> --}}

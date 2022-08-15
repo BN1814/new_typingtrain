@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('ลงทะเบียน') }}</div>
+                <div class="card-header text-white bg-dark h3">{{ __('ลงทะเบียน') }}</div>
 
                 {{-- @if($message = Session::get('success'))
                     <div class="alert alert-success alert-block">
@@ -101,7 +101,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark">
                                     {{ __('ลงทะเบียน') }}
                                 </button>
                             </div>

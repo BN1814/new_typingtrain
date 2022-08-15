@@ -22,16 +22,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    // if(Auth::user()->$role == 1){
-    //     return redirect()->route('admin.dashboard');
-    // }
-    // else if(Auth::user()->role == 2){
-    //     return redirect()->route('teacher.dashboard');
-    // }
-    // else {
-    //     return redirect()->route('user.dashboard');
-    // }
-    return redirect()->route('login');
+    // return redirect()->route('login');
+    return view('testhome');
 });
 
 Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
@@ -66,6 +58,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+    Route::get('enterclass', [UserController::class, 'enterclass'])->name('user.entclass');
 
     // Exercise of Student form ExerciseController
     // Exercise homeEnglish
@@ -115,41 +108,4 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     Route::get('ex_29', [ExerciseController::class, 'EX_29'])->name('E-29');
     Route::get('ex_10', [ExerciseController::class, 'EX_10'])->name('E-10');
     Route::get('ex_56', [ExerciseController::class, 'EX_56'])->name('E-56');
-
-
-    // Exercise homeThai
-    Route::get('hExTh', [ExerciseController::class, 'HomeExTh'])->name('hExTH');
-    Route::get('hExTh01', [ExerciseController::class, 'HomeExTh01'])->name('hExTH01');
-    Route::get('hExTh02', [ExerciseController::class, 'HomeExTh02'])->name('hExTH02');
-    Route::get('hExTh03', [ExerciseController::class, 'HomeExTh03'])->name('hExTH03');
-    Route::get('hExTh04', [ExerciseController::class, 'HomeExTh04'])->name('hExTH04');
-    // Exercise Thai  homerow
-    Route::get('ex_TH01', [ExerciseController::class, 'EX_TH01'])->name('E-TH01');
-    Route::get('ex_TH02', [ExerciseController::class, 'EX_TH02'])->name('E-TH02');
-    Route::get('ex_TH03', [ExerciseController::class, 'EX_TH03'])->name('E-TH03');
-    Route::get('ex_TH04', [ExerciseController::class, 'EX_TH04'])->name('E-TH04');
-    Route::get('ex_TH05', [ExerciseController::class, 'EX_TH05'])->name('E-TH05');
-    Route::get('ex_TH06', [ExerciseController::class, 'EX_TH06'])->name('E-TH06');
-    Route::get('ex_TH07', [ExerciseController::class, 'EX_TH07'])->name('E-TH07');
-    Route::get('ex_TH08', [ExerciseController::class, 'EX_TH08'])->name('E-TH08');
-    Route::get('ex_TH09', [ExerciseController::class, 'EX_TH09'])->name('E-TH09');
-    Route::get('ex_TH10', [ExerciseController::class, 'EX_TH10'])->name('E-TH10');
-    Route::get('ex_TH11', [ExerciseController::class, 'EX_TH11'])->name('E-TH11');
-    Route::get('ex_TH12', [ExerciseController::class, 'EX_TH12'])->name('E-TH12');
-    // Exercise Thai  toprow
-    Route::get('ex_TH13', [ExerciseController::class, 'EX_TH13'])->name('E-TH13');
-    Route::get('ex_TH14', [ExerciseController::class, 'EX_TH14'])->name('E-TH14');
-    Route::get('ex_TH15', [ExerciseController::class, 'EX_TH15'])->name('E-TH15');
-    Route::get('ex_TH16', [ExerciseController::class, 'EX_TH16'])->name('E-TH16');
-    Route::get('ex_TH17', [ExerciseController::class, 'EX_TH17'])->name('E-TH17');
-    Route::get('ex_TH18', [ExerciseController::class, 'EX_TH18'])->name('E-TH18');
-    Route::get('ex_TH19', [ExerciseController::class, 'EX_TH19'])->name('E-TH19');
-    Route::get('ex_TH20', [ExerciseController::class, 'EX_TH20'])->name('E-TH20');
-    Route::get('ex_TH21', [ExerciseController::class, 'EX_TH21'])->name('E-TH21');
-    Route::get('ex_TH22', [ExerciseController::class, 'EX_TH22'])->name('E-TH22');
-    Route::get('ex_TH23', [ExerciseController::class, 'EX_TH23'])->name('E-TH23');
-    Route::get('ex_TH24', [ExerciseController::class, 'EX_TH24'])->name('E-TH24');
-    Route::get('ex_TH25', [ExerciseController::class, 'EX_TH25'])->name('E-TH25');
-    // Exercise Thai  bottomrow
-    Route::get('test02', [ExerciseController::class, 'TEST02'])->name('TEST02');
 });
