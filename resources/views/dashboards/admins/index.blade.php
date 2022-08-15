@@ -13,6 +13,8 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-center">
+                                    <th>ลำดับ</th>
+                                    <th>ชื่อห้องเรียน</th>
                                     <th>รหัสเข้าห้อง</th>
                                     <th>วันที่ส่ง</th>
                                     <th>เวลาที่ส่ง</th>
@@ -21,7 +23,9 @@
                             </thead>
                             <tbody>
                                 @foreach ($deadlines as $deadline)
-                                <tr>
+                                <tr class="text-center">
+                                    <td>{{ $deadline->id }}</td>
+                                    <td>{{ $deadline->section_name }}</td>
                                     <td>{{ $deadline->code_inclass }}</td>
                                     <td>{{ $deadline->deadline_date }}</td>
                                     <td>{{ $deadline->deadline_time }}</td>
@@ -35,31 +39,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="card mb-3">
-                    <div class="card-header text-center text-white bg-dark h4">ห้องเรียนทั้งหมด</div>
-                    <div class="card-body">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr class="text-center">
-                                    <th>Section</th>
-                                    <th>รหัสห้องเรียน</th>
-                                    <th>ตัวเลือก</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="text-center">
-                                    <td>01</td>
-                                    <td>cdslmsd</td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-primary btn-sm">View</a>
-                                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                
                 <div class="card">
                     <div class="card-header text-center text-white bg-dark h4">ผู้ใช้งานทั้งหมด</div>
                     <div class="card-body">
@@ -67,17 +47,21 @@
                             <thead>
                                 <tr class="text-center">
                                     <th>ลำดับที่</th>
+                                    <th>รหัสผู้ใช้งาน</th>
                                     <th>อีเมล</th>
                                     <th>ชื่อผู้ใช้</th>
+                                    <th>สถานะ</th>
                                     <th>ตัวเลือก</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                    <tr>
-                                        <td class="text-center">{{ $user->id }}</td>
+                                    <tr class="text-center">
+                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $user->userid }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->name }}</td>
+                                        <td>{{ $user->role }}</td>
                                         <td class="text-center">
                                             <a href="#" class="btn btn-primary btn-sm">View</a>
                                             <a href="#" class="btn btn-warning btn-sm">Edit</a>

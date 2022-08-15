@@ -29,12 +29,13 @@ class TeacherController extends Controller
     }
     public function Classroom() {
         $deadlines = Deadline::all();
-        return view('dashboards.teachers.classroom', compact('deadlines'));
+        $users = User::all();
+        return view('dashboards.teachers.classroom', compact('deadlines', 'users'));
     }
-    // function editData($id) {
-    //     $user = User::find($id);
-    //     return view('dashboards\teachers.editData', compact('user', 'id'));
-    // }
+    function editData() {
+        // $user = User::find($id);
+        return view('dashboards\teachers.editData');
+    }
 
     public function createCode(Request $request) {
         $request->validate([

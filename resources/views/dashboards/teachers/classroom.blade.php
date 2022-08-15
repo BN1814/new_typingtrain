@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('css/Teacher/classRoom.css') }}">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 
                 <select id="select" class="mb-2">
                     <option>---เลือก---</option>
@@ -22,30 +22,36 @@
                             <button type="button" class="btn btn-primary text-white">search</button>
                         </div>
 
-                        {{-- <table class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-center">
                                     <th>ลำดับ</th>
-                                    <th>Section_id</th>
                                     <th>ชื่อห้องเรียน</th>
-                                    <th>รหัสเข้าห้องเรียน</th>
+                                    <th>วันที่กำหนดส่ง</th>
+                                    <th>เวลากำหนดส่ง</th>
+                                    <th>รหัสนักศึกษา</th>
+                                    <th>ชื่อ</th>
+                                    <th>นามสกุล</th>
                                     <th>ตัวเลือก</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
-                                <tr>
                                 @foreach ($deadlines as $deadline)
+                                <tr>
                                     <td>{{ $deadline->id }}</td>
-                                    <td>{{ $deadline->section_id }}</td>
                                     <td>{{ $deadline->section_name }}</td>
-                                    <td>{{ $deadline->code_inclass }}</td>
+                                    <td>{{ $deadline->deadline_date }}</td>
+                                    <td>{{ $deadline->deadline_time }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td class="text-center">
-                                        <a href="#" class="btn btn-warning btn-sm">View</a>
+                                        <a href="{{ route('teacher.dataSTD') }}" class="btn btn-warning btn-sm">View</a>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                        </table> --}}
+                        </table>
                     </div>
                 </div>
             </div>

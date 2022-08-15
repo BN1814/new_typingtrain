@@ -11,7 +11,7 @@
                 <div class="col-md-8">
                   <div class="form-group mb-2">
                     <label for="stdid">รหัสนักศึกษา</label>
-                    <input type="text" class="form-control" disabled>
+                    <input type="text" class="form-control" value="{{ Auth::user()->userid }}" disabled>
                   </div>
                   <div class="form-group mb-2">
                     <label for="stdid">ชื่อผู้ใช้งาน</label>
@@ -63,6 +63,45 @@
                   <button class="btn btn-danger cancel" type="submit">ยกเลิก</button>
                 </div>
               </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-2">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header  h4 bg-dark text-center text-white">ข้อมูลการพิมพ์</div>
+            <div class="card-body">
+              <table class="table table-bordered table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th>ชื่อแบบทดสอบ</th>
+                        <th>เวลาในการพิมพ์</th>
+                        <th>คำที่ผิดพลาด</th>
+                        <th>ความเร็วในการพิมพ์</th>
+                        <th>ความถูกต้อง</th>
+                        <th>ตัวเลือก</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($historys as $history)
+                    <tr class="text-center">
+                        <td>{{ $history->level }}</td>
+                        <td>{{ $history->time }}</td>
+                        <td>{{ $history->mistake }}</td>
+                        <td>{{ $history->wpm }}</td>
+                        <td>{{ $history->cpm }}</td>
+                        <td class="text-center">
+                            {{-- <a href="#" class="btn btn-primary btn-sm">Edit</a> --}}
+                            <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
             </div>
           </div>
         </div>

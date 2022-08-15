@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-success" value="บันทึก">
-                                <input type="submit" class="btn btn-danger" value="ยกเลิก">
+                                <input type="reset" class="btn btn-danger" value="ยกเลิก">
                             </div>
                         </form>
                     </div>

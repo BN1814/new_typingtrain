@@ -43,8 +43,8 @@
                         @csrf
 
                         <div class="form-group mb-2">
-                            <label for="sectionid" class="h5"><p>รหัสห้องเรียน : </p></label>
-                            <input type="text" class="form-control" name="section_id" value="{{ old('sectionid') }}" required autocomplete="off" placeholder="รหัสห้องเรียน">
+                            <label for="sectionid" class="h5"><p>รหัสวิชา : </p></label>
+                            <input type="text" class="form-control" name="section_id" value="{{ old('sectionid') }}" required autocomplete="off" placeholder="รหัสวิชา">
                             @error('sectionid')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

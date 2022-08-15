@@ -25,7 +25,15 @@
         margin: 0 10px 10px 10px;
         float: right;
     }
+    .code {
+        width: 30%;
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+        display: flex;
+    }
 </style>
+<button class="btn btn-primary">เข้าห้องเรียน</button>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10 d-flex justify-content-center align-items-center">

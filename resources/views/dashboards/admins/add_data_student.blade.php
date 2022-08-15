@@ -7,18 +7,59 @@
                 <div class="card">
                     <div class="card-header text-center text-white bg-dark h4">เพิ่มนักศึกษา</div>
                     <div class="card-body">
-                        <div class="mb-3 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
-                                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                        <form>
+                            {{-- action="{{ route('createTeacher') }}" method="post"--}}
+                            {{-- @csrf --}}
+                            <div class="form-group mb-3">
+                                <label for="text">รหัสนักศึกษา</label>
+                                <input type="text" class="form-control" name="userid" value="{{ old('userid') }}">
+                                {{-- @error('userid')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror --}}
                             </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                            <div class="col-sm-10">
-                              <input type="password" class="form-control" id="inputPassword">
+                            <div class="form-group mb-3">
+                                <label for="name">ชื่อ</label>
+                                <input type="text" class="form-control" name="name" value=" {{ old('name') }}" required>
+                                {{-- @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror --}}
                             </div>
-                        </div>
+                            <div class="form-group mb-3">
+                                <label for="lname">นามสกุล</label>
+                                <input type="text" class="form-control" name="lname" value=" {{ old('lname') }}" required>
+                                {{-- @error('lname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror --}}
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="email">อีเมล</label>
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                {{-- @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror --}}
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="password">รหัสผ่าน</label>
+                                <input type="password" class="form-control" name="password" value="{{ old('password') }}">
+                                {{-- @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror --}}
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" value="บันทึก">
+                                <input type="reset" class="btn btn-danger" value="ยกเลิก">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

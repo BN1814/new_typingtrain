@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\HistoryScore;
 
 class UserController extends Controller
 {
@@ -11,7 +12,8 @@ class UserController extends Controller
         return view('dashboards.users.index');
     }
     function profile() {
-        return view('dashboards.users.profile');
+        $historys = HistoryScore::all();
+        return view('dashboards.users.profile', compact('historys'));
     }
     function settings() {
         return view('dashboards.users.settings');

@@ -15,6 +15,7 @@
                             <thead>
                                 <tr class="text-center">
                                     <th>ลำดับ</th>
+                                    <th>ชื่อห้องเรียน</th>
                                     <th>รหัสนักศึกษา</th>
                                     <th>ชื่อ</th>
                                     <th>นามสกุล</th>
@@ -26,13 +27,16 @@
                                 <tr>
                                 @foreach ($users as $user)
                                     <td>{{ $user->id }}</td>
+                                    <td></td>
                                     <td>{{ $user->userid }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->lname }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td class="text-center">
+                                        {{-- View --}}
+                                        <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm">View</a>
                                         {{-- Update --}}
-                                        <a href="{{ route('teacher.edit', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="{{ route('teacher.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                         {{-- Delete --}}
                                         <a href="#" class="btn btn-danger btn-sm">Delete</a>
                                     </td>
