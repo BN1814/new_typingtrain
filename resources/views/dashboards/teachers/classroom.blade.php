@@ -9,8 +9,8 @@
                 
                 <select id="select" class="mb-2">
                     <option>---เลือก---</option>
-                    @foreach ($deadlines as $deadline)
-                        <option>{{ $deadline->section_name }}</option>
+                    @foreach ($sections as $section)
+                        <option>{{ $section->section_name }}</option>
                     @endforeach
                 </select>
 
@@ -36,15 +36,15 @@
                                 </tr>
                             </thead>
                             <tbody class="text-center">
-                                @foreach ($deadlines as $deadline)
+                                @foreach ($sections as $section)
                                 <tr>
-                                    <td>{{ $deadline->id }}</td>
-                                    <td>{{ $deadline->section_name }}</td>
-                                    <td>{{ $deadline->deadline_date }}</td>
-                                    <td>{{ $deadline->deadline_time }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $section->id }}</td>
+                                    <td>{{ $section->section_name }}</td>
+                                    <td>{{ $section->deadline_date }}</td>
+                                    <td>{{ $section->deadline_time }}</td>
+                                    <td>{{ $section->userid }}</td>
+                                    <td>{{ $section->name }}</td>
+                                    <td>{{ $section->lname }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('teacher.dataSTD') }}" class="btn btn-warning btn-sm">View</a>
                                     </td>

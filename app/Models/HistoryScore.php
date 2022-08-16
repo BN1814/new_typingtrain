@@ -14,7 +14,9 @@ class HistoryScore extends Model
         'time',
         'mistake',
         'wpm',
-        'cpm'
+        'cpm',
+        'exercise_id',
+        'user_id',
     ];
 
     protected $casts = [

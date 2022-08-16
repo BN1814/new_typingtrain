@@ -39,22 +39,22 @@
                         </div> --}}
                     @endif
                     {{--  action="{{ route('setDeadline') }}" method="post" --}}
-                    <form action="{{ route('setDeadline') }}" method="post">
+                    <form action="{{ route('setSection') }}" method="post">
                         @csrf
 
                         <div class="form-group mb-2">
-                            <label for="sectionid" class="h5"><p>รหัสวิชา : </p></label>
-                            <input type="text" class="form-control" name="section_id" value="{{ old('sectionid') }}" required autocomplete="off" placeholder="รหัสวิชา">
-                            @error('sectionid')
+                            <label for="sectionsub" class="h5"><p>รหัสวิชา : </p></label>
+                            <input type="text" class="form-control" name="section_sub" value="{{ old('section_sub') }}" required autocomplete="off" placeholder="รหัสวิชา">
+                            @error('section_sub')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="form-group mb-2">
-                            <label for="sectionname" class="h5"><p>ชื่อห้องเรียน : </p></label>
-                            <input type="text" class="form-control" name="section_name" value="{{ old('sectionname') }}" required autocomplete="off" placeholder="ชื่อห้องเรียน">
-                            @error('sectionname')
+                            <label for="sectionname" class="h5"><p>ชื่อวิชา : </p></label>
+                            <input type="text" class="form-control" name="section_name" value="{{ old('section_name') }}" required autocomplete="off" placeholder="ชื่อวิชา">
+                            @error('section_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

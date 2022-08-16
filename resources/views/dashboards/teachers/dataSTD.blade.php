@@ -15,7 +15,7 @@
                             <thead>
                                 <tr class="text-center">
                                     <th>ลำดับ</th>
-                                    <th>ชื่อห้องเรียน</th>
+                                    <th>ชื่อวิชา</th>
                                     <th>รหัสนักศึกษา</th>
                                     <th>ชื่อ</th>
                                     <th>นามสกุล</th>
@@ -27,7 +27,7 @@
                                 <tr>
                                 @foreach ($users as $user)
                                     <td>{{ $user->id }}</td>
-                                    <td></td>
+                                    <td>{{ $user->section_name }}</td>
                                     <td>{{ $user->userid }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->lname }}</td>

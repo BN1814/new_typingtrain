@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     // return redirect()->route('login');
-    return view('testhome');
+    return view('homepage');
 });
 
 Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
@@ -51,7 +51,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
     Route::get('classroom', [TeacherController::class, 'Classroom'])->name('teacher.classroom');
     Route::get('editData', [TeacherController::class, 'editData'])->name('teacher.edit');
 
-    Route::post('createCode', [TeacherController::class, 'createCode'])->name('setDeadline');
+    Route::post('createCode', [TeacherController::class, 'createCode'])->name('setSection');
 });
 // Student
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory']], function() {

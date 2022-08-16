@@ -12,4 +12,8 @@ class Exercise extends Model
     protected $fillable = [
         'level', 'level_name', 'data_level'
     ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
