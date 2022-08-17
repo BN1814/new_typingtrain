@@ -44,20 +44,20 @@
                     <div class="col-md-12 text-center">
                         @if(Route::has('login'))
                             @auth
-                                @if(Auth::user()->role == 1)
+                                @if(Auth::user()->role == 'admin')
                                     <a href="{{ route('admin.dashboard') }}" class="btn btn-dark text-white">หน้าแรก</a>
-                                @elseif(Auth::user()->role == 2)
+                                @elseif(Auth::user()->role == 'teacher')
                                     <a href="{{ route('teacher.dashboard') }}" class="btn btn-dark text-white">หน้าแรก</a>
                                 @else
                                     <a href="{{ route('user.dashboard') }}" class="btn btn-dark text-whitek">หน้าแรก</a>
                                 @endif
                             @else
                                 <button class="btn btn-dark">
-                                    <a href="{{ route('login') }}" class="text-white">อาจารย์</a>
+                                    <a href="{{ route('login') }}" class="text-white">เข้าสู่ระบบ</a>
                                 </button>
 
                                 <button class="btn btn-dark">
-                                    <a href="{{ route('login') }}" class="text-white">นักศึกษา</a>
+                                    <a href="{{ route('register') }}" class="text-white">ลงทะเบียน</a>
                                 </button>
                             @endauth
                         @endif

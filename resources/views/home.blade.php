@@ -4,14 +4,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if(Auth::user()->role == 1)
+            @if(Auth::user()->role == 'admin')
                 <div class="card">
                     <div class="card-header bg-dark text-center text-white h1">ยินดีต้อนรับ</div>
                     <div class="card-body">
                         <p style="text-align: center;" class="h2"> Admin : {{ Auth::user()->name }}</p>
                     </div>
                 </div>
-            @elseif(Auth::user()->role == 2)
+            @elseif(Auth::user()->role == 'teacher')
                 <div class="card">
                     <div class="card-header bg-dark text-center text-white h1">ยินดีต้อนรับ</div>
                     <div class="card-body">

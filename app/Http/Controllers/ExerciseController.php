@@ -32,13 +32,15 @@ class ExerciseController extends Controller
         return view('Exercise/ExEnglish/HomerowEn.ex_FJ');
     }
     public function SaveExercise(Request $request) {
+        $user_id = auth::user()->id;
+
         $data = new HistoryScore();
         $data->level = $request->level;
         $data->time = $request->time;
         $data->mistake = $request->mistake;
         $data->wpm = $request->wpm;
         $data->cpm = $request->cpm;        
-        // $data->user_id = $request->user_id;
+        $data->user_id = $user_id;
         $save = $data->save();
 
         if($save) {

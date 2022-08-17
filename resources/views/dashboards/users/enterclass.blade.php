@@ -20,9 +20,9 @@
                                     <input id="entclass" type="text" class="form-control text-center">
                                 </div>
         
-                                <div class="col-md-2">
+                                <div class="col">
                                     <button type="submit" class="btn btn-success">
-                                        {{ __('บันทึก') }}
+                                        {{ __('เข้าห้องเรียน') }}
                                     </button>
                                 </div>
                             </div>

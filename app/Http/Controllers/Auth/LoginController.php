@@ -30,13 +30,13 @@ class LoginController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
         protected function redirectTo() {
-            if(Auth()->user()->role == 1){
+            if(Auth()->user()->role == 'admin'){
                 return route('admin.dashboard');
             }
-            else if(Auth()->user()->role == 2){
+            else if(Auth()->user()->role == 'teacher'){
                 return route('teacher.dashboard');
             }
-            else if(Auth()->user()->role == 3){
+            else if(Auth()->user()->role == 'student'){
                 return route('user.dashboard');
             }
         }
@@ -59,13 +59,13 @@ class LoginController extends Controller
         ]);
 
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if(auth()->user()->role == 1) {
+            if(auth()->user()->role == 'admin') {
                 return redirect()->route('admin.dashboard');
             }
-            else if(auth()->user()->role == 2) {
+            else if(auth()->user()->role == 'teacher') {
                 return redirect()->route('teacher.dashboard');
             }
-            else if(auth()->user()->role == 3) {
+            else if(auth()->user()->role == 'student') {
                 return redirect()->route('user.dashboard');
             }
         }

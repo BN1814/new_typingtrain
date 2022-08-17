@@ -5,8 +5,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            @if(Auth::user()->role == 1)
+        <div class="col-md-10">
+            @if(Auth::user()->role == 'admin')
                 <div class="card mb-3">
                     <div class="card-header text-center text-white bg-dark h4">รหัสเข้าห้องเรียน</div>
                     <div class="card-body">
@@ -22,13 +22,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($deadlines as $deadline)
+                                @foreach ($sections as $section)
                                 <tr class="text-center">
-                                    <td>{{ $deadline->id }}</td>
-                                    <td>{{ $deadline->section_name }}</td>
-                                    <td>{{ $deadline->code_inclass }}</td>
-                                    <td>{{ $deadline->deadline_date }}</td>
-                                    <td>{{ $deadline->deadline_time }}</td>
+                                    <td>{{ $section->id }}</td>
+                                    <td>{{ $section->section_name }}</td>
+                                    <td>{{ $section->code_inclass }}</td>
+                                    <td>{{ $section->deadline_date }}</td>
+                                    <td>{{ $section->deadline_time }}</td>
                                     <td class="text-center">
                                         <a href="#" class="btn btn-primary btn-sm">Edit</a>
                                         <a href="#" class="btn btn-danger btn-sm">Delete</a>

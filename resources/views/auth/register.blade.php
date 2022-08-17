@@ -99,6 +99,18 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="status" class="form-control">
+                                    <option value="3">Student</option>
+                                    <option value="2">Teacher</option>
+                                    <option value="1">Admin</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-dark">

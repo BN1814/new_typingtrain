@@ -18,7 +18,7 @@ class isTeacherMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::Check() && Auth()->user()->role == 2 || Auth::Check() && Auth()->user()->role == 1) {
+        if(Auth::Check() && Auth()->user()->role == 'teacher' || Auth::Check() && Auth()->user()->role == 'admin') {
             return $next($request);
         }
         else {

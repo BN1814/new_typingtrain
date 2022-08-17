@@ -5,16 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Deadline;
+use App\Models\Section;
 use App\Models\User;
+use App\Models\HistoryScore;
 use DB;
 
 class AdminController extends Controller
 {
     function index() {
-        $deadlines = Deadline::all();
+        $sections = Section::all();
         $users = User::all();
-        return view('dashboards.admins.index', compact('deadlines', 'users'));
+        // $users = DB::table('users')
+        //             ->join('sections', 'sections.id', '=', 'users.id')
+        //             ->get(['users.*', 'sections.*']);
+        
+        return view('dashboards.admins.index', compact('sections', 'users'));
     }
     function profile() {
         return view('dashboards.admins.profile');
