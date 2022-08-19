@@ -44,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function section() {
+        return $this->hasOne(Section::class, 'user_id', 'id');
+    }
+
+    public function history_score() {
+        return $this->hasOne(HistoryScore::class, 'user_id', 'id');
+    }
 }

@@ -18,7 +18,9 @@ class TeacherController extends Controller
         return view('dashboards.teachers.index', compact('sections', 'users'));
     }
     function profile() {
-        return view('dashboards.teachers.profile');
+        $sections = Section::get();
+        $users = User::get();
+        return view('dashboards.teachers.profile', compact('sections', 'users'));
     }
     function settings() {
         return view('dashboards.teachers.settings');
@@ -48,18 +50,32 @@ class TeacherController extends Controller
 
         $user_id = auth::user()->id;
         $section = new Section();
-        $section->section_sub = $request->section_sub;
-        $section->section_name = $request->section_name;
-        $section->code_inclass = $request->code_inclass;
-        $section->deadline_date = $request->deadline_date;
-        $section->deadline_time = $request->deadline_time;
+        $section_sub = $section->section_sub = $request->section_sub;
+        $section_name = $section->section_name = $request->section_name;
+        $code = $section->code_inclass = $request->code_inclass;
+        $date = $section->deadline_date = $request->deadline_date;
+        $time = $section->deadline_time = $request->deadline_time;
         $section->user_id = $user_id;
         $save = $section->save();
 
         if($save) {
             return redirect()->back()->with('success', 'สร้างห้องเรียนสำเร็จ');
         }
-        // return redirect()->back()->with('error', 'มีรหัสนี้อยู่แล้ว');
+        else if($section_sub === null) {
+            return redirect()->back()->with('error', 'กรุณาใส่รหัสวิชา');
+        }
+        else if($section_name === null) {
+            return redirect()->back()->with('error', 'กรุณาใส่ชื่อวิชา');
+        }
+        else if($code === null) {
+            return redirect()->back()->with('error', 'กรุณาใส่รหัสเข้าห้องเรียน');
+        }
+        else if($date === null) {
+            return redirect()->back()->with('error', 'กรุณาใส่วันที่ส่ง');
+        }
+        else if($time === null) {
+            return redirect()->back()->with('error', 'กรุณาใส่เวลาที่ส่ง');
+        }
     }
     function update(Request $request, $id) {
 

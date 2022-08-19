@@ -26,6 +26,14 @@
                     </div>
 
                     <div class="row mb-3">
+                      <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุลผู้ใช้งาน') }}</label>
+
+                      <div class="col-md-6">
+                        <input type="text" class="form-control text-center" value="{{ Auth::user()->lname }}" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
                       <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมลผู้ใช้งาน') }}</label>
 
                       <div class="col-md-6">
@@ -33,8 +41,8 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                  <button type="submit" class="btn btn-primary">
+                <div class="col-4">
+                  <button type="submit" class="btn btn-warning" style="width: 245px;">
                       {{ __('แก้ไข') }}
                   </button>
               </div>

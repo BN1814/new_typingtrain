@@ -22,4 +22,12 @@ class HistoryScore extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function exercise() {
+        return $this->hasOne(Exercise::class);
+    }
 }

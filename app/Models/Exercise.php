@@ -16,4 +16,8 @@ class Exercise extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function history_score() {
+        return $this->belongsTo(History::class, 'history_id', 'id');
+    }
 }

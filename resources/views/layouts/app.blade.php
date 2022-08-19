@@ -78,9 +78,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                @if(auth()->user()->role == 1)
+                                @if(auth()->user()->role == 'admin')
                                     <a href="{{ route('admin.profile') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
-                                @elseif (auth()->user()->role == 2)
+                                @elseif (auth()->user()->role == 'teacher')
                                     <a href="{{ route('teacher.profile') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"

@@ -23,7 +23,15 @@
               <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="row mb-3">
-                      <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อผู้ใช้งาน') }}</label>
+                      <label for="stdid" class="col-md-3 col-form-label text-md-end">{{ __('รหัสนักศึกษา') }}</label>
+
+                      <div class="col-md-6">
+                        <input type="text" class="form-control text-center" value="{{ Auth::user()->userid }}" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="name" class="col-md-3 col-form-label text-md-end">{{ __('ชื่อผู้ใช้งาน') }}</label>
 
                       <div class="col-md-6">
                         <input type="text" class="form-control text-center" value="{{ Auth::user()->name }}" disabled>
@@ -31,15 +39,23 @@
                     </div>
 
                     <div class="row mb-3">
-                      <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมลผู้ใช้งาน') }}</label>
+                      <label for="name" class="col-md-3 col-form-label text-md-end">{{ __('นามสกุลผู้ใช้งาน') }}</label>
+
+                      <div class="col-md-6">
+                        <input type="text" class="form-control text-center" value="{{ Auth::user()->lname }}" disabled>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="email" class="col-md-3 col-form-label text-md-end">{{ __('อีเมลผู้ใช้งาน') }}</label>
 
                       <div class="col-md-6">
                         <input type="text" class="form-control text-center" value="{{ Auth::user()->email }}" disabled>
                       </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                  <button type="submit" class="btn btn-primary">
+                <div class="col-6">
+                  <button type="submit" class="btn btn-warning" style="width: 330px;">
                       {{ __('แก้ไข') }}
                   </button>
               </div>
