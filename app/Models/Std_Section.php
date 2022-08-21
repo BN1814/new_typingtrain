@@ -12,4 +12,13 @@ class Std_Section extends Model
     protected $fillable = [
         'user_id', 'section_id'
     ];
+
+    public function std_section() {
+        if(auth::user()->role == 'student') {
+            return $this->belongsToMany('App\Models\User');
+        }
+        if(auth::user()->role == 'teacher') {
+            return $this->belongsToMany('App\Models\User');
+        }
+    }
 }

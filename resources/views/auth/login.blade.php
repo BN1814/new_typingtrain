@@ -13,7 +13,7 @@
 
                         @if($message = Session::get('error'))
                             <div class="alert alert-danger alert-block">
-                                <strong>{{ "Email หรือรหัสผ่านไม่ถูกต้อง" }}</strong>
+                                <strong>{{ $message }}</strong>
                                 {{-- <button type="button" class="close" data-dismiss="alert">x</button> --}}
                             </div>
                         @endif
@@ -22,13 +22,13 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end font-weight-bold">{{ __('อีเมล') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="on" autofocus>
 
-                                @error('email')
+                                {{-- @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
 
@@ -38,11 +38,11 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
-                                @error('password')
+                                {{-- @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
 

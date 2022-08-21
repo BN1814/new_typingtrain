@@ -45,11 +45,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function section() {
-        return $this->hasOne(Section::class, 'user_id', 'id');
+    public function section_std() {
+        if(auth::user()->role == 'student'){
+            return $this->hasMany('App\Models\Section')
+                        ->and($this->hasMany('App\Models\Std_Section'));
+        }
+    }
+    public function section_teach() {
+        if(auth::user()->role == 'teacher'){
+            return $this->hasOne('App\Models\Section')
+                        ->and($this->hasMany('App\Models\Std_Section'));
+        }
     }
 
     public function history_score() {
-        return $this->hasOne(HistoryScore::class, 'user_id', 'id');
+        if(auth::user()->role == 'student') {
+            return $this->hasMany('App\Models\HistoryScore');
+        }
     }
 }

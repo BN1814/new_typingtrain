@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 
                 <select id="select" class="mb-2">
-                    <option>---เลือก---</option>
+                    <option>เลือก</option>
                     @foreach ($sections as $section)
                         <option>{{ $section->section_name }}</option>
                     @endforeach
@@ -26,12 +26,10 @@
                             <thead>
                                 <tr class="text-center">
                                     <th>ลำดับ</th>
-                                    <th>ชื่อห้องเรียน</th>
+                                    <th>รหัสวิชา</th>
+                                    <th>ชื่อวิชา</th>
                                     <th>วันที่กำหนดส่ง</th>
                                     <th>เวลากำหนดส่ง</th>
-                                    <th>รหัสนักศึกษา</th>
-                                    <th>ชื่อ</th>
-                                    <th>นามสกุล</th>
                                     <th>ตัวเลือก</th>
                                 </tr>
                             </thead>
@@ -39,14 +37,14 @@
                                 @foreach ($sections as $section)
                                 <tr>
                                     <td>{{ $section->id }}</td>
+                                    <td>{{ $section->section_sub }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->deadline_date }}</td>
                                     <td>{{ $section->deadline_time }}</td>
-                                    <td>{{ $section->userid }}</td>
-                                    <td>{{ $section->name }}</td>
-                                    <td>{{ $section->lname }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('teacher.dataSTD') }}" class="btn btn-warning btn-sm">View</a>
+                                        <a href="{{ route('teacher.dataSTD') }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
+                                        <a href="#" class="btn btn-warning btn-sm">แก้ไข</a>
+                                        <a href="#" class="btn btn-danger btn-sm">ลบ</a>
                                     </td>
                                 </tr>
                                 @endforeach

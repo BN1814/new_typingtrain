@@ -34,21 +34,12 @@
                                     <td>{{ $user->email }}</td>
                                     <td class="text-center">
                                         {{-- View --}}
-                                        <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm">View</a>
+                                        <a href="{{ route('user.profile', $user->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
                                         {{-- Update --}}
-                                        <a href="{{ route('teacher.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ route('teacher.edit', $user->id) }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                         {{-- Delete --}}
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="#" class="btn btn-danger btn-sm">ลบ</a>
                                     </td>
-                                    {{-- <td>07600641</td>
-                                    <td>ภากร</td>
-                                    <td>สุปินะ</td>
-                                    <td>phakorn@gmail.com</td>
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-primary btn-sm">View</a>
-                                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                    </td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>

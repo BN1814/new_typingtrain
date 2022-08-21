@@ -23,6 +23,13 @@ class Section extends Model
     ];
 
     public function user() {
-        return $this->belongsTo(User::class);
+        if(auth::user()->role == "student") {
+            return $this->belongsToMany('App\Models\User')
+                        ->and($this->hasMany('App\Models\Std_Section'));
+        }
+        if(auth::user()->role == "teacher") {
+            return $this->belongsTo('App\Models\User')
+                        ->and($this->hasMany('App\Models\Std_Section'));
+        }
     }
 }

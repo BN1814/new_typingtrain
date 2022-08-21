@@ -18,6 +18,8 @@ class Exercise extends Model
     ];
 
     public function history_score() {
-        return $this->belongsTo(History::class, 'history_id', 'id');
+        if(auth::user()->role == 'student') {
+            return $this->belongsTo('App\Models\HistoryScore', 'user_id', 'id');
+        }
     }
 }

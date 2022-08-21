@@ -106,7 +106,6 @@
                                 <select name="status" class="form-control">
                                     <option value="3">Student</option>
                                     <option value="2">Teacher</option>
-                                    <option value="1">Admin</option>
                                 </select>
                             </div>
                         </div>

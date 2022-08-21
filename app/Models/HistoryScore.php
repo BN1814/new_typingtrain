@@ -24,10 +24,14 @@ class HistoryScore extends Model
     ];
 
     public function user() {
-        return $this->belongsTo(User::class);
+        if(auth::user()->role == 'student') {
+            return $this->belongsToMany(User::class);
+        }
     }
 
     public function exercise() {
-        return $this->hasOne(Exercise::class);
+        if(auth::user()->role == 'student') {
+            return $this->hasOne('App\Models\Exercise');
+        }
     }
 }
