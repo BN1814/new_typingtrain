@@ -61,9 +61,9 @@
                             @endif
                         @else
                             @if(auth()->user()->role == 'admin')
-                                <li><a href="{{ route('admin.add_teacher') }}" class="nav-link">อาจารย์</a></li>
-                                <li><a href="{{ route('admin.add_student') }}" class="nav-link">นักศึกษา</a></li>
-                                {{-- <li><a href="{{ route('admin.add_exercise') }}" class="nav-link">แบบทดสอบ</a></li> --}}
+                                <li><a href="{{ url('admin/dashboard') }}" class="nav-link">หน้าแรก</a></li>
+                                <li><a href="{{ url('admin/add_data_teacher_student') }}" class="nav-link">เพิ่มอาจารย์และนักศึกษา</a></li>
+                                <li><a href="{{ url('admin/add_data_exercises') }}" class="nav-link">เพิ่มแบบทดสอบ</a></li>
                             @elseif (auth()->user()->role == 'teacher')
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
                                 <li><a href="{{ route('teacher.classroom') }}" class="nav-link">ห้องเรียน</a></li>

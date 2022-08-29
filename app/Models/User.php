@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Http\Middleware\isTeacherMiddleware;
+use App\Http\Middleware\isUserMiddleware;
 
 class User extends Authenticatable
 {
@@ -17,6 +19,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $table = 'users';
     protected $fillable = [
         'userid',
         'name',
@@ -45,22 +49,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function section_std() {
-        if(auth::user()->role == 'student'){
-            return $this->hasMany('App\Models\Section')
-                        ->and($this->hasMany('App\Models\Std_Section'));
-        }
-    }
-    public function section_teach() {
-        if(auth::user()->role == 'teacher'){
-            return $this->hasOne('App\Models\Section')
-                        ->and($this->hasMany('App\Models\Std_Section'));
+    public function historys() {
+        if($this->isUserMiddleware) {
+            return $this->hasMany(HistoryScore::class);
         }
     }
 
-    public function history_score() {
-        if(auth::user()->role == 'student') {
-            return $this->hasMany('App\Models\HistoryScore');
-        }
+    public function sections() {
+        // For Student
+        return $this->belongsToMany(User::class);
+        // For Teacher
+        // return $this->belongsTo(User::class);
     }
 }

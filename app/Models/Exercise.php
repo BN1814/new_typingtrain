@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use isUser;
 
 class Exercise extends Model
 {
@@ -17,9 +18,7 @@ class Exercise extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    public function history_score() {
-        if(auth::user()->role == 'student') {
-            return $this->belongsTo('App\Models\HistoryScore', 'user_id', 'id');
-        }
+    public function history() {
+        return $this->hasOne(HistoryScore::class);
     }
 }

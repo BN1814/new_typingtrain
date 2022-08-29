@@ -46,6 +46,12 @@ class TeacherController extends Controller
             'code_inclass' => 'required | unique:sections',
             'deadline_date' => 'required',
             'deadline_time' => 'required',
+        ],[
+            'section_sub.required' => 'กรุณาใส่รหัสวิชา',
+            'section_name.required' => 'กรุณาใส่ชื่อวิชา',
+            'code_inclass.required' => 'กรุณาใส่รหัสเข้าห้องเรียน',
+            'deadline_date.required' => 'กรุณาใส่วันที่ส่ง',
+            'deadline_time.required' => 'กรุณาใส่เวลาที่ส่ง',
         ]);
 
         $user_id = auth::user()->id;
@@ -60,22 +66,7 @@ class TeacherController extends Controller
 
         if($save) {
             return redirect()->back()->with('success', 'สร้างห้องเรียนสำเร็จ');
-        }
-        else if($section_sub === null) {
-            return redirect()->back()->with('error', 'กรุณาใส่รหัสวิชา');
-        }
-        else if($section_name === null) {
-            return redirect()->back()->with('error', 'กรุณาใส่ชื่อวิชา');
-        }
-        else if($code === null) {
-            return redirect()->back()->with('error', 'กรุณาใส่รหัสเข้าห้องเรียน');
-        }
-        else if($date === null) {
-            return redirect()->back()->with('error', 'กรุณาใส่วันที่ส่ง');
-        }
-        else if($time === null) {
-            return redirect()->back()->with('error', 'กรุณาใส่เวลาที่ส่ง');
-        }
+        }   
     }
     function update(Request $request, $id) {
 

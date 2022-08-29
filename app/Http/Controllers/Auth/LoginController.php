@@ -56,11 +56,14 @@ class LoginController extends Controller
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required'
+        ],[
+            'email.required' => 'กรุณาใส่อีเมลผู้ใช้งาน',
+            'password.required' => 'กรุณาใส่รหัสผ่าน',
         ]);
 
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
             if(auth()->user()->role == 'admin') {
-                return redirect()->route('admin.dashboard');
+                return redirect('admin/dashboard');
             }
             else if(auth()->user()->role == 'teacher') {
                 return redirect()->route('teacher.dashboard');

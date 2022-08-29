@@ -57,6 +57,12 @@ class RegisterController extends Controller
             'lname' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6 | max:20', 'confirmed'],
+        ],[
+            'userid.required' => 'กรุณาใส่รหัสนักศึกษาหรือรหัสผู้ใช้งาน',
+            'name.required' => 'กรุณาใส่ชื่อผู้ใช้งาน',
+            'lname.required' => 'กรุณาใส่นามสกุลผู้ใช้งาน',
+            'email.required' => 'กรุณาใส่อีเมลผู้ใช้งาน',
+            'password.required' => 'กรุณาใส่รหัสผ่าน',
         ]);
 
         // $user = new User();

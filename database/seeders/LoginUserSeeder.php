@@ -39,7 +39,15 @@ class LoginUserSeeder extends Seeder
                 'email' => 'student@student.com',
                 'role' => 'student',
                 'password' => bcrypt('123456'),
-                ]
+            ],
+            [
+                'userid' => 'S002',
+                'name' => 'Student2',
+                'lname' => 'student',
+                'email' => 'student2@student.com',
+                'role' => 'student',
+                'password' => bcrypt('123456'),
+            ],
         ];
 
         foreach($user as $key => $value) {

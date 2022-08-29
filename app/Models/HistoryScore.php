@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Middleware\isUserMiddleware;
 
 class HistoryScore extends Model
 {
@@ -24,14 +25,11 @@ class HistoryScore extends Model
     ];
 
     public function user() {
-        if(auth::user()->role == 'student') {
-            return $this->belongsToMany(User::class);
-        }
+        return $this->belongsTo(User::class);
+        // if($this->isUserMiddleware) {
+        // }
     }
-
     public function exercise() {
-        if(auth::user()->role == 'student') {
-            return $this->hasOne('App\Models\Exercise');
-        }
+        return $this->belongsTo(Exercise::class);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Middleware\isTeacherMiddleware;
+use App\Http\Middleware\isUserMiddleware;
 
 class Section extends Model
 {
@@ -22,14 +24,11 @@ class Section extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    public function user() {
-        if(auth::user()->role == "student") {
-            return $this->belongsToMany('App\Models\User')
-                        ->and($this->hasMany('App\Models\Std_Section'));
-        }
-        if(auth::user()->role == "teacher") {
-            return $this->belongsTo('App\Models\User')
-                        ->and($this->hasMany('App\Models\Std_Section'));
-        }
+    public function users() {
+        // For Student
+        return $this->belongsToMany(User::class);
+        // For Teacher
+        // return $this->hasMany(User::class);
     }
+
 }

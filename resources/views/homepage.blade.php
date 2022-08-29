@@ -45,7 +45,7 @@
                         @if(Route::has('login'))
                             @auth
                                 @if(Auth::user()->role == 'admin')
-                                    <a href="{{ route('admin.dashboard') }}" class="btn btn-dark text-white">หน้าแรก</a>
+                                    <a href="{{ url('admin/dashboard') }}" class="btn btn-dark text-white">หน้าแรก</a>
                                 @elseif(Auth::user()->role == 'teacher')
                                     <a href="{{ route('teacher.dashboard') }}" class="btn btn-dark text-white">หน้าแรก</a>
                                 @else
