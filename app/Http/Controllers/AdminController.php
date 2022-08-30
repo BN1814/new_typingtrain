@@ -14,17 +14,41 @@ use Hash;
 
 class AdminController extends Controller
 {
-    function index() {
-        $exercises = Exercise::all();
-        $sections = Section::all();
-        $users = User::all();
-        return view('dashboards.admins.index', compact('sections', 'users', 'exercises'));
+    function index(Request $request) {
+        $search = $request['search'] ?? "";
+        if($search != "") {
+            $users = User::where('userid', 'LIKE', "%$search%")
+            ->orWhere('name', 'LIKE', "%$search%")
+            ->orWhere('email', 'LIKE', "%$search%")->get();
+            $sections = Section::where('section_name', 'LIKE', "%$search%")
+            ->orWhere('section_sub', 'LIKE', "%$search%")->get();
+            $exercises = Exercise::where('level_name', 'LIKE', "%$search%")
+            ->orWhere('data_level', 'LIKE', "%$search%")->get();
+        }
+        else {
+            $exercises = Exercise::paginate(5);
+            $sections = Section::all();
+            $users = User::paginate(5);
+        }
+        $data = compact('sections', 'users', 'exercises', 'search');
+        return view('dashboards.admins.index')->with($data);
     }
-    function profile() {
-        return view('dashboards.admins.profile');
+    function profile(User $user) {
+        return view('dashboards.admins.profile', compact('user'));
+    }
+    function updateProfile(User $user, Request $request) {
+        $user->update([
+            'userid' => $request['userid'],
+            'name' => $request['name'],
+            'lname' => $request['lname'],
+            'email' => $request['email'],
+        ]);
+        return redirect('admin/profile/'.$user->id.'/edit')->with('message', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
     function settings() {
         return view('dashboards.admins.settings');
+    }
+    function search() {
     }
     // CRUD Teacher
         function createTeachStd() {
@@ -94,6 +118,19 @@ class AdminController extends Controller
             'data_level' => $request['data_level'],
         ]);
         return redirect('admin/dashboard')->with('message', 'เพิ่มข้อมูลแบบฝึกหัดสำเร็จแล้ว');
+    }
+    
+    function editExercise(Exercise $exercise) {
+        return view('dashboards.admins.student.edit_data_exercise', compact('exercise'));
+    }
+
+    function updateExercise(Exercise $exercise, Request $request) {
+        $exercise->update([
+            'level' => $request['level'],
+            'level_name' => $request['level_name'],
+            'data_level' => $request['data_level'],
+        ]);
+        return redirect('admin/dashboard')->with('message', 'แก้ไขแบบฝึกหัดสำเร็จแล้ว');
     }
 
     function destroyExercise(Exercise $exercise) {

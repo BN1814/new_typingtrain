@@ -87,6 +87,7 @@
     
                                 <div class="col-md-6">
                                     <select name="status" class="form-control">
+                                        <option value="1">Admin</option>
                                         <option value="2">Teacher</option>
                                         <option value="3">Student</option>
                                     </select>

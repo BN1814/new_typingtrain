@@ -37,8 +37,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
     Route::controller(AdminController::class)->group(function() {
         // Data Admin
         Route::get('/dashboard', 'index');
-        Route::get('profile', 'profile')->name('admin.profile');
-        Route::post('profile', 'updateProfile')->name('udProfile');
+        Route::get('/profile/{user}/edit', 'profile');
+        Route::put('/profile/{user}', 'updateProfile');
         Route::get('settings', 'settings')->name('admin.settings');
         // Add Teacher and Student
         Route::get('/add_data_teacher_student', 'createTeachStd');
@@ -49,6 +49,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         // Add Exercise
         Route::get('/add_data_exercises', 'homeExercise');
         Route::post('/add_data_exercises', 'storeExercise');
+        Route::get('/add_data_exercises/{exercise}/edit', 'editExercise');
+        Route::put('/add_data_exercises/{exercise}', 'updateExercise');
         Route::delete('/add_data_exercises/{exercise}', 'destroyExercise');
     });
 });
@@ -56,7 +58,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'PreventBackHistory']], function() {
     Route::controller(TeacherController::class)->group(function() {
         Route::get('dashboard', 'index')->name('teacher.dashboard');
-        Route::get('profile', 'profile')->name('teacher.profile');
+        Route::get('/profile/{user}/edit', 'profile');
+        Route::put('/profile/{user}', 'updateProfile');
         Route::get('settings', 'settings')->name('teacher.settings');
         Route::get('dataSTD', 'dataStudent')->name('teacher.dataSTD');
         Route::get('classroom', 'Classroom')->name('teacher.classroom');
@@ -68,7 +71,8 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory']], function() {
     Route::controller(UserController::class)->group(function() {
         Route::get('dashboard', 'index')->name('user.dashboard');
-        Route::get('profile', 'profile')->name('user.profile');
+        Route::get('/profile/{user}/edit', 'profile');
+        Route::put('/profile/{user}', 'updateProfile');
         Route::get('settings', 'settings')->name('user.settings');
         Route::get('enterclass', 'enterclass')->name('user.entclass');
     });

@@ -17,10 +17,17 @@ class TeacherController extends Controller
         $users = User::all();
         return view('dashboards.teachers.index', compact('sections', 'users'));
     }
-    function profile() {
-        $sections = Section::get();
-        $users = User::get();
-        return view('dashboards.teachers.profile', compact('sections', 'users'));
+    function profile(User $user) {
+        return view('dashboards.teachers.profile', compact('user'));
+    }
+    function updateProfile(User $user, Request $request) {
+        $user->update([
+            'userid' => $request['userid'],
+            'name' => $request['name'],
+            'lname' => $request['lname'],
+            'email' => $request['email'],
+        ]);
+        return redirect('teacher/profile/'.$user->id.'/edit')->with('message', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
     function settings() {
         return view('dashboards.teachers.settings');

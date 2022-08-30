@@ -10,15 +10,19 @@ use DB;
 class UserController extends Controller
 {
     function index() {
-        $users = DB::table('users')
-                    ->join('sections', 'users.id', '=', 'sections.id')
-                    ->join('history_scores', 'users.id', '=', 'history_scores.id')
-                    ->get();
-        return view('dashboards.users.index', compact('users'));
+        return view('dashboards.users.index');
     }
-    function profile() {
-        $historys = HistoryScore::all();
-        return view('dashboards.users.profile', compact('historys'));
+    function profile(User $user) {
+        return view('dashboards.users.profile', compact('user'));
+    }
+    function updateProfile(User $user, Request $request) {
+        $user->update([
+            'userid' => $request['userid'],
+            'name' => $request['name'],
+            'lname' => $request['lname'],
+            'email' => $request['email'],
+        ]);
+        return redirect('user/profile/'.$user->id.'/edit')->with('message', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
     function settings() {
         return view('dashboards.users.settings');

@@ -5,17 +5,17 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="input-group col-md-6 mb-2">
-        </div>
         <div class="col-md-10">
             @if(Auth::user()->role == 'admin')
                 @if(session('message'))
                     <h4 class="alert alert-success">{{ session('message') }}</h4>
                 @endif
-                <div class="input-group col-2 mb-2">
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                    <button type="button" class="btn btn-primary text-white">search</button>
-                </div>
+                <form action="{{ url('admin/dashboard') }}" method="get">
+                    <div class="input-group col-2 mb-2">
+                        <input type="search" class="form-control rounded" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search">
+                        <button type="submit" class="btn btn-primary text-white">ค้นหา</button>
+                    </div>
+                </form>
                 {{-- <div class="card mb-3">
                     <div class="card-header text-center text-white bg-dark h4">รหัสเข้าห้องเรียน</div>
                     <div class="card-body">
@@ -50,7 +50,7 @@
                 </div> --}}
                 <div class="card mb-3">
                     <div class="card-header text-white bg-dark">
-                        <h4>แบบฝึกหัดทั้งหมด
+                        <h4>ผู้ใช้งานทั้งหมด
                             <a href="{{ url('admin/add_data_teacher_student') }}" class="btn btn-primary float-end">เพิ่มอาจารย์/นักศึกษา</a>
                         </h4>
                     </div>
@@ -88,13 +88,15 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $users->links() }}
+                        {{-- {{ $users->onEachSide(1)->links() }} --}}
                     </div>
                 </div>
 
                 {{-- Card Exercise --}}
                 <div class="card">
                     <div class="card-header text-white bg-dark">
-                        <h4>ผู้ใช้งานทั้งหมด
+                        <h4>แบบฝึกหัดทั้งหมด
                             <a href="{{ url('admin/add_data_exercises') }}" class="btn btn-primary float-end">เพิ่มแบบฝึกหัด</a>
                         </h4>
                     </div>
@@ -129,6 +131,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $exercises->links() }}
                     </div>
                 </div>
             @endif
