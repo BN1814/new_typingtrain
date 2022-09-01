@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
     Route::controller(AdminController::class)->group(function() {
         // Data Admin
         Route::get('/dashboard', 'index');
+        // Route::any('/search', 'search');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
         Route::get('settings', 'settings')->name('admin.settings');
@@ -45,7 +46,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         Route::post('/dashboard', 'storeTeachStd');
         Route::get('/add_data_teacher_student/{user}/edit', 'editTeachStd');
         Route::put('/add_data_teacher_student/{user}', 'updateTeachStd');
-        Route::delete('/add_data_teacher_student/{user}', 'destroyTeachStd');
+        Route::delete('/dashboard/{user}', 'destroyTeachStd');
         // Add Exercise
         Route::get('/add_data_exercises', 'homeExercise');
         Route::post('/add_data_exercises', 'storeExercise');

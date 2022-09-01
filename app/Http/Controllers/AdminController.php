@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Crypt;
 use App\Models\Section;
 use App\Models\User;
 use App\Models\HistoryScore;
@@ -17,22 +19,76 @@ class AdminController extends Controller
     function index(Request $request) {
         $search = $request['search'] ?? "";
         if($search != "") {
-            $users = User::where('userid', 'LIKE', "%$search%")
-            ->orWhere('name', 'LIKE', "%$search%")
-            ->orWhere('email', 'LIKE', "%$search%")->get();
-            $sections = Section::where('section_name', 'LIKE', "%$search%")
-            ->orWhere('section_sub', 'LIKE', "%$search%")->get();
-            $exercises = Exercise::where('level_name', 'LIKE', "%$search%")
-            ->orWhere('data_level', 'LIKE', "%$search%")->get();
+            $users = User::where('userid', 'LIKE', '%'. $search. '%')
+                        ->orWhere('name', 'LIKE', '%'. $search. '%')
+                        ->orWhere('email', 'LIKE', '%'. $search. '%')
+                        ->get();
+            $exercises = Exercise::where('level_name', 'LIKE', '%'. $search. '%')
+                        ->orWhere('data_level', 'LIKE', '%'. $search. '%')
+                        ->get();
+            $sections = Section::where('section_sub', 'LIKE', '%'. $search. '%')
+                        ->orWhere('section_name', 'LIKE', '%'. $search. '%')
+                        ->get();
         }
         else {
-            $exercises = Exercise::paginate(5);
+            $exercises = Exercise::all();
             $sections = Section::all();
-            $users = User::paginate(5);
+            $users = User::all();
         }
         $data = compact('sections', 'users', 'exercises', 'search');
         return view('dashboards.admins.index')->with($data);
     }
+    // function search() {
+    //     // $search = $request['search'] ?? "";
+    //     $search = Input::get('search');
+    //     if($search != "") {
+    //         $users = User::where('userid', 'LIKE', '%'. $search. '%')
+    //                     ->orWhere('name', 'LIKE', '%'. $search. '%')
+    //                     ->orWhere('email', 'LIKE', '%'. $search. '%')
+    //                     ->paginate(5)
+    //                     ->setpath('')
+    //                     ->get();
+    //             $users->append(array(
+    //                 // 'search' => $request->input('search'),
+    //                 'search' => Input::get('search'),
+    //             ));
+    //         if(count($users) > 0){
+    //             return view('dashboards.admins.index')->withData($users);
+    //         }
+    //         return view('dashboards.admins.index')->with('error','ไม่มีผลลัพธ์ที่ค้นหา');
+    //     }
+    //     if($search != ""){
+    //         $sections = Section::where('section_name', 'LIKE', '%'. $search. '%')
+    //                     ->orWhere('section_sub', 'LIKE', '%'. $search. '%')
+    //                     ->paginate(5)
+    //                     ->setpath('')
+    //                     ->get();
+    //             $sections->append(array(
+    //                 // 'search' => $request->input('search'),
+    //                 'search' => Input::get('search'),
+    //             ));
+    //         if(count($sections) > 0){
+    //             return view('dashboards.admins.index')->withData($sections);
+    //         }
+    //         return view('dashboards.admins.index')->with('error','ไม่มีผลลัพธ์ที่ค้นหา');
+    //     }
+    //     if($search != ""){
+    //         $exercises = Exercise::where('level_name', 'LIKE', '%'. $search. '%')
+    //                     ->orWhere('data_level', 'LIKE', '%'. $search. '%')
+    //                     ->paginate(5)
+    //                     ->setpath('')
+    //                     ->get();
+    //             $exercises->append(array(
+    //                 // 'search' => $request->input('search'),
+    //                 'search' => Input::get('search'),
+    //             ));
+
+    //         if(count($exercises) > 0){
+    //             return view('dashboards.admins.index')->withData($exercises);
+    //         }
+    //         return view('dashboards.admins.index')->with('error','ไม่มีผลลัพธ์ที่ค้นหา');
+    //     }
+    // }
     function profile(User $user) {
         return view('dashboards.admins.profile', compact('user'));
     }
@@ -47,8 +103,6 @@ class AdminController extends Controller
     }
     function settings() {
         return view('dashboards.admins.settings');
-    }
-    function search() {
     }
     // CRUD Teacher
         function createTeachStd() {

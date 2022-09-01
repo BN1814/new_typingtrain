@@ -24,6 +24,7 @@
         }
         a {
             color: #fff;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -64,10 +65,30 @@
                                 <li><a href="{{ url('admin/dashboard') }}" class="nav-link">หน้าแรก</a></li>
                                 <li><a href="{{ url('admin/add_data_teacher_student') }}" class="nav-link">เพิ่มอาจารย์และนักศึกษา</a></li>
                                 <li><a href="{{ url('admin/add_data_exercises') }}" class="nav-link">เพิ่มแบบทดสอบ</a></li>
+                                <div class="nav-item">
+                                    <form method="get" role="search" style="height: 20px;">
+                                        <div class="input-group col-2 mb-2">
+                                            <input type="search" class="form-control rounded" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search">
+                                            <button type="submit" class="btn btn-danger text-white">ค้นหา</button>
+                                            <button type="reset" class="btn btn-warning text-white">
+                                                <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             @elseif (auth()->user()->role == 'teacher')
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
                                 <li><a href="{{ route('teacher.classroom') }}" class="nav-link">ห้องเรียน</a></li>
                                 <li><a href="{{ route('teacher.dataSTD') }}" class="nav-link">ดูข้อมูลนักศึกษา</a></li>
+                                <div class="nav-item">
+                                    <form action="{{ url('admin/dashboard') }}" method="get" role="search" style="height: 20px;">
+                                        {{-- @csrf --}}
+                                        <div class="input-group col-2 mb-2">
+                                            <input type="search" class="form-control rounded" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search">
+                                            <button type="submit" class="btn btn-danger text-white">ค้นหา</button>
+                                        </div>
+                                    </form>
+                                </div>
                             @else
                                 <li><a href="{{ route('user.dashboard') }}" class="nav-link">หน้าแรก</a></li>
                                 <li><a href="{{ url('user/profile/'. auth()->user()->id.'/edit') }}" class="nav-link">ข้อมูลส่วนตัว</a></li>
