@@ -4,9 +4,6 @@
 
 @section('content')
 <style>
-    .user-card {
-        position: relative;
-    }
     tr.fixedHeader {
         position: -webkit-sticky;
         position: sticky;
@@ -18,14 +15,23 @@
     }
     .card-body {
         padding: 0; margin: 0;
+        overflow-y: scroll; 
+        height: 230px;
+    }
+    .card-body::-webkit-scrollbar {
+        /* width: 0; */
+        display: none;
     }
 </style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
             @if(Auth::user()->role == 'admin')
+
                 @if(session('message'))
-                    <h4 class="alert alert-success">{{ session('message') }}</h4>
+                    <h4 class="alert alert-success text-center">{{ session('message') }}</h4>
+                @elseif(session('delete'))
+                    <h4 class="alert alert-danger text-center">{{ session('delete') }}</h4>
                 @endif
                 {{-- <form action="{{ url('admin/dashboard') }}" method="get" role="search">
                     @csrf
@@ -41,8 +47,7 @@
                             <a href="{{ url('admin/add_data_teacher_student') }}" class="btn btn-primary float-end">เพิ่มอาจารย์/นักศึกษา</a>
                         </h4>
                     </div>
-                    <div class="card-body user-card" style="overflow-y:scroll; height: 300px;">
-                        {{-- @if(isset($users)) --}}
+                    <div class="card-body">
                         <table class="table table-striped">
                             <thead>
                                 <tr class="text-center fixedHeader">
@@ -76,13 +81,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $users->render() }}
-                        @elseif (isset($error))
-                        <div class="card-body">
-                            <p class="h5">{{ $error }}</p>
-                        </div>
-                        @endif --}}
-                        {{-- {{ $users->onEachSide(1)->links() }} --}}
+                        @if(count($users) == 0)
+                            <p class="text-center mt-2">{{ __('ไม่มีผลลัพธ์ที่ค้นหา')}}</p>
+                        @endif
                     </div>
                 </div>
 
@@ -93,8 +94,7 @@
                             <a href="{{ url('admin/add_data_exercises') }}" class="btn btn-primary float-end">เพิ่มแบบฝึกหัด</a>
                         </h4>
                     </div>
-                    <div class="card-body" style="overflow-y:scroll; height: 300px;">
-                        {{-- @if(isset($exercises)) --}}
+                    <div class="card-body">
                         <table class="table table-striped text-center">
                             <thead>
                                 <tr class="text-center fixedHeader">
@@ -125,12 +125,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $exercises->render() }}
-                        @elseif (isset($error))
-                        <div class="card-body">
-                            <p class="h5">{{ $error }}</p>
-                        </div>
-                        @endif --}}
+                        @if(count($exercises) == 0)
+                            <p class="text-center mt-2">{{ __('ไม่มีผลลัพธ์ที่ค้นหา')}}</p>
+                        @endif
                     </div>
                 </div>
                 {{-- Section Table --}}
@@ -138,8 +135,7 @@
                     <div class="card-header text-white bg-dark">
                         <h4>ห้องเรียนทั้งหมด</h4>
                     </div>
-                    <div class="card-body" style="overflow-y:scroll; height: 200px;">
-                        {{-- @if(isset($sections)) --}}
+                    <div class="card-body">
                         <table class="table table-striped">
                             <thead>
                                 <tr class="text-center fixedHeader">
@@ -152,27 +148,29 @@
                                 </tr>
                             </thead>
                             <tbody style="border: var(--bs-dark);">
+                                @php($i=1)
                                 @foreach ($sections as $section)
                                 <tr class="text-center">
-                                    <td>{{ $section->id }}</td>
+                                    <td>{{ $i++ }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->code_inclass }}</td>
                                     <td>{{ $section->deadline_date }}</td>
                                     <td>{{ $section->deadline_time }}</td>
                                     <td class="text-center">
-                                        <a href="#" class="btn btn-warning btn-sm">แก้ไข</a>
-                                        <a href="#" class="btn btn-danger btn-sm">ลบ</a>
+                                        <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                        <form action="{{ url('admin/data_section/'. $section->id) }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger btn-sm">ลบ</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $sections->render() }}
-                        @elseif (isset($error))
-                        <div class="card-body">
-                            <p class="h5">{{ $error }}</p>
-                        </div>
-                        @endif --}}
+                        @if(count($sections) == 0)
+                            <p class="text-center mt-2">{{ __('ไม่มีผลลัพธ์ที่ค้นหา')}}</p>
+                        @endif
                     </div>
                 </div>
             @endif

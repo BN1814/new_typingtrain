@@ -33,16 +33,16 @@
         display: flex;
     }
 </style>
-<div class="container">
-    <div class="row h-25 justify-content-end">
+<div class="container mt-4">
+    {{-- <div class="row h-25 justify-content-end">
         <div class="col-md-2">
             <button class="btn btn-primary">
-                <a href="{{ route('user.entclass') }}" class="text-white">เข้าห้องเรียน</a>
+                <a href="{{ url('user/enterclass') }}" class="text-white">เข้าห้องเรียน</a>
             </button>
         </div>
-    </div>
+    </div> --}}
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header text-white bg-dark ">EXERCISE ENGLISH</div>
                 <div class="card-body">

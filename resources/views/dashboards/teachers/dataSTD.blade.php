@@ -1,16 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-4">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-center text-white bg-dark h4">ข้อมูลนักศึกษา</div>
                     <div class="card-body">
-                        <div class="input-group mb-2">
-                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                            <button type="button" class="btn btn-outline-primary">search</button>
-                        </div>
+                        @include('include.incSearch')
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-center">
@@ -24,9 +21,10 @@
                                 </tr>
                             </thead>
                             <tbody class="text-center">
+                                @php($i=1)
                                 <tr>
                                 @foreach ($users as $user)
-                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $i++ }}</td>
                                     <td>{{ $user->section_name }}</td>
                                     <td>{{ $user->userid }}</td>
                                     <td>{{ $user->name }}</td>
@@ -34,7 +32,7 @@
                                     <td>{{ $user->email }}</td>
                                     <td class="text-center">
                                         {{-- View --}}
-                                        <a href="{{ route('user.profile', $user->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
+                                        <a href="{{ url('/profile'. $user->id .'/edit') }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
                                         {{-- Update --}}
                                         <a href="{{ route('teacher.edit', $user->id) }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                         {{-- Delete --}}

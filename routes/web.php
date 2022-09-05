@@ -37,9 +37,9 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
     Route::controller(AdminController::class)->group(function() {
         // Data Admin
         Route::get('/dashboard', 'index');
-        // Route::any('/search', 'search');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
+        Route::get('/changePassword/{user}', 'changePassword');
         Route::get('settings', 'settings')->name('admin.settings');
         // Add Teacher and Student
         Route::get('/add_data_teacher_student', 'createTeachStd');
@@ -53,6 +53,10 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         Route::get('/add_data_exercises/{exercise}/edit', 'editExercise');
         Route::put('/add_data_exercises/{exercise}', 'updateExercise');
         Route::delete('/add_data_exercises/{exercise}', 'destroyExercise');
+        // Add Section
+        Route::get('/data_section/{section}/edit', 'editSection');
+        Route::put('/data_section/{section}', 'updateSection');
+        Route::delete('/data_section/{section}', 'destroySection');
     });
 });
 // Teacher
@@ -61,21 +65,28 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::get('dashboard', 'index')->name('teacher.dashboard');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
+        Route::get('/changePassword', 'changePassword'); 
         Route::get('settings', 'settings')->name('teacher.settings');
         Route::get('dataSTD', 'dataStudent')->name('teacher.dataSTD');
         Route::get('classroom', 'Classroom')->name('teacher.classroom');
         Route::get('editData', 'editData')->name('teacher.edit');
-        Route::post('createCode', 'createCode')->name('setSection');
+
+        // Section 
+        Route::get('/classroom/{section}/edit', 'editSection');
+        Route::post('/createCode', 'createCode');
+        Route::put('/classroom/{section}', 'updateSection');
+        Route::delete('/classroom/{section}', 'destroySection');
     });
 });
 // Student
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory']], function() {
     Route::controller(UserController::class)->group(function() {
-        Route::get('dashboard', 'index')->name('user.dashboard');
+        Route::get('/dashboard', 'index');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
+        Route::get('/changePassword', 'changePassword');
         Route::get('settings', 'settings')->name('user.settings');
-        Route::get('enterclass', 'enterclass')->name('user.entclass');
+        Route::get('/enterclass', 'enterclass');
     });
     Route::controller(ExerciseController::class)->group(function(){
         // Exercise of Student form ExerciseController

@@ -101,6 +101,10 @@ class AdminController extends Controller
         ]);
         return redirect('admin/profile/'.$user->id.'/edit')->with('message', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
+    function changePassword(User $user) {
+        return view('dashboards.admins.change_password_admin', compact('user'));
+        // return redirect('admin/changePassword/'. $user->id)->with('message', 'เปลี่ยนรหัสผ่านสำเร็จ');
+    }
     function settings() {
         return view('dashboards.admins.settings');
     }
@@ -190,5 +194,25 @@ class AdminController extends Controller
     function destroyExercise(Exercise $exercise) {
         $exercise->delete();
             return redirect('admin/dashboard')->with('message', 'ลบแบบฝึกหัดสำเร็จแล้ว');
+    }
+
+    // CRUD Section
+    function editSection(Section $section) {
+        return view('dashboards.admins.teacher.edit_section', compact('section'));
+    }
+    function updateSection(Section $section, Request $req){
+        $section->update([
+            'section_sub' => $req['section_sub'],
+            'section_name' => $req['section_name'],
+            'code_inclass' => $req['code_inclass'],
+            'deadline_date' => $req['deadline_date'],
+            'deadline_time' => $req['deadline_time'],
+        ]);
+
+        return redirect('admin/dashboard')->with('message', 'แก้ไขห้องเรียนสำเร็จแล้ว');
+    }
+    function destroySection(Section $section) {
+        $section->delete();
+        return redirect('admin/dashboard')->with('delete', 'ลบห้องเรียนสำเร็จแล้ว'); 
     }
 }

@@ -32,9 +32,26 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ \URL('/') }}">
-                    <p style="margin: 0; padding: 0;">TypingTrain</p>
-                </a>
+                @guest
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <p style="margin: 0; padding: 0;">TypingTrain</p>
+                    </a>
+                @endguest
+                @auth
+                    @if(auth()->user()->role == 'admin')
+                        <a class="navbar-brand" href="{{ url('admin/dashboard') }}">
+                            <p style="margin: 0; padding: 0;">TypingTrain</p>
+                        </a>
+                    @elseif(auth()->user()->role == 'teacher')
+                        <a class="navbar-brand" href="{{ url('teacher/dashboard') }}">
+                            <p style="margin: 0; padding: 0;">TypingTrain</p>
+                        </a>
+                    @else
+                        <a class="navbar-brand" href="{{ url('user/dashboard') }}">
+                            <p style="margin: 0; padding: 0;">TypingTrain</p>
+                        </a>
+                    @endif
+                @endguest
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -69,7 +86,7 @@
                                     <form method="get" role="search" style="height: 20px;">
                                         <div class="input-group col-2 mb-2">
                                             <input type="search" class="form-control rounded" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search">
-                                            <button type="submit" class="btn btn-danger text-white">ค้นหา</button>
+                                            <button type="submit" class="btn btn-danger text-white" value="{{ old('search') }}">ค้นหา</button>
                                             <button type="reset" class="btn btn-warning text-white">
                                                 <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
                                             </button>
@@ -80,20 +97,12 @@
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
                                 <li><a href="{{ route('teacher.classroom') }}" class="nav-link">ห้องเรียน</a></li>
                                 <li><a href="{{ route('teacher.dataSTD') }}" class="nav-link">ดูข้อมูลนักศึกษา</a></li>
-                                <div class="nav-item">
-                                    <form action="{{ url('admin/dashboard') }}" method="get" role="search" style="height: 20px;">
-                                        {{-- @csrf --}}
-                                        <div class="input-group col-2 mb-2">
-                                            <input type="search" class="form-control rounded" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search">
-                                            <button type="submit" class="btn btn-danger text-white">ค้นหา</button>
-                                        </div>
-                                    </form>
-                                </div>
                             @else
-                                <li><a href="{{ route('user.dashboard') }}" class="nav-link">หน้าแรก</a></li>
-                                <li><a href="{{ url('user/profile/'. auth()->user()->id.'/edit') }}" class="nav-link">ข้อมูลส่วนตัว</a></li>
+                                <li><a href="{{ url('user/dashboard') }}" class="nav-link">หน้าแรก</a></li>
+                                <li><a href="{{ url('user/enterclass') }}" class="nav-link">เข้าห้องเรียน</a></li>
                             @endif
                             <li class="nav-item dropdown">
+                                {{-- <box-icon type="solid" name="user" style="background: gray"></box-icon> --}}
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -101,8 +110,13 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 @if(auth()->user()->role == 'admin')
                                     <a href="{{ url('admin/profile/'.auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
+                                    <a href="{{ url('admin/changePassword/'.auth()->user()->id) }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
                                 @elseif (auth()->user()->role == 'teacher')
                                     <a href="{{ url('teacher/profile/'.auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
+                                    <a href="{{ url('teacher/changePassword') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
+                                @else
+                                    <a href="{{ url('user/profile/'. auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
+                                    <a href="{{ url('user/changePassword') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -125,5 +139,7 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
 </body>
 </html>

@@ -24,6 +24,9 @@ class UserController extends Controller
         ]);
         return redirect('user/profile/'.$user->id.'/edit')->with('message', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
+    function changePassword() {
+        return view('dashboards.users.change_password_user');
+    }
     function settings() {
         return view('dashboards.users.settings');
     }

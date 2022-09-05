@@ -29,11 +29,14 @@ class TeacherController extends Controller
         ]);
         return redirect('teacher/profile/'.$user->id.'/edit')->with('message', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
+    function changePassword() {
+        return view('dashboards.teachers.change_password_teacher');
+    }
     function settings() {
         return view('dashboards.teachers.settings');
     }
     public function dataStudent() {
-        $users = User::all()->sortBy('asc');
+        $users = User::where('role', ['student'])->get();
         return view('dashboards.teachers.dataSTD', compact('users'));
     }
     public function Classroom() {
@@ -46,6 +49,7 @@ class TeacherController extends Controller
         return view('dashboards\teachers.editData');
     }
 
+    // Section CRUD
     public function createCode(Request $request) {
         $request->validate([
             'section_sub' => 'required | max:10',
@@ -72,10 +76,24 @@ class TeacherController extends Controller
         $save = $section->save();
 
         if($save) {
-            return redirect()->back()->with('success', 'สร้างห้องเรียนสำเร็จ');
+            return redirect()->back()->with('message', 'สร้างห้องเรียนสำเร็จ');
         }   
     }
-    function update(Request $request, $id) {
-
+    function editSection(Section $section) {
+        return view('dashboards.teachers.edit_section', compact('section'));
+    }
+    function updateSection(Section $section, Request $req) {
+        $section->update([
+            'section_sub' => $req['section_sub'],
+            'section_name' => $req['section_name'],
+            'code_inclass' => $req['code_inclass'],
+            'deadline_date' => $req['deadline_date'],
+            'deadline_time' => $req['deadline_time'],
+        ]);
+        return redirect()->route('teacher.classroom')->with('message', 'แก้ไขข้อมูลห้องเรียนสำเร็จแล้ว');
+    }
+    function destroySection(Section $section) {
+        $section->delete();
+        return redirect()->route('teacher.classroom')->with('delete', 'ลบข้อมูลห้องเรียนสำเร็จแล้ว');
     }
 }

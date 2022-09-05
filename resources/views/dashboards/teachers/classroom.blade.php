@@ -3,25 +3,26 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/Teacher/classRoom.css') }}">
-    <div class="container">
+    <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 
-                <select id="select" class="mb-2">
+                {{-- <select id="select" class="mb-2">
                     <option>เลือก</option>
                     @foreach ($sections as $section)
                         <option>{{ $section->section_name }}</option>
                     @endforeach
-                </select>
+                </select> --}}
+                @if(session('message'))
+                    <h4 class="alert alert-success text-center">{{ session('message') }}</h4>
+                @elseif(session('delete'))
+                    <h4 class="alert alert-danger text-center">{{ session('delete') }}</h4>
+                @endif
 
                 <div class="card">
-                    <div class="card-header bg-dark text-white h4 text-center">Section</div>
+                    <div class="card-header bg-dark text-white h4 text-center">ห้องเรียนทั้งหมด</div>
                     <div class="card-body">
-                        <div class="input-group col-2 mb-2">
-                            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                            <button type="button" class="btn btn-primary text-white">search</button>
-                        </div>
-
+                        @include('include.incSearch')
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-center">
@@ -29,22 +30,27 @@
                                     <th>รหัสวิชา</th>
                                     <th>ชื่อวิชา</th>
                                     <th>วันที่กำหนดส่ง</th>
-                                    <th>เวลากำหนดส่ง</th>
+                                    <th>เวลาที่กำหนดส่ง</th>
                                     <th>ตัวเลือก</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
+                                @php($i=1)
                                 @foreach ($sections as $section)
                                 <tr>
-                                    <td>{{ $section->id }}</td>
+                                    <td>{{ $i++ }}</td>
                                     <td>{{ $section->section_sub }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->deadline_date }}</td>
                                     <td>{{ $section->deadline_time }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('teacher.dataSTD') }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
-                                        <a href="#" class="btn btn-warning btn-sm">แก้ไข</a>
-                                        <a href="#" class="btn btn-danger btn-sm">ลบ</a>
+                                        <a href="{{ url('teacher/classroom/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                        <form action="{{ url('teacher/classroom/'. $section->id) }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm">ลบ</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
