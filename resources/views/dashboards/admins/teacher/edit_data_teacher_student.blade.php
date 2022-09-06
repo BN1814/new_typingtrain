@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .form-control {
+        text-align: center;
+    }
+</style>
     <div class="container mt-3">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -68,7 +73,7 @@
                                 </div>
                             </div>
     
-                            <div class="row mb-3">
+                            {{-- <div class="row mb-3">
                                 <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน') }}</label>
     
                                 <div class="col-md-6">
@@ -80,7 +85,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="row mb-3">
                                 <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ') }}</label>
@@ -96,8 +101,8 @@
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-success">
-                                        {{ __('แก้ไข') }}
+                                    <button type="submit" class="btn btn-warning form-control">
+                                        {{ __('อัพเดตข้อมูล') }}
                                     </button>
                                 </div>
                             </div>

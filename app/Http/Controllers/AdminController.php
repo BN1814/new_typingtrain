@@ -108,7 +108,10 @@ class AdminController extends Controller
     function settings() {
         return view('dashboards.admins.settings');
     }
-    // CRUD Teacher
+    // CRUD TEACHER AND STUDENT
+        function view_dataTeachSTD(User $user) {
+            return view('dashboards.admins.view_data_teacher_student', compact('user'));
+        }
         function createTeachStd() {
             return view('dashboards.admins.teacher.add_data_teacher_student');
         }
@@ -147,7 +150,6 @@ class AdminController extends Controller
                 'lname' => $request['lname'],
                 'email' => $request['email'],
                 'role' => $request['status'],
-                'password' => $request['password'],
             ]);
             return redirect('admin/dashboard')->with('message', 'แก้ไขข้อมูลอาจารย์หรือนักศึกษาสำเร็จแล้ว');
         }
@@ -156,7 +158,7 @@ class AdminController extends Controller
             return redirect('admin/dashboard')->with('message', 'ลบข้อมูลสำเร็จแล้ว');
         }
 
-    // CRUD Exercise
+    // CRUD EXERCISE
     function homeExercise() {
         return view('dashboards.admins.student.home_exercise');
     }

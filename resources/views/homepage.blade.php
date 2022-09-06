@@ -47,9 +47,9 @@
                                 @if(Auth::user()->role == 'admin')
                                     <a href="{{ url('admin/dashboard') }}" class="btn btn-dark text-white">หน้าแรก</a>
                                 @elseif(Auth::user()->role == 'teacher')
-                                    <a href="{{ route('teacher.dashboard') }}" class="btn btn-dark text-white">หน้าแรก</a>
+                                    <a href="{{ url('teacher/dashboard') }}" class="btn btn-dark text-white">หน้าแรก</a>
                                 @else
-                                    <a href="{{ route('user.dashboard') }}" class="btn btn-dark text-whitek">หน้าแรก</a>
+                                    <a href="{{ url('user/dashboard') }}" class="btn btn-dark text-whitek">หน้าแรก</a>
                                 @endif
                             @else
                                 <button class="btn btn-dark">

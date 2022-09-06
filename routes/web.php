@@ -32,45 +32,51 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Admin ['prefix' => 'admin',
+// ADMIN
 Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBackHistory']], function() {
     Route::controller(AdminController::class)->group(function() {
-        // Data Admin
+        // ADMIN PANEL
         Route::get('/dashboard', 'index');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
         Route::get('/changePassword/{user}', 'changePassword');
-        Route::get('settings', 'settings')->name('admin.settings');
-        // Add Teacher and Student
+        Route::get('/settings', 'settings');
+        // ADD DATA TEACHER/STUDENT AND CRUD
+        Route::get('/view_data_teacher_student/{user}', 'view_dataTeachSTD');
         Route::get('/add_data_teacher_student', 'createTeachStd');
         Route::post('/dashboard', 'storeTeachStd');
         Route::get('/add_data_teacher_student/{user}/edit', 'editTeachStd');
         Route::put('/add_data_teacher_student/{user}', 'updateTeachStd');
         Route::delete('/dashboard/{user}', 'destroyTeachStd');
-        // Add Exercise
+        // ADD EXERCISE AND CRUD
         Route::get('/add_data_exercises', 'homeExercise');
         Route::post('/add_data_exercises', 'storeExercise');
         Route::get('/add_data_exercises/{exercise}/edit', 'editExercise');
         Route::put('/add_data_exercises/{exercise}', 'updateExercise');
         Route::delete('/add_data_exercises/{exercise}', 'destroyExercise');
-        // Add Section
+        // ADD SECTION AND CRUD
         Route::get('/data_section/{section}/edit', 'editSection');
         Route::put('/data_section/{section}', 'updateSection');
         Route::delete('/data_section/{section}', 'destroySection');
     });
 });
-// Teacher
+// TEACHER
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'PreventBackHistory']], function() {
     Route::controller(TeacherController::class)->group(function() {
+        // TEACHER PANEL
         Route::get('dashboard', 'index')->name('teacher.dashboard');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
         Route::get('/changePassword', 'changePassword'); 
-        Route::get('settings', 'settings')->name('teacher.settings');
-        Route::get('dataSTD', 'dataStudent')->name('teacher.dataSTD');
-        Route::get('classroom', 'Classroom')->name('teacher.classroom');
-        Route::get('editData', 'editData')->name('teacher.edit');
-
+        Route::get('/settings', 'settings');
+        // CRUD DATA STUDENT
+        Route::get('/view_data_student/{user}', 'viewDataStudent');
+        Route::get('/dataSTD', 'dataStudent');
+        Route::get('/dataSTD/{user}/edit', 'editDataStudent');
+        Route::put('/dataSTD/{user}', 'updateDataStudent');
+        Route::delete('/dataSTD/{user}', 'destroyDataStudent');
+        // CLASSROOM
+        Route::get('/classroom', 'Classroom');
         // Section 
         Route::get('/classroom/{section}/edit', 'editSection');
         Route::post('/createCode', 'createCode');
@@ -78,14 +84,17 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::delete('/classroom/{section}', 'destroySection');
     });
 });
-// Student
+// STUENT
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory']], function() {
     Route::controller(UserController::class)->group(function() {
+        // STUDENT PANEL
         Route::get('/dashboard', 'index');
+        Route::get('/settings', 'settings');
+        Route::get('/changePassword', 'changePassword');
+        // STUDENT CRUD
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
-        Route::get('/changePassword', 'changePassword');
-        Route::get('settings', 'settings')->name('user.settings');
+        // STUDENT INPUT CLASS WITH CODE
         Route::get('/enterclass', 'enterclass');
     });
     Route::controller(ExerciseController::class)->group(function(){

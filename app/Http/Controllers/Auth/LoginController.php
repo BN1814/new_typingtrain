@@ -66,10 +66,10 @@ class LoginController extends Controller
                 return redirect('admin/dashboard');
             }
             else if(auth()->user()->role == 'teacher') {
-                return redirect()->route('teacher.dashboard');
+                return redirect('teacher/dashboard');
             }
             else if(auth()->user()->role == 'student') {
-                return redirect()->route('user.dashboard');
+                return redirect('user/dashboard');
             }
         }
         // else if(auth()->attempt(array('userid' => $input['userid'], 'password' => $input['password']))) {

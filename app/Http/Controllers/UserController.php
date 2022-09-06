@@ -33,4 +33,11 @@ class UserController extends Controller
     function enterclass() {
         return view('dashboards.users.enterclass');
     }
+    // function joinClass(Request $req) {
+    //     $user = User::where('role', 'student')->first();
+    //     $getClass = Section::where('code_inclass', '=', $req['code_inclass']);
+    //     if($user == $getClass) {
+    //         return view('dashboards.users.join_class');
+    //     }
+    // }
 }

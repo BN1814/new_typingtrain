@@ -50,9 +50,7 @@ class User extends Authenticatable
     ];
 
     public function historys() {
-        if($this->isUserMiddleware) {
-            return $this->hasMany(HistoryScore::class);
-        }
+        return $this->hasMany(HistoryScore::class);
     }
 
     public function sections() {

@@ -22,6 +22,7 @@
         /* width: 0; */
         display: none;
     }
+    
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -48,40 +49,41 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr class="text-center fixedHeader">
-                                    <th>ลำดับที่</th>
-                                    <th>รหัสผู้ใช้งาน</th>
-                                    <th>อีเมล</th>
-                                    <th>ชื่อผู้ใช้</th>
-                                    <th>สถานะ</th>
-                                    <th>ตัวเลือก</th>
-                                </tr>
-                            </thead>
-                            <tbody style="border: var(--bs-dark);">
-                                @php($i=1)
-                                @foreach ($users as $user)
-                                    <tr class="text-center">
-                                        <td>{{ $i++}}</td>
-                                        <td>{{ $user->userid }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->role }}</td>
-                                        <td class="text-center">
-                                            <a href="#" class="btn btn-primary btn-sm">ดูข้อมูล</a>
-                                            <a href="{{ url('admin/add_data_exercises/'.$user->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                            <form action="{{ url('admin/dashboard/'.$user->id) }}" method="post" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger btn-sm">ลบ</button>
-                                            </form>
-                                        </td>
+                        @if(count($users) > 0)
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr class="text-center fixedHeader">
+                                        <th>ลำดับที่</th>
+                                        <th>รหัสผู้ใช้งาน</th>
+                                        <th>อีเมล</th>
+                                        <th>ชื่อผู้ใช้</th>
+                                        <th>สถานะ</th>
+                                        <th>ตัวเลือก</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        @if(count($users) == 0)
+                                </thead>
+                                <tbody style="border: var(--bs-dark);">
+                                    @php($i=1)
+                                    @foreach ($users as $user)
+                                        <tr class="text-center">
+                                            <td>{{ $i++}}</td>
+                                            <td>{{ $user->userid }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->role }}</td>
+                                            <td class="text-center">
+                                                <a href="{{ url('admin/view_data_teacher_student/'. $user->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
+                                                <a href="{{ url('admin/add_data_teacher_student/'.$user->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                                <form action="{{ url('admin/dashboard/'.$user->id) }}" method="post" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger btn-sm">ลบ</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
                             <p class="text-center mt-2">{{ __('ไม่มีผลลัพธ์ที่ค้นหา')}}</p>
                         @endif
                     </div>
@@ -95,37 +97,38 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped text-center">
-                            <thead>
-                                <tr class="text-center fixedHeader">
-                                    <th>ลำดับที่</th>
-                                    <th>ระดับ</th>
-                                    <th>ชื่อแบบฝึกหัด</th>
-                                    <th>ข้อมูลแบบฝึกหัด</th>
-                                    <th>ตัวเลือก</th>
-                                </tr>
-                            </thead>
-                            <tbody style="border: var(--bs-secondary); color: #000;">
-                                @php($i=1)
-                                @foreach ($exercises as $exercise)
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $exercise->level }}</td>
-                                        <td>{{ $exercise->level_name }}</td>
-                                        <td>{{ $exercise->data_level }}</td>
-                                        <td>
-                                            <a href="{{ url('admin/add_data_exercises/'.$exercise->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                            <form action="{{ url('admin/add_data_exercises/'.$exercise->id) }}" method="post" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger btn-sm">ลบ</button>
-                                            </form>
-                                        </td>
+                        @if(count($exercises) > 0)
+                            <table class="table table-striped text-center">
+                                <thead>
+                                    <tr class="text-center fixedHeader">
+                                        <th>ลำดับที่</th>
+                                        <th>ระดับ</th>
+                                        <th>ชื่อแบบฝึกหัด</th>
+                                        <th>ข้อมูลแบบฝึกหัด</th>
+                                        <th>ตัวเลือก</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        @if(count($exercises) == 0)
+                                </thead>
+                                <tbody style="border: var(--bs-secondary); color: #000;">
+                                    @php($i=1)
+                                    @foreach ($exercises as $exercise)
+                                        <tr>
+                                            <td>{{ $i++ }}</td>
+                                            <td>{{ $exercise->level }}</td>
+                                            <td>{{ $exercise->level_name }}</td>
+                                            <td>{{ $exercise->data_level }}</td>
+                                            <td>
+                                                <a href="{{ url('admin/add_data_exercises/'.$exercise->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                                <form action="{{ url('admin/add_data_exercises/'.$exercise->id) }}" method="post" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger btn-sm">ลบ</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
                             <p class="text-center mt-2">{{ __('ไม่มีผลลัพธ์ที่ค้นหา')}}</p>
                         @endif
                     </div>
@@ -136,39 +139,40 @@
                         <h4>ห้องเรียนทั้งหมด</h4>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr class="text-center fixedHeader">
-                                    <th>ลำดับ</th>
-                                    <th>ชื่อห้องเรียน</th>
-                                    <th>รหัสเข้าห้อง</th>
-                                    <th>วันที่ส่ง</th>
-                                    <th>เวลาที่ส่ง</th>
-                                    <th>ตัวเลือก</th>
-                                </tr>
-                            </thead>
-                            <tbody style="border: var(--bs-dark);">
-                                @php($i=1)
-                                @foreach ($sections as $section)
-                                <tr class="text-center">
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $section->section_name }}</td>
-                                    <td>{{ $section->code_inclass }}</td>
-                                    <td>{{ $section->deadline_date }}</td>
-                                    <td>{{ $section->deadline_time }}</td>
-                                    <td class="text-center">
-                                        <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                        <form action="{{ url('admin/data_section/'. $section->id) }}" method="post" class="d-inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-danger btn-sm">ลบ</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        @if(count($sections) == 0)
+                        @if(count($sections) > 0)
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr class="text-center fixedHeader">
+                                        <th>ลำดับ</th>
+                                        <th>ชื่อห้องเรียน</th>
+                                        <th>รหัสเข้าห้อง</th>
+                                        <th>วันที่ส่ง</th>
+                                        <th>เวลาที่ส่ง</th>
+                                        <th>ตัวเลือก</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="border: var(--bs-dark);">
+                                    @php($i=1)
+                                    @foreach ($sections as $section)
+                                    <tr class="text-center">
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $section->section_name }}</td>
+                                        <td>{{ $section->code_inclass }}</td>
+                                        <td>{{ $section->deadline_date }}</td>
+                                        <td>{{ $section->deadline_time }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                            <form action="{{ url('admin/data_section/'. $section->id) }}" method="post" class="d-inline">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger btn-sm">ลบ</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
                             <p class="text-center mt-2">{{ __('ไม่มีผลลัพธ์ที่ค้นหา')}}</p>
                         @endif
                     </div>

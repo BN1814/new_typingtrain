@@ -26,8 +26,6 @@ class HistoryScore extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
-        // if($this->isUserMiddleware) {
-        // }
     }
     public function exercise() {
         return $this->belongsTo(Exercise::class);

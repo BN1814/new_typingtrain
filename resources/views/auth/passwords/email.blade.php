@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-white bg-dark h3">{{ __('รีเซ็ตรหัสผ่าน') }}</div>
+                <div class="card-header text-white text-center bg-dark h4">{{ __('รีเซ็ตรหัสผ่าน') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -34,7 +34,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-dark">
-                                    {{ __('Send Password Reset Link') }}
+                                    {{ __('ส่งรหัสผ่าน') }}
                                 </button>
                             </div>
                         </div>

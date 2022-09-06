@@ -26,6 +26,7 @@
             color: #fff;
             text-decoration: none;
         }
+        a:hover { color: #fff;}
     </style>
 </head>
 <body>
@@ -85,7 +86,7 @@
                                 <div class="nav-item">
                                     <form method="get" role="search" style="height: 20px;">
                                         <div class="input-group col-2 mb-2">
-                                            <input type="search" class="form-control rounded" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search">
+                                            <input type="search" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search">
                                             <button type="submit" class="btn btn-danger text-white" value="{{ old('search') }}">ค้นหา</button>
                                             <button type="reset" class="btn btn-warning text-white">
                                                 <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
@@ -95,8 +96,8 @@
                                 </div>
                             @elseif (auth()->user()->role == 'teacher')
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
-                                <li><a href="{{ route('teacher.classroom') }}" class="nav-link">ห้องเรียน</a></li>
-                                <li><a href="{{ route('teacher.dataSTD') }}" class="nav-link">ดูข้อมูลนักศึกษา</a></li>
+                                <li><a href="{{ url('teacher/classroom') }}" class="nav-link">ห้องเรียน</a></li>
+                                <li><a href="{{ url('teacher/dataSTD') }}" class="nav-link">ดูข้อมูลนักศึกษา</a></li>
                             @else
                                 <li><a href="{{ url('user/dashboard') }}" class="nav-link">หน้าแรก</a></li>
                                 <li><a href="{{ url('user/enterclass') }}" class="nav-link">เข้าห้องเรียน</a></li>
