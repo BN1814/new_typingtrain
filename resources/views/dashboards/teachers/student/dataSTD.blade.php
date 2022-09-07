@@ -16,6 +16,7 @@
                 @endif
                 <div class="card">
                     <div class="card-header text-center text-white bg-dark h4">ข้อมูลนักศึกษา</div>
+                    <p class="text-center mt-2 h4" style="margin:0; padding:0; font-weight:bold;">{{ __('COMPRO 1') }}</p>
                     <div class="card-body">
                         <form method="get" role="search">
                             <div class="input-group col-2 mb-2">
@@ -26,11 +27,11 @@
                                 </button>
                             </div>
                         </form>
+                        @if(count($users) > 0)
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-center">
                                     <th>ลำดับ</th>
-                                    <th>ชื่อวิชา</th>
                                     <th>รหัสนักศึกษา</th>
                                     <th>ชื่อ</th>
                                     <th>นามสกุล</th>
@@ -41,9 +42,8 @@
                             <tbody class="text-center">
                                 @php($i=1)
                                 <tr>
-                                @foreach ($user as $user)
+                                @foreach ($users as $user)
                                     <td>{{ $i++ }}</td>
-                                    <td>{{ $user->section_name }}</td>
                                     <td>{{ $user->userid }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->lname }}</td>
@@ -64,6 +64,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @else
+                        <p class="text-center mt-4">{{ __('ไม่มีผลลัพธ์ที่ค้นหา') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>

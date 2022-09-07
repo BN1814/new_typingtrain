@@ -35,6 +35,7 @@ class TeacherController extends Controller
     function settings() {
         return view('dashboards.teachers.settings');
     }
+    
     // CRUD DATA STUDENT
     function viewDataStudent(User $user) {
         return view('dashboards.teachers.student.view_dataSTD', compact('user'));
@@ -42,16 +43,18 @@ class TeacherController extends Controller
     public function dataStudent(Request $req) {
         $search = $req['search'] ?? "";
         if($search != "") {
-            $user = User::where('userid', 'LIKE', '%'. $search .'%')
+            $users = User::where('role', ['student'])
+                    ->orwhere('userid', 'LIKE', '%'. $search .'%')
                     ->orWhere('name', 'LIKE', '%'. $search .'%')
                     ->orWhere('lname', 'LIKE', '%'. $search .'%')
                     ->orWhere('email', 'LIKE', '%'. $search .'%')
                     ->get();
         }
         else{
-            $user = User::where('role', ['student'])->get();
+            $users = User::with('student_sections')->first()
+                        ->where('role', ['student'])->get();
         }
-        return view('dashboards.teachers.student.dataSTD', compact('user'));
+        return view('dashboards.teachers.student.dataSTD', compact('users', 'search'));
     }
     function editDataStudent(User $user) {
         return view('dashboards.teachers.student.edit_data_student', compact('user'));
@@ -107,11 +110,11 @@ class TeacherController extends Controller
 
         $user_id = auth::user()->id;
         $section = new Section();
-        $section_sub = $section->section_sub = $request->section_sub;
-        $section_name = $section->section_name = $request->section_name;
-        $code = $section->code_inclass = $request->code_inclass;
-        $date = $section->deadline_date = $request->deadline_date;
-        $time = $section->deadline_time = $request->deadline_time;
+        $section->section_sub = $request->section_sub;
+        $section->section_name = $request->section_name;
+        $section->code_inclass = $request->code_inclass;
+        $section->deadline_date = $request->deadline_date;
+        $section->deadline_time = $request->deadline_time;
         $section->user_id = $user_id;
         $save = $section->save();
 

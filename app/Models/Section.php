@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Middleware\isTeacherMiddleware;
 use App\Http\Middleware\isUserMiddleware;
+use App\Models\User;
 
 class Section extends Model
 {
@@ -24,11 +25,16 @@ class Section extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    public function users() {
-        // For Student
-        return $this->belongsToMany(User::class);
-        // For Teacher
-        // return $this->hasMany(User::class);
+    public function student_users() {
+        $student = User::where('role', ['student']);
+        if($student) {
+            return $this->belongsToMany(User::class, 'section_users');
+        }
     }
-
+    // public function teacher_users() {
+    //     $teacher = User::where('role', ['teacher']);
+    //     if($teacher) {
+    //         return $this->belongsTo(User::class);
+    //     }
+    // }
 }

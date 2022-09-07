@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Http\Middleware\isTeacherMiddleware;
-use App\Http\Middleware\isUserMiddleware;
+use App\Models\User;
 
 class User extends Authenticatable
 {
@@ -53,10 +52,16 @@ class User extends Authenticatable
         return $this->hasMany(HistoryScore::class);
     }
 
-    public function sections() {
-        // For Student
-        return $this->belongsToMany(User::class);
-        // For Teacher
-        // return $this->belongsTo(User::class);
+    public function student_sections() {
+        $student = User::where('role', ['student']);
+        if($student){
+            return $this->belongsToMany(Section::class, 'section_users');
+        }
+    }
+    public function teacher_sections() {
+        $teacher = User::where('role', ['teacher']);
+        if($teacher){
+            return $this->hasMany(Section::class);
+        }
     }
 }
