@@ -6,30 +6,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\HistoryScore;
+use App\Models\Exercise;
+
 // use App\Models\Deadline;
-// use App\Models\User;
+use App\Models\User;
 
 class ExerciseController extends Controller
 {
     // Exercise English
-    public function HomeExEN01() {
-        return view('Exercise/ExEnglish.hExEn01');
-    }
-    public function HomeExEN02() {
-        return view('Exercise/ExEnglish.hExEn02');
-    }
-    public function HomeExEN03() {
-        return view('Exercise/ExEnglish.hExEn03');
-    }
-    public function HomeExEN04() {
-        return view('Exercise/ExEnglish.hExEn04');
-    }
-    public function HomeExEN05() {
-        return view('Exercise/ExEnglish.hExEn05');
+    public function HomeExercises() {
+        $exercises = Exercise::first()->paginate(12);
+        return view('Exercise/ExEnglish.HomeExercises', compact('exercises'))
+        ->with((request()->input('page',1) - 1) * 12);
     }
     // Exercise English homerow
-    public function EX_FJ() {
-        return view('Exercise/ExEnglish/HomerowEn.ex_FJ');
+    public function Exercise($id) {
+        $exercises = Exercise::find($id);
+        return view('Exercise/ExEnglish.ExercisePage',compact('exercises'));
     }
     public function SaveExercise(Request $request) {
         $user_id = auth::user()->id;

@@ -13,18 +13,16 @@
                 <button type="button" class="active bt" id="8">8</button>
                 <button type="button" class="active bt" id="9">9</button>
                 <button type="button" class="active bt" id="0">0</button>
-                <button type="button" class="active bt" id="-">-</button>
-                <button type="button" class="active bt" id="=">=</button>
                 <button type="button" class="active bt" id="backspace">Backspace</button>
             </div>
         </div>
         <div class="row mt-2">
             <div class="col-sm">
                 <button type="button" class="active bt" id="tab">tabs</button>
-                <button type="button" class="active bt" id="q" name="Q">Q</button>
-                <button type="button" class="active bt" id="w" name="W">W</button>
-                <button type="button" class="active bt" id="e" name="E">E</button>
-                <button type="button" class="active bt" id="r" name="R">R</button>
+                <button type="button" class="active bt" id="q">Q</button>
+                <button type="button" class="active bt" id="w">W</button>
+                <button type="button" class="active bt" id="e">E</button>
+                <button type="button" class="active bt" id="r">R</button>
                 <button type="button" class="active bt" id="t">T</button>
                 <button type="button" class="active bt" id="y">Y</button>
                 <button type="button" class="active bt" id="u">U</button>
@@ -63,9 +61,10 @@
                 <button type="button" class="active bt" id="b">B</button>
                 <button type="button" class="active bt" id="n">N</button>
                 <button type="button" class="active bt" id="m">M</button>
-                <button type="button" class="active bt" id=",">,</button>
-                <button type="button" class="active bt" id=".">.</button>
+                <button type="button" class="active bt" id="<"><</button>
+                <button type="button" class="active bt" id=">">></button>
                 <button type="button" class="active bt" id="/">/</button>
+                <button type="button" class="active bt" id="?">?</button>
                 <button type="button" class="active bt" id="shift">Shift</button>
             </div>
         </div>

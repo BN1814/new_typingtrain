@@ -99,12 +99,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     });
     Route::controller(ExerciseController::class)->group(function(){
         // Exercise of Student form ExerciseController
-        // Exercise homeEnglish
-        Route::get('hExEn01', 'HomeExEN01')->name('hExEN01');
-        Route::get('hExEn02', 'HomeExEN02')->name('hExEN02');
-        Route::get('hExEn03', 'HomeExEN03')->name('hExEN03');
-        Route::get('hExEn04', 'HomeExEN04')->name('hExEN04');
-        Route::get('hExEn05', 'HomeExEN05')->name('hExEN05');
+        Route::get('HomeExercises', 'HomeExercises')->name('HomeExercises');
+        Route::get('/HomeExercises/{exercise}/ExercisePage', 'Exercise');
+
 
         //Exercise English homerow 
         Route::post('saveExercise', 'saveExercise')->name('saveEx');

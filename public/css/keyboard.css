@@ -18,26 +18,26 @@
     width: 315px;
 }
 #backspace {
-    width: 145px;
+    width: 100px;
 }
 #capLock {
-    width: 60px;
+    width: 105px;
     font-size: 10px;
 }
 #enter {
     width: 80px;
 }
 #shift {
-    width: 70px;
+    width: 113px;
 }
 #alt {
     width: 70px;
 }
 #ctrl {
-    width: 80px;
+    width: 103px;
 }
 #tab {
-    width: 55px;
+    width: 100px;
 }
 @media (max-width: 768px) {
     .bt {
@@ -47,7 +47,7 @@
         border-radius: 6px;
     }
     #spacebar {
-        width: 278px;
+        width: 250px;
     }
     #ctrl {
         width: 40px;
@@ -59,10 +59,10 @@
         width: 64px;
     }
     #capLock {
-        width: 68px;
+        width: 80px;
     }
     #tab {
-        width: 70px;
+        width: 90px;
     }
     #enter {
         width: 58px;

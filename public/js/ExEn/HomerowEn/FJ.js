@@ -1,8 +1,4 @@
-const randomText = [
-    "ffff jjjj ffff jjjj fjfj fjfj fjfj fjfj jjjj ffff jjjj ffff jfjf jfjf jfjf jfjf ffjj ffjj ffjj ffjj jjff jjff jjff jjff",
-    "jfjf jfjf jfjf jfjf ffjj ffjj ffjj ffjj jjff jjff jjff jjff ffff jjjj ffff jjjj fjfj fjfj fjfj fjfj jjjj ffff jjjj ffff",
-    "ffjj ffjj ffjj ffjj jjff jjff jjff jjff ffff jjjj ffff jjjj ffff jjjj fffj fffj jjjf jjjf fffj fffj jjjf jjjf fjjj jfff",
-];
+
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
     mistakeTag = document.querySelector(".mistake span"),
@@ -10,7 +6,7 @@ const typingText = document.querySelector(".typing-text p"),
     wpmTag = document.querySelector(".wpm span "),
     cpmTag = document.querySelector(".cpm span ");
 // tryAgainBtn = document.querySelector(".butt");
-
+    
 let timer,
     maxTime = 60,
     timeLeft = maxTime,
@@ -52,6 +48,10 @@ function initTyping() {
         }
         characters.forEach((span) => span.classList.remove("active"));
         characters[charIndex].classList.add("active");
+
+
+
+
 
         let wpm = Math.round(
             ((charIndex - mistakes) / 5 / (maxTime - timeLeft)) * 60
@@ -170,11 +170,22 @@ document.addEventListener(
             element = document.getElementById(
                 String.fromCharCode(e2.charCode || e2.char)
             );
+            // if(e2.charCode>=65&&e2.charCode<97){
+            // element1 = document.getElementsByTagName(
+            //     String.fromCharCode(e2.charCode || e2.char)
+            // );
+            // }
+
+            
 
         if (element) {
             element.style.backgroundColor = "#05e924";
             keypress.push(record);
         }
+        // if (element1) {
+        //     element1.style.backgroundColor = "#05e924";
+        //     keypress.push(record);
+        // }
     },
     false
 );
@@ -191,7 +202,7 @@ document.addEventListener(
                 record.metaKey === e3.metaKey &&
                 record.altKey === e3.altKey &&
                 record.ctrlKey === e3.ctrlKey
-            ) {
+            ) {           
                 document.getElementById(
                     String.fromCharCode(record.char)
                 ).style.backgroundColor = "white";
