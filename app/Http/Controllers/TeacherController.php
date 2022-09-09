@@ -43,8 +43,7 @@ class TeacherController extends Controller
     public function dataStudent(Request $req) {
         $search = $req['search'] ?? "";
         if($search != "") {
-            $users = User::where('role', ['student'])
-                    ->orwhere('userid', 'LIKE', '%'. $search .'%')
+            $users = User::where('userid', 'LIKE', '%'. $search .'%')
                     ->orWhere('name', 'LIKE', '%'. $search .'%')
                     ->orWhere('lname', 'LIKE', '%'. $search .'%')
                     ->orWhere('email', 'LIKE', '%'. $search .'%')
@@ -76,6 +75,7 @@ class TeacherController extends Controller
 
     // CLASSROOM
     public function Classroom(Request $req) {
+        $id = Auth::user()->id;
         $search = $req['search'] ?? "";
         if($search != "") {
             $sections = Section::where('section_sub', 'LIKE', '%'. $search. '%')
@@ -85,10 +85,10 @@ class TeacherController extends Controller
                             ->get();
         }
         else {
-            $sections = Section::all();
+            $sections = Section::where('user_id', $id)->get();
         }
         $users = User::all();
-        $data = compact('users', 'sections');
+        $data = compact('users', 'sections', 'id');
         return view('dashboards.teachers.classroom')->with($data);
     }
 
@@ -130,13 +130,13 @@ class TeacherController extends Controller
             'section_sub' => $req['section_sub'],
             'section_name' => $req['section_name'],
             'code_inclass' => $req['code_inclass'],
-            'deadline_date' => $req['deadline_date']->format('Y-m-d'),
+            'deadline_date' => $req['deadline_date'],
             'deadline_time' => $req['deadline_time'],
         ]);
         return redirect('teacher/classroom')->with('message', 'แก้ไขข้อมูลห้องเรียนสำเร็จแล้ว');
     }
     function destroySection(Section $section) {
         $section->delete();
-        return redirect()->route('teacher.classroom')->with('delete', 'ลบข้อมูลห้องเรียนสำเร็จแล้ว');
+        return redirect('teacher/classroom')->with('delete', 'ลบข้อมูลห้องเรียนสำเร็จแล้ว');
     }
 }

@@ -24,7 +24,7 @@
     <div class="row justify-content-center">
         <div class="col-md-7">
             @if(session('message'))
-                <h4 class="alert alert-success">{{ session('message') }}</h4>
+                <h4 class="alert alert-success text-center">{{ session('message') }}</h4>
             @endif
             <div class="card">
                 <div class="card-header text-white bg-dark text-center h3">
