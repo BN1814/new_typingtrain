@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Section;
+use Session;
 use DB;
 
 
@@ -27,7 +28,8 @@ class TeacherController extends Controller
             'lname' => $request['lname'],
             'email' => $request['email'],
         ]);
-        return redirect('teacher/profile/'.$user->id.'/edit')->with('message', 'แก้ไขข้อมูลสำเร็จแล้ว');
+        // Session::flash('data_user', 'success');
+        return redirect('teacher/profile/'.$user->id.'/edit')->with('update', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
     function changePassword() {
         return view('dashboards.teachers.change_password_teacher');
@@ -66,10 +68,12 @@ class TeacherController extends Controller
             'email' => $req['email'],
         ]);
 
-        return redirect('teacher/dataSTD')->with('message', 'แก้ไขข้อมูลนักศึกษาสำเร็จแล้ว');
+        // Session::flash('data_std', 'success');
+        return redirect('teacher/dataSTD')->with('update', 'แก้ไขข้อมูลนักศึกษาสำเร็จแล้ว');
     }
     function destroyDataStudent(User $user){
         $user->delete();
+        // Session::flash('data_std', 'error');
         return redirect('teacher/dataSTD')->with('delete', 'ลบข้อมูลนักศึกษาสำเร็จแล้ว');
     }
 
@@ -119,6 +123,7 @@ class TeacherController extends Controller
         $save = $section->save();
 
         if($save) {
+            // Session::flash('save_class', 'success');
             return redirect()->back()->with('message', 'สร้างห้องเรียนสำเร็จ');
         }   
     }
@@ -133,10 +138,13 @@ class TeacherController extends Controller
             'deadline_date' => $req['deadline_date'],
             'deadline_time' => $req['deadline_time'],
         ]);
-        return redirect('teacher/classroom')->with('message', 'แก้ไขข้อมูลห้องเรียนสำเร็จแล้ว');
+        // Session::flash('save_class', 'success');
+        return redirect('teacher/classroom')->with('update', 'แก้ไขข้อมูลห้องเรียนสำเร็จแล้ว');
     }
     function destroySection(Section $section) {
         $section->delete();
+
+        // Session::flash('delete_class', 'error');
         return redirect('teacher/classroom')->with('delete', 'ลบข้อมูลห้องเรียนสำเร็จแล้ว');
     }
 }

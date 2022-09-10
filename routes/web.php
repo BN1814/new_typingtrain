@@ -82,6 +82,8 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::post('/createCode', 'createCode');
         Route::put('/classroom/{section}', 'updateSection');
         Route::delete('/classroom/{section}', 'destroySection');
+
+        Route::get('/test_alert', 'testAlert');
     });
 });
 // STUENT

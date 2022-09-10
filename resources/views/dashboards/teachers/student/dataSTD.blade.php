@@ -9,10 +9,46 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                @if(session('message'))
-                    <h4 class="alert alert-success text-center">{{ session('message') }}</h4>
+                @if(session('update'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '{{ session('update') }}',
+                            showConfirmButton: false,
+                            confirmButtonColor: '#212529',
+                            ConfirmButtonText: 'ตกลง',
+                            timer: 1500
+                        })
+                    </script>
                 @elseif(session('delete'))
-                    <h4 class="alert alert-danger text-center">{{ session('delete') }}</h4>
+                    <script>
+                        Swal.fire({
+                            title: 'คุณต้องการลบใช่หรือไม่',
+                            // text: "ไม่สามารถกู้คืนได้",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#198754',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'ใช่ ฉันต้องการลบ',
+                            cancelButtonText: 'ยกเลิก'
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                Swal.fire(
+                                '',
+                                '{{  session('delete')}}',
+                                'success'
+                                )
+                            }
+                            else if(result.isCanceled){
+                                Swal.fire(
+                                '',
+                                'ยังไม่ได้ลบข้อมูล',
+                                'danger'
+                                )
+                            }
+                        })
+                    </script>
                 @endif
                 <div class="card">
                     <div class="card-header text-center text-white bg-dark h4">ข้อมูลนักศึกษา</div>

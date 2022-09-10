@@ -99,7 +99,7 @@ class AdminController extends Controller
             'lname' => $request['lname'],
             'email' => $request['email'],
         ]);
-        return redirect('admin/profile/'.$user->id.'/edit')->with('message', 'แก้ไขข้อมูลสำเร็จแล้ว');
+        return redirect('admin/profile/'.$user->id.'/edit')->with('update', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
     function changePassword(User $user) {
         return view('dashboards.admins.change_password_admin', compact('user'));
@@ -151,11 +151,11 @@ class AdminController extends Controller
                 'email' => $request['email'],
                 'role' => $request['status'],
             ]);
-            return redirect('admin/dashboard')->with('message', 'แก้ไขข้อมูลอาจารย์หรือนักศึกษาสำเร็จแล้ว');
+            return redirect('admin/dashboard')->with('update', 'แก้ไขข้อมูลอาจารย์หรือนักศึกษาสำเร็จแล้ว');
         }
         public function destroyTeachStd(User $user) {
             $user->delete();
-            return redirect('admin/dashboard')->with('message', 'ลบข้อมูลสำเร็จแล้ว');
+            return redirect('admin/dashboard')->with('delete', 'ลบข้อมูลสำเร็จแล้ว');
         }
 
     // CRUD EXERCISE
@@ -190,12 +190,12 @@ class AdminController extends Controller
             'level_name' => $request['level_name'],
             'data_level' => $request['data_level'],
         ]);
-        return redirect('admin/dashboard')->with('message', 'แก้ไขแบบฝึกหัดสำเร็จแล้ว');
+        return redirect('admin/dashboard')->with('update', 'แก้ไขแบบฝึกหัดสำเร็จแล้ว');
     }
 
     function destroyExercise(Exercise $exercise) {
         $exercise->delete();
-            return redirect('admin/dashboard')->with('message', 'ลบแบบฝึกหัดสำเร็จแล้ว');
+            return redirect('admin/dashboard')->with('delete', 'ลบแบบฝึกหัดสำเร็จแล้ว');
     }
 
     // CRUD Section
@@ -211,7 +211,7 @@ class AdminController extends Controller
             'deadline_time' => $req['deadline_time'],
         ]);
 
-        return redirect('admin/dashboard')->with('message', 'แก้ไขห้องเรียนสำเร็จแล้ว');
+        return redirect('admin/dashboard')->with('update', 'แก้ไขห้องเรียนสำเร็จแล้ว');
     }
     function destroySection(Section $section) {
         $section->delete();

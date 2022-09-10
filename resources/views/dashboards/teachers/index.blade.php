@@ -24,7 +24,16 @@
     <div class="row justify-content-center">
         <div class="col-md-7">
             @if(session('message'))
-                <h4 class="alert alert-success text-center">{{ session('message') }}</h4>
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: '{{ session('message') }}',
+                    showConfirmButton: false,
+                    ConfirmButtonText: 'ตกลง',
+                    timer: 1500
+                })
+            </script>
             @endif
             <div class="card">
                 <div class="card-header text-white bg-dark text-center h3">

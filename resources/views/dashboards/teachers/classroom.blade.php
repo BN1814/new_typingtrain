@@ -6,17 +6,57 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                
-                {{-- <select id="select" class="mb-2">
-                    <option>เลือก</option>
-                    @foreach ($sections as $section)
-                        <option>{{ $section->section_name }}</option>
-                    @endforeach
-                </select> --}}
                 @if(session('message'))
-                    <h4 class="alert alert-success text-center">{{ session('message') }}</h4>
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '{{ session('message') }}',
+                            showConfirmButton: false,
+                            ConfirmButtonText: 'ตกลง',
+                            timer: 1500
+                        })
+                    </script>
+                @elseif(session('update'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '{{ session('update') }}',
+                            showConfirmButton: false,
+                            confirmButtonColor: '#212529',
+                            ConfirmButtonText: 'ตกลง',
+                            timer: 1500
+                        })
+                    </script>
                 @elseif(session('delete'))
-                    <h4 class="alert alert-danger text-center">{{ session('delete') }}</h4>
+                    <script>
+                        Swal.fire({
+                            title: 'คุณต้องการลบใช่หรือไม่',
+                            text: "ไม่สามารถกู้คืนได้",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#198754',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'ใช่ ฉันต้องการลบ',
+                            cancelButtonText: 'ยกเลิก'
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                Swal.fire(
+                                '',
+                                '{{  session('delete')}}',
+                                'success'
+                                )
+                            }
+                            else if(result.isCanceled){
+                                Swal.fire(
+                                '',
+                                'ยังไม่ได้ลบข้อมูล',
+                                'danger'
+                                )
+                            }
+                        })
+                    </script>
                 @endif
                 @include('include.incSearch')
                 <div class="card">
@@ -46,7 +86,7 @@
                                         <td class="text-center">
                                             <a href="{{ url('teacher/dataSTD') }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
                                             <a href="{{ url('teacher/classroom/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                            <form action="{{ url('teacher/classroom/'. $section->id) }}" method="post" class="d-inline">
+                                            <form action="{{ url('teacher/classroom/'. $section->id) }}" method="post" class="d-inline" id="delete">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger btn-sm">ลบ</button>

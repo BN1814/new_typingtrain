@@ -4,7 +4,8 @@ const typingText = document.querySelector(".typing-text p"),
     mistakeTag = document.querySelector(".mistake span"),
     timeTag = document.querySelector(".time span b"),
     wpmTag = document.querySelector(".wpm span "),
-    cpmTag = document.querySelector(".cpm span ");
+    cpmTag = document.querySelector(".cpm span "),
+    data = document.querySelector('#data');
 // tryAgainBtn = document.querySelector(".butt");
     
 let timer,
@@ -48,10 +49,6 @@ function initTyping() {
         }
         characters.forEach((span) => span.classList.remove("active"));
         characters[charIndex].classList.add("active");
-
-
-
-
 
         let wpm = Math.round(
             ((charIndex - mistakes) / 5 / (maxTime - timeLeft)) * 60

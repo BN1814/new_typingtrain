@@ -30,9 +30,55 @@
             @if(Auth::user()->role == 'admin')
 
                 @if(session('message'))
-                    <h4 class="alert alert-success text-center">{{ session('message') }}</h4>
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '{{ session('message') }}',
+                            showConfirmButton: false,
+                            ConfirmButtonText: 'ตกลง',
+                            timer: 1500
+                        })
+                    </script>
+                @elseif(session('update'))
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: '{{ session('update') }}',
+                        showConfirmButton: false,
+                        ConfirmButtonText: 'ตกลง',
+                        timer: 1500
+                    })
+                </script>
                 @elseif(session('delete'))
-                    <h4 class="alert alert-danger text-center">{{ session('delete') }}</h4>
+                    <script>
+                        Swal.fire({
+                            title: 'คุณต้องการลบใช่หรือไม่',
+                            text: "ไม่สามารถกู้คืนได้",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#198754',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'ใช่ ฉันต้องการลบ',
+                            cancelButtonText: 'ยกเลิก'
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                Swal.fire(
+                                '',
+                                '{{  session('delete')}}',
+                                'success'
+                                )
+                            }
+                            else if(result.isCanceled){
+                                Swal.fire(
+                                '',
+                                'ยังไม่ได้ลบข้อมูล',
+                                'danger'
+                                )
+                            }
+                        })
+                    </script>
                 @endif
                 {{-- <form action="{{ url('admin/dashboard') }}" method="get" role="search">
                     @csrf

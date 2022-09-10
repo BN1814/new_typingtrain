@@ -23,7 +23,7 @@
                     <input type="text" class="input-field">
                     <div class="content-box">
                         <div class="typing-text">
-                            <p>{{ $exercises->data_level }}</p>
+                            <p id="data">{{ $exercises->data_level }}</p>
                         </div>
                         <div class="content">
                             <ul class="result-details">

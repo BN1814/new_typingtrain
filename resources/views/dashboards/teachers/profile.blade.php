@@ -9,9 +9,18 @@
     <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-md-8 mb-2">
-          @if(session('message'))
-                    <h4 class="alert alert-success">{{ session('message') }}</h4>
-                @endif
+            @if(session('update'))
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: '{{ session('update') }}',
+                        showConfirmButton: false,
+                        ConfirmButtonText: 'ตกลง',
+                        timer: 1500
+                    })
+                </script>
+            @endif
                 <div class="card">
                     <div class="card-header text-center text-white bg-dark h4">ข้อมูลส่วนตัว</div>
                     <div class="card-body">

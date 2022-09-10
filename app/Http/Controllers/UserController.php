@@ -22,7 +22,7 @@ class UserController extends Controller
             'lname' => $request['lname'],
             'email' => $request['email'],
         ]);
-        return redirect('user/profile/'.$user->id.'/edit')->with('message', 'แก้ไขข้อมูลสำเร็จแล้ว');
+        return redirect('user/profile/'.$user->id.'/edit')->with('update', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
     function changePassword() {
         return view('dashboards.users.change_password_user');
