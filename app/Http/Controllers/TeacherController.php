@@ -138,13 +138,11 @@ class TeacherController extends Controller
             'deadline_date' => $req['deadline_date'],
             'deadline_time' => $req['deadline_time'],
         ]);
-        // Session::flash('save_class', 'success');
         return redirect('teacher/classroom')->with('update', 'แก้ไขข้อมูลห้องเรียนสำเร็จแล้ว');
     }
-    function destroySection(Section $section) {
+    function destroySection($id) {
+        $section = Section::findOrFail($id);
         $section->delete();
-
-        // Session::flash('delete_class', 'error');
-        return redirect('teacher/classroom')->with('delete', 'ลบข้อมูลห้องเรียนสำเร็จแล้ว');
+        return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']);
     }
 }

@@ -81,7 +81,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::get('/classroom/{section}/edit', 'editSection');
         Route::post('/createCode', 'createCode');
         Route::put('/classroom/{section}', 'updateSection');
-        Route::delete('/classroom/{section}', 'destroySection');
+        Route::delete('/classroom/{id}', 'destroySection');
 
         Route::get('/test_alert', 'testAlert');
     });

@@ -29,34 +29,6 @@
                             timer: 1500
                         })
                     </script>
-                @elseif(session('delete'))
-                    <script>
-                        Swal.fire({
-                            title: 'คุณต้องการลบใช่หรือไม่',
-                            text: "ไม่สามารถกู้คืนได้",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#198754',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'ใช่ ฉันต้องการลบ',
-                            cancelButtonText: 'ยกเลิก'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                Swal.fire(
-                                '',
-                                '{{  session('delete')}}',
-                                'success'
-                                )
-                            }
-                            else if(result.isCanceled){
-                                Swal.fire(
-                                '',
-                                'ยังไม่ได้ลบข้อมูล',
-                                'danger'
-                                )
-                            }
-                        })
-                    </script>
                 @endif
                 @include('include.incSearch')
                 <div class="card">
@@ -78,6 +50,7 @@
                                     @php($i=1)
                                     @foreach ($sections as $section)
                                     <tr>
+                                        <input type="hidden" class="delete_section_id" value="{{ $section->id }}">
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $section->section_sub }}</td>
                                         <td>{{ $section->section_name }}</td>
@@ -86,11 +59,7 @@
                                         <td class="text-center">
                                             <a href="{{ url('teacher/dataSTD') }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
                                             <a href="{{ url('teacher/classroom/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                            <form action="{{ url('teacher/classroom/'. $section->id) }}" method="post" class="d-inline" id="delete">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger btn-sm">ลบ</button>
-                                            </form>
+                                            <button class="btn btn-danger btn-sm delete" data-name="{{ $section->section_name }}" data-id="{{ $section->id }}">ลบ</button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -104,4 +73,51 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.delete').click( function(e) {
+            e.preventDefault();
+            var delete_id = $(this).closest('tr').find('.delete_section_id').val();
+            var section_name = $(this).attr('data-name');
+            Swal.fire({
+                title: 'ต้องการลบ',
+                text: "คุณต้องการลบห้องเรียน "+section_name+" ใช่หรือไม่",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#198754',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช่ ฉันต้องการลบ',
+                cancelButtonText: 'ยกเลิก'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    var data = {
+                        "_token": $('input[name="_token"]').val(),
+                        "id": delete_id,
+                    }
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/teacher/classroom/" + delete_id,
+                        data: data,
+                        success: function(response) {
+                            Swal.fire(response.delete, {
+                                icon: 'success',
+                            })
+                            .then((result) => {
+                                location.reload();
+                            });
+                        }
+                    });
+                }
+            })
+        });
+    });
+</script>
 @endsection
