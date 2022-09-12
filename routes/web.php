@@ -90,7 +90,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory']], function() {
     Route::controller(UserController::class)->group(function() {
         // STUDENT PANEL
-        Route::get('/dashboard', 'index');
+        Route::get('/dashboard', 'index')->name('admin.dashboard');
         Route::get('/settings', 'settings');
         Route::get('/changePassword', 'changePassword');
         // STUDENT CRUD

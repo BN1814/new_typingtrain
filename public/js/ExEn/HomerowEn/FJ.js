@@ -1,4 +1,4 @@
-
+const randomText = [document.getElementById("Typingtext").innerHTML];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
     mistakeTag = document.querySelector(".mistake span"),
@@ -105,7 +105,7 @@ function Close_score() {
 }
 function Open_score() {
     document.querySelector(".pop-up-score").style.display = "flex";
-    body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    // body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
     poptime.value = 60 - timeTag.innerHTML;
     popmistake.value = mistakeTag.innerHTML;
     popwpm.value = wpmTag.innerHTML;

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/ExEn/exerciseEnglish.css') }}">
     <link rel="stylesheet" href="{{ asset('css/ExEn/popupEN.css') }}">
         <div class="container mt-1">
-            <p class="head h1 d-block text-center px-2 mb-2">{{ $exercises->level_name }}</p>
+            <p class="head h1 d-block text-center px-2 mb-2">{{ $exercises->level }}: {{ $exercises->level_name }}</p>
         </div>
         <body id="body">
             {{-- @include('include.includeExEn') --}}
@@ -23,7 +23,7 @@
                     <input type="text" class="input-field">
                     <div class="content-box">
                         <div class="typing-text">
-                            <p id="data">{{ $exercises->data_level }}</p>
+                            <p id="Typingtext">{{ $exercises->data_level }}</p>
                         </div>
                         <div class="content">
                             <ul class="result-details">
@@ -87,9 +87,6 @@
                         </button>
                         <button type="submit" class="btn btn-dark text-white ms-1 pn-score submit">
                             {{ __('บันทึกสถิติ') }}
-                        </button>
-                        <button class="btn btn-dark text-white pn-score ms-1 next" type="submit">
-                            <a href="{{ route('E-DK') }}">หน้าต่อไป</a>
                         </button>
                     </div>
                 </form>
