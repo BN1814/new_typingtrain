@@ -47,17 +47,17 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         Route::post('/dashboard', 'storeTeachStd');
         Route::get('/add_data_teacher_student/{user}/edit', 'editTeachStd');
         Route::put('/add_data_teacher_student/{user}', 'updateTeachStd');
-        Route::delete('/dashboard/{user}', 'destroyTeachStd');
+        Route::delete('/dashboard/{id}', 'destroyTeachStd');
         // ADD EXERCISE AND CRUD
         Route::get('/add_data_exercises', 'homeExercise');
         Route::post('/add_data_exercises', 'storeExercise');
         Route::get('/add_data_exercises/{exercise}/edit', 'editExercise');
         Route::put('/add_data_exercises/{exercise}', 'updateExercise');
-        Route::delete('/add_data_exercises/{exercise}', 'destroyExercise');
+        Route::delete('/add_data_exercises/{id}', 'destroyExercise');
         // ADD SECTION AND CRUD
         Route::get('/data_section/{section}/edit', 'editSection');
         Route::put('/data_section/{section}', 'updateSection');
-        Route::delete('/data_section/{section}', 'destroySection');
+        Route::delete('/data_section/{id}', 'destroySection');
     });
 });
 // TEACHER
@@ -74,7 +74,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::get('/dataSTD', 'dataStudent');
         Route::get('/dataSTD/{user}/edit', 'editDataStudent');
         Route::put('/dataSTD/{user}', 'updateDataStudent');
-        Route::delete('/dataSTD/{user}', 'destroyDataStudent');
+        Route::delete('/dataSTD/{id}', 'destroyDataStudent');
         // CLASSROOM
         Route::get('/classroom', 'Classroom');
         // Section 

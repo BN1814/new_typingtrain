@@ -1,4 +1,3 @@
-{{-- @extends('dashboards.admins.layouts.admin-dash-layout') --}}
 @extends('layouts.app')
 {{-- @section('title', 'Dashboard') --}}
 
@@ -41,42 +40,14 @@
                         })
                     </script>
                 @elseif(session('update'))
-                <script>
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: '{{ session('update') }}',
-                        showConfirmButton: false,
-                        ConfirmButtonText: 'ตกลง',
-                        timer: 1500
-                    })
-                </script>
-                @elseif(session('delete'))
                     <script>
                         Swal.fire({
-                            title: 'คุณต้องการลบใช่หรือไม่',
-                            text: "ไม่สามารถกู้คืนได้",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#198754',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'ใช่ ฉันต้องการลบ',
-                            cancelButtonText: 'ยกเลิก'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                Swal.fire(
-                                '',
-                                '{{  session('delete')}}',
-                                'success'
-                                )
-                            }
-                            else if(result.isCanceled){
-                                Swal.fire(
-                                '',
-                                'ยังไม่ได้ลบข้อมูล',
-                                'danger'
-                                )
-                            }
+                            position: 'center',
+                            icon: 'success',
+                            title: '{{ session('update') }}',
+                            showConfirmButton: false,
+                            ConfirmButtonText: 'ตกลง',
+                            timer: 1500
                         })
                     </script>
                 @endif
@@ -111,6 +82,7 @@
                                     @php($i=1)
                                     @foreach ($users as $user)
                                         <tr class="text-center">
+                                            <input type="hidden" class="delete_user_id" value="{{ $user->id }}">
                                             <td>{{ $i++}}</td>
                                             <td>{{ $user->userid }}</td>
                                             <td>{{ $user->email }}</td>
@@ -119,11 +91,7 @@
                                             <td class="text-center">
                                                 <a href="{{ url('admin/view_data_teacher_student/'. $user->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
                                                 <a href="{{ url('admin/add_data_teacher_student/'.$user->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                                <form action="{{ url('admin/dashboard/'.$user->id) }}" method="post" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger btn-sm">ลบ</button>
-                                                </form>
+                                                <button class="btn btn-danger btn-sm delete" data-name="{{ $user->name }}" data-id="{{ $user->id }}">ลบ</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -158,17 +126,14 @@
                                     @php($i=1)
                                     @foreach ($exercises as $exercise)
                                         <tr>
+                                            <input type="hidden" class="delete_exercise_id" value="{{ $exercise->id }}">
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $exercise->level }}</td>
                                             <td>{{ $exercise->level_name }}</td>
                                             <td>{{ $exercise->data_level }}</td>
                                             <td>
                                                 <a href="{{ url('admin/add_data_exercises/'.$exercise->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                                <form action="{{ url('admin/add_data_exercises/'.$exercise->id) }}" method="post" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger btn-sm">ลบ</button>
-                                                </form>
+                                                <button class="btn btn-danger btn-sm delete_ex" data-name="{{ $exercise->level_name }}" data-id="{{ $exercise->id }}">ลบ</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -201,6 +166,7 @@
                                     @php($i=1)
                                     @foreach ($sections as $section)
                                     <tr class="text-center">
+                                        <input type="hidden" class="delete_section_id" value="{{ $section->id }}">
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $section->section_name }}</td>
                                         <td>{{ $section->code_inclass }}</td>
@@ -208,11 +174,7 @@
                                         <td>{{ $section->deadline_time }}</td>
                                         <td class="text-center">
                                             <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                            <form action="{{ url('admin/data_section/'. $section->id) }}" method="post" class="d-inline">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger btn-sm">ลบ</button>
-                                            </form>
+                                            <button class="btn btn-danger btn-sm delete_sect" data-name="{{ $section->section_name }}" data-id="{{ $section->id }}">ลบ</button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -227,4 +189,121 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.delete').click( function(e) {
+            e.preventDefault();
+            var delete_user_id = $(this).closest('tr').find('.delete_user_id').val();
+            var user_name = $(this).attr('data-name');
+            Swal.fire({
+                title: 'ต้องการลบ',
+                text: "คุณต้องการลบ "+user_name+" ใช่หรือไม่",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#198754',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช่ ฉันต้องการลบ',
+                cancelButtonText: 'ยกเลิก'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    var data_user = {
+                        "_token": $('input[name="_token"]').val(),
+                        "id": delete_user_id,
+                    }
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/admin/dashboard/" + delete_user_id,
+                        data: data_user,
+                        success: function(response) {
+                            Swal.fire(response.delete, {
+                                icon: 'success',
+                            })
+                            .then((result) => {
+                                location.reload();
+                            });
+                        }
+                    });
+                }
+            })
+        });
+        $('.delete_ex').click( function(e) {
+            e.preventDefault();
+            var delete_exercise_id = $(this).closest('tr').find('.delete_exercise_id').val();
+            var exercise_name = $(this).attr('data-name');
+            Swal.fire({
+                title: 'ต้องการลบ',
+                text: "คุณต้องการลบ "+exercise_name+" ใช่หรือไม่",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#198754',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช่ ฉันต้องการลบ',
+                cancelButtonText: 'ยกเลิก'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    var data_ex = {
+                        "_token": $('input[name="_token"]').val(),
+                        "id": delete_exercise_id,
+                    }
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/admin/add_data_exercises/" + delete_exercise_id,
+                        data: data_ex,
+                        success: function(response) {
+                            Swal.fire(response.delete, {
+                                icon: 'success',
+                            })
+                            .then((result) => {
+                                location.reload();
+                            });
+                        }
+                    });
+                }
+            })
+        });
+        $('.delete_sect').click( function(e) {
+            e.preventDefault();
+            var delete_section_id = $(this).closest('tr').find('.delete_section_id').val();
+            var section_name = $(this).attr('data-name');
+            Swal.fire({
+                title: 'ต้องการลบ',
+                text: "คุณต้องการลบ "+section_name+" ใช่หรือไม่",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#198754',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช่ ฉันต้องการลบ',
+                cancelButtonText: 'ยกเลิก'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    var data_sect = {
+                        "_token": $('input[name="_token"]').val(),
+                        "id": delete_section_id,
+                    }
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/admin/data_section/" + delete_section_id,
+                        data: data_sect,
+                        success: function(response) {
+                            Swal.fire(response.delete, {
+                                icon: 'success',
+                            })
+                            .then((result) => {
+                                location.reload();
+                            });
+                        }
+                    });
+                }
+            })
+        });
+    });
+</script>
 @endsection

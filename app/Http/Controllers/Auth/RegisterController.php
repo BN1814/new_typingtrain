@@ -52,8 +52,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'userid' => ['required', 'string', 'max:20'],
-            'name' => ['required', 'string', 'max:20'],
+            'userid' => ['required', 'string', 'max:15'],
+            'name' => 'required | string | max:20',
             'lname' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6 | max:20', 'confirmed'],
@@ -63,6 +63,7 @@ class RegisterController extends Controller
             'lname.required' => 'กรุณาใส่นามสกุลผู้ใช้งาน',
             'email.required' => 'กรุณาใส่อีเมลผู้ใช้งาน',
             'password.required' => 'กรุณาใส่รหัสผ่าน',
+            'password.min' => 'ใส่รหัสผ่านอย่างน้อย 6 ตัว',
         ]);
 
         // $user = new User();

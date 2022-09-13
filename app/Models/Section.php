@@ -28,7 +28,7 @@ class Section extends Model
     public function student_users() {
         $student = User::where('role', ['student']);
         if($student) {
-            return $this->belongsToMany(User::class, 'section_users');
+            return $this->belongsToMany(User::class, 'section_users', 'section_id', 'user_id');
         }
     }
     // public function teacher_users() {

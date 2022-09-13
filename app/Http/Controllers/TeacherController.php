@@ -71,10 +71,10 @@ class TeacherController extends Controller
         // Session::flash('data_std', 'success');
         return redirect('teacher/dataSTD')->with('update', 'แก้ไขข้อมูลนักศึกษาสำเร็จแล้ว');
     }
-    function destroyDataStudent(User $user){
+    function destroyDataStudent($id){
+        $user = User::findOrFail($id);
         $user->delete();
-        // Session::flash('data_std', 'error');
-        return redirect('teacher/dataSTD')->with('delete', 'ลบข้อมูลนักศึกษาสำเร็จแล้ว');
+        return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']);
     }
 
     // CLASSROOM
@@ -101,13 +101,15 @@ class TeacherController extends Controller
         $request->validate([
             'section_sub' => 'required | max:10',
             'section_name' => 'required | max:255',
-            'code_inclass' => 'required | unique:sections',
+            'code_inclass' => 'required | string | min:6 | unique:sections',
             'deadline_date' => 'required',
             'deadline_time' => 'required',
         ],[
             'section_sub.required' => 'กรุณาใส่รหัสวิชา',
+            'section_sub.max' => 'ใส่รหัสวิชาได้ไม่เกิน 10 ตัว',
             'section_name.required' => 'กรุณาใส่ชื่อวิชา',
             'code_inclass.required' => 'กรุณาใส่รหัสเข้าห้องเรียน',
+            'code_inclass.min' => 'ใส่รหัสเข้าห้องเรียนอย่างน้อย 6 ตัว',
             'deadline_date.required' => 'กรุณาใส่วันที่ส่ง',
             'deadline_time.required' => 'กรุณาใส่เวลาที่ส่ง',
         ]);

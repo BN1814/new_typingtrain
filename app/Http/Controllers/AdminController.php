@@ -153,9 +153,10 @@ class AdminController extends Controller
             ]);
             return redirect('admin/dashboard')->with('update', 'แก้ไขข้อมูลอาจารย์หรือนักศึกษาสำเร็จแล้ว');
         }
-        public function destroyTeachStd(User $user) {
+        public function destroyTeachStd($id) {
+            $user = User::findOrFail($id);
             $user->delete();
-            return redirect('admin/dashboard')->with('delete', 'ลบข้อมูลสำเร็จแล้ว');
+            return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']);
         }
 
     // CRUD EXERCISE
@@ -193,9 +194,10 @@ class AdminController extends Controller
         return redirect('admin/dashboard')->with('update', 'แก้ไขแบบฝึกหัดสำเร็จแล้ว');
     }
 
-    function destroyExercise(Exercise $exercise) {
+    function destroyExercise($id) {
+        $exercise = Exercise::findOrFail($id);
         $exercise->delete();
-            return redirect('admin/dashboard')->with('delete', 'ลบแบบฝึกหัดสำเร็จแล้ว');
+        return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']);
     }
 
     // CRUD Section
@@ -213,8 +215,9 @@ class AdminController extends Controller
 
         return redirect('admin/dashboard')->with('update', 'แก้ไขห้องเรียนสำเร็จแล้ว');
     }
-    function destroySection(Section $section) {
+    function destroySection($id) {
+        $section = Section::findOrFail($id);
         $section->delete();
-        return redirect('admin/dashboard')->with('delete', 'ลบห้องเรียนสำเร็จแล้ว'); 
+        return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']); 
     }
 }

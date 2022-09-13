@@ -55,7 +55,7 @@ class User extends Authenticatable
     public function student_sections() {
         $student = User::where('role', ['student']);
         if($student){
-            return $this->belongsToMany(Section::class, 'section_users');
+            return $this->belongsToMany(Section::class, 'section_users', 'section_id', 'user_id');
         }
     }
     public function teacher_sections() {
