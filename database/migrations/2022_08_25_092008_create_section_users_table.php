@@ -15,10 +15,10 @@ class CreateSectionUsersTable extends Migration
     {
         Schema::create('section_users', function (Blueprint $table) {
             $table->unsignedBigInteger('section_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('student_id');
 
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

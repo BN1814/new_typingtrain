@@ -31,7 +31,8 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// CLASSROOM ALL
+Route::get('/classroomAll', [UserController::class, 'classroomAll']);
 // ADMIN
 Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBackHistory']], function() {
     Route::controller(AdminController::class)->group(function() {
@@ -98,6 +99,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
         Route::put('/profile/{user}', 'updateProfile');
         // STUDENT INPUT CLASS WITH CODE
         Route::get('/enterclass', 'enterclass');
+        Route::post('/enterclass_std', 'enterclass_std');
     });
     Route::controller(ExerciseController::class)->group(function(){
         // Exercise of Student form ExerciseController

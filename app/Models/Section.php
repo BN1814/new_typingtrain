@@ -18,7 +18,7 @@ class Section extends Model
         'code_inclass',
         'deadline_date',
         'deadline_time',
-        'user_id',
+        'teacher_id',
     ];
 
     protected $casts = [

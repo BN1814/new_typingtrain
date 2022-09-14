@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Section;
 use App\Models\HistoryScore;
 use DB;
+use Auth;
 
 class UserController extends Controller
 {
@@ -33,11 +36,27 @@ class UserController extends Controller
     function enterclass() {
         return view('dashboards.users.enterclass');
     }
-    // function joinClass(Request $req) {
-    //     $user = User::where('role', 'student')->first();
-    //     $getClass = Section::where('code_inclass', '=', $req['code_inclass']);
-    //     if($user == $getClass) {
-    //         return view('dashboards.users.join_class');
-    //     }
-    // }
+    function enterclass_std(Request $req){
+        $req -> validate( [
+            'entclass' => ['required', 'min:6'],
+        ],[
+            'entclass.required' => 'กรุณาใส่รหัสเข้าห้องเรียน',
+            'entclass.min' => 'กรุณาใส่รหัสเข้าห้องเรียนมากกว่า 6 ตัว',
+        ]);
+        $section = Section::where('code_inclass', 'JfsiLe');
+
+        $user_id = Auth::user()->id;
+        $input = $entclass->entclass = $req->entclass;
+        $input->insert([
+        ]);
+
+        if($input === $section) {
+        }
+    }
+
+    function classroomAll() {
+        $id = Auth::user()->id;
+        $sections = Section::all();
+        return view('classroom_all', compact('sections', 'id'));
+    }
 }

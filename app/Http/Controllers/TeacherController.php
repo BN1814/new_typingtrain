@@ -121,7 +121,7 @@ class TeacherController extends Controller
         $section->code_inclass = $request->code_inclass;
         $section->deadline_date = $request->deadline_date;
         $section->deadline_time = $request->deadline_time;
-        $section->user_id = $user_id;
+        $section->teacher_id = $user_id;
         $save = $section->save();
 
         if($save) {

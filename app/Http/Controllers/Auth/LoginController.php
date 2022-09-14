@@ -72,17 +72,6 @@ class LoginController extends Controller
                 return redirect('user/dashboard');
             }
         }
-        // else if(auth()->attempt(array('userid' => $input['userid'], 'password' => $input['password']))) {
-        //     if(auth()->user()->role == 1) {
-        //         return redirect()->route('admin.dashboard');
-        //     }
-        //     else if(auth()->user()->role == 2) {
-        //         return redirect()->route('teacher.dashboard');
-        //     }
-        //     else if(auth()->user()->role == 3) {
-        //         return redirect()->route('user.dashboard');
-        //     }
-        // }
         else {
             return redirect()->route('login')->with('error', 'อีเมลหรือรหัสผ่านไม่ถูกต้อง');
         }

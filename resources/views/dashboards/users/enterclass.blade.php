@@ -11,13 +11,19 @@
                         {{ __('เข้าห้องเรียน') }}
                     </div>
                     <div class="card-body">
-                       <form action="#">
-                        {{-- @csrf --}}
+                       <form action="{{ url('user/enterclass_std') }}" method="post">
+                        @csrf
                             <div class="row mb-3">
                                 <label for="entclass" class="col-md-3 col-form-label text-md-end">{{ __('รหัสเข้าห้องเรียน') }}</label>
         
                                 <div class="col-md-6">
-                                    <input id="entclass" type="text" class="form-control text-center">
+                                    <input type="text" class="form-control text-center enterclass" name="entclass">
+
+                                    @error('entclass')
+                                        <span class="text-danger">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
         
                                 <div class="col">
@@ -32,4 +38,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        let entclass = document.querySelector('.enterclass');
+    </script>
 @endsection
