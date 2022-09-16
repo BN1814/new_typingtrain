@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
+{{-- <style>
     .typing-text p {
         font-size: 34px;
     }
-</style>
+</style> --}}
 @if($message = Session::get('success'))
     <div class="alert alert-success alert-block">
         <strong>{{ $message }}</strong>
@@ -23,9 +23,9 @@
                     <input type="text" class="input-field">
                     <div class="content-box">
                         <div class="typing-text">
-                            <p id="Typingtext">{{ $exercises->data_level }}</p>
+                            <p class="typingtext" id="Typingtext" cols="59.5" rows="4">{{ $exercises->data_level }}</p>
                         </div>
-                        <div class="content">
+                        <div class="content ">
                             <ul class="result-details">
                                 <li class="time">
                                     <p>Time Left:</p>
@@ -41,6 +41,10 @@
                                 </li>
                                 <li class="cpm">
                                     <p>CPM:</p>
+                                    <span>0</span>
+                                </li>
+                                <li class="score">
+                                    <p>score:</p>
                                     <span>0</span>
                                 </li>
                             </ul>
@@ -76,6 +80,10 @@
                                     <li class="cpm" id="cpm">
                                         <p>CPM : </p>
                                         <input type="text" id="popcpm" name="cpm">
+                                    </li>
+                                    <li class="score" id="score">
+                                        <p>score : </p>
+                                        <input type="text" id="popscore" name="score">
                                     </li>
                                 </ul>
                             </div>

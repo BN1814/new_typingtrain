@@ -82,4 +82,4 @@
             <source src="https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-14566/zapsplat_technology_computer_apple_magic_keyboard_key_press_001_17520.mp3" type="audio/mpeg">
         </audio>
     </div>
-<script src="js/keyboard.js"></script>
+<script src="{{ asset('js/ExEn/HomerowEn/FJ.js')}}" defer></script>

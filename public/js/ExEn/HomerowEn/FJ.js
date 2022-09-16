@@ -5,6 +5,7 @@ const typingText = document.querySelector(".typing-text p"),
     timeTag = document.querySelector(".time span b"),
     wpmTag = document.querySelector(".wpm span "),
     cpmTag = document.querySelector(".cpm span "),
+    scoreTag = document.querySelector(".score span "),
     data = document.querySelector('#data');
 // tryAgainBtn = document.querySelector(".butt");
     
@@ -27,7 +28,7 @@ function randomParagraph() {
 function initTyping() {
     const characters = typingText.querySelectorAll("span");
     let typedChar = inpField.value.split("")[charIndex];
-    if (charIndex < characters.length - 1 && timeLeft > 0) {
+    if (charIndex < characters.length-1 && timeLeft > 0) {
         if (!isTyping) {
             timer = setInterval(initTimer, 1000);
             isTyping = true;
@@ -58,6 +59,21 @@ function initTyping() {
         wpmTag.innerText = wpm;
         cpmTag.innerText = charIndex - mistakes;
     } else {
+        if (characters[charIndex].innerText === typedChar) {
+            characters[charIndex].classList.add("correct");
+        } else {
+            mistakes++;
+            characters[charIndex].classList.add("incorrect");
+        }
+        charIndex++;
+        characters.forEach((span) => span.classList.remove("active"));
+        let wpm = Math.round(
+            ((charIndex - mistakes) / 5 / (maxTime - timeLeft)) * 60
+        );
+        wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
+        mistakeTag.innerText = mistakes;
+        wpmTag.innerText = wpm;
+        cpmTag.innerText = charIndex - mistakes;
         Open_score();
         clearInterval(timer);
     }
@@ -98,6 +114,7 @@ let poptime = document.querySelector("#poptime");
 let popmistake = document.querySelector("#popmistake");
 let popwpm = document.querySelector("#popwpm");
 let popcpm = document.querySelector("#popcpm");
+let popscore = document.querySelector("#popscore");
 let body = document.querySelector("#body");
 
 function Close_score() {
@@ -167,11 +184,7 @@ document.addEventListener(
             element = document.getElementById(
                 String.fromCharCode(e2.charCode || e2.char)
             );
-            // if(e2.charCode>=65&&e2.charCode<97){
-            // element1 = document.getElementsByTagName(
-            //     String.fromCharCode(e2.charCode || e2.char)
-            // );
-            // }
+            
 
             
 
@@ -179,10 +192,7 @@ document.addEventListener(
             element.style.backgroundColor = "#05e924";
             keypress.push(record);
         }
-        // if (element1) {
-        //     element1.style.backgroundColor = "#05e924";
-        //     keypress.push(record);
-        // }
+        
     },
     false
 );

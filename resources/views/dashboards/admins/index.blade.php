@@ -130,7 +130,7 @@
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $exercise->level }}</td>
                                             <td>{{ $exercise->level_name }}</td>
-                                            <td>{{ $exercise->data_level }}</td>
+                                            <td>{{ Str::limit($exercise->data_level, 80 )}}</td>
                                             <td>
                                                 <a href="{{ url('admin/add_data_exercises/'.$exercise->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                                 <button class="btn btn-danger btn-sm delete_ex" data-name="{{ $exercise->level_name }}" data-id="{{ $exercise->id }}">ลบ</button>

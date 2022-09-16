@@ -19,7 +19,7 @@
         body {
             background: rgb(135, 188, 231);
         }
-        button {
+        .btn {
             width: 120px;
         }
         .logo {
@@ -52,13 +52,8 @@
                                     <a href="{{ url('user/dashboard') }}" class="btn btn-dark text-whitek">หน้าแรก</a>
                                 @endif
                             @else
-                                <button class="btn btn-dark">
-                                    <a href="{{ route('login') }}" class="text-white">เข้าสู่ระบบ</a>
-                                </button>
-
-                                <button class="btn btn-dark">
-                                    <a href="{{ route('register') }}" class="text-white">ลงทะเบียน</a>
-                                </button>
+                            <a type="button" class="btn btn-dark text-white" href="{{ route('login') }}">เข้าสู่ระบบ</a>
+                            <a type="button" class="btn btn-dark text-white" href="{{ route('register') }}">ลงทะเบียน</a>
                             @endauth
                         @endif
                     </div>

@@ -22,13 +22,13 @@ class ExerciseController extends Controller
     // Exercise English homerow
     public function Exercise($id) {
         $exercises = Exercise::find($id);
-        return view('Exercise/ExEnglish.ExercisePage',compact('exercises'));
+        return view('Exercise/ExEnglish.ExercisePage',compact('exercises','id'));
     }
-    public function SaveExercise(Request $request) {
+    public function SaveExercise(Request $request,Exercise $exercises) {
         $user_id = auth::user()->id;
-
+        $exercise_id = $exercises->id;
         $data = new HistoryScore();
-        $data->level = $request->level;
+        $data->exercise_id = $exercise_id;
         $data->time = $request->time;
         $data->mistake = $request->mistake;
         $data->wpm = $request->wpm;

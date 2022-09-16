@@ -13,7 +13,7 @@ body {
     background: rgb(135, 188, 231);
 }
 .wrapper {
-    width: 770px;
+    width: auto;
     padding: 15px;
     background: #fff;
     border-radius: 10px;
@@ -38,11 +38,11 @@ body {
     width: 0;
 }
 .typing-text p {
-    /* font-size: 34px; */
+    font-size: 34px;
     text-align: center;
     /* word-break: break-all; */
     font-weight: bold;
-    letter-spacing: 12px;
+    /* letter-spacing: 12px; */
 }
 .typing-text p span {
     position: relative;
