@@ -51,13 +51,6 @@
                         })
                     </script>
                 @endif
-                {{-- <form action="{{ url('admin/dashboard') }}" method="get" role="search">
-                    @csrf
-                    <div class="input-group col-2 mb-2">
-                        <input type="search" class="form-control rounded" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search">
-                        <button type="submit" class="btn btn-dark text-white">ค้นหา</button>
-                    </div>
-                </form> --}}
                 {{-- User Table --}}
                 <div class="card mb-3">
                     <div class="card-header text-white bg-dark">

@@ -72,8 +72,8 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::get('/settings', 'settings');
         // CRUD DATA STUDENT
         Route::get('/dataSTD/{section}', 'dataStudent');
-        Route::get('/dataSTD/{user}/edit', 'editDataStudent');
-        Route::put('/dataSTD/{user}', 'updateDataStudent');
+        Route::get('/dataSTD/{id}/{user}/edit', 'editDataStudent');
+        Route::put('/dataSTD/{section}/{user}', 'updateDataStudent');
         Route::delete('/dataSTD/{id}', 'destroyDataStudent');
         Route::get('/dataSTD/{id}/view_data_student/{user}', 'viewDataStudent');
         // CLASSROOM
@@ -91,7 +91,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory']], function() {
     Route::controller(UserController::class)->group(function() {
         // STUDENT PANEL
-        Route::get('/dashboard', 'index')->name('admin.dashboard');
+        Route::get('/dashboard', 'index')->name('user.dashboard');
         Route::get('/settings', 'settings');
         Route::get('/changePassword', 'changePassword');
         // STUDENT CRUD

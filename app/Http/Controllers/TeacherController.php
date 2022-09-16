@@ -55,24 +55,23 @@ class TeacherController extends Controller
                     ->get();
         }
         else{
-            $users = User::with('student_sections')->first()
+            $users = User::with('student_sections')
                         ->where('role', ['student'])->get();
         }
         return view('dashboards.teachers.student.dataSTD', compact('users', 'search', 'section'));
     }
-    function editDataStudent(User $user) {
-        return view('dashboards.teachers.student.edit_data_student', compact('user'));
+    function editDataStudent($id, User $user) {
+        $section = Section::findOrFail($id);
+        return view('dashboards.teachers.student.edit_data_student', compact('user', 'section'));
     }
-    function updateDataStudent(User $user, Request $req) {
+    function updateDataStudent(Section $section, User $user, Request $req) {
         $user->update([
             'userid' => $req['userid'],
             'name' => $req['name'],
             'lname' => $req['lname'],
             'email' => $req['email'],
         ]);
-
-        // Session::flash('data_std', 'success');
-        return redirect('teacher/dataSTD')->with('update', 'แก้ไขข้อมูลนักศึกษาสำเร็จแล้ว');
+        return redirect('teacher/dataSTD/'. $section->id)->with('update', 'แก้ไขข้อมูลนักศึกษาสำเร็จแล้ว');
     }
     function destroyDataStudent($id){
         $user = User::findOrFail($id);
@@ -87,8 +86,8 @@ class TeacherController extends Controller
         if($search != "") {
             $sections = Section::where('section_sub', 'LIKE', '%'. $search. '%')
                             ->orWhere('section_name', 'LIKE', '%'. $search . '%')
-                            ->orWhere('deadline_date', '='. '%' .$search . '%')
-                            ->orWhere('deadline_time', '='. '%' .$search . '%')
+                            ->orWhere('deadline_date', '%Y-%m-%d', 'LIKE'. '%' .$search . '%')
+                            ->orWhereTime('deadline_time', 'LIKE'. '%' .$search . '%')
                             ->get();
         }
         else {
@@ -124,11 +123,10 @@ class TeacherController extends Controller
         $section->code_inclass = $request->code_inclass;
         $section->deadline_date = $request->deadline_date;
         $section->deadline_time = $request->deadline_time;
-        $section->teacher_id = $user_id;
+        $section->user_id = $user_id;
         $save = $section->save();
 
         if($save) {
-            // Session::flash('save_class', 'success');
             return redirect()->back()->with('message', 'สร้างห้องเรียนสำเร็จ');
         }   
     }

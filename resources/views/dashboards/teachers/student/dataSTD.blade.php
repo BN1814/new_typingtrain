@@ -31,7 +31,7 @@
                                 <input type="search" class="form-control rounded" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search" value="{{ old('search') }}">
                                 <button type="submit" class="btn btn-dark text-white" >ค้นหา</button>
                                 <button type="reset" class="btn btn-danger text-white">
-                                    <a href="{{ url('teacher/dataSTD') }}">รีเซ็ต</a>
+                                    <a href="{{ url('teacher/dataSTD/'. $section->id) }}">รีเซ็ต</a>
                                 </button>
                             </div>
                         </form>
@@ -61,7 +61,7 @@
                                         {{-- View --}}
                                         <a href="{{ url('teacher/dataSTD/'.$section->id .'/'.'view_data_student/'. $user->id ) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
                                         {{-- Update --}}
-                                        <a href="{{ url('teacher/dataSTD/'. $user->id. '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                        <a href="{{ url('teacher/dataSTD/'. $section->id .'/'. $user->id. '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                         {{-- Delete --}}
                                         <button class="btn btn-danger btn-sm delete" data-name="{{ $user->name }}" data-id="{{ $user->id }}">ลบ</button>
                                     </td>

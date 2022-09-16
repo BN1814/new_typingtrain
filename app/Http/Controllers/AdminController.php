@@ -38,57 +38,6 @@ class AdminController extends Controller
         $data = compact('sections', 'users', 'exercises', 'search');
         return view('dashboards.admins.index')->with($data);
     }
-    // function search() {
-    //     // $search = $request['search'] ?? "";
-    //     $search = Input::get('search');
-    //     if($search != "") {
-    //         $users = User::where('userid', 'LIKE', '%'. $search. '%')
-    //                     ->orWhere('name', 'LIKE', '%'. $search. '%')
-    //                     ->orWhere('email', 'LIKE', '%'. $search. '%')
-    //                     ->paginate(5)
-    //                     ->setpath('')
-    //                     ->get();
-    //             $users->append(array(
-    //                 // 'search' => $request->input('search'),
-    //                 'search' => Input::get('search'),
-    //             ));
-    //         if(count($users) > 0){
-    //             return view('dashboards.admins.index')->withData($users);
-    //         }
-    //         return view('dashboards.admins.index')->with('error','ไม่มีผลลัพธ์ที่ค้นหา');
-    //     }
-    //     if($search != ""){
-    //         $sections = Section::where('section_name', 'LIKE', '%'. $search. '%')
-    //                     ->orWhere('section_sub', 'LIKE', '%'. $search. '%')
-    //                     ->paginate(5)
-    //                     ->setpath('')
-    //                     ->get();
-    //             $sections->append(array(
-    //                 // 'search' => $request->input('search'),
-    //                 'search' => Input::get('search'),
-    //             ));
-    //         if(count($sections) > 0){
-    //             return view('dashboards.admins.index')->withData($sections);
-    //         }
-    //         return view('dashboards.admins.index')->with('error','ไม่มีผลลัพธ์ที่ค้นหา');
-    //     }
-    //     if($search != ""){
-    //         $exercises = Exercise::where('level_name', 'LIKE', '%'. $search. '%')
-    //                     ->orWhere('data_level', 'LIKE', '%'. $search. '%')
-    //                     ->paginate(5)
-    //                     ->setpath('')
-    //                     ->get();
-    //             $exercises->append(array(
-    //                 // 'search' => $request->input('search'),
-    //                 'search' => Input::get('search'),
-    //             ));
-
-    //         if(count($exercises) > 0){
-    //             return view('dashboards.admins.index')->withData($exercises);
-    //         }
-    //         return view('dashboards.admins.index')->with('error','ไม่มีผลลัพธ์ที่ค้นหา');
-    //     }
-    // }
     function profile(User $user) {
         return view('dashboards.admins.profile', compact('user'));
     }
@@ -103,7 +52,6 @@ class AdminController extends Controller
     }
     function changePassword(User $user) {
         return view('dashboards.admins.change_password_admin', compact('user'));
-        // return redirect('admin/changePassword/'. $user->id)->with('message', 'เปลี่ยนรหัสผ่านสำเร็จ');
     }
     function settings() {
         return view('dashboards.admins.settings');

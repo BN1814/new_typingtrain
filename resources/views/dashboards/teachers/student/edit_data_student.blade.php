@@ -14,7 +14,7 @@
                 <div class="card-header text-white text-center bg-dark h4">{{ __('แก้ไขข้อมูล') }}</div>
                 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('teacher/dataSTD/'. $user->id) }}">
+                    <form method="POST" action="{{ url('teacher/dataSTD/'. $section->id .'/'. $user->id) }}">
                         @csrf
                         @method('put')
 
