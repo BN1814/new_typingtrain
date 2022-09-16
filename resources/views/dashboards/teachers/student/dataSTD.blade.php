@@ -24,7 +24,7 @@
                 @endif
                 <div class="card">
                     <div class="card-header text-center text-white bg-dark h4">ข้อมูลนักศึกษา</div>
-                    <p class="text-center mt-2 h4" style="margin:0; padding:0; font-weight:bold;">{{ __('COMPRO 1') }}</p>
+                    <p class="text-center mt-2 h4" style="margin:0; padding:0; font-weight:bold; text-transform:uppercase;">{{ $section->section_name }}</p>
                     <div class="card-body">
                         <form method="get" role="search">
                             <div class="input-group col-2 mb-2">
@@ -59,7 +59,7 @@
                                     <td>{{ $user->email }}</td>
                                     <td class="text-center">
                                         {{-- View --}}
-                                        <a href="{{ url('teacher/view_data_student/'. $user->id ) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
+                                        <a href="{{ url('teacher/dataSTD/'.$section->id .'/'.'view_data_student/'. $user->id ) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
                                         {{-- Update --}}
                                         <a href="{{ url('teacher/dataSTD/'. $user->id. '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                         {{-- Delete --}}

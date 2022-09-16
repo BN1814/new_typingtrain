@@ -36,22 +36,14 @@ class UserController extends Controller
     function enterclass() {
         return view('dashboards.users.enterclass');
     }
-    function enterclass_std(Request $req){
+    function enterclass_std(Request $req, $id, User $user){
         $req -> validate( [
             'entclass' => ['required', 'min:6'],
         ],[
             'entclass.required' => 'กรุณาใส่รหัสเข้าห้องเรียน',
             'entclass.min' => 'กรุณาใส่รหัสเข้าห้องเรียนมากกว่า 6 ตัว',
         ]);
-        $section = Section::where('code_inclass', 'JfsiLe');
-
-        $user_id = Auth::user()->id;
-        $input = $entclass->entclass = $req->entclass;
-        $input->insert([
-        ]);
-
-        if($input === $section) {
-        }
+        
     }
 
     function classroomAll() {

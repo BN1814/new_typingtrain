@@ -16,6 +16,7 @@ class HistoryScore extends Model
         'mistake',
         'wpm',
         'cpm',
+        'score',
         'exercise_id',
         'user_id',
     ];

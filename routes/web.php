@@ -71,11 +71,11 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::get('/changePassword', 'changePassword'); 
         Route::get('/settings', 'settings');
         // CRUD DATA STUDENT
-        Route::get('/view_data_student/{user}', 'viewDataStudent');
-        Route::get('/dataSTD', 'dataStudent');
+        Route::get('/dataSTD/{section}', 'dataStudent');
         Route::get('/dataSTD/{user}/edit', 'editDataStudent');
         Route::put('/dataSTD/{user}', 'updateDataStudent');
         Route::delete('/dataSTD/{id}', 'destroyDataStudent');
+        Route::get('/dataSTD/{id}/view_data_student/{user}', 'viewDataStudent');
         // CLASSROOM
         Route::get('/classroom', 'Classroom');
         // Section 

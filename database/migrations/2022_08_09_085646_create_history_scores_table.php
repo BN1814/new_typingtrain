@@ -22,6 +22,7 @@ class CreateHistoryScoresTable extends Migration
             $table->string('mistake')->nullable();
             $table->string('wpm')->nullable();
             $table->string('cpm')->nullable();
+            $table->string('score')->nullable();
             $table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

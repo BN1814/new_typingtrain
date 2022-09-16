@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Section;
+use App\Models\HistoryScore;
 use Session;
 use DB;
 
@@ -39,10 +40,12 @@ class TeacherController extends Controller
     }
     
     // CRUD DATA STUDENT
-    function viewDataStudent(User $user) {
-        return view('dashboards.teachers.student.view_dataSTD', compact('user'));
+    function viewDataStudent($id, User $user) {
+        $section = Section::findOrFail($id);
+        $historys = HistoryScore::where('user_id', $user->id)->get();
+        return view('dashboards.teachers.student.view_dataSTD', compact('user', 'section', 'historys'));
     }
-    public function dataStudent(Request $req) {
+    public function dataStudent(Request $req, Section $section) {
         $search = $req['search'] ?? "";
         if($search != "") {
             $users = User::where('userid', 'LIKE', '%'. $search .'%')
@@ -55,7 +58,7 @@ class TeacherController extends Controller
             $users = User::with('student_sections')->first()
                         ->where('role', ['student'])->get();
         }
-        return view('dashboards.teachers.student.dataSTD', compact('users', 'search'));
+        return view('dashboards.teachers.student.dataSTD', compact('users', 'search', 'section'));
     }
     function editDataStudent(User $user) {
         return view('dashboards.teachers.student.edit_data_student', compact('user'));
@@ -78,7 +81,7 @@ class TeacherController extends Controller
     }
 
     // CLASSROOM
-    public function Classroom(Request $req) {
+    public function Classroom(Request $req, Section $section) {
         $id = Auth::user()->id;
         $search = $req['search'] ?? "";
         if($search != "") {
@@ -92,7 +95,7 @@ class TeacherController extends Controller
             $sections = Section::where('user_id', $id)->get();
         }
         $users = User::all();
-        $data = compact('users', 'sections', 'id');
+        $data = compact('users', 'sections', 'id', 'section');
         return view('dashboards.teachers.classroom')->with($data);
     }
 

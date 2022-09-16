@@ -26,15 +26,16 @@ class Section extends Model
     ];
 
     public function student_users() {
-        $student = User::where('role', ['student']);
+        $student = User::where('role', ['student'])->first();
         if($student) {
-            return $this->belongsToMany(User::class, 'section_users', 'section_id', 'user_id');
+            return $this->belongsToMany(User::class, 'section_users');
+            // return $this->belongsToMany(User::class, 'section_users', 'section_id', 'user_id');
         }
     }
-    // public function teacher_users() {
-    //     $teacher = User::where('role', ['teacher']);
-    //     if($teacher) {
-    //         return $this->belongsTo(User::class);
-    //     }
-    // }
+    public function teacher_users() {
+        $teacher = User::where('role', ['teacher']);
+        if($teacher) {
+            return $this->belongsTo(User::class);
+        }
+    }
 }

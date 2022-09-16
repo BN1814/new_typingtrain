@@ -22,7 +22,7 @@ class SectionSeeder extends Seeder
                 'code_inclass' => 'JfsiLe',
                 'deadline_date' => '2021-25-10',
                 'deadline_time' => '12:00',
-                'teacher_id' => '2',
+                'user_id' => '2',
             ],
             [
                 'section_sub' => '520439',
@@ -30,7 +30,7 @@ class SectionSeeder extends Seeder
                 'code_inclass' => 'kfoDPa',
                 'deadline_date' => '2022-30-12',
                 'deadline_time' => '12:00',
-                'teacher_id' => '2',
+                'user_id' => '2',
             ],
         ];
 
