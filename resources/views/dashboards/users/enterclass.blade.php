@@ -3,9 +3,43 @@
 @section('content')
 <style>
 </style>
-    <div class="container">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @if(session('success'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '{{ session('success') }}',
+                            showConfirmButton: false,
+                            ConfirmButtonText: 'ตกลง',
+                            timer: 1500
+                        })
+                    </script>
+                @elseif(session('error'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: '{{ session('error') }}',
+                            showConfirmButton: false,
+                            ConfirmButtonText: 'ตกลง',
+                            timer: 1500
+                        })
+                    </script>
+                @elseif(session('error-message'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: '{{ session('error-message') }}',
+                            showConfirmButton: false,
+                            ConfirmButtonText: 'ตกลง',
+                            timer: 1500
+                        })
+                    </script>
+                @endif
                 <div class="card">
                     <div class="card-header h4 bg-dark text-white text-center">
                         {{ __('เข้าห้องเรียน') }}

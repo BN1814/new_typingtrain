@@ -29,7 +29,7 @@ class Section extends Model
         $student = User::where('role', ['student'])->first();
         if($student) {
             return $this->belongsToMany(User::class, 'section_users');
-            // return $this->belongsToMany(User::class, 'section_users', 'section_id', 'user_id');
+            // return $this->belongsToMany(User::class, 'section_users', 'user_id', 'section_id');
         }
     }
     public function teacher_users() {

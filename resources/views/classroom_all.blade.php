@@ -27,10 +27,6 @@
                                             <button class="btn btn-primary btn-sm">
                                                 <a href="{{ url('user/dashboard') }}">เข้าห้องเรียน</a>
                                             </button>
-                                        @elseif(Auth::user()->role == "teacher")
-                                            <button class="btn btn-primary btn-sm">
-                                                <a href="{{ url('teacher/dashboard') }}">ดูห้องเรียน</a>
-                                            </button>
                                         @endif
                                     </td>
                                 </tr>
@@ -42,4 +38,4 @@
             </div>
         </div>
     </div>
-@endsection
+@enduser

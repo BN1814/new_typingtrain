@@ -86,8 +86,8 @@ class TeacherController extends Controller
         if($search != "") {
             $sections = Section::where('section_sub', 'LIKE', '%'. $search. '%')
                             ->orWhere('section_name', 'LIKE', '%'. $search . '%')
-                            ->orWhere('deadline_date', '%Y-%m-%d', 'LIKE'. '%' .$search . '%')
-                            ->orWhereTime('deadline_time', 'LIKE'. '%' .$search . '%')
+                            ->orWhere('deadline_date', '=' , $search)
+                            ->orWhereTime('deadline_time', '=', $search)
                             ->get();
         }
         else {
