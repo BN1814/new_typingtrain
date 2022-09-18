@@ -32,6 +32,22 @@ class SectionSeeder extends Seeder
                 'deadline_time' => '12:00',
                 'user_id' => '2',
             ],
+            [
+                'section_sub' => '520439',
+                'section_name' => 'Project 2',
+                'code_inclass' => 'kfdSPD',
+                'deadline_date' => '2022-30-12',
+                'deadline_time' => '12:00',
+                'user_id' => '2',
+            ],
+            [
+                'section_sub' => '520439',
+                'section_name' => 'Project 3',
+                'code_inclass' => 'AowoPW',
+                'deadline_date' => '2022-30-12',
+                'deadline_time' => '12:00',
+                'user_id' => '2',
+            ],
         ];
 
         foreach($section as $key => $value) {

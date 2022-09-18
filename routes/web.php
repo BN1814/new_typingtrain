@@ -32,7 +32,7 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // CLASSROOM ALL
-Route::get('/classroomAll', [UserController::class, 'classroomAll']);
+// Route::get('/classroomAll', [UserController::class, 'classroomAll']);
 // ADMIN
 Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBackHistory']], function() {
     Route::controller(AdminController::class)->group(function() {

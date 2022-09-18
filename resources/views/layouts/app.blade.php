@@ -108,7 +108,6 @@
                             @else
                                 <li><a href="{{ url('user/dashboard') }}" class="nav-link">หน้าแรก</a></li>
                                 <li><a href="{{ url('user/enterclass') }}" class="nav-link">เข้าห้องเรียน</a></li>
-                                <li><a href="{{ url('classroomAll') }}" class="nav-link">ห้องเรียนทั้งหมด</a></li>
                             @endif
                             <li class="nav-item dropdown">
                                 {{-- <box-icon type="solid" name="user" style="background: gray"></box-icon> --}}

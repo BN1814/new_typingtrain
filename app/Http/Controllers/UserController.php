@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Section;
 use App\Models\HistoryScore;
+use isEmtry;
 use DB;
 use Auth;
 
@@ -34,7 +35,10 @@ class UserController extends Controller
         return view('dashboards.users.settings');
     }
     function enterclass() {
-        return view('dashboards.users.enterclass');
+        $id = Auth::user()->id;
+        $user = User::findOrFail($id);
+        $sections = Section::get();
+        return view('dashboards.users.enterclass', compact('sections', 'user', 'id'));
     }
     function enterclass_std(Section $section, Request $req){
         $req -> validate( [
@@ -44,34 +48,69 @@ class UserController extends Controller
             'entclass.min' => 'กรุณาใส่รหัสเข้าห้องเรียนมากกว่า 6 ตัว',
         ]);
         $enterclass = $req->input('entclass');
-        $inputClassroom = Section::where('code_inclass', '=', $enterclass)->first('id');
+        $inputClassroom = Section::where('code_inclass', '=', $enterclass)->first();
 
         $user_id = Auth::user()->id;
         $users = User::findOrFail($user_id);
-        $section_user = DB::table('section_users')
-                        ->where('user_id', $user_id)->get('section_id');
-
-        // dd($section_user, $user_id, $users, $inputClassroom);
-        
-        if($inputClassroom) {
-            if($section_user == $inputClassroom) {
-                return redirect('user/enterclass')->with('error-message', 'คุณอยู่ในห้องเรียนนี้แล้ว');
-            }
-            else {
+        // $section_id = Auth::user()->student_sections()->find($inputClassroom);
+        // dd($inputClassroom);
+        // $section_user = DB::table('section_users')->where('section_id', '=' , $classroom_id)->first();
+        // $section_id = DB::table('section_users')->where('section_id', $classroom_id)->first();
+        if($inputClassroom){
+            $section_user_id = DB::table('section_users')->where('user_id', $user_id)->first();
+            if($section_user_id == null){
                 $users->student_sections()->attach($inputClassroom);
                 return redirect('user/enterclass')->with('success', 'เข้าห้องเรียนสำเร็จแล้ว');
             }
+            else{
+                $a = $section_user_id->section_id;
+                $b = $section_user_id->user_id;
+                $classroom_id = $inputClassroom->id;
+                if($classroom_id == $a){
+                    if($user_id == $b){
+                        return redirect('user/enterclass')->with('error-message', 'คุณอยู่ในห้องเรียนนี้แล้ว');
+                    }
+                    else {
+                        return redirect('user/enterclass')->with('success', 'vrfvjisjvr');
+                    }
+                }
+            }
         }
-        else {
-            return redirect('user/enterclass')->with('error', 'รหัสเขาห้องเรียนไม่ถูกต้อง กรุณากรอกรหัสใหม่อีกครั้ง!!');
+        else{
+            return redirect('user/enterclass')->with('error', 'รหัสเขาห้องเรียนไม่ถูกต้องหรือไม่มีรหัสเข้าห้องเรียนนี้อยู่ในฐานข้อมูลของระบบ กรุณากรอกรหัสใหม่อีกครั้ง!!');
         }
-    }
+        
+        
+        // $check_user_section_before = $users->student_sections()->find($inputClassroom)->code_inclass;
+        // dd($check_user_section_before);
+        // $check_user_section = $users->student_sections()->wherePivot('section_id', '=', $enterclass);
+        // if($inputClassroom) {
 
-    function classroomAll() {
-        $id = Auth::user()->id;
-        $sections = Section::with('section_users')
-                            ->where('section_id', '=', $id)
-                            ->get();
-        return view('classroom_all', compact('sections', 'id'));
+        //     return redirect('user/enterclass')->with('success', 'เข้าห้องเรียนสำเร็จแล้ว');
+        // }
+        // else{
+        //     return redirect('user/enterclass')->with('error', 'รหัสเขาห้องเรียนไม่ถูกต้องหรือไม่มีรหัสเข้าห้องเรียนนี้อยู่ในฐานข้อมูลของระบบ กรุณากรอกรหัสใหม่อีกครั้ง!!');
+        // }
+        // if($inputClassroom) {
+        //     // if(count((is_countable($users)?$users:[])))
+        //     if(!$section_user) {
+        //         // dd($section_user, $section_user_id);
+        //         return redirect('user/enterclass')->with('error-message', 'คุณอยู่ในห้องเรียนนี้แล้ว');
+        //     }
+        //     // // $check_user_section = $users->student_sections()->find($inputClassroom)->code_inclass;
+        //     else{
+        //         if($section_user){
+            //             
+            //         // $users->student_sections()->attach($inputClassroom);
+        //         }
+        //         else{
+
+        //         }
+        //         return redirect('user/enterclass')->with('success', 'เข้าห้องเรียนสำเร็จแล้ว');
+        //     }
+        // }
+        // else {
+        //     return redirect('user/enterclass')->with('error', 'รหัสเขาห้องเรียนไม่ถูกต้องหรือไม่มีรหัสเข้าห้องเรียนนี้อยู่ในฐานข้อมูลของระบบ กรุณากรอกรหัสใหม่อีกครั้ง!!');
+        // }
     }
 }
