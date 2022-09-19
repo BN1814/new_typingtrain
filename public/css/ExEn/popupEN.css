@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     width: 500px;
-    height: 320px;
+    height: 370px;
     border-radius: 5px;
     /* background: linear-gradient(43, 210, 230); */
     /* background-image: linear-gradient(to right, rgb(145, 138, 138) , rgb(65, 59, 59)); */
@@ -49,7 +49,7 @@
 }
 .pop-up-score .history-score {
     width: 400px;
-    height: 220px;
+    height: 280px;
     margin-top: 10px;
 }
 .history-score .col-md-8 .detail-score {

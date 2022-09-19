@@ -1,4 +1,4 @@
-const randomText = [document.getElementById("Typingtext").innerHTML];
+const randomText = [document.getElementById("Typingtext").innerText];
 const typingText = document.querySelector(".typing-text p"),
     inpField = document.querySelector(".wrapper .input-field"),
     mistakeTag = document.querySelector(".mistake span"),
@@ -17,7 +17,7 @@ let timer,
 function randomParagraph() {
     // console.log(randomText[0]);
     let randIndex = Math.floor(Math.random() * randomText.length);
-    typingText.innerHTML = "";
+    typingText.innerHTML = "" ;
     randomText[randIndex].split("").forEach((span) => {
         let spanTag = `<span>${span}</span>`;
         typingText.innerHTML += spanTag;
@@ -74,6 +74,7 @@ function initTyping() {
         mistakeTag.innerText = mistakes;
         wpmTag.innerText = wpm;
         cpmTag.innerText = charIndex - mistakes;
+        scoreTag.innerText = (charIndex-mistakes)/((charIndex+mistakes)/100) ;
         Open_score();
         clearInterval(timer);
     }
@@ -98,6 +99,7 @@ function resetTyping() {
     mistakeTag.innerText = mistakes;
     wpmTag.innerText = 0;
     cpmTag.innerText = 0;
+    scoreTag.innerText = 0;
 }
 
 randomParagraph();
@@ -127,6 +129,7 @@ function Open_score() {
     popmistake.value = mistakeTag.innerHTML;
     popwpm.value = wpmTag.innerHTML;
     popcpm.value = cpmTag.innerHTML;
+    popscore.value = scoreTag.innerHTML;
 }
 
 popup.addEventListener("click", Close_score);
