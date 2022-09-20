@@ -14,8 +14,8 @@ class CreateSectionUsersTable extends Migration
     public function up()
     {
         Schema::create('section_users', function (Blueprint $table) {
-            $table->unsignedBigInteger('section_id')->unique();
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('section_id');
+            $table->unsignedBigInteger('user_id');
 
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

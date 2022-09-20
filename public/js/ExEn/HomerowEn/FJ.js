@@ -16,7 +16,7 @@ let timer,
 
 function randomParagraph() {
     // console.log(randomText[0]);
-    let randIndex = Math.floor(Math.random() * randomText.length);
+    let randIndex = [Math.floor(Math.random() * randomText.length)];
     typingText.innerHTML = "" ;
     randomText[randIndex].split("").forEach((span) => {
         let spanTag = `<span>${span}</span>`;
