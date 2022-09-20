@@ -41,6 +41,46 @@ class ExerciseSeeder extends Seeder
                 'level_name' => 'g & h',
                 'data_level' => 'g h',
             ],
+            [
+                'level' => '06',
+                'level_name' => 'y & u',
+                'data_level' => 'y u',
+            ],
+            [
+                'level' => '07',
+                'level_name' => 't & i',
+                'data_level' => 't i',
+            ],
+            [
+                'level' => '08',
+                'level_name' => 'r & o',
+                'data_level' => 'r o',
+            ],
+            [
+                'level' => '09',
+                'level_name' => 'e & p',
+                'data_level' => 'e p',
+            ],
+            [
+                'level' => '10',
+                'level_name' => 'w & [',
+                'data_level' => 'w [',
+            ],
+            [
+                'level' => '11',
+                'level_name' => 'q & ]',
+                'data_level' => 'q ]',
+            ],
+            [
+                'level' => '12',
+                'level_name' => 'mix 02',
+                'data_level' => 'q w e r t y u i o p [ ]',
+            ],
+            [
+                'level' => '13',
+                'level_name' => 'mix 03',
+                'data_level' => 'z x c v b n m , . /',
+            ],
         ];
 
         foreach($exercise as $key => $value) {

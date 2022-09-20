@@ -82,6 +82,7 @@
                         <table class="table table-striped table-bordered text-center">
                             <thead>
                                 <tr>
+                                    <th>ลำดับ</th>
                                     <th>รหัสวิชา</th>
                                     <th>ชื่อวิชา</th>
                                     <th>รหัสเข้าห้องเรียน</th>
@@ -89,8 +90,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php($i=1)
                                 @foreach ($sections as $section)
                                 <tr>
+                                    <td>{{ $i++ }}</td>
                                     <td>{{ $section->section_sub }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->code_inclass }}</td>
