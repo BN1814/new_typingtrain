@@ -32,7 +32,7 @@ class RedirectIfAuthenticated
                 return redirect()->route('teacher.dashboard');
             }
             else if (Auth::guard($guard)->check() && Auth::user()->role == 'student') {
-                return redirect()->route('user.dashboard');
+                return redirect('user/enterclass');
             }
         }
 

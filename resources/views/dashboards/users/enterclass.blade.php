@@ -79,6 +79,7 @@
                 <div class="card">
                     <div class="card-header text-center text-white bg-dark h4">ห้องเรียนของ <strong class="d-inline text-warning h3">{{ $user->name }}</strong> ทั้งหมด</div>
                     <div class="card-body">
+                        @if(count($sections) > 0)
                         <table class="table table-striped table-bordered text-center">
                             <thead>
                                 <tr>
@@ -98,16 +99,17 @@
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->code_inclass }}</td>
                                     <td>
-                                        @if(Auth::user()->role == "student")
-                                            <button class="btn btn-primary btn-sm">
-                                                <a href="{{ url('user/dashboard') }}">เข้าห้องเรียน</a>
-                                            </button>
-                                        @endif
+                                        <button class="btn btn-primary btn-sm">
+                                            <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id) }}">เข้าห้องเรียน</a>
+                                        </button>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        @else
+                            <p class="text-center fw-bold mt-3">ไม่มีห้องเรียน</p>
+                        @endif
                     </div>
                 </div>
             </div>

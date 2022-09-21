@@ -46,7 +46,7 @@ class TeacherController extends Controller
         return view('dashboards.teachers.student.view_dataSTD', compact('user', 'section', 'historys'));
     }
     public function dataStudent(Request $req, Section $section) {
-        $id = Auth::user()->id;
+        // $id = Auth::user()->id;
         $search = $req['search'] ?? "";
         if($search != "") {
             $users = User::where('userid', 'LIKE', '%'. $search .'%')
@@ -56,14 +56,15 @@ class TeacherController extends Controller
                     ->get();
         }
         else{
-            $users = DB::table('users')
-                        ->join('section_users', 'users.id', '=', 'section_users.user_id')
-                        ->join('sections', 'section_users.section_id', '=', 'sections.id')
+            $users = DB::table('sections')
+                        ->join('section_users', 'section_users.section_id', '=', 'sections.id')
+                        ->join('users', 'section_users.user_id', '=', 'users.id')
                         ->where('sections.id', $section->id)
+                        ->orderBy('section_users.user_id', 'asc')
                         ->get();
         }
         // dd($users);
-        return view('dashboards.teachers.student.dataSTD', compact('users', 'search', 'section'));
+        return view('dashboards.teachers.student.dataSTD', compact('users', 'section'));
     }
     function editDataStudent($id, User $user) {
         $section = Section::findOrFail($id);

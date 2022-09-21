@@ -74,7 +74,7 @@ function initTyping() {
         mistakeTag.innerText = mistakes;
         wpmTag.innerText = wpm;
         cpmTag.innerText = charIndex - mistakes;
-        scoreTag.innerText = (charIndex-mistakes)/((charIndex+mistakes)/100) ;
+        scoreTag.innerText = Math.ceil((charIndex-mistakes)/((charIndex+mistakes)/100)) ;
         Open_score();
         clearInterval(timer);
     }

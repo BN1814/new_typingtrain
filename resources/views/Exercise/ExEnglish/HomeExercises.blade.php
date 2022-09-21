@@ -26,7 +26,7 @@
                                     <p class="fs-5 text-center">
                                      {{$exercise->level_name}}
                                     </p>
-                                    <a href="{{ url('user/HomeExercises/'. $exercise->id . '/ExercisePage')}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
+                                    <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                                 </div>
                             </div>
                         </div>

@@ -24,7 +24,7 @@ class HistorySeeder extends Seeder
                 'cpm' => '36',
                 'score' => '100',
                 'exercise_id' => '1',
-                'user_id' => '3',
+                'user_id' => '4',
             ],
             [
                 'level' => 'level 01 : f & j',
@@ -34,7 +34,7 @@ class HistorySeeder extends Seeder
                 'cpm' => '89',
                 'score' => '100',
                 'exercise_id' => '1',
-                'user_id' => '3',
+                'user_id' => '4',
             ],
         ];
 

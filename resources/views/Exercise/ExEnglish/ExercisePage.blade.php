@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <style>
-    .typing-text p {
-        font-size: 34px;
-    }
-</style> --}}
-@if($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <strong>{{ $message }}</strong>
-    </div>
+@if(session('success'))
+    <script>
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '{{ session('success') }}',
+            showConfirmButton: false,
+            confirmButtonColor: '#212529',
+            ConfirmButtonText: 'ตกลง',
+            timer: 1500
+        })
+    </script>
 @endif
     <link rel="stylesheet" href="{{ asset('css/ExEn/exerciseEnglish.css') }}">
     <link rel="stylesheet" href="{{ asset('css/ExEn/popupEN.css') }}">
@@ -56,7 +59,7 @@
             @include('include.includeKB')
             <div class="pop-up-score shadow-lg" style="color: #fff;">
                 <p id="close_popup">+</p>
-                <form action="{{ route('saveEx') }}" method="post">
+                <form action="{{ url('user/saveExercise') }}" method="post">
                     @csrf
                     <div class="head-level">
                         <input type="text" class="level" name="level" value="{{ $exercises->level }}: {{ $exercises->level_name }}">
@@ -101,4 +104,8 @@
             </div>
         </body>
     <script src="{{ asset('js/ExEn/HomerowEn/FJ.js')}}" defer></script>
+@endsection
+
+@section('script')
+    
 @endsection

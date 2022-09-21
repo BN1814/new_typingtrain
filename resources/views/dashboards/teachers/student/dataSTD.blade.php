@@ -40,6 +40,7 @@
                             <thead>
                                 <tr class="text-center">
                                     <th>ลำดับ</th>
+                                    <th>ไอดี</th>
                                     <th>รหัสนักศึกษา</th>
                                     <th>ชื่อ</th>
                                     <th>นามสกุล</th>
@@ -52,7 +53,10 @@
                                 <tr>
                                 @foreach ($users as $user)
                                     <input type="hidden" class="delete_user_id" value="{{ $user->id }}">
+
+                                    {{-- <?php dd($user->id); ?> --}}
                                     <td>{{ $i++ }}</td>
+                                    <td>{{ $user->id }}</td>
                                     <td>{{ $user->userid }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->lname }}</td>

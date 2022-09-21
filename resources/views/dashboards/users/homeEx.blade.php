@@ -34,22 +34,16 @@
     }
 </style>
 <div class="container mt-4">
-    {{-- <div class="row h-25 justify-content-end">
-        <div class="col-md-2">
-            <button class="btn btn-primary">
-                <a href="{{ url('user/enterclass') }}" class="text-white">เข้าห้องเรียน</a>
-            </button>
-        </div>
-    </div> --}}
     <div class="row justify-content-center">
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header text-white bg-dark ">EXERCISE ENGLISH</div>
                 <div class="card-body">
                     <img src="https://www.nicepng.com/png/detail/67-675294_keyboard-typing.png" class="img-fluid">
-                    {{-- <p class="h5 mt-1">SCORE : <span>0</span></p> --}}
+                    {{-- <p class="h5 mt-1">{{ $user->name }}</p> --}}
                 </div>
-                <a href="{{ route('HomeExercises') }}" class="btn btn-dark btn-block">START</a>
+                {{-- /enterclass/homeEx/{section_id}/{user_id}/AllExercises --}}
+                <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises') }}" class="btn btn-dark btn-block">START</a>
             </div>
         </div>
     </div>

@@ -56,7 +56,7 @@
                             <p style="margin: 0; padding: 0;">TypingTrain</p>
                         </a>
                     @else
-                        <a class="navbar-brand" href="{{ url('user/dashboard') }}">
+                        <a class="navbar-brand" href="{{ url('user/enterclass') }}">
                             <p style="margin: 0; padding: 0;">TypingTrain</p>
                         </a>
                     @endif
@@ -106,7 +106,7 @@
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
                                 <li><a href="{{ url('teacher/classroom') }}" class="nav-link">ห้องเรียน</a></li>
                             @else
-                                <li><a href="{{ url('user/dashboard') }}" class="nav-link">หน้าแรก</a></li>
+                                {{-- <li><a href="{{ url('user/dashboard') }}" class="nav-link">หน้าแรก</a></li> --}}
                                 <li><a href="{{ url('user/enterclass') }}" class="nav-link">เข้าห้องเรียน</a></li>
                             @endif
                             <li class="nav-item dropdown">
