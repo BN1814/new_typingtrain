@@ -15,31 +15,29 @@ class HistorySeeder extends Seeder
     public function run()
     {
         //
-        $history = [
-            [
-                'level' => 'level 01 : f & j',
-                'time' => '15',
-                'mistake' => '74',
-                'wpm' => '56',
-                'cpm' => '36',
-                'score' => '100',
-                'exercise_id' => '1',
-                'user_id' => '4',
-            ],
-            [
-                'level' => 'level 01 : f & j',
-                'time' => '45',
-                'mistake' => '23',
-                'wpm' => '76',
-                'cpm' => '89',
-                'score' => '100',
-                'exercise_id' => '1',
-                'user_id' => '4',
-            ],
-        ];
+        // $history = [
+        //     [
+        //         'time' => '15',
+        //         'mistake' => '74',
+        //         'wpm' => '56',
+        //         'cpm' => '36',
+        //         'score' => '100',
+        //         'exercise_id' => '1',
+        //         'user_id' => '4',
+        //     ],
+        //     [
+        //         'time' => '45',
+        //         'mistake' => '23',
+        //         'wpm' => '76',
+        //         'cpm' => '89',
+        //         'score' => '100',
+        //         'exercise_id' => '1',
+        //         'user_id' => '4',
+        //     ],
+        // ];
 
-        foreach($history as $key => $value) {
-            HistoryScore::create($value);
-        }
+        // foreach($history as $key => $value) {
+        //     HistoryScore::create($value);
+        // }
     }
 }

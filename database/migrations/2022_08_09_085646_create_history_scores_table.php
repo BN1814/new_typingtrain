@@ -17,7 +17,7 @@ class CreateHistoryScoresTable extends Migration
             $table->id();
             $table->unsignedBigInteger('exercise_id')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->string('level')->nullable();
+            // $table->string('level')->nullable();
             $table->string('time')->nullable();
             $table->string('mistake')->nullable();
             $table->string('wpm')->nullable();

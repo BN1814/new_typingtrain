@@ -69,7 +69,7 @@ class LoginController extends Controller
                 return redirect('teacher/dashboard');
             }
             else if(auth()->user()->role == 'student') {
-                return redirect('user/dashboard');
+                return redirect('user/enterclass');
             }
         }
         else {

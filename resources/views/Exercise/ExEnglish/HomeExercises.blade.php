@@ -12,6 +12,19 @@
         }
     </style>
     <body>
+        @if(session('success'))
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: '{{ session('success') }}',
+                    showConfirmButton: false,
+                    confirmButtonColor: '#212529',
+                    ConfirmButtonText: 'ตกลง',
+                    timer: 1500
+                })
+            </script>
+        @endif
         <div class="container-sm">
             <!-- <p class="score">SCORE : <span>0</span></p> -->
             <h1 class="display-4 text-center fw-bold">EXERCISE ENGLISH</h1>

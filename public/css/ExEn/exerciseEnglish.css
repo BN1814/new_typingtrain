@@ -32,7 +32,7 @@ body {
 }
 .content-box .typing-text {
     /* height: 220px; */
-    overflow: auto;
+    overflow-y: auto;
 }
 .typing-text::-webkit-scrollbar {
     width: 0;
@@ -40,7 +40,7 @@ body {
 .typing-text p {
     font-size: 34px;
     text-align: center;
-    /* word-break: break-all; */
+    word-break: break-all;
     font-weight: bold;
     /* letter-spacing: 12px; */
 }
@@ -101,7 +101,7 @@ body {
 }
 .content .result-details {
     display: flex;
-    /* width: calc(120% - 140px); */
+    width: calc(100% - 90px);
     justify-content: space-between;
     padding: 0;
     margin: 0;
@@ -112,17 +112,17 @@ body {
 }
 .result-details li:not(:first-child){
     border-left: 1px solid #ccc;
-    margin-left: 50px;
 }
 .result-details li p {
     font-size: 15px;
     margin: 2px 0 0 0;
-    margin-left: 50px;
+    margin-left: 70px;
 }
 .result-details li span {
     display: block;
     font-size: 16px;
     margin: 2px 0 0 10px;
+    color: red;
 }
 .result-details li:not(:first-child) span {
     font-weight: 1000;
@@ -130,20 +130,19 @@ body {
 .result-details li b {
     font-weight: 1000;
 }
-.alert-success {
+/* .alert-success {
     position: absolute;
     right: 0;
     top: 60px;
     width: 20%;
-}
+} */
 
 @media (max-width: 768px) {
     .typing-text p {
         font-size: 31px;
-        letter-spacing: 13px;
     }
     .content-box .typing-text {
-        height: 200px;
+        height: auto;
     }
     .content button {
         width: 70px;
@@ -161,9 +160,12 @@ body {
     .result-details li span {
         display: block;
         font-size: 12px;
+        margin-left: 5px;
+        margin-right: 10px;
+        color: red;
     }
     .result-details li p {
-        font-size: 12px;
+        font-size: 13px;
         margin: 1px 0 0 0;
     }
 }

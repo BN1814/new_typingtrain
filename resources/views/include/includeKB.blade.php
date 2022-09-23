@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ asset('css/keyboard.css') }}">
-    <div class="container mt-3 d-block text-center">
+    <div class="container mt-4 d-block text-center">
         <div class="row">
             <div class="col-sm">
                 <button type="button" class="active bt" id="~">~</button>

@@ -105,8 +105,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
         // Exercise of Student form ExerciseController
         Route::get('/enterclass/homeEx/{section}/{user}/AllExercises', 'AllExercises');
         Route::get('/enterclass/homeEx/{section}/{user}/AllExercises/{id}', 'Exercise');
-
         //SAVE EXERCISE TO DATABASE
-        Route::post('saveExercise', 'saveExercise');
+        Route::post('/enterclass/homeEx/{section}/{user}/AllExercises/{id}', 'saveExercise');
     });
 });

@@ -14,27 +14,28 @@ class ExerciseController extends Controller
 {
     public function AllExercises(Section $section, User $user) {
         $exercises = Exercise::first()->paginate(12);
-        return view('Exercise/ExEnglish.HomeExercises', compact('exercises', 'section', 'user'))->with((request()->input('page',1) - 1) * 12);
+        return view('Exercise.ExEnglish.HomeExercises', compact('exercises', 'section', 'user'))->with((request()->input('page',1) - 1) * 12);
     }
     public function Exercise(Section $section, User $user, $id) {
         $exercises = Exercise::findOrFail($id);
-        return view('Exercise/ExEnglish.ExercisePage',compact('exercises', 'section', 'user'));
+        return view('Exercise.ExEnglish.ExercisePage',compact('exercises', 'section', 'user'));
     }
-    public function SaveExercise(Request $request,Exercise $exercise) {
+    public function SaveExercise(Section $section, User $user, $id, Request $request) {
         $user_id = auth::user()->id;
-        $exercise_id = Exercise::where('id', $exercise->id)->get();
+        $exercises = Exercise::findOrFail($id);
+        // dd(exercises);
         $data = new HistoryScore();
-        $data->exercise_id = $exercise_id;
+        $data->exercise_id = $exercises->id;
+        $data->user_id = $user_id;
         $data->time = $request->time;
         $data->mistake = $request->mistake;
         $data->wpm = $request->wpm;
-        $data->cpm = $request->cpm;        
-        $data->user_id = $user_id;
+        $data->cpm = $request->cpm; 
+        $data->score = $request->score;       
         $save = $data->save();
 
         if($save) {
-            dd($exercise_id);
-            // return redirect()->back()->with('success', 'บันทึกข้อมูลสำเร็จ');
+            return redirect('user/enterclass/homeEx/'. $section->id . '/' . $user->id . '/'.'AllExercises')->with(compact('section', 'user', 'exercises', 'id'))->with('success', 'บันทึกข้อมูลสำเร็จ');
         }
     }
 }

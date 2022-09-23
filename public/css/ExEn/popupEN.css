@@ -17,7 +17,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none;
+    display: flex;
 }
 .pop-up-score #close_popup {
     position: absolute;
@@ -53,11 +53,11 @@
     margin-top: 10px;
 }
 .history-score .col-md-8 .detail-score {
-    width: 290px;
+    width: 320px;
     display: block;
     justify-content: center;
     align-items: center;
-    padding-left: 90px;
+    padding-left: 65px;
     background: #fff;
 }
 .pop-up-score ul {
@@ -114,6 +114,14 @@
 
 @media (max-width: 768px) {
     .pop-up-score ul li {
-        padding-left: 35%;
+        padding-left: 30px;
+    }
+    .history-score .col-md-8 .detail-score {
+        width: 355px;
+        font-size: 15px;
+        margin-left: 10%;
+    }
+    .pn-score {
+        margin-top: -25px;
     }
 }
