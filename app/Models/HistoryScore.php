@@ -16,6 +16,7 @@ class HistoryScore extends Model
         'wpm',
         'cpm',
         'score',
+        'section_id',
         'exercise_id',
         'user_id',
     ];
@@ -29,5 +30,8 @@ class HistoryScore extends Model
     }
     public function exercise() {
         return $this->belongsTo(Exercise::class);
+    }
+    public function section() {
+        return $this->belongsTo(Section::class);
     }
 }

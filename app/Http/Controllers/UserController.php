@@ -14,7 +14,11 @@ use Str;
 class UserController extends Controller
 {
     function profile(User $user) {
-        return view('dashboards.users.profile', compact('user'));
+        $historys = HistoryScore::where('user_id', $user->id)
+                            ->join('exercises', 'history_scores.id', '=', 'exercises.id')
+                            // ->join('sections', 'history_scores.section_id', '=', 'sections.id')
+                            ->get();
+        return view('dashboards.users.profile', compact('user', 'historys'));
     }
     function updateProfile(User $user, Request $request) {
         $user->update([

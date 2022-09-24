@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Http\Middleware\isTeacherMiddleware;
 use App\Http\Middleware\isUserMiddleware;
 use App\Models\User;
+use App\Models\HistoryScore;
 
 class Section extends Model
 {
@@ -37,5 +38,11 @@ class Section extends Model
         if($teacher) {
             return $this->belongsTo(User::class);
         }
+    }
+    public function histories() {
+        return $this->hasMany(HistoryScore::class);
+        // $history = HistoryScore::where();
+        // if($teacher) {
+        // }
     }
 }

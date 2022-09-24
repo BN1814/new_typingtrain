@@ -42,8 +42,10 @@ class TeacherController extends Controller
     // CRUD DATA STUDENT
     function viewDataStudent($id, User $user) {
         $section = Section::findOrFail($id);
-        $historys = HistoryScore::where('user_id', $user->id)->get();
-        return view('dashboards.teachers.student.view_dataSTD', compact('user', 'section', 'historys'));
+        $historys = HistoryScore::where('user_id', $user->id)
+                                ->join('exercises', 'history_scores.id', '=', 'exercises.id')
+                                ->get();
+        return view('dashboards.teachers.student.view_dataSTD', compact('user', 'section', 'historys', 'id'));
     }
     public function dataStudent(Request $req, Section $section) {
         // $id = Auth::user()->id;

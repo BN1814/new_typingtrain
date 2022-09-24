@@ -25,6 +25,7 @@ class ExerciseController extends Controller
         $exercises = Exercise::findOrFail($id);
         // dd(exercises);
         $data = new HistoryScore();
+        $data->section_id = $section->id;
         $data->exercise_id = $exercises->id;
         $data->user_id = $user_id;
         $data->time = $request->time;

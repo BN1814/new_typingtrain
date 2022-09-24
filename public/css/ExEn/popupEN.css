@@ -17,7 +17,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
+    display: none;
 }
 .pop-up-score #close_popup {
     position: absolute;

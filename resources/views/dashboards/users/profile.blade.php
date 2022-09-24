@@ -6,9 +6,9 @@
     text-align: center;
   }
 </style>
-    <div class="container mt-5">
+    <div class="container mt-4">
       <div class="row justify-content-center">
-        <div class="col-md-8 mb-2">
+        <div class="col-md-7 mb-2">
             @if(session('update'))
                 <script>
                     Swal.fire({
@@ -85,7 +85,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-warning form-control">
-                                    {{ __('แก้ไข') }}
+                                    {{ __('อัพเดตข้อมูล') }}
                                 </button>
                             </div>
                         </div>
@@ -93,6 +93,45 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-11">
+            <div class="card mt-3">
+                <div class="card-header text-center text-white bg-dark h4">ประวัติการทำแบบทดสอบ</div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th>ครั้งที่</th>
+                                <th>ชื่อวิชา</th>
+                                <th>ชื่อแบบฝึกหัด</th>
+                                <th>เวลาที่ใช้ไป</th>
+                                <th>คำที่พิมพ์ผิด</th>
+                                <th>ความเร็วการพิมพ์</th>
+                                <th>ความถูกต้อง</th>
+                                <th>คะแนน</th>
+                                <th>วันที่บันทึก</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php($i=1)
+                            @foreach ($historys as $history)
+                                <tr>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $history->section_name }}</td>
+                                    <td>{{ $history->level_name }}</td>
+                                    <td>{{ $history->time }}</td>
+                                    <td>{{ $history->mistake }}</td>
+                                    <td>{{ $history->wpm }}</td>
+                                    <td>{{ $history->cpm }}</td>
+                                    <td>{{ $history->score }}</td>
+                                    <td>{{ $history->created_at->format('d/m/Y') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+          </div>
       </div>
     </div>
 @endsection

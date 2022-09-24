@@ -15,14 +15,15 @@ class CreateHistoryScoresTable extends Migration
     {
         Schema::create('history_scores', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('section_id')->nullable();
             $table->unsignedBigInteger('exercise_id')->nullable();
             $table->unsignedBigInteger('user_id');
-            // $table->string('level')->nullable();
             $table->string('time')->nullable();
             $table->string('mistake')->nullable();
             $table->string('wpm')->nullable();
             $table->string('cpm')->nullable();
             $table->string('score')->nullable();
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade')    ->onUpdate('cascade');
             $table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

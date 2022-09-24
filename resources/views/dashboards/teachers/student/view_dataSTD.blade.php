@@ -83,13 +83,13 @@
                         @foreach ($historys as $history)
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td>{{ $history->level }}</td>
+                                <td>{{ $history->level_name }}</td>
                                 <td>{{ $history->time }}</td>
                                 <td>{{ $history->mistake }}</td>
                                 <td>{{ $history->wpm }}</td>
                                 <td>{{ $history->cpm }}</td>
                                 <td>{{ $history->score }}</td>
-                                <td>{{ $history->created_at }}</td>
+                                <td>{{ $history->created_at->format('d/m/Y') }}</td>
                             </tr>
                         @endforeach
                     </tbody>
