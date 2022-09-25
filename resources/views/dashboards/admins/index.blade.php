@@ -58,6 +58,15 @@
                             <a href="{{ url('admin/add_data_teacher_student') }}" class="btn btn-primary float-end">เพิ่มอาจารย์/นักศึกษา</a>
                         </h4>
                     </div>
+                    <form method="get" role="searchuser" style="height: 37px;">
+                        <div class="input-group col-2 mb-2 display-block">
+                            <input type="searchuser" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="Searchuser" aria-describedby="search-addon" name="searchuser">
+                            <button type="submit" class="btn btn-danger text-white" value="{{ old('searchuser') }}">ค้นหา</button>
+                            <button type="reset" class="btn btn-warning text-white">
+                                <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
+                            </button>
+                            </div>
+                    </form>
                     <div class="card-body">
                         @if(count($users) > 0)
                             <table class="table table-striped">
@@ -103,6 +112,15 @@
                             <a href="{{ url('admin/add_data_exercises') }}" class="btn btn-primary float-end">เพิ่มแบบฝึกหัด</a>
                         </h4>
                     </div>
+                    <form method="get" role="searchexercise" style="height: 37px;">
+                        <div class="input-group col-2 mb-2 display-block">
+                            <input type="searchexercise" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="searchexercise" aria-describedby="search-addon" name="searchexercise">
+                            <button type="submit" class="btn btn-danger text-white" value="{{ old('searchexercise') }}">ค้นหา</button>
+                            <button type="reset" class="btn btn-warning text-white">
+                                <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
+                            </button>
+                            </div>
+                    </form>
                     <div class="card-body">
                         @if(count($exercises) > 0)
                             <table class="table table-striped text-center">
@@ -142,6 +160,15 @@
                     <div class="card-header text-white bg-dark">
                         <h4>ห้องเรียนทั้งหมด</h4>
                     </div>
+                    <form method="get" role="searchclassroom" style="height: 37px;">
+                        <div class="input-group col-2 mb-2 display-block">
+                            <input type="searchclassroom" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="searchclassroom" aria-describedby="search-addon" name="searchclassroom">
+                            <button type="submit" class="btn btn-danger text-white" value="{{ old('searchclassroom') }}">ค้นหา</button>
+                            <button type="reset" class="btn btn-warning text-white">
+                                <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
+                            </button>
+                            </div>
+                    </form>
                     <div class="card-body">
                         @if(count($sections) > 0)
                             <table class="table table-striped">

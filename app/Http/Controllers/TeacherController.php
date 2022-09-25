@@ -51,12 +51,21 @@ class TeacherController extends Controller
         // $id = Auth::user()->id;
         $search = $req['search'] ?? "";
         if($search != "") {
-            $users = User::where('userid', 'LIKE', '%'. $search .'%')
-                    ->orWhere('name', 'LIKE', '%'. $search .'%')
-                    ->orWhere('lname', 'LIKE', '%'. $search .'%')
-                    ->orWhere('email', 'LIKE', '%'. $search .'%')
-                    ->get();
-        }
+            $users = DB::table('sections')
+                ->join('section_users', 'section_users.section_id', '=', 'sections.id')
+                ->join('users', 'section_users.user_id', '=', 'users.id')
+                ->orWhere('name', 'LIKE', '%'. $search .'%')
+                ->where('sections.id', $section->id)
+                ->orWhere('lname', 'LIKE', '%'. $search .'%')
+                ->where('sections.id', $section->id)
+                ->orWhere('email', 'LIKE', '%'. $search .'%')
+                ->orwhere('sections.id', $section->id)
+                ->where('userid', 'LIKE', '%'. $search .'%')
+                ->where('sections.id', $section->id)
+                ->orderBy('section_users.user_id', 'asc')
+                ->get();
+                // dd($users);
+}
         else{
             $users = DB::table('sections')
                         ->join('section_users', 'section_users.section_id', '=', 'sections.id')
@@ -93,11 +102,16 @@ class TeacherController extends Controller
         $search = $req['search'] ?? "";
         if($search != "") {
             $sections = Section::where('section_sub', 'LIKE', '%'. $search. '%')
+                            ->where('user_id',$id)
                             ->orWhere('section_name', 'LIKE', '%'. $search . '%')
-                            ->orWhere('deadline_date', '=' , $search)
+                            ->where('user_id',$id)
+                            ->orWhere('deadline_date', '=' , '%' . $search . '%')
+                            ->where('user_id',$id)
                             ->orWhereTime('deadline_time', '=', $search)
+                            ->where('user_id',$id)
                             ->get();
         }
+
         else {
             $sections = Section::where('user_id', $id)->get();
         }
