@@ -108,5 +108,4 @@
 
 @section('script')
 <script src="{{ asset('js.ExEn.HomerowEn.FJ.js')}}" defer></script>
-    
 @endsection

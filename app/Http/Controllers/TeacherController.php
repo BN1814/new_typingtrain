@@ -59,8 +59,8 @@ class TeacherController extends Controller
                 ->orWhere('lname', 'LIKE', '%'. $search .'%')
                 ->where('sections.id', $section->id)
                 ->orWhere('email', 'LIKE', '%'. $search .'%')
-                ->orwhere('sections.id', $section->id)
-                ->where('userid', 'LIKE', '%'. $search .'%')
+                ->where('sections.id', $section->id)
+                ->orWhere('userid', 'LIKE', '%'. $search .'%')
                 ->where('sections.id', $section->id)
                 ->orderBy('section_users.user_id', 'asc')
                 ->get();

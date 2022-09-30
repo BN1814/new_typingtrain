@@ -33,10 +33,10 @@
                         <div class="col-sm-2 col-md-2 mt-4">
                             <div class="card" style="width: 150px; height: 150px;">
                                 <div class="card-header " style=" height: 40px;">
-                                     <p class="fs-5 text-center">{{$exercise->level}}</p>
+                                     <p class="fs-5 text-center">LEVEL : {{$exercise->level}}</p>
                                 </div>
-                                <div class="card-body "> 
-                                    <p class="fs-5 text-center">
+                                <div class="card-body"> 
+                                    <p class="fs-5 text-center fw-bold name">
                                      {{$exercise->level_name}}
                                     </p>
                                     <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
@@ -53,5 +53,15 @@
             </nav>
         </div>
     </body>
+@endsection
 
+@section('script')
+<script src="{{ asset('js.ExEn.checkedEx.js')}}" defer></script>
+<script>
+    let card_body = document.querySelector('.card-body');
+    let name = document.querySelector('.name');
+    // card_body.style.backgroundColor = '#65f3b1';
+    // name.style.color = "red";
+    // name.style.fontWeight = "bold";
+</script>    
 @endsection

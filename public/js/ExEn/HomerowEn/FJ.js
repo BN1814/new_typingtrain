@@ -25,6 +25,7 @@ function randomParagraph() {
     document.addEventListener("keydown", () => inpField.focus());
     typingText.addEventListener("keydown", () => inpField.focus());
 }
+// ขั้นตอนระหว่างการทำแบบทดสอบ
 function initTyping() {
     const characters = typingText.querySelectorAll("span");
     let typedChar = inpField.value.split("")[charIndex];
@@ -79,7 +80,7 @@ function initTyping() {
         clearInterval(timer);
     }
 }
-
+// จับเวลา
 function initTimer() {
     if (timeLeft > 0) {
         timeLeft--;
@@ -90,6 +91,7 @@ function initTimer() {
         Open_score();
     }
 }
+// เริ่มแบบฝีกหัดใหม่
 function resetTyping() {
     randomParagraph();
     inpField.value = "";
@@ -151,16 +153,16 @@ document.addEventListener("keydown", function (e) {
 //     this.style.backgroundColor = "#004f40";
 // }, false);
 
-// var start = 97,
-//     end = 122;
-//     button;
+var start = 97,
+    end = 122;
+    button;
 
-// while (start <= end) {
-//     button = document.createElement("button");
-//     button.id = button.textContent = String.fromCharCode(start);
-//     document.body.appendChild(button);
-//     start += 1;
-// }
+while (start <= end) {
+    button = document.createElement("button");
+    button.id = button.textContent = String.fromCharCode(start);
+    document.body.appendChild(button);
+    start += 1;
+}
 
 var keydown,
     keypress = [];

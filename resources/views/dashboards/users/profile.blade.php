@@ -98,6 +98,16 @@
             <div class="card mt-3">
                 <div class="card-header text-center text-white bg-dark h4">ประวัติการทำแบบทดสอบ</div>
                 <div class="card-body">
+                    <form method="get" role="search" style="height: 37px;" class="mb-3">
+                        <div class="input-group col-2 mb-2 display-block">
+                            <input type="searchuser" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="Searchuser" aria-describedby="search-addon" name="search">
+                            <button type="submit" class="btn btn-dark text-white" value="{{ old('search') }}">ค้นหา</button>
+                            <button type="reset" class="btn btn-danger text-white">
+                                <a href="{{ url('user/profile/'. $user->id . '/edit') }}">รีเซ็ต</a>
+                            </button>
+                            </div>
+                    </form>
+                    {{-- @if($search_historys > 0) --}}
                     <table class="table table-bordered table-striped text-center">
                         <thead>
                             <tr>
@@ -129,6 +139,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{-- @else
+                        <p class="text-center mt-4">{{ __('ไม่มีผลลัพธ์ที่ค้นหา') }}</p>
+                    @endif --}}
                 </div>
               </div>
           </div>

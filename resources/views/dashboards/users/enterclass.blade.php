@@ -94,14 +94,16 @@
                                 @php($i=1)
                                 @foreach ($sections as $section)
                                 <tr>
+                                    <input type="hidden" class="outclass" value="{{ $section->id }}">
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $section->section_sub }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->code_inclass }}</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm">
-                                            <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id) }}">เข้าห้องเรียน</a>
+                                            <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id) }}">ทำแบบทดสอบ</a>
                                         </button>
+                                        <button class="btn btn-sm btn-danger outclassroom" data-name="{{ $section->section_name }}">ออกจากห้องเรียน</button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -118,7 +120,48 @@
 @endsection
 
 @section('script')
-    <script>
-        let entclass = document.querySelector('.enterclass');
-    </script>
+<script>
+    // $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.outclassroom').click( function(e) {
+            e.preventDefault();
+            var delete_id = $(this).closest('tr').find('.outclass').val();
+            var section_name = $(this).attr('data-name');
+            Swal.fire({
+                title: 'ออกจากห้องเรียน',
+                text: "คุณต้องการออกจากห้องเรียน "+section_name+" ใช่หรือไม่",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#198754',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ใช่ ฉันต้องการออกจากห้องเรียน',
+                cancelButtonText: 'ยกเลิก'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    var data = {
+                        "_token": $('input[name="_token"]').val(),
+                        "id": delete_id,
+                    }
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/user/enterclass/" + delete_id,
+                        data: data,
+                        success: function(response) {
+                            Swal.fire(response.delete, {
+                                icon: 'success',
+                            })
+                            .then((result) => {
+                                location.reload();
+                            });
+                        }
+                    });
+                }
+            })
+        });
+    // });
+</script>
 @endsection
