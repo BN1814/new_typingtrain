@@ -2,6 +2,9 @@
 
 @section('content')
 <style>
+    .card {
+        border: none;
+    }
   input {
     text-align: center;
   }
@@ -119,7 +122,7 @@
                                 <th>ความเร็วการพิมพ์</th>
                                 <th>ความถูกต้อง</th>
                                 <th>คะแนน</th>
-                                <th>วันที่บันทึก</th>
+                                <th>ใช้งานเมื่อ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -134,7 +137,7 @@
                                     <td>{{ $history->wpm }}</td>
                                     <td>{{ $history->cpm }}</td>
                                     <td>{{ $history->score }}</td>
-                                    <td>{{ $history->created_at}}</td>
+                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->diffForHumans() }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

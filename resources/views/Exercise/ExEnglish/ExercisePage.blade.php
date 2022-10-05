@@ -15,11 +15,12 @@
     </script>
 @endif --}}
     <style>
-        #poptime, #popmistake, #popwpm, #popcpm, #popscore:disabled {
+        #poptime, #popmistake, #popwpm, #popcpm, #popscore {
             color: red;
             background: #fff;
             font-size: 14px;
             height: 27px;
+            pointer-events: none;
         }
     </style>
     <link rel="stylesheet" href="{{ asset('css/ExEn/exerciseEnglish.css') }}">
@@ -78,27 +79,27 @@
                                 <ul class="detail-score shadow-lg">
                                     <li class="time" id="time">
                                         <p>เวลาที่ใช้ไป: </p>
-                                        <input type="text" id="poptime" name="time" style="width: 120px;" disabled>
+                                        <input type="text" id="poptime" name="time" style="width: 120px;">
                                         <p>วินาที</p>
                                     </li>
                                     <li class="mistake" id="mistake" >
                                         <p>ตัวอักษรที่พิมพ์ผิด : </p>
-                                        <input type="text" id="popmistake" name="mistake" style="width: 80px;" disabled>
+                                        <input type="text" id="popmistake" name="mistake" style="width: 80px;">
                                         <p>ตัว</p>
                                     </li>
                                     <li class="wpm" id="wpm">
                                         <p>ความเร็วการพิมพ์ : </p>
-                                        <input type="text" id="popwpm" name="wpm" style="width: 70px;" disabled>
+                                        <input type="text" id="popwpm" name="wpm" style="width: 70px;">
                                         <p>ตัว/วินาที</p>
                                     </li>
                                     <li class="cpm" id="cpm">
                                         <p>ความถูกต้อง : </p>
-                                        <input type="text" id="popcpm" name="cpm" style="width: 120px;" disabled>
+                                        <input type="text" id="popcpm" name="cpm" style="width: 120px;">
                                         <p>ตัว</p>
                                     </li>
                                     <li class="score" id="score">
                                         <p>คะแนน : </p>
-                                        <input type="text" id="popscore" name="score" style="width: 160px;" disabled>
+                                        <input type="text" id="popscore" name="score" style="width: 160px;">
                                         <p>คะแนน</p>
                                     </li>
                                 </ul>

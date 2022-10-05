@@ -35,20 +35,22 @@
                         })
                     </script>
                 @endif
-                @include('include.incSearch')
+                {{-- @include('include.incSearch') --}}
                 <div class="card">
                     <div class="card-header bg-dark text-white h4 text-center">ห้องเรียนทั้งหมด</div>
                     <div class="card-body">
                         @if(count($sections) > 0)
-                            <table class="table table-hover table-bordered" >
+                            <table class="table table-hover table-bordered" id="classroom_teacher">
                                 <thead >
-                                    <tr class="text-center ">
+                                    <tr class="text-center bg-gray-100 leading-10">
                                         <th >ลำดับ</th>
-                                        <th class="text-primary">@sortablelink('section_sub' ,'รหัสวิชา')</th>
-                                        <th >@sortablelink('section_name' ,'ชื่อวิชา')</th>
-                                        <th >@sortablelink('deadline_date' ,'วันที่กำหนดส่ง')</th>
-                                        <th >@sortablelink('deadline_time' ,'เวลาที่กำหนดส่ง')</th>
+                                        <th class="text-dark">รหัสวิชา</th>
+                                        <th class="text-dark">ชื่อวิชา</th>
+                                        <th class="text-dark">วันที่กำหนดส่ง</th>
+                                        <th class="text-dark">เวลาที่กำหนดส่ง</th>
+                                        <th >รหัสเข้าห้องเรียน</th>
                                         <th >ตัวเลือก</th>
+                                        {{-- @sortablelink('section_sub', '.') --}}
                                         {{-- <th scope="col">ลำดับ</th>
                                         <th scope="col">
                                             รหัสวิชา
@@ -77,8 +79,9 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $section->section_sub }}</td>
                                         <td>{{ $section->section_name }}</td>
-                                        <td>{{ $section->deadline_date}}</td>
-                                        <td>{{ $section->deadline_time }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('D j M y')}}</td>
+                                        <td>{{ $section->deadline_time }} น.</td>
+                                        <td>{{ $section->code_inclass }}</td>
                                         <td class="text-center">
                                             <a href="{{ url('teacher/dataSTD/'. $section->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
                                             <a href="{{ url('teacher/classroom/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
@@ -143,8 +146,16 @@
         });
     });
     
-    // $(document).ready(function() {
-    // $("#example").DataTable();
-    // });
+    $(document).ready(function() {
+        $('#classroom_teacher').DataTable( {
+        "language": {
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "ไม่มีผลลัพธ์ที่ค้นหา",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtered from _MAX_ total records)"
+        }
+    } );
+    });
 </script>
 @endsection
