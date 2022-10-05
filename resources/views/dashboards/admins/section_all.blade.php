@@ -1,12 +1,10 @@
 @extends('layouts.app')
-{{-- @section('title', 'Dashboard') --}}
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
             @if(Auth::user()->role == 'admin')
-
                 @if(session('message'))
                     <script>
                         Swal.fire({
@@ -30,57 +28,41 @@
                         })
                     </script>
                 @endif
-                {{-- User Table --}}
+                {{-- Section Table --}}
                 <div class="card mb-3">
                     <div class="card-header text-white bg-dark">
-                        <h4>ผู้ใช้งานทั้งหมด
-                            <a href="{{ url('admin/add_data_teacher_student') }}" class="btn btn-primary float-end">เพิ่มอาจารย์/นักศึกษา</a>
-                        </h4>
+                        <h4>ห้องเรียนทั้งหมด</h4>
                     </div>
-                    {{-- <form method="get" role="searchuser" style="height: 37px;">
-                        <div class="input-group col-2 mb-2 display-block">
-                            <input type="searchuser" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="Searchuser" aria-describedby="search-addon" name="searchuser">
-                            <button type="submit" class="btn btn-danger text-white" value="{{ old('searchuser') }}">ค้นหา</button>
-                            <button type="reset" class="btn btn-warning text-white">
-                                <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
-                            </button>
-                            </div>
-                    </form> --}}
                     <div class="card-body">
-                        {{-- @if(count($users) > 0) --}}
-                            <table class="table table-hover table-bordered" id="dataUser">
-                                <thead>
-                                    <tr class="fixedHeader">
-                                        <th>ลำดับที่</th>
-                                        <th>รหัสผู้ใช้งาน</th>
-                                        <th>อีเมล</th>
-                                        <th>ชื่อผู้ใช้</th>
-                                        <th>สถานะ</th>
-                                        <th>ตัวเลือก</th>
-                                    </tr>
-                                </thead>
-                                <tbody style="border: var(--bs-dark);">
-                                    @php($i=1)
-                                    @foreach ($users as $user)
-                                        <tr>
-                                            <input type="hidden" class="delete_user_id" value="{{ $user->id }}">
-                                            <td>{{ $i++}}</td>
-                                            <td>{{ $user->userid }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->role }}</td>
-                                            <td class="text-center">
-                                                <a href="{{ url('admin/view_data_teacher_student/'. $user->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
-                                                <a href="{{ url('admin/add_data_teacher_student/'.$user->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                                <button class="btn btn-danger btn-sm delete" data-name="{{ $user->name }}" data-id="{{ $user->id }}">ลบ</button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        {{-- @else
-                            <p class="text-center mt-2">{{ __('ไม่มีผลลัพธ์ที่ค้นหา')}}</p>
-                        @endif --}}
+                        <table class="table table-hover table-bordered" id="dataClassroom">
+                            <thead>
+                                <tr class="fixedHeader">
+                                    <th>ลำดับ</th>
+                                    <th>ชื่อห้องเรียน</th>
+                                    <th>รหัสเข้าห้อง</th>
+                                    <th>วันที่ส่ง</th>
+                                    <th>เวลาที่ส่ง</th>
+                                    <th>ตัวเลือก</th>
+                                </tr>
+                            </thead>
+                            <tbody style="border: var(--bs-dark);">
+                                @php($i=1)
+                                @foreach ($sections as $section)
+                                <tr class="text-center">
+                                    <input type="hidden" class="delete_section_id" value="{{ $section->id }}">
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $section->section_name }}</td>
+                                    <td>{{ $section->code_inclass }}</td>
+                                    <td>{{ $section->deadline_date }}</td>
+                                    <td>{{ $section->deadline_time }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                        <button class="btn btn-danger btn-sm delete_sect" data-name="{{ $section->section_name }}" data-id="{{ $section->id }}">ลบ</button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             @endif
@@ -97,13 +79,13 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $('.delete').click( function(e) {
+        $('.delete_sect').click( function(e) {
             e.preventDefault();
-            var delete_user_id = $(this).closest('tr').find('.delete_user_id').val();
-            var user_name = $(this).attr('data-name');
+            var delete_section_id = $(this).closest('tr').find('.delete_section_id').val();
+            var section_name = $(this).attr('data-name');
             Swal.fire({
                 title: 'ต้องการลบ',
-                text: "คุณต้องการลบ "+user_name+" ใช่หรือไม่",
+                text: "คุณต้องการลบ "+section_name+" ใช่หรือไม่",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#198754',
@@ -112,14 +94,14 @@
                 cancelButtonText: 'ยกเลิก'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    var data_user = {
+                    var data_sect = {
                         "_token": $('input[name="_token"]').val(),
-                        "id": delete_user_id,
+                        "id": delete_section_id,
                     }
                     $.ajax({
                         type: "DELETE",
-                        url: "/admin/dashboard/" + delete_user_id,
-                        data: data_user,
+                        url: "/admin/data_section/" + delete_section_id,
+                        data: data_sect,
                         success: function(response) {
                             Swal.fire(response.delete, {
                                 icon: 'success',
@@ -135,7 +117,7 @@
     });
 
     $(document).ready(function() {
-            $('#dataUser').DataTable({
+            $('#dataClassroom').DataTable( {
             "language": {
                 "decimal":        "",
                 "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
@@ -160,8 +142,7 @@
                 "sortDescending": ": activate to sort column descending"
                 }
             }
-        });
+        } );
     });
-
 </script>
 @endsection

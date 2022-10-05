@@ -2,6 +2,9 @@
 
 @section('content')
 <style>
+    .card {
+        border: none;
+    }
     input {
       text-align: center;
     }

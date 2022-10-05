@@ -98,9 +98,9 @@
                             @endif
                         @else
                             @if(auth()->user()->role == 'admin')
-                                <li><a href="{{ url('admin/dashboard') }}" class="nav-link">หน้าแรก</a></li>
-                                <li><a href="{{ url('admin/add_data_teacher_student') }}" class="nav-link">เพิ่มอาจารย์และนักศึกษา</a></li>
-                                <li><a href="{{ url('admin/add_data_exercises') }}" class="nav-link">เพิ่มแบบทดสอบ</a></li>
+                                <li><a href="{{ url('admin/dashboard') }}" class="nav-link">ผู้ใช้งานทั้งหมด</a></li>
+                                <li><a href="{{ url('admin/exercise_all') }}" class="nav-link">แบบฝึกหัดทั้งหมด</a></li>
+                                <li><a href="{{ url('admin/section_all') }}" class="nav-link">ห้องเรียนทั้งหมด</a></li>
                             @elseif (auth()->user()->role == 'teacher')
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
                                 <li><a href="{{ url('teacher/classroom') }}" class="nav-link">ห้องเรียน</a></li>
@@ -110,30 +110,32 @@
                             @endif
                             <li class="nav-item dropdown">
                                 {{-- <box-icon type="solid" name="user" style="background: gray"></box-icon> --}}
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                @if(auth()->user()->role == 'admin')
-                                    <a href="{{ url('admin/profile/'.auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
-                                    <a href="{{ url('admin/changePassword/'.auth()->user()->id) }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
-                                @elseif (auth()->user()->role == 'teacher')
-                                    <a href="{{ url('teacher/profile/'.auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
-                                    <a href="{{ url('teacher/changePassword') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
-                                @else
-                                    <a href="{{ url('user/profile/'. auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
-                                    <a href="{{ url('user/changePassword') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
-                                @endif
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('ออกจากระบบ') }}
-                                </a>
+                                    @if(auth()->user()->role == 'admin')
+                                        <a href="{{ url('admin/add_data_teacher_student') }}" class="dropdown-item">เพิ่มอาจารย์และนักศึกษา</a>
+                                        <a href="{{ url('admin/add_data_exercises') }}" class="dropdown-item">เพิ่มแบบทดสอบ</a>
+                                        <a href="{{ url('admin/profile/'.auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
+                                        <a href="{{ url('admin/changePassword/'.auth()->user()->id) }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
+                                    @elseif (auth()->user()->role == 'teacher')
+                                        <a href="{{ url('teacher/profile/'.auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
+                                        <a href="{{ url('teacher/changePassword') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
+                                    @else
+                                        <a href="{{ url('user/profile/'. auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
+                                        <a href="{{ url('user/changePassword') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
+                                    @endif
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                        {{ __('ออกจากระบบ') }}
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
                             </li>
                         @endguest

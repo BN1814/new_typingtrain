@@ -38,6 +38,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
     Route::controller(AdminController::class)->group(function() {
         // ADMIN PANEL
         Route::get('/dashboard', 'index');
+        Route::get('/exercise_all', 'exercise_all');
+        Route::get('/section_all', 'section_all');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
         Route::get('/changePassword/{user}', 'changePassword');

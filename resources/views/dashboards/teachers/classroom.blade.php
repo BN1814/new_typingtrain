@@ -40,7 +40,7 @@
                     <div class="card-header bg-dark text-white h4 text-center">ห้องเรียนทั้งหมด</div>
                     <div class="card-body">
                         {{-- @if(count($sections) > 0) --}}
-                            <table class="table table-hover table-bordered " id="classroom_teacher">
+                            <table class="table table-hover table-bordered" id="classroom_teacher">
                                 <thead class="table-light">
                                     <tr class="text-center bg-gray-100 leading-10">
                                         <th >ลำดับ</th>

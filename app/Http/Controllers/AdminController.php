@@ -17,6 +17,7 @@ use Hash;
 class AdminController extends Controller
 {
     function index(Request $request) {
+        $users = User::all();
         // $searchuser = $request['searchuser'] ?? "";
         // $searchexercise = $request['searchexercise'] ?? "";
         // $searchclassroom = $request['searchclassroom'] ?? "";
@@ -34,9 +35,7 @@ class AdminController extends Controller
             //             ->get();
         // }
         // else {
-            $exercises = Exercise::all();
-            $sections = Section::all();
-            $users = User::all();
+            // $users = User::all();
         // }
         // if($searchexercise != "") {
         //     $exercises = Exercise::where('level_name', 'LIKE', '%'. $searchexercise. '%')
@@ -55,8 +54,18 @@ class AdminController extends Controller
         // else {            
         //     $sections = Section::all();
         // }
-        $data = compact('sections', 'users', 'exercises' );
+        $data = compact('users');
         return view('dashboards.admins.index')->with($data);
+    }
+    function exercise_all() {
+        $exercises = Exercise::all();
+        $data = compact('exercises');
+        return view('dashboards.admins.exercise_all')->with($data);
+    }
+    function section_all() {
+        $sections = Section::all();
+        $data = compact('sections');
+        return view('dashboards.admins.section_all')->with($data);
     }
     function profile(User $user) {
         return view('dashboards.admins.profile', compact('user'));
@@ -121,7 +130,7 @@ class AdminController extends Controller
             ]);
             return redirect('admin/dashboard')->with('update', 'แก้ไขข้อมูลอาจารย์หรือนักศึกษาสำเร็จแล้ว');
         }
-        public function destroyTeachStd($id) {
+        function destroyTeachStd($id) {
             $user = User::findOrFail($id);
             $user->delete();
             return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']);
@@ -146,7 +155,7 @@ class AdminController extends Controller
             'level_name' => $request['level_name'],
             'data_level' => $request['data_level'],
         ]);
-        return redirect('admin/dashboard')->with('message', 'เพิ่มข้อมูลแบบฝึกหัดสำเร็จแล้ว');
+        return redirect('admin/exercise_all')->with('message', 'เพิ่มข้อมูลแบบฝึกหัดสำเร็จแล้ว');
     }
     
     function editExercise(Exercise $exercise) {
@@ -159,7 +168,7 @@ class AdminController extends Controller
             'level_name' => $request['level_name'],
             'data_level' => $request['data_level'],
         ]);
-        return redirect('admin/dashboard')->with('update', 'แก้ไขแบบฝึกหัดสำเร็จแล้ว');
+        return redirect('admin/exercise_all')->with('update', 'แก้ไขแบบฝึกหัดสำเร็จแล้ว');
     }
 
     function destroyExercise($id) {
@@ -181,7 +190,7 @@ class AdminController extends Controller
             'deadline_time' => $req['deadline_time'],
         ]);
 
-        return redirect('admin/dashboard')->with('update', 'แก้ไขห้องเรียนสำเร็จแล้ว');
+        return redirect('admin/section_all')->with('update', 'แก้ไขห้องเรียนสำเร็จแล้ว');
     }
     function destroySection($id) {
         $section = Section::findOrFail($id);
