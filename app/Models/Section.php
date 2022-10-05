@@ -9,6 +9,7 @@ use App\Http\Middleware\isUserMiddleware;
 use App\Models\User;
 use App\Models\HistoryScore;
 
+use Kyslik\ColumnSortable\Sortable; 
 class Section extends Model
 {
     use HasFactory;
@@ -45,4 +46,6 @@ class Section extends Model
         // if($teacher) {
         // }
     }
+    use Sortable;
+    public $sortable = ['section_sub','section_name','deadline_date' ,'deadline_time'];
 }

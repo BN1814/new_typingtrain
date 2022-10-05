@@ -11,7 +11,6 @@ use App\Models\HistoryScore;
 use Session;
 use DB;
 
-
 class TeacherController extends Controller
 {
     function index() {
@@ -97,7 +96,7 @@ class TeacherController extends Controller
     }
 
     // CLASSROOM
-    public function Classroom(Request $req, Section $section) {
+    public function Classroom(Request $req, Section $section , $order = null) {
         $id = Auth::user()->id;
         $search = $req['search'] ?? "";
         if($search != "") {
@@ -109,17 +108,18 @@ class TeacherController extends Controller
                             ->where('user_id',$id)
                             ->orWhereTime('deadline_time', '=', $search)
                             ->where('user_id',$id)
+                            ->sortable(['section_sub' ,'section_name' ,'deadline_date' ,'deadline_time' => 'desc'])
                             ->get();
         }
 
         else {
-            $sections = Section::where('user_id', $id)->get();
+            $sections = Section::sortable(['section_sub' ,'section_name' ,'deadline_date' ,'deadline_time' => 'desc'])
+                        ->where('user_id',$id)->get();
         }
         $users = User::all();
         $data = compact('users', 'sections', 'id', 'section');
         return view('dashboards.teachers.classroom')->with($data);
-    }
-
+    } 
     // Section CRUD
     public function createCode(Request $request) {
         $request->validate([

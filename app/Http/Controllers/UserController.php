@@ -20,18 +20,22 @@ class UserController extends Controller
 {
     function profile(Request $req, User $user) {
         $search = $req['search'] ?? "";
-        $historys = HistoryScore::where('history_scores.user_id', $user->id)
+        // $historys = HistoryScore::where('history_scores.user_id', $user->id)
+        //                     ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
+        //                     ->join('sections', 'history_scores.section_id', '=', 'sections.id')
+        //                     ->get();
+        if($search != "") {
+            $historys =DB::table('history_scores')
                             ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                             ->join('sections', 'history_scores.section_id', '=', 'sections.id')
-                            ->get();
-        if($search != "") {
-            $search_historys = HistoryScore::
-                            // where('sections.section_name', 'LIKE', '%'. $search . '%')
-                            // ->orWhere('exercises.level_name', 'LIKE', '%'. $search . '%')
-                            where('time', 'LIKE', '%'. $search . '%')
+                            ->orwhere('section_name', 'LIKE', '%'. $search . '%')
+                            ->orWhere('level_name', 'LIKE', '%'. $search . '%')
+                            ->orwhere('time', 'LIKE', '%'. $search . '%')
+                            ->orwhere('mistake', 'LIKE', '%'. $search . '%')
                             ->orWhere('wpm', 'LIKE', '%'. $search . '%')
                             ->orWhere('cpm', 'LIKE', '%'. $search . '%')
                             ->orWhere('score', 'LIKE', '%'. $search . '%')
+                            ->where('history_scores.user_id', $user->id)
                             ->get();
             // $search_historys = SectiHistoryScore::where('section_sub', 'LIKE', '%'. $search. '%')
             //                 ->where('user_id',$id)
@@ -44,10 +48,15 @@ class UserController extends Controller
             //                 ->get();
         }
         else {
-            $search_historys = HistoryScore::where('history_scores.user_id', $user->id)->get();
+            $historys = DB::table('history_scores')
+                            ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
+                            ->join('sections', 'history_scores.section_id', '=', 'sections.id')
+                            ->where('history_scores.user_id', $user->id)
+                            ->get();
+            // $search_historys = HistoryScore::where('history_scores.user_id', $user->id)->get();
         }
         // return view('dashboards.teachers.classroom')->with($data);
-        return view('dashboards.users.profile', compact('user', 'historys', 'search_historys'));
+        return view('dashboards.users.profile', compact('user', 'historys'));
     }
     function updateProfile(User $user, Request $request) {
         $user->update([

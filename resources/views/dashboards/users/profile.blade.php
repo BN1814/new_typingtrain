@@ -134,7 +134,7 @@
                                     <td>{{ $history->wpm }}</td>
                                     <td>{{ $history->cpm }}</td>
                                     <td>{{ $history->score }}</td>
-                                    <td>{{ $history->created_at->format('d/m/Y') }}</td>
+                                    <td>{{ $history->created_at}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

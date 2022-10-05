@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
+<style>
+    .headtable {
+        color: blue;
+        
+    }
+</style>
 <link rel="stylesheet" href="{{ asset('css/Teacher/classRoom.css') }}">
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -35,15 +40,33 @@
                     <div class="card-header bg-dark text-white h4 text-center">ห้องเรียนทั้งหมด</div>
                     <div class="card-body">
                         @if(count($sections) > 0)
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>ลำดับ</th>
-                                        <th>รหัสวิชา</th>
-                                        <th>ชื่อวิชา</th>
-                                        <th>วันที่กำหนดส่ง</th>
-                                        <th>เวลาที่กำหนดส่ง</th>
-                                        <th>ตัวเลือก</th>
+                            <table class="table table-hover table-bordered" >
+                                <thead >
+                                    <tr class="text-center ">
+                                        <th >ลำดับ</th>
+                                        <th class="text-primary">@sortablelink('section_sub' ,'รหัสวิชา')</th>
+                                        <th >@sortablelink('section_name' ,'ชื่อวิชา')</th>
+                                        <th >@sortablelink('deadline_date' ,'วันที่กำหนดส่ง')</th>
+                                        <th >@sortablelink('deadline_time' ,'เวลาที่กำหนดส่ง')</th>
+                                        <th >ตัวเลือก</th>
+                                        {{-- <th scope="col">ลำดับ</th>
+                                        <th scope="col">
+                                            รหัสวิชา
+                                            <span  class="float-right text-sm" >
+                                                <i class="fa fa-arrow-up "></i>
+                                                <i class="fa fa-arrow-down "></i>
+                                            </span>
+                                        </th>
+                                        <th scope="col">ชื่อวิชา</th>
+                                        <th scope="col">วันที่กำหนดส่ง</th>
+                                        <th scope="col">เวลาที่กำหนดส่ง</th>
+                                        <th scope="col">ตัวเลือก</th> --}}
+                                        {{-- <th>ลำดับ</th>
+                                        <th><a href="sorting.php?sort=section_sub">รหัสวิชา</a></th>
+                                        <th><a href={{url('section/secction_name')}}>ชื่อวิชา</a></th>
+                                        <th><a href={{url('section/deadline_date')}}>วันที่กำหนดส่ง</a></th>
+                                        <th><a href={{url('section/deadline_time')}}>เวลาที่กำหนดส่ง</a></th>
+                                        <th>ตัวเลือก</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -54,7 +77,7 @@
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $section->section_sub }}</td>
                                         <td>{{ $section->section_name }}</td>
-                                        <td>{{ $section->deadline_date }}</td>
+                                        <td>{{ $section->deadline_date}}</td>
                                         <td>{{ $section->deadline_time }}</td>
                                         <td class="text-center">
                                             <a href="{{ url('teacher/dataSTD/'. $section->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
@@ -119,5 +142,9 @@
             })
         });
     });
+    
+    // $(document).ready(function() {
+    // $("#example").DataTable();
+    // });
 </script>
 @endsection
