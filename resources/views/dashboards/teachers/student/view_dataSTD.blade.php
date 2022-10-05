@@ -65,9 +65,9 @@
         <div class="card mt-3">
             <div class="card-header text-center text-white bg-dark h4">ประวัติการทำแบบทดสอบ</div>
             <div class="card-body">
-                <table class="table table-bordered table-striped text-center">
-                    <thead>
-                        <tr>
+                <table class="table table-hover table-bordered " id="dataHistoryScore">
+                    <thead class="table-light">
+                        <tr class="text-center bg-gray-100 leading-10">
                             <th>ครั้งที่</th>
                             <th>ชื่อแบบฝึกหัด</th>
                             <th>เวลา</th>
@@ -89,7 +89,7 @@
                                 <td>{{ $history->wpm }}</td>
                                 <td>{{ $history->cpm }}</td>
                                 <td>{{ $history->score }}</td>
-                                <td>{{ $history->created_at->format('d/m/Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($history->created_at)->diffForHumans() }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -99,4 +99,38 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('script')
+
+    <script>
+        $(document).ready(function() {
+            $('#dataHistoryScore').DataTable( {
+                "language": {
+                    "decimal":        "",
+                    "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                    "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
+                    "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
+                    "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "แสดง _MENU_ รายการ",
+                    "loadingRecords": "กำลังค้นหา...",
+                    "processing":     "",
+                    "search":         "ค้นหา:",
+                    "zeroRecords":    "ไม่มีผลลัพธ์ที่ค้นหา",
+                    "paginate": {
+                        "first":      "หน้าแรก",
+                        "last":       "หน้าสุดท้าย",
+                        "next":       "หน้าถัดไป",
+                        "previous":   "หน้าก่อนหน้า"
+                    },
+                    "aria": {
+                    "sortAscending":  ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                    }
+                }
+            } );
+        });
+    </script>
 @endsection

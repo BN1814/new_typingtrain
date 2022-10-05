@@ -39,9 +39,9 @@
                 <div class="card">
                     <div class="card-header bg-dark text-white h4 text-center">ห้องเรียนทั้งหมด</div>
                     <div class="card-body">
-                        @if(count($sections) > 0)
-                            <table class="table table-hover table-bordered" id="classroom_teacher">
-                                <thead >
+                        {{-- @if(count($sections) > 0) --}}
+                            <table class="table table-hover table-bordered " id="classroom_teacher">
+                                <thead class="table-light">
                                     <tr class="text-center bg-gray-100 leading-10">
                                         <th >ลำดับ</th>
                                         <th class="text-dark">รหัสวิชา</th>
@@ -91,9 +91,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        @else
+                        {{-- @else
                             <p class="text-center">{{ __('ไม่มีผลลัพธ์ที่ค้นหา') }}</p>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
             </div>
@@ -148,14 +148,31 @@
     
     $(document).ready(function() {
         $('#classroom_teacher').DataTable( {
-        "language": {
-            "lengthMenu": "Display _MENU_ records per page",
-            "zeroRecords": "ไม่มีผลลัพธ์ที่ค้นหา",
-            "info": "Showing page _PAGE_ of _PAGES_",
-            "infoEmpty": "No records available",
-            "infoFiltered": "(filtered from _MAX_ total records)"
-        }
-    } );
+            "language": {
+                "decimal":        "",
+                "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
+                "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
+                "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "แสดง _MENU_ รายการ",
+                "loadingRecords": "กำลังค้นหา...",
+                "processing":     "",
+                "search":         "ค้นหา:",
+                "zeroRecords":    "ไม่มีผลลัพธ์ที่ค้นหา",
+                "paginate": {
+                    "first":      "หน้าแรก",
+                    "last":       "หน้าสุดท้าย",
+                    "next":       "หน้าถัดไป",
+                    "previous":   "หน้าก่อนหน้า"
+                },
+                "aria": {
+                "sortAscending":  ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+                }
+            }
+        } );
     });
 </script>
 @endsection

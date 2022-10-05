@@ -26,7 +26,7 @@
                     <div class="card-header text-center text-white bg-dark h4">ข้อมูลนักศึกษา</div>
                     <p class="text-center mt-2 h4" style="margin:0; padding:0; font-weight:bold; text-transform:uppercase;">{{ $section->section_name }}</p>
                     <div class="card-body">
-                        <form method="get" role="search">
+                        {{-- <form method="get" role="search">
                             <div class="input-group col-2 mb-2">
                                 <input type="search" class="form-control rounded" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search" value="{{ old('search') }}">
                                 <button type="submit" class="btn btn-dark text-white" >ค้นหา</button>
@@ -34,11 +34,11 @@
                                     <a href="{{ url('teacher/dataSTD/'. $section->id) }}">รีเซ็ต</a>
                                 </button>
                             </div>
-                        </form>
+                        </form> --}}
                         @if(count($users) > 0)
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr class="text-center">
+                        <table class="table table-hover table-bordered" id="dataSTDtable">
+                            <thead class="table-light">
+                                <tr class="text-center bg-gray-100 leading-10">
                                     <th>ลำดับ</th>
                                     <th>ไอดี</th>
                                     <th>รหัสนักศึกษา</th>
@@ -53,7 +53,6 @@
                                 <tr>
                                 @foreach ($users as $user)
                                     <input type="hidden" class="delete_user_id" value="{{ $user->id }}">
-
                                     {{-- <?php dd($user->id); ?> --}}
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $user->id }}</td>
@@ -74,7 +73,7 @@
                             </tbody>
                         </table>
                         @else
-                        <p class="text-center mt-4">{{ __('ไม่มีผลลัพธ์ที่ค้นหา') }}</p>
+                        <p class="text-center mt-4 fs-3">{{ __('ห้องเรียนยังไม่มีนักศึกษาเข้าห้องเรียน') }}</p>
                         @endif
                     </div>
                 </div>
@@ -126,6 +125,34 @@
                 }
             })
         });
+    });
+    $(document).ready(function() {
+        $('#dataSTDtable').DataTable( {
+            "language": {
+                "decimal":        "",
+                "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
+                "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
+                "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "แสดง _MENU_ รายการ",
+                "loadingRecords": "กำลังค้นหา...",
+                "processing":     "",
+                "search":         "ค้นหา:",
+                "zeroRecords":    "ไม่มีผลลัพธ์ที่ค้นหา",
+                "paginate": {
+                    "first":      "หน้าแรก",
+                    "last":       "หน้าสุดท้าย",
+                    "next":       "หน้าถัดไป",
+                    "previous":   "หน้าก่อนหน้า"
+                },
+                "aria": {
+                "sortAscending":  ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+                }
+            }
+        } );
     });
 </script>
 @endsection

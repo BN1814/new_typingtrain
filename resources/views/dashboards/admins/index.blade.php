@@ -58,7 +58,7 @@
                             <a href="{{ url('admin/add_data_teacher_student') }}" class="btn btn-primary float-end">เพิ่มอาจารย์/นักศึกษา</a>
                         </h4>
                     </div>
-                    <form method="get" role="searchuser" style="height: 37px;">
+                    {{-- <form method="get" role="searchuser" style="height: 37px;">
                         <div class="input-group col-2 mb-2 display-block">
                             <input type="searchuser" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="Searchuser" aria-describedby="search-addon" name="searchuser">
                             <button type="submit" class="btn btn-danger text-white" value="{{ old('searchuser') }}">ค้นหา</button>
@@ -66,10 +66,10 @@
                                 <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
                             </button>
                             </div>
-                    </form>
+                    </form> --}}
                     <div class="card-body">
                         @if(count($users) > 0)
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="dataUser">
                                 <thead>
                                     <tr class="text-center fixedHeader">
                                         <th>ลำดับที่</th>
@@ -112,7 +112,7 @@
                             <a href="{{ url('admin/add_data_exercises') }}" class="btn btn-primary float-end">เพิ่มแบบฝึกหัด</a>
                         </h4>
                     </div>
-                    <form method="get" role="searchexercise" style="height: 37px;">
+                    {{-- <form method="get" role="searchexercise" style="height: 37px;">
                         <div class="input-group col-2 mb-2 display-block">
                             <input type="searchexercise" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="searchexercise" aria-describedby="search-addon" name="searchexercise">
                             <button type="submit" class="btn btn-danger text-white" value="{{ old('searchexercise') }}">ค้นหา</button>
@@ -120,10 +120,10 @@
                                 <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
                             </button>
                             </div>
-                    </form>
+                    </form> --}}
                     <div class="card-body">
                         @if(count($exercises) > 0)
-                            <table class="table table-striped text-center">
+                            <table class="table table-striped text-center" id="dataExercise">
                                 <thead>
                                     <tr class="text-center fixedHeader">
                                         <th>ลำดับที่</th>
@@ -160,7 +160,7 @@
                     <div class="card-header text-white bg-dark">
                         <h4>ห้องเรียนทั้งหมด</h4>
                     </div>
-                    <form method="get" role="searchclassroom" style="height: 37px;">
+                    {{-- <form method="get" role="searchclassroom" style="height: 37px;">
                         <div class="input-group col-2 mb-2 display-block">
                             <input type="searchclassroom" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="searchclassroom" aria-describedby="search-addon" name="searchclassroom">
                             <button type="submit" class="btn btn-danger text-white" value="{{ old('searchclassroom') }}">ค้นหา</button>
@@ -168,10 +168,10 @@
                                 <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
                             </button>
                             </div>
-                    </form>
+                    </form> --}}
                     <div class="card-body">
                         @if(count($sections) > 0)
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="dataClassroom">
                                 <thead>
                                     <tr class="text-center fixedHeader">
                                         <th>ลำดับ</th>
@@ -325,5 +325,95 @@
             })
         });
     });
+
+    $(document).ready(function() {
+            $('#dataUser').DataTable( {
+            "language": {
+                "decimal":        "",
+                "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
+                "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
+                "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "แสดง _MENU_ รายการ",
+                "loadingRecords": "กำลังค้นหา...",
+                "processing":     "",
+                "search":         "ค้นหา:",
+                "zeroRecords":    "ไม่มีผลลัพธ์ที่ค้นหา",
+                "paginate": {
+                    "first":      "หน้าแรก",
+                    "last":       "หน้าสุดท้าย",
+                    "next":       "หน้าถัดไป",
+                    "previous":   "หน้าก่อนหน้า"
+                },
+                "aria": {
+                "sortAscending":  ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+                }
+            }
+        } );
+    });
+
+    $(document).ready(function() {
+            $('#dataExercise').DataTable( {
+            "language": {
+                "decimal":        "",
+                "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
+                "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
+                "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "แสดง _MENU_ รายการ",
+                "loadingRecords": "กำลังค้นหา...",
+                "processing":     "",
+                "search":         "ค้นหา:",
+                "zeroRecords":    "ไม่มีผลลัพธ์ที่ค้นหา",
+                "paginate": {
+                    "first":      "หน้าแรก",
+                    "last":       "หน้าสุดท้าย",
+                    "next":       "หน้าถัดไป",
+                    "previous":   "หน้าก่อนหน้า"
+                },
+                "aria": {
+                "sortAscending":  ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+                }
+            }
+        } );
+    });
+
+    $(document).ready(function() {
+            $('#dataClassroom').DataTable( {
+            "language": {
+                "decimal":        "",
+                "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
+                "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
+                "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "แสดง _MENU_ รายการ",
+                "loadingRecords": "กำลังค้นหา...",
+                "processing":     "",
+                "search":         "ค้นหา:",
+                "zeroRecords":    "ไม่มีผลลัพธ์ที่ค้นหา",
+                "paginate": {
+                    "first":      "หน้าแรก",
+                    "last":       "หน้าสุดท้าย",
+                    "next":       "หน้าถัดไป",
+                    "previous":   "หน้าก่อนหน้า"
+                },
+                "aria": {
+                "sortAscending":  ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+                }
+            }
+        } );
+    });
+
+    
+    
 </script>
 @endsection

@@ -17,45 +17,45 @@ use Hash;
 class AdminController extends Controller
 {
     function index(Request $request) {
-        $searchuser = $request['searchuser'] ?? "";
-        $searchexercise = $request['searchexercise'] ?? "";
-        $searchclassroom = $request['searchclassroom'] ?? "";
-        if($searchuser != "") {
-            $users = User::where('userid', 'LIKE', '%'. $searchuser. '%')
-                        ->orWhere('name', 'LIKE', '%'. $searchuser. '%')
-                        ->orWhere('email', 'LIKE', '%'. $searchuser. '%')
-                        ->orWhere('role', 'LIKE', '%'. $searchuser. '%')
-                        ->get();
+        // $searchuser = $request['searchuser'] ?? "";
+        // $searchexercise = $request['searchexercise'] ?? "";
+        // $searchclassroom = $request['searchclassroom'] ?? "";
+        // if($searchuser != "") {
+        //     $users = User::where('userid', 'LIKE', '%'. $searchuser. '%')
+        //                 ->orWhere('name', 'LIKE', '%'. $searchuser. '%')
+        //                 ->orWhere('email', 'LIKE', '%'. $searchuser. '%')
+        //                 ->orWhere('role', 'LIKE', '%'. $searchuser. '%')
+        //                 ->get();
             // $exercises = Exercise::where('level_name', 'LIKE', '%'. $search. '%')
             //             ->orWhere('data_level', 'LIKE', '%'. $search. '%')
             //             ->get();
             // $sections = Section::where('section_sub', 'LIKE', '%'. $search. '%')
             //             ->orWhere('section_name', 'LIKE', '%'. $search. '%')
             //             ->get();
-        }
-        else {
-            // $exercises = Exercise::all();
-            // $sections = Section::all();
-            $users = User::all();
-        }
-        if($searchexercise != "") {
-            $exercises = Exercise::where('level_name', 'LIKE', '%'. $searchexercise. '%')
-                        ->orWhere('data_level', 'LIKE', '%'. $searchexercise. '%')
-                        ->orWhere('level', 'LIKE', '%'. $searchexercise. '%')
-                        ->get();
-        }
-        else {
+        // }
+        // else {
             $exercises = Exercise::all();
-        }
-        if($searchclassroom != "") {
-            $sections = Section::where('section_sub', 'LIKE', '%'. $searchclassroom. '%')
-                        ->orWhere('section_name', 'LIKE', '%'. $searchclassroom. '%')
-                        ->get();
-        }
-        else {            
             $sections = Section::all();
-        }
-        $data = compact('sections', 'users', 'exercises', 'searchuser' , 'searchexercise' , 'searchclassroom');
+            $users = User::all();
+        // }
+        // if($searchexercise != "") {
+        //     $exercises = Exercise::where('level_name', 'LIKE', '%'. $searchexercise. '%')
+        //                 ->orWhere('data_level', 'LIKE', '%'. $searchexercise. '%')
+        //                 ->orWhere('level', 'LIKE', '%'. $searchexercise. '%')
+        //                 ->get();
+        // }
+        // else {
+        //     $exercises = Exercise::all();
+        // }
+        // if($searchclassroom != "") {
+        //     $sections = Section::where('section_sub', 'LIKE', '%'. $searchclassroom. '%')
+        //                 ->orWhere('section_name', 'LIKE', '%'. $searchclassroom. '%')
+        //                 ->get();
+        // }
+        // else {            
+        //     $sections = Section::all();
+        // }
+        $data = compact('sections', 'users', 'exercises' );
         return view('dashboards.admins.index')->with($data);
     }
     function profile(User $user) {
