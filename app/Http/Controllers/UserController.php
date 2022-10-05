@@ -20,6 +20,7 @@ class UserController extends Controller
 {
     function profile(Request $req, User $user) {
         $search = $req['search'] ?? "";
+<<<<<<< HEAD
         // $historys = HistoryScore::where('history_scores.user_id', $user->id)
         //                     ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
         //                     ->join('sections', 'history_scores.section_id', '=', 'sections.id')
@@ -36,7 +37,28 @@ class UserController extends Controller
                             ->orWhere('cpm', 'LIKE', '%'. $search . '%')
                             ->orWhere('score', 'LIKE', '%'. $search . '%')
                             ->where('history_scores.user_id', $user->id)
+=======
+        if($search != "") {
+            $historys = HistoryScore::where('history_scores.user_id', $user->id)
+                            ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
+                            ->join('sections', 'history_scores.section_id', '=', 'sections.id')
+                            ->orWhere('section_name', 'LIKE', '%'. $search . '%')
+                            ->orWhere('level_name', 'LIKE', '%'. $search . '%')
+                            ->orWhere('time', 'LIKE', '%'. $search . '%')
+                            ->orWhere('wpm', 'LIKE', '%'. $search . '%')
+                            ->orWhere('cpm', 'LIKE', '%'. $search . '%')
+                            ->orWhere('score', 'LIKE', '%'. $search . '%')
+                            ->orWhere('mistake', 'LIKE', '%'. $search . '%')
+>>>>>>> 4cd33b6d3749e8fcd9194f3ea1d4de5a5c2eaaab
                             ->get();
+            // $search_historys = HistoryScore::
+            //                 // where('sections.section_name', 'LIKE', '%'. $search . '%')
+            //                 // ->orWhere('exercises.level_name', 'LIKE', '%'. $search . '%')
+            //                 where('time', 'LIKE', '%'. $search . '%')
+            //                 ->orWhere('wpm', 'LIKE', '%'. $search . '%')
+            //                 ->orWhere('cpm', 'LIKE', '%'. $search . '%')
+            //                 ->orWhere('score', 'LIKE', '%'. $search . '%')
+            //                 ->get();
             // $search_historys = SectiHistoryScore::where('section_sub', 'LIKE', '%'. $search. '%')
             //                 ->where('user_id',$id)
             //                 ->orWhere('section_name', 'LIKE', '%'. $search . '%')
@@ -48,13 +70,21 @@ class UserController extends Controller
             //                 ->get();
         }
         else {
+<<<<<<< HEAD
             $historys = DB::table('history_scores')
                             ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                             ->join('sections', 'history_scores.section_id', '=', 'sections.id')
                             ->where('history_scores.user_id', $user->id)
                             ->get();
             // $search_historys = HistoryScore::where('history_scores.user_id', $user->id)->get();
+=======
+            $historys = HistoryScore::where('history_scores.user_id', $user->id)
+                                    ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
+                                    ->join('sections', 'history_scores.section_id', '=', 'sections.id')
+                                    ->get();
+>>>>>>> 4cd33b6d3749e8fcd9194f3ea1d4de5a5c2eaaab
         }
+        
         // return view('dashboards.teachers.classroom')->with($data);
         return view('dashboards.users.profile', compact('user', 'historys'));
     }
@@ -116,7 +146,7 @@ class UserController extends Controller
             $section_user = DB::table('section_users')->where('section_id','=', $inputClassroom->id)->where('user_id','=', $user_id)->count();
             if($section_user == 0) {
                 $users->student_sections()->save($inputClassroom);
-                return redirect('user/enterclass', compact('section'))->with('success', 'เข้าห้องเรียนสำเร็จแล้ว');
+                return redirect('user/enterclass')->with('success', 'เข้าห้องเรียนสำเร็จแล้ว');
             }
             else {
                 return redirect('user/enterclass')->with('error-message', 'คุณอยู่ในห้องเรียนนี้แล้ว');

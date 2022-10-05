@@ -87,6 +87,7 @@
                                     <th>รหัสวิชา</th>
                                     <th>ชื่อวิชา</th>
                                     <th>รหัสเข้าห้องเรียน</th>
+                                    <th>กำหนดส่ง</th>
                                     <th>ตัวเลือก</th>
                                 </tr>
                             </thead>
@@ -94,16 +95,17 @@
                                 @php($i=1)
                                 @foreach ($sections as $section)
                                 <tr>
-                                    <input type="hidden" class="outclass" value="{{ $section->id }}">
+                                    {{-- <input type="hidden" class="outclass" value="{{ $section->id }}"> --}}
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $section->section_sub }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->code_inclass }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('D j M y') }}</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm">
                                             <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id) }}">ทำแบบทดสอบ</a>
                                         </button>
-                                        <button class="btn btn-sm btn-danger outclassroom" data-name="{{ $section->section_name }}">ออกจากห้องเรียน</button>
+                                        {{-- <button class="btn btn-sm btn-danger outclassroom" data-name="{{ $section->section_name }}">ออกจากห้องเรียน</button> --}}
                                     </td>
                                 </tr>
                                 @endforeach

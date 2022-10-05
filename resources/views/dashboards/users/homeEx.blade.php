@@ -33,11 +33,12 @@
         display: flex;
     }
 </style>
-<div class="container mt-4">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9 text-center">
             {{-- {{ \Carbon\Carbon::parse($section->deadline_date)->format('d-m-Y') }} --}}
-            <strong class="fs-5 mb-1" style="color:red;">กำหนดส่งวันที่ {{ \Carbon\Carbon::parse($section->deadline_date)->format('d-m-Y') }} เวลา {{ $section->deadline_time }}</strong>
+            <strong class="mb-1" style="color:red; font-size: 30px;">กำหนดส่งภายในวัน{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('lที่ j F Y') }} เวลา {{ $section->deadline_time }} น.</strong>
+            {{-- thaidate('D j M y') --}}
             <div class="card">
                 <div class="card-header text-white bg-dark ">EXERCISE ENGLISH</div>
                 <div class="card-body">

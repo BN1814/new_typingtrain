@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
     {{-- ALERT MESSAGE --}}
     {{-- <script src="{{ asset('js/sweetalert2.js') }}"></script> --}}
@@ -98,17 +99,6 @@
                                 <li><a href="{{ url('admin/dashboard') }}" class="nav-link">หน้าแรก</a></li>
                                 <li><a href="{{ url('admin/add_data_teacher_student') }}" class="nav-link">เพิ่มอาจารย์และนักศึกษา</a></li>
                                 <li><a href="{{ url('admin/add_data_exercises') }}" class="nav-link">เพิ่มแบบทดสอบ</a></li>
-                                {{-- <div class="nav-item">
-                                    <form method="get" role="search" style="height: 20px;">
-                                        <div class="input-group col-2 mb-2">
-                                            <input type="search" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search">
-                                            <button type="submit" class="btn btn-danger text-white" value="{{ old('search') }}">ค้นหา</button>
-                                            <button type="reset" class="btn btn-warning text-white">
-                                                <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div> --}}
                             @elseif (auth()->user()->role == 'teacher')
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
                                 <li><a href="{{ url('teacher/classroom') }}" class="nav-link">ห้องเรียน</a></li>

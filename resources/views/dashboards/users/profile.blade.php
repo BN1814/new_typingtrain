@@ -107,7 +107,7 @@
                             </button>
                             </div>
                     </form>
-                    {{-- @if($search_historys > 0) --}}
+                    @if(count($historys) > 0)
                     <table class="table table-bordered table-striped text-center">
                         <thead>
                             <tr>
@@ -139,9 +139,9 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{-- @else
+                    @else
                         <p class="text-center mt-4">{{ __('ไม่มีผลลัพธ์ที่ค้นหา') }}</p>
-                    @endif --}}
+                    @endif
                 </div>
               </div>
           </div>

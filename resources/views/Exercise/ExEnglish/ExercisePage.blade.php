@@ -14,12 +14,19 @@
         })
     </script>
 @endif --}}
+    <style>
+        #poptime, #popmistake, #popwpm, #popcpm, #popscore:disabled {
+            color: red;
+            background: #fff;
+            font-size: 14px;
+            height: 27px;
+        }
+    </style>
     <link rel="stylesheet" href="{{ asset('css/ExEn/exerciseEnglish.css') }}">
     <link rel="stylesheet" href="{{ asset('css/ExEn/popupEN.css') }}">
         <div class="container mt-1">
             <p class="head h1 d-block text-center px-2 mb-2">LEVEL {{ $exercises->level }} : {{ $exercises->level_name }}</p>
         </div>
-        <body id="body">
             {{-- @include('include.includeExEn') --}}
             <div class="form-group">
                 <div class="container wrapper mb-3 mt-1">
@@ -67,43 +74,47 @@
                     </div>
                     <div class="history-score">
                         <div class="row justify-content-center">
-                            <div class="col-md-8">
+                            <div class="col-md-10 col-sm-9">
                                 <ul class="detail-score shadow-lg">
                                     <li class="time" id="time">
                                         <p>เวลาที่ใช้ไป: </p>
-                                        <input type="text" id="poptime" name="time">
+                                        <input type="text" id="poptime" name="time" style="width: 120px;" disabled>
+                                        <p>วินาที</p>
                                     </li>
                                     <li class="mistake" id="mistake" >
-                                        <p>คำที่พิมพ์ผิด : </p>
-                                        <input type="text" id="popmistake" name="mistake">
+                                        <p>ตัวอักษรที่พิมพ์ผิด : </p>
+                                        <input type="text" id="popmistake" name="mistake" style="width: 80px;" disabled>
+                                        <p>ตัว</p>
                                     </li>
                                     <li class="wpm" id="wpm">
                                         <p>ความเร็วการพิมพ์ : </p>
-                                        <input type="text" id="popwpm" name="wpm">
+                                        <input type="text" id="popwpm" name="wpm" style="width: 70px;" disabled>
+                                        <p>ตัว/วินาที</p>
                                     </li>
                                     <li class="cpm" id="cpm">
                                         <p>ความถูกต้อง : </p>
-                                        <input type="text" id="popcpm" name="cpm">
+                                        <input type="text" id="popcpm" name="cpm" style="width: 120px;" disabled>
+                                        <p>ตัว</p>
                                     </li>
                                     <li class="score" id="score">
                                         <p>คะแนน : </p>
-                                        <input type="text" id="popscore" name="score">
+                                        <input type="text" id="popscore" name="score" style="width: 160px;" disabled>
+                                        <p>คะแนน</p>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="foot-score d-flex justify-content-center align-items-center">
-                        <button class="btn btn-dark text-white ms-1 pn-score try_again" type="button">
+                    <div class="foot-score d-inline justify-content-center align-items-center">
+                        <button class="btn btn-dark text-white  pn-score try_again" type="button">
                             {{ __('เล่นอีกครั้ง') }}
                         </button>
-                        <button type="submit" class="btn btn-dark text-white ms-1 pn-score submit">
+                        <button type="submit" class="btn btn-dark text-white  pn-score submit">
                             {{ __('บันทึกสถิติ') }}
                         </button>
                     </div>
                 </form>
             </div>
-        </body>
 @endsection
 
 @section('script')
