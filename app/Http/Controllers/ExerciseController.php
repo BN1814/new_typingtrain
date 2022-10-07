@@ -13,8 +13,12 @@ use App\Models\User;
 class ExerciseController extends Controller
 {
     public function AllExercises(Section $section, User $user) {
+        $historys = HistoryScore::where('history_scores.user_id', $user->id)
+                            ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
+                            ->join('sections', 'history_scores.section_id', '=', 'sections.id')
+                            ->max('history_scores.score');
         $exercises = Exercise::first()->paginate(12);
-        return view('Exercise.ExEnglish.HomeExercises', compact('exercises', 'section', 'user'))->with((request()->input('page',1) - 1) * 12);
+        return view('Exercise.ExEnglish.HomeExercises', compact('exercises', 'historys', 'section', 'user'))->with((request()->input('page',1) - 1) * 12);
     }
     public function Exercise(Section $section, User $user, $id) {
         $exercises = Exercise::findOrFail($id);

@@ -22,16 +22,19 @@
         border-radius: 10px;
     }
     .btn {
-        margin: 0 10px 10px 10px;
+        margin: 5px 10px 10px 10px;
         float: right;
     }
-    .code {
+    strong {
+        font-size: 15px;
+    }
+    /* .code {
         width: 30%;
         height: 30px;
         border-radius: 10px;
         border: none;
         display: flex;
-    }
+    } */
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -45,7 +48,8 @@
                     <img src="https://www.nicepng.com/png/detail/67-675294_keyboard-typing.png" class="img-fluid">
                     {{-- <p class="h5 fw-bold mt-3 text-center">{{ $history->score }}</p> --}}
                 </div>
-                {{-- /enterclass/homeEx/{section_id}/{user_id}/AllExercises --}}
+                <strong class="text-start ms-4" style="text-transform: uppercase;">วิชา : {{ $section->section_name }}</strong>
+                {{-- <strong class="text-start ms-4">คะแนนรวมทั้งหมด : {{ $history->score }} คะแนน</strong> --}}
                 <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises') }}" class="btn btn-dark btn-block">START</a>
             </div>
         </div>

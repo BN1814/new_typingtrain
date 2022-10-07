@@ -98,9 +98,32 @@
                             @endif
                         @else
                             @if(auth()->user()->role == 'admin')
-                                <li><a href="{{ url('admin/dashboard') }}" class="nav-link">ผู้ใช้งานทั้งหมด</a></li>
+                                {{-- <li><a href="{{ url('admin/dashboard') }}" class="nav-link">ผู้ใช้งานทั้งหมด</a></li>
                                 <li><a href="{{ url('admin/exercise_all') }}" class="nav-link">แบบฝึกหัดทั้งหมด</a></li>
-                                <li><a href="{{ url('admin/section_all') }}" class="nav-link">ห้องเรียนทั้งหมด</a></li>
+                                <li><a href="{{ url('admin/section_all') }}" class="nav-link">ห้องเรียนทั้งหมด</a></li> --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('ข้อมูลทั้งหมด') }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        @if(auth()->user()->role == 'admin')
+                                            <a href="{{ url('admin/dashboard') }}" class="dropdown-item">ผู้ใช้งานทั้งหมด</a>
+                                            <a href="{{ url('admin/exercise_all') }}" class="dropdown-item">แบบฝึกหัดทั้งหมด</a>
+                                            <a href="{{ url('admin/section_all') }}" class="dropdown-item">ห้องเรียนทั้งหมด</a>
+                                        @endif
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('เพิ่มข้อมูล') }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        @if(auth()->user()->role == 'admin')
+                                            <a href="{{ url('admin/add_data_teacher_student') }}" class="dropdown-item">เพิ่มอาจารย์และนักศึกษา</a>
+                                            <a href="{{ url('admin/add_data_exercises') }}" class="dropdown-item">เพิ่มแบบทดสอบ</a>
+                                        @endif  
+                                    </div>
+                                </li>
                             @elseif (auth()->user()->role == 'teacher')
                                 <li><a href="{{ route('teacher.dashboard') }}" class="nav-link">สร้างห้องเรียน</a></li>
                                 <li><a href="{{ url('teacher/classroom') }}" class="nav-link">ห้องเรียน</a></li>
@@ -116,8 +139,6 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @if(auth()->user()->role == 'admin')
-                                        <a href="{{ url('admin/add_data_teacher_student') }}" class="dropdown-item">เพิ่มอาจารย์และนักศึกษา</a>
-                                        <a href="{{ url('admin/add_data_exercises') }}" class="dropdown-item">เพิ่มแบบทดสอบ</a>
                                         <a href="{{ url('admin/profile/'.auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
                                         <a href="{{ url('admin/changePassword/'.auth()->user()->id) }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
                                     @elseif (auth()->user()->role == 'teacher')

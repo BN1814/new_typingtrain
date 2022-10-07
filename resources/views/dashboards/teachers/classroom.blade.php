@@ -1,12 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    .headtable {
-        color: blue;
-        
-    }
-</style>
 <link rel="stylesheet" href="{{ asset('css/Teacher/classRoom.css') }}">
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -41,13 +35,13 @@
                     <div class="card-body">
                         {{-- @if(count($sections) > 0) --}}
                             <table class="table table-hover table-bordered" id="classroom_teacher">
-                                <thead class="table-light">
-                                    <tr class="text-center bg-gray-100 leading-10">
+                                <thead>
+                                    <tr class="bg-dark text-white">
                                         <th >ลำดับ</th>
-                                        <th class="text-dark">รหัสวิชา</th>
-                                        <th class="text-dark">ชื่อวิชา</th>
-                                        <th class="text-dark">วันที่กำหนดส่ง</th>
-                                        <th class="text-dark">เวลาที่กำหนดส่ง</th>
+                                        <th >รหัสวิชา</th>
+                                        <th >ชื่อวิชา</th>
+                                        <th >วันที่กำหนดส่ง</th>
+                                        <th >เวลาที่กำหนดส่ง</th>
                                         <th >รหัสเข้าห้องเรียน</th>
                                         <th >ตัวเลือก</th>
                                         {{-- @sortablelink('section_sub', '.') --}}
@@ -71,7 +65,7 @@
                                         <th>ตัวเลือก</th> --}}
                                     </tr>
                                 </thead>
-                                <tbody class="text-center">
+                                <tbody>
                                     @php($i=1)
                                     @foreach ($sections as $section)
                                     <tr>
@@ -82,7 +76,7 @@
                                         <td>{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('D j M y')}}</td>
                                         <td>{{ $section->deadline_time }} น.</td>
                                         <td>{{ $section->code_inclass }}</td>
-                                        <td class="text-center">
+                                        <td>
                                             <a href="{{ url('teacher/dataSTD/'. $section->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
                                             <a href="{{ url('teacher/classroom/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                             <button class="btn btn-danger btn-sm delete" data-name="{{ $section->section_name }}" data-id="{{ $section->id }}">ลบ</button>

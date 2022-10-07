@@ -19,52 +19,11 @@ use Str;
 class UserController extends Controller
 {
     function profile(Request $req, User $user) {
-        $search = $req['search'] ?? "";
+        // $search = $req['search'] ?? "";
         $historys = HistoryScore::where('history_scores.user_id', $user->id)
                             ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                             ->join('sections', 'history_scores.section_id', '=', 'sections.id')
                             ->get();
-        // if($search != "") {
-        //     $historys =DB::table('history_scores')
-        //                     ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
-        //                     ->join('sections', 'history_scores.section_id', '=', 'sections.id')
-        //                     ->orwhere('section_name', 'LIKE', '%'. $search . '%')
-        //                     ->orWhere('level_name', 'LIKE', '%'. $search . '%')
-        //                     ->orwhere('time', 'LIKE', '%'. $search . '%')
-        //                     ->orwhere('mistake', 'LIKE', '%'. $search . '%')
-        //                     ->orWhere('wpm', 'LIKE', '%'. $search . '%')
-        //                     ->orWhere('cpm', 'LIKE', '%'. $search . '%')
-        //                     ->orWhere('score', 'LIKE', '%'. $search . '%')
-        //                     ->where('history_scores.user_id', $user->id)
-        //                     ->get();
-            // $search_historys = HistoryScore::
-            //                 // where('sections.section_name', 'LIKE', '%'. $search . '%')
-            //                 // ->orWhere('exercises.level_name', 'LIKE', '%'. $search . '%')
-            //                 where('time', 'LIKE', '%'. $search . '%')
-            //                 ->orWhere('wpm', 'LIKE', '%'. $search . '%')
-            //                 ->orWhere('cpm', 'LIKE', '%'. $search . '%')
-            //                 ->orWhere('score', 'LIKE', '%'. $search . '%')
-            //                 ->get();
-            // $search_historys = SectiHistoryScore::where('section_sub', 'LIKE', '%'. $search. '%')
-            //                 ->where('user_id',$id)
-            //                 ->orWhere('section_name', 'LIKE', '%'. $search . '%')
-            //                 ->where('user_id',$id)
-            //                 ->orWhere('deadline_date', '=' , '%' . $search . '%')
-            //                 ->where('user_id',$id)
-            //                 ->orWhereTime('deadline_time', '=', $search)
-            //                 ->where('user_id',$id)
-            //                 ->get();
-        // }
-        // else {
-        //     $historys = DB::table('history_scores')
-        //                     ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
-        //                     ->join('sections', 'history_scores.section_id', '=', 'sections.id')
-        //                     ->where('history_scores.user_id', $user->id)
-        //                     ->get();
-        //     // $search_historys = HistoryScore::where('history_scores.user_id', $user->id)->get();
-        // }
-        
-        // return view('dashboards.teachers.classroom')->with($data);
         return view('dashboards.users.profile', compact('user', 'historys'));
     }
     function updateProfile(User $user, Request $request) {
@@ -99,7 +58,8 @@ class UserController extends Controller
                         ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                         ->join('sections', 'history_scores.section_id', '=', 'sections.id')
                         ->get();
-        // dd($history);
+                        // ->max('history_scores.score');
+                        // dd($history);
         $checkuser = DB::table('section_users')->where('user_id','=', $user_id)->count();
         if($checkuser > 0){
             return view('dashboards.users.homeEx', compact('section', 'user', 'history'));

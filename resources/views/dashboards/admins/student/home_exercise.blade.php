@@ -11,7 +11,7 @@
 </style>
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8    ">
             <div class="card">
                 <div class="card-header text-center text-white bg-dark h4">เพื่มข้อมูลแบบฝึกหัด</div>
                 <div class="card-body">

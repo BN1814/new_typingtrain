@@ -35,7 +35,7 @@
                                 </button>
                             </div>
                         </form> --}}
-                        @if(count($users) > 0)
+                        {{-- @if(count($users) > 0) --}}
                         <table class="table table-hover table-bordered" id="dataSTDtable">
                             <thead class="table-light">
                                 <tr class="text-center bg-gray-100 leading-10">
@@ -72,9 +72,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        @else
+                        {{-- @else
                         <p class="text-center mt-4 fs-3">{{ __('ห้องเรียนยังไม่มีนักศึกษาเข้าห้องเรียน') }}</p>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
             </div>

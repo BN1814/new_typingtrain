@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .fixedHeader {
+        background: #343a40;
+        color: #fff;
+    }
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -34,7 +40,7 @@
                         <h4>ห้องเรียนทั้งหมด</h4>
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover table-bordered" id="dataClassroom">
+                        <table class="table table-hover" id="dataClassroom">
                             <thead>
                                 <tr class="fixedHeader">
                                     <th>ลำดับ</th>
@@ -48,14 +54,14 @@
                             <tbody style="border: var(--bs-dark);">
                                 @php($i=1)
                                 @foreach ($sections as $section)
-                                <tr class="text-center">
+                                <tr>
                                     <input type="hidden" class="delete_section_id" value="{{ $section->id }}">
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->code_inclass }}</td>
                                     <td>{{ $section->deadline_date }}</td>
                                     <td>{{ $section->deadline_time }}</td>
-                                    <td class="text-center">
+                                    <td>
                                         <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                         <button class="btn btn-danger btn-sm delete_sect" data-name="{{ $section->section_name }}" data-id="{{ $section->id }}">ลบ</button>
                                     </td>

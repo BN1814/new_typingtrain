@@ -60,9 +60,20 @@
     
                                 <div class="col-md-6">
                                     <select name="status" class="form-control">
-                                        <option value="1">Admin</option>
-                                        <option value="2">Teacher</option>
-                                        <option value="3">Student</option>
+                                        {{-- <option value="{{  $user->status }}">{{ $user->role }}</option> --}}
+                                        @if($user->role == 'admin')
+                                            <option value="1">{{ $user->role }}</option>
+                                            <option value="2">teacher</option>
+                                            <option value="3">student</option>
+                                        @elseif($user->role == 'teacher')
+                                            <option value="2">{{ $user->role }}</option>
+                                            <option value="1">admin</option>
+                                            <option value="3">student</option>
+                                        @elseif($user->role == 'student')
+                                            <option value="3">{{ $user->role }}</option>
+                                            <option value="1">admin</option>
+                                            <option value="2">teacher</option>
+                                        @endif
                                     </select>
                                 </div>
                             </div>

@@ -101,19 +101,9 @@
             <div class="card mt-3">
                 <div class="card-header text-center text-white bg-dark h4">ประวัติการทำแบบทดสอบ</div>
                 <div class="card-body">
-                    <form method="get" role="search" style="height: 37px;" class="mb-3">
-                        <div class="input-group col-2 mb-2 display-block">
-                            <input type="searchuser" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="Searchuser" aria-describedby="search-addon" name="search">
-                            <button type="submit" class="btn btn-dark text-white" value="{{ old('search') }}">ค้นหา</button>
-                            <button type="reset" class="btn btn-danger text-white">
-                                <a href="{{ url('user/profile/'. $user->id . '/edit') }}">รีเซ็ต</a>
-                            </button>
-                            </div>
-                    </form>
-                    @if(count($historys) > 0)
-                    <table class="table table-bordered table-striped text-center">
+                    <table class="table table-bordered table-striped table-hover text-center" id="data_history">
                         <thead>
-                            <tr>
+                            <tr class="text-white bg-dark">
                                 <th>ครั้งที่</th>
                                 <th>ชื่อวิชา</th>
                                 <th>ชื่อแบบฝึกหัด</th>
@@ -142,12 +132,42 @@
                             @endforeach
                         </tbody>
                     </table>
-                    @else
-                        <p class="text-center mt-4">{{ __('ไม่มีผลลัพธ์ที่ค้นหา') }}</p>
-                    @endif
                 </div>
               </div>
           </div>
       </div>
     </div>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('#data_history').DataTable( {
+            "language": {
+                "decimal":        "",
+                "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
+                "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
+                "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "แสดง _MENU_ รายการ",
+                "loadingRecords": "กำลังค้นหา...",
+                "processing":     "",
+                "search":         "ค้นหา:",
+                "zeroRecords":    "ไม่มีผลลัพธ์ที่ค้นหา",
+                "paginate": {
+                    "first":      "หน้าแรก",
+                    "last":       "หน้าสุดท้าย",
+                    "next":       "หน้าถัดไป",
+                    "previous":   "หน้าก่อนหน้า"
+                },
+                "aria": {
+                "sortAscending":  ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
+</script>
 @endsection
