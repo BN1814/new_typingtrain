@@ -1,19 +1,4 @@
-// document.getElementById("a").addEventListener("keypress", function onKeypress() {
-//     this.removeEventListener("keypress", onKeypress);
-//     this.style.backgroundColor = "#004f40";  
-// }, false);
-
-var start = 97,
-    end = 122;
-//     button;
-
-// while (start <= end) {
-//     button = document.createElement("button");
-//     button.id = button.textContent = String.fromCharCode(start);
-//     document.body.appendChild(button);
-//     start += 1;
-// }
-
+// KEYBOARD KEYUP, KEYDOWN
 var keydown,
     keypress = [];
 
@@ -25,11 +10,11 @@ document.addEventListener("keydown", function onKeydown(e1) {
 document.addEventListener("keypress", function onKeypress(e2) {
     var record = {
         "char": e2.char || e2.charCode,
-            "key": keydown.key || keydown.keyCode || keyDown.which,
-            "shiftKey": keydown.shiftKey,
-            "metaKey": keydown.metaKey,
-            "altKey": keydown.altKey,
-            "ctrlKey": keydown.ctrlKey
+        "key": keydown.key || keydown.keyCode || keyDown.which,
+        "shiftKey": keydown.shiftKey,
+        "metaKey": keydown.metaKey,
+        "altKey": keydown.altKey,
+        "ctrlKey": keydown.ctrlKey
     },
     element = document.getElementById(String.fromCharCode(e2.charCode || e2.char));
 

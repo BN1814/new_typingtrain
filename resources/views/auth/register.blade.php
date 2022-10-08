@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card { border:none; }
+</style>
 {{-- <link rel="stylesheet" href=" {{ asset('bootstrap.min.css') }} "> --}}
 <div class="container mt-2">
     <div class="row justify-content-center">
@@ -103,7 +106,7 @@
                             <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ') }}</label>
 
                             <div class="col-md-6">
-                                <select name="status" class="form-control">
+                                <select name="status" class="form-control text-center">
                                     <option value="3">Student</option>
                                     <option value="2">Teacher</option>
                                 </select>
@@ -112,7 +115,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-dark">
+                                <button type="submit" class="btn btn-warning form-control">
                                     {{ __('ลงทะเบียน') }}
                                 </button>
                             </div>

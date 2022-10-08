@@ -31,7 +31,7 @@
                         @csrf
                         @method('put')
                         <div class="row mb-3">
-                            <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผู้ใช้') }}</label>
+                            <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสนักศึกษา') }}</label>
 
                             <div class="col-md-6">
                                 <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" autocomplete="userid" autofocus value="{{ $user->userid }}">
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="col-md-11">
+        <div class="col-lg-12">
             <div class="card mt-3">
                 <div class="card-header text-center text-white bg-dark h4">ประวัติการทำแบบทดสอบ</div>
                 <div class="card-body">
@@ -108,11 +108,11 @@
                                 <th>ชื่อวิชา</th>
                                 <th>ชื่อแบบฝึกหัด</th>
                                 <th>เวลาที่ใช้ไป</th>
-                                <th>คำที่พิมพ์ผิด</th>
+                                <th>ตัวอักษรที่พิมพ์ผิด</th>
                                 <th>ความเร็วการพิมพ์</th>
                                 <th>ความถูกต้อง</th>
                                 <th>คะแนน</th>
-                                <th>ใช้งานเมื่อ</th>
+                                <th>บันทึกเมื่อวันที่</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -122,12 +122,12 @@
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $history->section_name }}</td>
                                     <td>{{ $history->level_name }}</td>
-                                    <td>{{ $history->time }}</td>
-                                    <td>{{ $history->mistake }}</td>
-                                    <td>{{ $history->wpm }}</td>
-                                    <td>{{ $history->cpm }}</td>
-                                    <td>{{ $history->score }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->diffForHumans() }}</td>
+                                    <td>{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
+                                    <td>{{ $history->mistake }}  <p class="ms-1 d-inline">ตัว</p></td>
+                                    <td>{{ $history->wpm }}  <p class="ms-1 d-inline">ตัวต่อนาที</p></td>
+                                    <td>{{ $history->cpm }}  <p class="ms-1 d-inline">%</p></td>
+                                    <td>{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
+                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y') }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

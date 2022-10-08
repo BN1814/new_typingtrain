@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card { border:none; }
+</style>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -55,8 +58,8 @@
                                         {{ __('จำฉัน') }}
                                     </label>
                                 </div>
-                            </div> --}}
-                        </div>
+                            </div>
+                        </div> --}}
 
                         <div class="row mb-3">
                             <div class="col-md-8 offset-md-4">
@@ -65,7 +68,7 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link text-dark" href="{{ route('password.request') }}">
+                                    <a class="text-primary ms-2" href="{{ route('password.request') }}" style="text-decoration: underline; font-weight: bold;">
                                         {{ __('ลืมรหัสผ่านหรือไม่?') }}
                                     </a>
                                 @endif

@@ -19,7 +19,6 @@ use Str;
 class UserController extends Controller
 {
     function profile(Request $req, User $user) {
-        // $search = $req['search'] ?? "";
         $historys = HistoryScore::where('history_scores.user_id', $user->id)
                             ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                             ->join('sections', 'history_scores.section_id', '=', 'sections.id')

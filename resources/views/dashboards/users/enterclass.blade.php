@@ -80,9 +80,9 @@
                     <div class="card-header text-center text-white bg-dark h4">ห้องเรียนของ <strong class="d-inline text-warning h3">{{ $user->name }}</strong> ทั้งหมด</div>
                     <div class="card-body">
                         @if(count($sections) > 0)
-                        <table class="table table-striped table-bordered text-center">
+                        <table class="table table-bordered table-hover text-center" id="enterclassroom">
                             <thead>
-                                <tr>
+                                <tr class="text-white" style="background: var(--bs-gray-dark);">
                                     <th>ลำดับ</th>
                                     <th>รหัสวิชา</th>
                                     <th>ชื่อวิชา</th>
@@ -100,7 +100,7 @@
                                     <td>{{ $section->section_sub }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->code_inclass }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('D j M y') }}</td>
+                                    <td>วัน{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('lที่ j F Y') }}</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm">
                                             <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id) }}">ทำแบบทดสอบ</a>
@@ -165,5 +165,33 @@
             })
         });
     // });
+    $(document).ready(function() {
+        $('#enterclassroom').DataTable( {
+            "language": {
+                "decimal":        "",
+                "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
+                "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
+                "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "แสดง _MENU_ รายการ",
+                "loadingRecords": "กำลังค้นหา...",
+                "processing":     "",
+                "search":         "ค้นหา:",
+                "zeroRecords":    "ไม่มีผลลัพธ์ที่ค้นหา",
+                "paginate": {
+                    "first":      "หน้าแรก",
+                    "last":       "หน้าสุดท้าย",
+                    "next":       "หน้าถัดไป",
+                    "previous":   "หน้าก่อนหน้า"
+                },
+                "aria": {
+                "sortAscending":  ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
 </script>
 @endsection

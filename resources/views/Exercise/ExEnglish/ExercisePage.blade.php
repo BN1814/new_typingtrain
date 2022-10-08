@@ -90,12 +90,12 @@
                                     <li class="wpm" id="wpm">
                                         <p>ความเร็วการพิมพ์ : </p>
                                         <input type="text" id="popwpm" name="wpm" style="width: 70px;">
-                                        <p>ตัว/วินาที</p>
+                                        <p>ตัว/นาที</p>
                                     </li>
                                     <li class="cpm" id="cpm">
                                         <p>ความถูกต้อง : </p>
                                         <input type="text" id="popcpm" name="cpm" style="width: 120px;">
-                                        <p>ตัว</p>
+                                        <p>เปอร์เซ็นต์</p>
                                     </li>
                                     <li class="score" id="score">
                                         <p>คะแนน : </p>
@@ -119,5 +119,7 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('js.ExEn.HomerowEn.FJ.js')}}" defer></script>
+<script src="{{ asset('js/ExEn/HomerowEn/do_exercise.js')}}" defer></script>
+<script src="{{ asset('js/ExEn/HomerowEn/keyboard.js')}}" defer></script>
+<script src="{{ asset('js/ExEn/HomerowEn/popup.js')}}" defer></script>
 @endsection
