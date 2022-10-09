@@ -37,14 +37,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
-        body {
-            background: rgb(135, 188, 231);
-        }
-        a {
-            color: #fff;
-            text-decoration: none;
-        }
-        a:hover { color: #fff;}
+        body { background:rgb(135, 188, 231); }
+        a { color:#fff; text-decoration:none;}
+        a:hover { color:#fff;}
     </style>
 </head>
 <body>
@@ -108,7 +103,7 @@
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         @if(auth()->user()->role == 'admin')
                                             <a href="{{ url('admin/dashboard') }}" class="dropdown-item">ผู้ใช้งานทั้งหมด</a>
-                                            <a href="{{ url('admin/exercise_all') }}" class="dropdown-item">แบบฝึกหัดทั้งหมด</a>
+                                            <a href="{{ url('admin/exercise_all') }}" class="dropdown-item">แบบทดสอบทั้งหมด</a>
                                             <a href="{{ url('admin/section_all') }}" class="dropdown-item">ห้องเรียนทั้งหมด</a>
                                         @endif
                                     </div>
@@ -130,6 +125,7 @@
                             @else
                                 {{-- <li><a href="{{ url('user/dashboard') }}" class="nav-link">หน้าแรก</a></li> --}}
                                 <li><a href="{{ url('user/enterclass') }}" class="nav-link">เข้าห้องเรียน</a></li>
+                                <li><a href="{{ url('user/histories_score/' . $user->id) }}" class="nav-link">ประวัติการทำแบบทดสอบ</a></li>
                             @endif
                             <li class="nav-item dropdown">
                                 {{-- <box-icon type="solid" name="user" style="background: gray"></box-icon> --}}

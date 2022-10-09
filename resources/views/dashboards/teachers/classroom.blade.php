@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/Teacher/classRoom.css') }}">
+<style>
+    * { box-sizing: border-box;margin: 0;padding: 0; }
+    .card { border: none; }
+</style>
+{{-- <link rel="stylesheet" href="{{ asset('css/Teacher/classRoom.css') }}"> --}}
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -32,9 +36,9 @@
                 <div class="card">
                     <div class="card-header bg-dark text-white h4 text-center">ห้องเรียนทั้งหมด</div>
                     <div class="card-body">
-                        <table class="table table-hover table-bordered" id="classroom_teacher">
+                        <table class="table table-hover table-striped table-bordered" id="classroom_teacher">
                             <thead>
-                                <tr class="bg-dark text-white">
+                                <tr style="background: var(--bs-warning);">
                                     <th >ลำดับ</th>
                                     <th >รหัสวิชา</th>
                                     <th >ชื่อวิชา</th>

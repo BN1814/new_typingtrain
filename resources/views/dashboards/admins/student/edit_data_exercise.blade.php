@@ -2,12 +2,9 @@
 
 @section('content')
 <style>
-    .card {
-        border: none;
-    }
-    input {
-        text-align: center;
-    }
+    .card { border:none; }
+    input { text-align:center; }
+    textarea { margin:0; padding: 0; }
 </style>
     <div class="container mt-3">
         <div class="row justify-content-center">
@@ -22,43 +19,31 @@
                             @csrf
                             @method('put')
                             <div class="row mb-3">
-                                <label for="level" class="col-md-4 col-form-label text-md-end">{{ __('ระดับ') }}</label>
+                                <label for="level" class="col-md-4 col-form-label text-md-end">{{ __('ระดับแบบทดสอบ : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="level" type="text" class="form-control @error('level') is-invalid @enderror" name="level" autocomplete="level" autofocus value="{{ $exercise->level }}">
+                                    <input id="level" type="text" class="form-control" name="level" autocomplete="off" value="{{ $exercise->level }}">
     
-                                    @error('level')
+                                    {{-- @error('level')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                    @enderror --}}
                                 </div>
                             </div>
     
                             <div class="row mb-3">
-                                <label for="level_name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อแบบฝึกหัด') }}</label>
+                                <label for="level_name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อแบบทดสอบ : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="level_name" type="text" class="form-control @error('level_name') is-invalid @enderror" name="level_name" autocomplete="level_name" autofocus value="{{ $exercise->level_name }}">
-    
-                                    @error('level_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="level_name" type="text" class="form-control" name="level_name" autocomplete="off" value="{{ $exercise->level_name }}">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="data_level" class="col-md-4 col-form-label text-md-end">{{ __('ข้อมูลแบบฝึกหัด') }}</label>
+                                <label for="data_level" class="col-md-4 col-form-label text-md-end">{{ __('ข้อมูลแบบทดสอบ : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="data_level" type="text" class="form-control @error('data_level') is-invalid @enderror" name="data_level" autocomplete="data_level" autofocus value="{{ $exercise->data_level }}">
-    
-                                    @error('data_level')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <textarea id="data_level" class="form-control text-center" name="data_level" rows="4">{{ $exercise->data_level }}</textarea>
                                 </div>
                             </div>
 

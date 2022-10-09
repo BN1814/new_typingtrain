@@ -3,10 +3,8 @@
 
 @section('content')
 <style>
-    .fixedHeader {
-        background: #343a40;
-        color: #fff;
-    }
+    .fixedHeader {background:var(--bs-gray-dark); color:#fff; border:1px solid #fff}
+    .card { border:0; }
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -43,18 +41,9 @@
                             <a href="{{ url('admin/add_data_teacher_student') }}" class="btn btn-primary float-end">เพิ่มอาจารย์/นักศึกษา</a>
                         </h4>
                     </div>
-                    {{-- <form method="get" role="searchuser" style="height: 37px;">
-                        <div class="input-group col-2 mb-2 display-block">
-                            <input type="searchuser" class="form-control rounded text-start" placeholder="ค้นหา" aria-label="Searchuser" aria-describedby="search-addon" name="searchuser">
-                            <button type="submit" class="btn btn-danger text-white" value="{{ old('searchuser') }}">ค้นหา</button>
-                            <button type="reset" class="btn btn-warning text-white">
-                                <a href="{{ url('admin/dashboard') }}">รีเซ็ต</a>
-                            </button>
-                            </div>
-                    </form> --}}
                     <div class="card-body">
                         {{-- @if(count($users) > 0) --}}
-                            <table class="table table-hover table-bordered" id="dataUser">
+                            <table class="table table-hover table-bordered text-center"id="dataUser">
                                 <thead>
                                     <tr class="fixedHeader">
                                         <th>ลำดับที่</th>
@@ -65,7 +54,7 @@
                                         <th>ตัวเลือก</th>
                                     </tr>
                                 </thead>
-                                <tbody style="border: var(--bs-dark);">
+                                <tbody class="bg-warning">
                                     @php($i=1)
                                     @foreach ($users as $user)
                                         <tr>
@@ -75,9 +64,9 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->role }}</td>
-                                            <td class="text-center">
+                                            <td>
                                                 <a href="{{ url('admin/view_data_teacher_student/'. $user->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
-                                                <a href="{{ url('admin/add_data_teacher_student/'.$user->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                                <a href="{{ url('admin/add_data_teacher_student/'.$user->id.'/edit') }}" class="btn btn-secondary btn-sm">แก้ไข</a>
                                                 <button class="btn btn-danger btn-sm delete" data-name="{{ $user->name }}" data-id="{{ $user->id }}">ลบ</button>
                                             </td>
                                         </tr>
@@ -85,7 +74,7 @@
                                 </tbody>
                             </table>
                         {{-- @else
-                            <p class="text-center mt-2">{{ __('ไม่มีผลลัพธ์ที่ค้นหา')}}</p>
+                            <p class="text-center mt-2">{{ __('ไม่มีผู้ใช้งาน')}}</p>
                         @endif --}}
                     </div>
                 </div>

@@ -18,12 +18,15 @@ use Str;
 // where `history_scores`. `user_id` = 4;
 class UserController extends Controller
 {
-    function profile(Request $req, User $user) {
+    function History_STD(User $user) {
         $historys = HistoryScore::where('history_scores.user_id', $user->id)
                             ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                             ->join('sections', 'history_scores.section_id', '=', 'sections.id')
                             ->get();
-        return view('dashboards.users.profile', compact('user', 'historys'));
+        return view('dashboards.users.history_score', compact('user', 'historys'));
+    }
+    function profile(User $user) {
+        return view('dashboards.users.profile', compact('user'));
     }
     function updateProfile(User $user, Request $request) {
         $user->update([

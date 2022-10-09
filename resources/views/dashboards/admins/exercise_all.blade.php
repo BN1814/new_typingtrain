@@ -2,10 +2,8 @@
 
 @section('content')
 <style>
-    .fixedHeader {
-        background: #343a40;
-        color: #fff;
-    }
+    .fixedHeader {background:var(--bs-gray-dark); color:#fff; border:1px solid #fff}
+    .card { border:0; }
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -42,7 +40,7 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                            <table class="table table-hover table-bordered" id="dataExercise">
+                            <table class="table table-hover table-bordered text-center" id="dataExercise">
                                 <thead>
                                     <tr class="fixedHeader">
                                         {{-- <th>ลำดับที่</th> --}}
@@ -52,7 +50,7 @@
                                         <th>ตัวเลือก</th>
                                     </tr>
                                 </thead>
-                                <tbody style="border: var(--bs-secondary); color: #000;">
+                                <tbody style="background: var(--bs-warning); border: 1px solid #fff">
                                     @php($i=1)
                                     @foreach ($exercises as $exercise)
                                         <tr>
@@ -62,7 +60,7 @@
                                             <td>{{ $exercise->level_name }}</td>
                                             <td>{{ Str::limit($exercise->data_level, 80 )}}</td>
                                             <td>
-                                                <a href="{{ url('admin/add_data_exercises/'.$exercise->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                                <a href="{{ url('admin/add_data_exercises/'.$exercise->id.'/edit') }}" class="btn btn-primary btn-sm">แก้ไข</a>
                                                 <button class="btn btn-danger btn-sm delete_ex" data-name="{{ $exercise->level_name }}" data-id="{{ $exercise->id }}">ลบ</button>
                                             </td>
                                         </tr>

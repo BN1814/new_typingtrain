@@ -2,10 +2,8 @@
 
 @section('content')
 <style>
-    .fixedHeader {
-        background: #343a40;
-        color: #fff;
-    }
+    .fixedHeader { background:var(--bs-gray-dark); color:#fff; border:1px solid #fff }
+    .card { border:0; }
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -40,7 +38,7 @@
                         <h4>ห้องเรียนทั้งหมด</h4>
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover" id="dataClassroom">
+                        <table class="table table-hover table-bordered text-center" id="dataClassroom">
                             <thead>
                                 <tr class="fixedHeader">
                                     <th>ลำดับ</th>
@@ -51,7 +49,7 @@
                                     <th>ตัวเลือก</th>
                                 </tr>
                             </thead>
-                            <tbody style="border: var(--bs-dark);">
+                            <tbody style="background: var(--bs-warning);">
                                 @php($i=1)
                                 @foreach ($sections as $section)
                                 <tr>
@@ -59,10 +57,10 @@
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->code_inclass }}</td>
-                                    <td>{{ $section->deadline_date }}</td>
-                                    <td>{{ $section->deadline_time }}</td>
+                                    <td>วัน{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('lที่ j F Y') }}</td>
+                                    <td>{{ $section->deadline_time }} น.</td>
                                     <td>
-                                        <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                        <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-primary btn-sm">แก้ไข</a>
                                         <button class="btn btn-danger btn-sm delete_sect" data-name="{{ $section->section_name }}" data-id="{{ $section->id }}">ลบ</button>
                                     </td>
                                 </tr>

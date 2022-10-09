@@ -2,9 +2,7 @@
 
 @section('content')
 <style>
-    a:hover {
-        color: #fff;
-    }
+    a:hover { color:#fff; }
 </style>
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -23,22 +21,14 @@
                     </script>
                 @endif
                 <div class="card">
-                    <div class="card-header text-center text-white bg-dark h4">ข้อมูลนักศึกษา</div>
-                    <p class="text-center mt-2 h4" style="margin:0; padding:0; font-weight:bold; text-transform:uppercase;">{{ $section->section_name }}</p>
+                    <div class="card-header text-center text-white bg-dark h4">ข้อมูลนักศึกษา
+                        <p class="text-center h4 text-info" style="margin:0; padding:0; font-weight:bold; text-transform:uppercase;">วิชา : {{ $section->section_name }}</p>
+                    </div>
                     <div class="card-body">
-                        {{-- <form method="get" role="search">
-                            <div class="input-group col-2 mb-2">
-                                <input type="search" class="form-control rounded" placeholder="ค้นหา" aria-label="Search" aria-describedby="search-addon" name="search" value="{{ old('search') }}">
-                                <button type="submit" class="btn btn-dark text-white" >ค้นหา</button>
-                                <button type="reset" class="btn btn-danger text-white">
-                                    <a href="{{ url('teacher/dataSTD/'. $section->id) }}">รีเซ็ต</a>
-                                </button>
-                            </div>
-                        </form> --}}
-                        {{-- @if(count($users) > 0) --}}
+                        @if(count($users) > 0)
                         <table class="table table-hover table-bordered" id="dataSTDtable">
-                            <thead class="table-light">
-                                <tr class="text-center bg-gray-100 leading-10">
+                            <thead>
+                                <tr style="background: var(--bs-warning)">
                                     <th>ลำดับ</th>
                                     <th>ไอดี</th>
                                     <th>รหัสนักศึกษา</th>
@@ -72,9 +62,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- @else
-                        <p class="text-center mt-4 fs-3">{{ __('ห้องเรียนยังไม่มีนักศึกษาเข้าห้องเรียน') }}</p>
-                        @endif --}}
+                        @else
+                        <p class="text-center fs-5 text-danger" style="margin:0;">{{ __('ห้องเรียนนี้ยังไม่มีนักศึกษาเข้าห้องเรียน') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>

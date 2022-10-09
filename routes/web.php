@@ -95,6 +95,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
         // STUDENT PANEL
         Route::get('/settings', 'settings');
         Route::get('/changePassword', 'changePassword');
+        Route::get('/histories_score/{user}', 'History_STD');
         // STUDENT CRUD
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');

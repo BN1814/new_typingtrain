@@ -27,14 +27,14 @@ class SectionSeeder extends Seeder
                 'deadline_time' => '23:59',
                 'user_id' => '2',
             ],
-            // [
-            //     'section_sub' => '520439',
-            //     'section_name' => 'Project 1',
-            //     'code_inclass' => 'kfoDPa',
-            //     'deadline_date' => date('2022-30-12'),
-            //     'deadline_time' => '23:59',
-            //     'user_id' => '2',
-            // ],
+            [
+                'section_sub' => '520439',
+                'section_name' => 'Project 1',
+                'code_inclass' => 'kfoDPa',
+                'deadline_date' => date('Y-m-d', strtotime($changeDate)),
+                'deadline_time' => '23:59',
+                'user_id' => '2',
+            ],
             // [
             //     'section_sub' => '520439',
             //     'section_name' => 'Project 2',

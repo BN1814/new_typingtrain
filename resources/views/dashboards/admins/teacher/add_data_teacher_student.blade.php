@@ -2,9 +2,7 @@
 
 @section('content')
 <style>
-    .card {
-        border: none;
-    }
+    .card { border:none; }
 </style>
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -15,10 +13,10 @@
                         <form action="{{ url('admin/dashboard') }}" method="POST">
                             @csrf
                             <div class="row mb-3">
-                                <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผู้ใช้') }}</label>
+                                <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผู้ใช้ : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ old('userid') }}"  autocomplete="userid" autofocus>
+                                    <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ old('userid') }}"  autocomplete="off">
     
                                     @error('userid')
                                         <span class="invalid-feedback" role="alert">
@@ -29,10 +27,10 @@
                             </div>
     
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="off">
     
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -42,10 +40,10 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="lname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล') }}</label>
+                                <label for="lname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}"  autocomplete="lname" autofocus>
+                                    <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}"  autocomplete="off">
     
                                     @error('lname')
                                         <span class="invalid-feedback" role="alert">
@@ -56,10 +54,10 @@
                             </div>
     
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมล') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมล : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="off">
     
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -70,7 +68,7 @@
                             </div>
     
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน : ') }}</label>
     
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
@@ -84,12 +82,12 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ') }}</label>
+                                <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <select name="status" class="form-control">
-                                        <option value="2">Teacher</option>
-                                        <option value="3">Student</option>
+                                    <select name="status" class="form-control text-center">
+                                        <option value="2">teacher</option>
+                                        <option value="3">student</option>
                                     </select>
                                 </div>
                             </div>
@@ -100,7 +98,7 @@
                                         {{ __('บันทึก') }}
                                     </button>
                                     <button type="reset" class="btn btn-danger">
-                                        {{ __('ยกเลิก') }}
+                                        <a href="{{ url('admin/add_data_teacher_student') }}">{{ __('ยกเลิก') }}</a>
                                     </button>
                                 </div>
                             </div>

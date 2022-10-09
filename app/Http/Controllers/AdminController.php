@@ -17,43 +17,7 @@ use Hash;
 class AdminController extends Controller
 {
     function index(Request $request) {
-        $users = User::all();
-        // $searchuser = $request['searchuser'] ?? "";
-        // $searchexercise = $request['searchexercise'] ?? "";
-        // $searchclassroom = $request['searchclassroom'] ?? "";
-        // if($searchuser != "") {
-        //     $users = User::where('userid', 'LIKE', '%'. $searchuser. '%')
-        //                 ->orWhere('name', 'LIKE', '%'. $searchuser. '%')
-        //                 ->orWhere('email', 'LIKE', '%'. $searchuser. '%')
-        //                 ->orWhere('role', 'LIKE', '%'. $searchuser. '%')
-        //                 ->get();
-            // $exercises = Exercise::where('level_name', 'LIKE', '%'. $search. '%')
-            //             ->orWhere('data_level', 'LIKE', '%'. $search. '%')
-            //             ->get();
-            // $sections = Section::where('section_sub', 'LIKE', '%'. $search. '%')
-            //             ->orWhere('section_name', 'LIKE', '%'. $search. '%')
-            //             ->get();
-        // }
-        // else {
-            // $users = User::all();
-        // }
-        // if($searchexercise != "") {
-        //     $exercises = Exercise::where('level_name', 'LIKE', '%'. $searchexercise. '%')
-        //                 ->orWhere('data_level', 'LIKE', '%'. $searchexercise. '%')
-        //                 ->orWhere('level', 'LIKE', '%'. $searchexercise. '%')
-        //                 ->get();
-        // }
-        // else {
-        //     $exercises = Exercise::all();
-        // }
-        // if($searchclassroom != "") {
-        //     $sections = Section::where('section_sub', 'LIKE', '%'. $searchclassroom. '%')
-        //                 ->orWhere('section_name', 'LIKE', '%'. $searchclassroom. '%')
-        //                 ->get();
-        // }
-        // else {            
-        //     $sections = Section::all();
-        // }
+        $users = User::get();
         $data = compact('users');
         return view('dashboards.admins.index')->with($data);
     }
@@ -198,3 +162,41 @@ class AdminController extends Controller
         return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']); 
     }
 }
+
+// Search By LIKE
+// $searchuser = $request['searchuser'] ?? "";
+        // $searchexercise = $request['searchexercise'] ?? "";
+        // $searchclassroom = $request['searchclassroom'] ?? "";
+        // if($searchuser != "") {
+        //     $users = User::where('userid', 'LIKE', '%'. $searchuser. '%')
+        //                 ->orWhere('name', 'LIKE', '%'. $searchuser. '%')
+        //                 ->orWhere('email', 'LIKE', '%'. $searchuser. '%')
+        //                 ->orWhere('role', 'LIKE', '%'. $searchuser. '%')
+        //                 ->get();
+            // $exercises = Exercise::where('level_name', 'LIKE', '%'. $search. '%')
+            //             ->orWhere('data_level', 'LIKE', '%'. $search. '%')
+            //             ->get();
+            // $sections = Section::where('section_sub', 'LIKE', '%'. $search. '%')
+            //             ->orWhere('section_name', 'LIKE', '%'. $search. '%')
+            //             ->get();
+        // }
+        // else {
+            // $users = User::all();
+        // }
+        // if($searchexercise != "") {
+        //     $exercises = Exercise::where('level_name', 'LIKE', '%'. $searchexercise. '%')
+        //                 ->orWhere('data_level', 'LIKE', '%'. $searchexercise. '%')
+        //                 ->orWhere('level', 'LIKE', '%'. $searchexercise. '%')
+        //                 ->get();
+        // }
+        // else {
+        //     $exercises = Exercise::all();
+        // }
+        // if($searchclassroom != "") {
+        //     $sections = Section::where('section_sub', 'LIKE', '%'. $searchclassroom. '%')
+        //                 ->orWhere('section_name', 'LIKE', '%'. $searchclassroom. '%')
+        //                 ->get();
+        // }
+        // else {            
+        //     $sections = Section::all();
+        // }
