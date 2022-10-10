@@ -37,7 +37,13 @@ class UserController extends Controller
         ]);
         return redirect('user/profile/'.$user->id.'/edit')->with('update', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
-    function changePassword() {
+    function changePassword(Request $req) {
+        // $request->validate([
+        //     'changePass' => 'required',
+        // ],
+        // [
+        //     'changePass.required' => 'กรุณาใส่อีเมล',
+        // ]);
         return view('dashboards.users.change_password_user');
     }
     function settings() {

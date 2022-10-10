@@ -99,6 +99,10 @@
     <script>
         $(document).ready(function() {
             $('#dataHistoryScore').DataTable( {
+                lengthMenu: [
+                    [ 5, 10, 25, 50, -1 ],
+                    [ '5', '10', '25', '50', 'All' ]
+                ],
                 "language": {
                     "decimal":        "",
                     "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",

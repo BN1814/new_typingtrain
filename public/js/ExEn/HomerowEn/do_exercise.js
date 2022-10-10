@@ -6,18 +6,18 @@ const typingText = document.querySelector(".typing-text p"),
     wpmTag = document.querySelector(".wpm span "),
     cpmTag = document.querySelector(".cpm span "),
     scoreTag = document.querySelector(".score span "),
-    data = document.querySelector('#data');
+    data = document.querySelector("#data");
 // tryAgainBtn = document.querySelector(".butt");
-    
+
 let timer,
-    maxTime = 60,
+    maxTime = 60 ,
     timeLeft = maxTime,
     charIndex = (mistakes = isTyping = 0);
 
 function randomParagraph() {
     // console.log(randomText[0]);
     let randIndex = [Math.floor(Math.random() * randomText.length)];
-    typingText.innerHTML = "" ;
+    typingText.innerHTML = "";
     randomText[randIndex].split("").forEach((span) => {
         let spanTag = `<span>${span}</span>`;
         typingText.innerHTML += spanTag;
@@ -29,7 +29,7 @@ function randomParagraph() {
 function initTyping() {
     const characters = typingText.querySelectorAll("span");
     let typedChar = inpField.value.split("")[charIndex];
-    if (charIndex < characters.length-1 && timeLeft > 0) {
+    if (charIndex < characters.length - 1 && timeLeft > 0) {
         if (!isTyping) {
             timer = setInterval(initTimer, 1000);
             isTyping = true;
@@ -69,13 +69,18 @@ function initTyping() {
         charIndex++;
         characters.forEach((span) => span.classList.remove("active"));
         let wpm = Math.round(
-            ((charIndex - mistakes) / 5 / (timeLeft)) * 60
+            ((charIndex - mistakes) / 5 / (maxTime - timeLeft)) * 60
         );
         wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
         mistakeTag.innerText = mistakes;
         wpmTag.innerText = wpm;
-        cpmTag.innerText = Math.ceil(((charIndex - mistakes)/(charIndex + mistakes))*100);
-        scoreTag.innerText = Math.ceil((charIndex - mistakes)/((charIndex + mistakes)/100));
+        cpmTag.innerText = Math.ceil(
+            ((charIndex - mistakes) / (charIndex + mistakes)) * 100
+        );
+        scoreTag.innerText = Math.ceil(
+            // (charIndex - mistakes) / ((charIndex + mistakes) / 100)
+            ((charIndex - mistakes) / (charIndex + mistakes)) * 100
+        );
         Open_score();
         clearInterval(timer);
     }

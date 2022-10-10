@@ -125,7 +125,7 @@
                             @else
                                 {{-- <li><a href="{{ url('user/dashboard') }}" class="nav-link">หน้าแรก</a></li> --}}
                                 <li><a href="{{ url('user/enterclass') }}" class="nav-link">เข้าห้องเรียน</a></li>
-                                <li><a href="{{ url('user/histories_score/' . $user->id) }}" class="nav-link">ประวัติการทำแบบทดสอบ</a></li>
+                                <li><a href="{{ url('user/histories_score/' . Auth::user()->id) }}" class="nav-link">ประวัติการทำแบบทดสอบ</a></li>
                             @endif
                             <li class="nav-item dropdown">
                                 {{-- <box-icon type="solid" name="user" style="background: gray"></box-icon> --}}

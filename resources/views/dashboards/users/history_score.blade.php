@@ -11,6 +11,7 @@
             <div class="card mt-3">
                 <div class="card-header text-center text-white bg-dark h4">ประวัติการทำแบบทดสอบ</div>
                 <div class="card-body">
+                    @if(count($historys) > 0)
                     <table class="table table-bordered table-striped table-hover text-center" id="data_history">
                         <thead>
                             <tr class="text-dark" style="background: rgb(247, 191, 70);">
@@ -42,6 +43,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @else
+                        <p class="text-center fs-5 text-danger" style="margin:0;">{{ __('ไม่มีประวัติการทำแบบทดสอบ') }}</p>
+                        @endif
                 </div>
               </div>
           </div>
@@ -53,9 +57,13 @@
 <script>
     $(document).ready(function() {
         $('#data_history').DataTable( {
+            lengthMenu: [
+                [ 5, 10, 25, 50, -1 ],
+                [ '5', '10', '25', '50', 'All' ]
+            ],
             "language": {
                 "decimal":        "",
-                "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                // "emptyTable":     "ไม่มีประวัติการทำแบบทดสอบ",
                 "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
                 "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
                 "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",
@@ -64,7 +72,7 @@
                 "lengthMenu":     "แสดง _MENU_ รายการ",
                 "loadingRecords": "กำลังค้นหา...",
                 "processing":     "",
-                "search":         "ค้นหา:",
+                "search":         "ค้นหา : ",
                 "zeroRecords":    "ไม่มีผลลัพธ์ที่ค้นหา",
                 "paginate": {
                     "first":      "หน้าแรก",

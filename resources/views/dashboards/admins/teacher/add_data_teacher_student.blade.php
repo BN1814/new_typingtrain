@@ -3,6 +3,7 @@
 @section('content')
 <style>
     .card { border:none; }
+    .form-control { text-align:center; }
 </style>
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -13,10 +14,10 @@
                         <form action="{{ url('admin/dashboard') }}" method="POST">
                             @csrf
                             <div class="row mb-3">
-                                <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผู้ใช้ : ') }}</label>
+                                <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผู้ใช้งาน : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ old('userid') }}"  autocomplete="off">
+                                    <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ old('userid') }}"  autocomplete="off" placeholder="ใส่รหัสนักศึกษาหรือรหัสผู้ใช้งาน">
     
                                     @error('userid')
                                         <span class="invalid-feedback" role="alert">
@@ -27,10 +28,10 @@
                             </div>
     
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ : ') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อผู้ใช้งาน : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="off">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="off" placeholder="ใส่ชื่อผู้ใช้งาน">
     
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -43,7 +44,7 @@
                                 <label for="lname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}"  autocomplete="off">
+                                    <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}"  autocomplete="off" placeholder="ใส่นามสกุลผู้ใช้งาน">
     
                                     @error('lname')
                                         <span class="invalid-feedback" role="alert">
@@ -57,7 +58,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมล : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="off">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="off" placeholder="ใส่อีเมลผู้ใช้งาน">
     
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -71,7 +72,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="ใส่รหัสผ่าน">
     
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -85,7 +86,8 @@
                                 <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <select name="status" class="form-control text-center">
+                                    <select name="status" class="form-control">
+                                        <option>--- กรุณาเลือกสถานะ ---</option>
                                         <option value="2">teacher</option>
                                         <option value="3">student</option>
                                     </select>

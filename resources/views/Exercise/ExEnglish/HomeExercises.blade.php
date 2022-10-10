@@ -2,14 +2,8 @@
 
 @section('content')
     <style>
-        .card-header {
-            text-align: center;
-            background: #333;
-            color: #fff;
-        }
-        .card {
-            border-color: #adb5bd;
-        }
+        .card-header { text-align:center; background:#333; color:#fff; }
+        .card { border:none; }
     </style>
     @if(session('success'))
         <script>
@@ -35,7 +29,7 @@
                                     <p class="fs-5 text-center">LEVEL : {{$exercise->level}}</p>
                             </div>
                             <div class="card-body"> 
-                                <p class="fs-5 text-center fw-bold name">
+                                <p class="fs-5 text-center fw-bold" id="name">
                                     <span>{{$exercise->level_name}}</span>
                                     {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
                                 </p>
@@ -55,12 +49,11 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('js.ExEn.checkedEx.js')}}" defer></script>
 <script>
     let card_body = document.querySelector('.card-body');
-    let name = document.querySelector('.name');
-    // card_body.style.backgroundColor = '#65f3b1';
-    // name.style.color = "red";
-    // name.style.fontWeight = "bold";
+    let name = document.querySelector('#name');
+    card_body.style.backgroundColor = 'var(--bs-teal)';
+    name.style.color = "var(--bs-light)";
+    name.style.fontWeight = "bold";
 </script>    
 @endsection

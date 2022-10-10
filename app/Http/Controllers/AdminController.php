@@ -68,6 +68,7 @@ class AdminController extends Controller
                 'name.required' => 'กรุณาใส่ชื่อผู้ใช้งาน',
                 'lname.required' => 'กรุณาใส่นามสกุลผู้ใช้งาน',
                 'email.required' => 'กรุณาใส่อีเมลผู้ใช้งาน',
+                'email.unique' => 'มีอีเมลนี้อยู่ในระบบแล้ว',
                 'password.required' => 'กรุณาใส่รหัสผ่าน',
             ]);
             $user = User::create([
@@ -110,9 +111,9 @@ class AdminController extends Controller
             'level_name' => ['required', 'string', 'max:20'],
             'data_level' => ['required', 'string'],
         ],[
-            'level.required' => 'กรุณาใส่ระดับ',
-            'level_name.required' => 'กรุณาใส่ชื่อแบบฝึกหัด',
-            'data_level.required' => 'กรุณาใส่ข้อมูลแบบฝึกหัด',
+            'level.required' => 'กรุณาใส่ระดับแบบทดสอบ',
+            'level_name.required' => 'กรุณาใส่ชื่อแบบทดสอบ',
+            'data_level.required' => 'กรุณาใส่ข้อมูลแบบทดสอบ',
         ]);
         $exercise = Exercise::create([
             'level' => $request['level'],

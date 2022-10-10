@@ -48,12 +48,12 @@ class TeacherController extends Controller
         return view('dashboards.teachers.student.view_dataSTD', compact('user', 'section', 'historys', 'id'));
     }
     public function dataStudent(Request $req, Section $section) {
-            $users = DB::table('sections')
-                        ->join('section_users', 'section_users.section_id', '=', 'sections.id')
-                        ->join('users', 'section_users.user_id', '=', 'users.id')
-                        ->where('sections.id', $section->id)
-                        ->orderBy('section_users.user_id', 'asc')
-                        ->get();
+        $users = DB::table('sections')
+                    ->join('section_users', 'section_users.section_id', '=', 'sections.id')
+                    ->join('users', 'section_users.user_id', '=', 'users.id')
+                    ->where('sections.id', $section->id)
+                    ->orderBy('section_users.user_id', 'asc')
+                    ->get();
         return view('dashboards.teachers.student.dataSTD', compact('users', 'section'));
     }
     function editDataStudent($id, User $user) {

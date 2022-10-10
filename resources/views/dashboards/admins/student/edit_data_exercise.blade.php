@@ -8,7 +8,7 @@
 </style>
     <div class="container mt-3">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 @if(session('message'))
                     <h4 class="alert alert-success">{{ session('message') }}</h4>
                 @endif

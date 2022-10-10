@@ -112,7 +112,7 @@
                             </tbody>
                         </table>
                         @else
-                            <p class="text-center fw-bold mt-3">ไม่มีห้องเรียน</p>
+                            <p class="text-center fw-bold mt-3 text-danger fs-5">คุณยังไม่มีห้องเรียน</p>
                         @endif
                     </div>
                 </div>
@@ -169,7 +169,7 @@
         $('#enterclassroom').DataTable( {
             "language": {
                 "decimal":        "",
-                "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                // "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
                 "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
                 "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
                 "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",

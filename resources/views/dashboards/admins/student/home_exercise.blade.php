@@ -3,7 +3,7 @@
 @section('content')
 <style>
     .card { border:none; }
-    input { text-align:center; }
+    .form-control { text-align:center; }
 </style>
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -17,7 +17,7 @@
                             <label for="level" class="col-md-4 col-form-label text-md-end">{{ __('ระดับแบบทดสอบ : ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="level" type="text" class="form-control @error('level') is-invalid @enderror" name="level" value="{{ old('level') }}" autocomplete="off">
+                                <input id="level" type="text" class="form-control @error('level') is-invalid @enderror" name="level" value="{{ old('level') }}" autocomplete="off" placeholder="ใส่ระดับแบบทดสอบ">
 
                                 @error('level')
                                     <span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
                             <label for="level_name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อแบบทดสอบ : ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="level_name" type="text" class="form-control @error('level_name') is-invalid @enderror" name="level_name" value="{{ old('level_name') }}"  autocomplete="off">
+                                <input id="level_name" type="text" class="form-control @error('level_name') is-invalid @enderror" name="level_name" value="{{ old('level_name') }}"  autocomplete="off" placeholder="ใส่ชื่อแบบทดสอบ">
 
                                 @error('level_name')
                                     <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
                             <label for="data_level" class="col-md-4 col-form-label text-md-end">{{ __('ข้อมูลแบบทดสอบ : ') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="data_level" type="text" class="form-control @error('data_level') is-invalid @enderror" name="data_level" rows="4" value="{{ old('data_level') }}"></textarea>
+                                <textarea id="data_level" type="text" class="form-control @error('data_level') is-invalid @enderror" name="data_level" rows="4" value="{{ old('data_level') }}" placeholder="ใส่ข้อมูลแบบทดสอบ"></textarea>
 
                                 @error('data_level')
                                     <span class="invalid-feedback" role="alert">
