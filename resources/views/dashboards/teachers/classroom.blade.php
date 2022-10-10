@@ -63,7 +63,7 @@
                                     <td>
                                         <a href="{{ url('teacher/dataSTD/'. $section->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
                                         <a href="{{ url('teacher/classroom/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                        <button class="btn btn-danger btn-sm delete" data-name="{{ $section->section_name }}" data-id="{{ $section->id }}">ลบ</button>
+                                        <button class="btn btn-danger btn-sm delete" data-name="{{ $section->section_name }}">ลบ</button>
                                     </td>
                                 </tr>
                                 @endforeach

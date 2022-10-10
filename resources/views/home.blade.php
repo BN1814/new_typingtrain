@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-12" style="padding: 0; margin:0;">
                         <button class="btn btn-dark m-1 float-end">
-                            <a href="{{ route('user.dashboard') }}">ไปหน้าแรก</a>
+                            <a href="{{ url('user/enterclass') }}">ไปหน้าแรก</a>
                         </button>
                     </div>
                 </div>

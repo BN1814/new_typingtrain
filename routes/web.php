@@ -102,7 +102,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
         // STUDENT INPUT CLASS WITH CODE
         Route::get('/enterclass', 'enterclass');
         Route::post('/enterclass_std', 'enterclass_std');
-        Route::delete('/enterclass_std/{id}', 'destroy_enterclass');
+        // Route::delete('/enterclass/{id}', 'destroy_enterclass');
         
         Route::get('/enterclass/homeEx/{section}/{user}', 'HExercise');
     });

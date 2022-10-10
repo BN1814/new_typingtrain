@@ -54,7 +54,7 @@
                                 @elseif(Auth::user()->role == 'teacher')
                                     <a href="{{ url('teacher/dashboard') }}" class="btn btn-dark text-white">หน้าแรก</a>
                                 @else
-                                    <a href="{{ url('user/dashboard') }}" class="btn btn-dark text-whitek">หน้าแรก</a>
+                                    <a href="{{ url('user/enterclass') }}" class="btn btn-dark text-whitek">หน้าแรก</a>
                                 @endif
                             @else
                             <a type="button" class="btn btn-dark text-white" href="{{ route('login') }}">เข้าสู่ระบบ</a>

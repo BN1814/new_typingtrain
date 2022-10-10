@@ -13,7 +13,9 @@
             timer: 1500
         })
     </script>
-@endif --}}
+    @endif --}}
+    <link rel="stylesheet" href="{{ asset('css/ExEn/exerciseEnglish.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ExEn/popupEN.css') }}">
     <style>
         #poptime, #popmistake, #popwpm, #popcpm, #popscore {
             color: red;
@@ -23,8 +25,6 @@
             pointer-events: none;
         }
     </style>
-    <link rel="stylesheet" href="{{ asset('css/ExEn/exerciseEnglish.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/ExEn/popupEN.css') }}">
         <div class="container mt-1">
             <p class="head h1 d-block text-center px-2 mb-2">LEVEL {{ $exercises->level }} : {{ $exercises->level_name }}</p>
         </div>
@@ -52,7 +52,7 @@
                                 </li>
                                 <li class="cpm">
                                     <p>CPM:</p>
-                                    <span>0</span>
+                                    <span>0 %</span>
                                 </li>
                                 <li class="score">
                                     <p>Score:</p>
@@ -67,7 +67,6 @@
             @include('include.includeKB')
             <div class="pop-up-score shadow-lg" style="color: #fff;">
                 <p id="close_popup">+</p>
-                {{-- /enterclass/homeEx/{section}/{user}/AllExercises/{id} --}}
                 <form action="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercises->id) }}" method="post">
                     @csrf
                     <div class="head-level">

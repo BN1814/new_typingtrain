@@ -124,46 +124,46 @@
 @section('script')
 <script>
     // $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $('.outclassroom').click( function(e) {
-            e.preventDefault();
-            var delete_id = $(this).closest('tr').find('.outclass').val();
-            var section_name = $(this).attr('data-name');
-            Swal.fire({
-                title: 'ออกจากห้องเรียน',
-                text: "คุณต้องการออกจากห้องเรียน "+section_name+" ใช่หรือไม่",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#198754',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'ใช่ ฉันต้องการออกจากห้องเรียน',
-                cancelButtonText: 'ยกเลิก'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    var data = {
-                        "_token": $('input[name="_token"]').val(),
-                        "id": delete_id,
-                    }
-                    $.ajax({
-                        type: "DELETE",
-                        url: "/user/enterclass/" + delete_id,
-                        data: data,
-                        success: function(response) {
-                            Swal.fire(response.delete, {
-                                icon: 'success',
-                            })
-                            .then((result) => {
-                                location.reload();
-                            });
-                        }
-                    });
-                }
-            })
-        });
+    //     $.ajaxSetup({
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         }
+    //     });
+    //     $('.outclassroom').click( function(e) {
+    //         e.preventDefault();
+    //         var delete_id = $(this).closest('tr').find('.outclass').val();
+    //         var section_name = $(this).attr('data-name');
+    //         Swal.fire({
+    //             title: 'ออกจากห้องเรียน',
+    //             text: "คุณต้องการออกจากห้องเรียน "+section_name+" ใช่หรือไม่",
+    //             icon: 'warning',
+    //             showCancelButton: true,
+    //             confirmButtonColor: '#198754',
+    //             cancelButtonColor: '#d33',
+    //             confirmButtonText: 'ใช่ ฉันต้องการออกจากห้องเรียน',
+    //             cancelButtonText: 'ยกเลิก'
+    //             }).then((result) => {
+    //             if (result.isConfirmed) {
+    //                 var data = {
+    //                     "_token": $('input[name="_token"]').val(),
+    //                     "id": delete_id,
+    //                 }
+    //                 $.ajax({
+    //                     type: "DELETE",
+    //                     url: "/user/enterclass/" + delete_id,
+    //                     data: data,
+    //                     success: function(response) {
+    //                         Swal.fire(response.delete, {
+    //                             icon: 'success',
+    //                         })
+    //                         .then((result) => {
+    //                             location.reload();
+    //                         });
+    //                     }
+    //                 });
+    //             }
+    //         })
+    //     });
     // });
     $(document).ready(function() {
         $('#enterclassroom').DataTable( {

@@ -36,7 +36,8 @@
                             </div>
                             <div class="card-body"> 
                                 <p class="fs-5 text-center fw-bold name">
-                                    {{$exercise->level_name}}
+                                    <span>{{$exercise->level_name}}</span>
+                                    {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
                                 </p>
                                 <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 94%; height: 25%;" >start</a>
                             </div>

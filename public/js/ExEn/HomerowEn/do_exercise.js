@@ -69,13 +69,13 @@ function initTyping() {
         charIndex++;
         characters.forEach((span) => span.classList.remove("active"));
         let wpm = Math.round(
-            ((charIndex - mistakes) / 5 / (maxTime - timeLeft)) * 60
+            ((charIndex - mistakes) / 5 / (timeLeft)) * 60
         );
         wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
         mistakeTag.innerText = mistakes;
         wpmTag.innerText = wpm;
-        cpmTag.innerText = charIndex - mistakes;
-        scoreTag.innerText = Math.ceil((charIndex-mistakes)/((charIndex+mistakes)/100)) ;
+        cpmTag.innerText = Math.ceil(((charIndex - mistakes)/(charIndex + mistakes))*100);
+        scoreTag.innerText = Math.ceil((charIndex - mistakes)/((charIndex + mistakes)/100));
         Open_score();
         clearInterval(timer);
     }

@@ -97,9 +97,9 @@ class UserController extends Controller
             return redirect('user/enterclass')->with('error', 'รหัสเขาห้องเรียนไม่ถูกต้องหรือไม่มีรหัสเข้าห้องเรียนนี้อยู่ในฐานข้อมูลของระบบ กรุณากรอกรหัสใหม่อีกครั้ง!!');
         }
     }
-    function destroy_enterclass($id) {
-        $section = Section::findOrFail($id);
-        $section->delete;
-        return response()->json(['delete' => 'ออกจากห้องเรียนสำเร็จแล้ว']);
-    }
+    // function destroy_enterclass($id) {
+    //     $section = DB::table('section_users')->findOrFail('section_id', $id);
+    //     $section->delete;
+    //     return response()->json(['delete' => 'ออกจากห้องเรียนสำเร็จแล้ว']);
+    // }
 }
