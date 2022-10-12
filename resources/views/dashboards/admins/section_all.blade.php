@@ -42,6 +42,7 @@
                             <thead>
                                 <tr class="fixedHeader">
                                     <th>ลำดับ</th>
+                                    <th>ชื่ออาจารย์</th>
                                     <th>ชื่อห้องเรียน</th>
                                     <th>รหัสเข้าห้อง</th>
                                     <th>วันที่ส่ง</th>
@@ -55,6 +56,7 @@
                                 <tr>
                                     <input type="hidden" class="delete_section_id" value="{{ $section->id }}">
                                     <td>{{ $i++ }}</td>
+                                    <td>{{ $section->name }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->code_inclass }}</td>
                                     <td>วัน{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('lที่ j F Y') }}</td>

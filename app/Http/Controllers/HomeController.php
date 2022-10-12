@@ -25,4 +25,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    function testTyping() {
+        return view('test_typing_2');
+    }
 }

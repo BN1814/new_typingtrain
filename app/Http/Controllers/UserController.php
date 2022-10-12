@@ -46,8 +46,8 @@ class UserController extends Controller
         // ]);
         return view('dashboards.users.change_password_user');
     }
-    function settings() {
-        return view('dashboards.users.settings');
+    function testTyping() {
+        return view('dashboards.users.test_typing');
     }
     function enterclass() {
         $id = Auth::user()->id;

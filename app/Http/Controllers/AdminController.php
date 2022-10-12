@@ -27,7 +27,7 @@ class AdminController extends Controller
         return view('dashboards.admins.exercise_all')->with($data);
     }
     function section_all() {
-        $sections = Section::all();
+        $sections = Section::join('users', 'sections.user_id' , '=', 'users.id')->get();
         $data = compact('sections');
         return view('dashboards.admins.section_all')->with($data);
     }

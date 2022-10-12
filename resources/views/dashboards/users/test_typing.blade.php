@@ -15,7 +15,7 @@
             Typing Train
         </h1>
         <div id="header">
-            <div id="info"></div>
+            <div id="info">60</div>
             <div id="buttons">
                 <button id="newGameBtn">New Game</button>
             </div>

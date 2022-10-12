@@ -31,6 +31,7 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test_typing_2', [App\Http\Controllers\HomeController::class, 'testTyping']);
 // CLASSROOM ALL
 // Route::get('/classroomAll', [UserController::class, 'classroomAll']);
 // ADMIN
@@ -93,7 +94,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory']], function() {
     Route::controller(UserController::class)->group(function() {
         // STUDENT PANEL
-        Route::get('/settings', 'settings');
+        Route::get('/test_typing', 'testTyping');
         Route::get('/changePassword', 'changePassword');
         Route::get('/histories_score/{user}', 'History_STD');
         // STUDENT CRUD
@@ -108,7 +109,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     });
     Route::controller(ExerciseController::class)->group(function(){
         // Exercise of Student form ExerciseController
-        Route::get('/enterclass/homeEx/{section}/{user}/AllExercises', 'AllExercises');
+        Route::get('/enterclass/homeEx/{section}/{user}/AllExercises', 'AllExercises')->name('allExercise');
         Route::get('/enterclass/homeEx/{section}/{user}/AllExercises/{id}', 'Exercise');
         //SAVE EXERCISE TO DATABASE
         Route::post('/enterclass/homeEx/{section}/{user}/AllExercises/{id}', 'saveExercise');
