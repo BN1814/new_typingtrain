@@ -79,6 +79,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::put('/dataSTD/{section}/{user}', 'updateDataStudent');
         Route::delete('/dataSTD/{id}', 'destroyDataStudent');
         Route::get('/dataSTD/{id}/view_data_student/{user}', 'viewDataStudent');
+        Route::get('/dataSTD/{id}/view_scores', 'viewScoreAll');
         // CLASSROOM
         Route::get('/classroom', 'Classroom');
         // Section 

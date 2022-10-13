@@ -47,6 +47,17 @@ class TeacherController extends Controller
                                 ->get();
         return view('dashboards.teachers.student.view_dataSTD', compact('user', 'section', 'historys', 'id'));
     }
+    function viewScoreAll($id) {
+        $section = Section::findOrFail($id);
+        // $users = User::all();
+        $historys = HistoryScore::where('history_scores.section_id', $section->id)
+                                ->join('sections', 'history_scores.section_id', 'sections.id')
+                                ->join('users', 'history_scores.user_id', 'users.id')
+                                ->join('exercises', 'history_scores.exercise_id', 'exercises.id')
+                                ->get();
+                                // dd($historys);
+        return view('dashboards.teachers.student.view_score', compact('section', 'historys'));
+    }
     public function dataStudent(Request $req, Section $section) {
         $users = DB::table('sections')
                     ->join('section_users', 'section_users.section_id', '=', 'sections.id')

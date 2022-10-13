@@ -16,10 +16,10 @@ class ExerciseController extends Controller
         // $exercises = HistoryScore::where('history_scores.user_id', $user->id)
         //                     ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
         //                     ->join('sections', 'history_scores.section_id', '=', 'sections.id')
-        //                     ->where('history_scores.section_id',$section->id)
+        //                     // ->where('history_scores.section_id',$section->id)
         //                     ->paginate(12);
-                            // ->get();
-                            // dd($exercises);
+        //                     // ->get();
+        //                     dd($exercises);
                             // SELECT * FROM exercises
                             // LEFT JOIN history_scores
                             // ON exercises.id = history_scores.exercise_id
@@ -27,17 +27,17 @@ class ExerciseController extends Controller
                             // SELECT * FROM exercises
                             // RIGHT JOIN history_scores
                             // ON exercises.id = history_scores.exercise_id
-        $historys = Exercise::select('exercises.*')
-                            ->LeftJoin('history_scores' , 'exercises.id' , '=' , 'history_scores.exercise_id')
-                            ->wherenull('history_scores.exercise_id','history_scores.score');
-        // $exercises = Exercise::select('exercises.*')
-        //                     ->RightJoin('history_scores' , 'exercises.id' , '=' , 'history_scores.exercise_id')
-        //                     ->union($historys)
-        //                     ->where('history_scores.section_id' ,'=' , $section->id)
-        //                     ->first()->paginate(12);
-        //                     // ->get();
-        dd($historys);
-        return view('Exercise.ExEnglish.HomeExercises', compact('exercises', 'section', 'historys' , 'user'))->with((request()->input('page',1) - 1) * 12);
+        // $historys = Exercise::select('exercises.*')
+        //                     ->LeftJoin('history_scores' , 'exercises.id' , '=' , 'history_scores.exercise_id')
+        //                     ->wherenull('history_scores.exercise_id','history_scores.score');
+        $exercises = Exercise::select('exercises.*')
+                            // ->RightJoin('history_scores' , 'exercises.id' , '=' , 'history_scores.exercise_id')
+                            // ->union($historys)
+                            // ->where('history_scores.section_id' ,'=' , $section->id)
+                            ->first()->paginate(12);
+                            // ->get();
+        // dd($exercises);
+        return view('Exercise.ExEnglish.HomeExercises', compact('exercises', 'section', 'user'))->with((request()->input('page',1) - 1) * 12);
     }
     public function Exercise(Section $section, User $user, $id) {
         $exercises = Exercise::findOrFail($id);

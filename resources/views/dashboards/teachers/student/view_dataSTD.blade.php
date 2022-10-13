@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผู้ใช้ : ') }}</label>
+                    <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสนักศึกษา : ') }}</label>
 
                     <div class="col-md-6">
                         <input id="userid" type="text" class="form-control" name="userid" value="{{ $user->userid }}" disabled>
@@ -58,6 +58,7 @@
         <div class="card mt-3">
             <div class="card-header text-center text-white bg-dark h4">ประวัติการทำแบบทดสอบ</div>
             <div class="card-body">
+                @if(count($historys) > 0)
                 <table class="table table-bordered table-striped table-hover text-center" id="dataHistoryScore">
                     <thead>
                         <tr style="background: var(--bs-warning)">
@@ -87,6 +88,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                @else
+                    <p class="text-center fw-bold mt-3 text-danger fs-6">ไม่มีประวัติการทำแบบทดสอบ</p>
+                @endif
             </div>
           </div>
       </div>

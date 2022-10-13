@@ -21,7 +21,10 @@
                     </script>
                 @endif
                 <div class="card">
-                    <div class="card-header text-center text-white bg-dark h4">ข้อมูลนักศึกษา
+                    <div class="card-header text-center text-white bg-dark h4" style="padding-left: 160px;">ข้อมูลนักศึกษา
+                        <button class="btn btn-primary float-end">
+                            <a href="{{ url('teacher/dataSTD/' . $section->id . '/view_scores') }}">ดูคะแนนรวมของนักศึกษา</a>
+                        </button>
                         <p class="text-center h4 text-info" style="margin:0; padding:0; font-weight:bold; text-transform:uppercase;">วิชา : {{ $section->section_name }}</p>
                     </div>
                     <div class="card-body">

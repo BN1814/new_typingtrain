@@ -47,7 +47,7 @@ class Section extends Model
         // }
     }
     public function section_max_scores() {
-        return $this->belongsToMany(User::class, 'score_maxes');
+        return $this->belongsToMany(User::class, 'history_max_scores');
     }
     // use Sortable;
     // public $sortable = ['section_sub','section_name','deadline_date' ,'deadline_time'];
