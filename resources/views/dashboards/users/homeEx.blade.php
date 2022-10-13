@@ -51,7 +51,7 @@
                     {{-- <p class="h5 fw-bold mt-3 text-center">{{ $history->score }}</p> --}}
                 </div>
                 <strong class="text-start ms-4" style="text-transform: uppercase;">วิชา : {{ $section->section_name }}</strong>
-                {{-- <strong class="text-start ms-4">คะแนนรวมทั้งหมด : {{ $history->score }} คะแนน</strong> --}}
+                <strong class="text-start ms-4">คะแนนรวมทั้งหมด : {{ $history }} คะแนน</strong>
                 <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises') }}" class="btn btn-dark btn-block">START</a>
             </div>
         </div>

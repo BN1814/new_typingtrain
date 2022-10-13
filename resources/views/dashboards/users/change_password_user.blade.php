@@ -8,8 +8,11 @@
                     <div class="card-header text-white bg-dark text-center h3">
                         {{ __('เปลี่ยนรหัสผ่าน') }}
                     </div>
+                    <form action="{{ url('admin/changePassword/'. $user->id) }}" method="get">
+                        {{-- @csrf --}}
 
-                    @include('include.changePassword')
+                        @include('include.changePassword')
+                    </form>
                 </div>
             </div>
         </div>

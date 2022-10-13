@@ -65,12 +65,20 @@ class UserController extends Controller
                         ->join('users', 'history_scores.user_id', '=', 'users.id')
                         ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                         ->join('sections', 'history_scores.section_id', '=', 'sections.id')
-                        ->get();
-                        // ->max('history_scores.score');
-                        // dd($history);
+                        ->where('history_scores.section_id','=' , $section->id)
+                        ->sum('score');
+        // $history_scorecount = DB::table('history_scores')
+        //                 ->where('history_scores.user_id', $user_id)
+        //                 ->join('users', 'history_scores.user_id', '=', 'users.id')
+        //                 ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
+        //                 ->join('sections', 'history_scores.section_id', '=', 'sections.id')
+        //                 ->where('history_scores.section_id','=' , $section->id)
+        //                 ->count();
+        //                 // ->max('history_scores.score');
+        //                 // dd($history);
         $checkuser = DB::table('section_users')->where('user_id','=', $user_id)->count();
         if($checkuser > 0){
-            return view('dashboards.users.homeEx', compact('section', 'user', 'history'));
+            return view('dashboards.users.homeEx', compact('section', 'user', 'history' ));
         }
         else {
             return redirect('user/enterclass');
