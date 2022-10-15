@@ -41,8 +41,8 @@
                                     </p>
                                     <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 20%;" >start</a>
                                 </div>
-                            @elseif($exercise->score <= 2)
-                                <div class="card-body bg-danger"> 
+                            @elseif($exercise->score == null)
+                                <div class="card-body "> 
                                     <p class="fs-4 text-center fw-bold" id="name">
                                         <span>{{$exercise->level_name}}</span>
                                         {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
@@ -53,7 +53,7 @@
                                     <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 20%;" >start</a>
                                 </div>
                             @else
-                                <div class="card-body"> 
+                                <div class="card-body bg-danger"> 
                                     <p class="fs-4 text-center fw-bold" id="name">
                                         <span>{{$exercise->level_name}}</span>
                                         {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
@@ -69,11 +69,11 @@
                 @endforeach
             </div>
             
-        {{-- <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center position-absolute start-50 translate-middle-x bottom-0">
                 {!! $exercises->Links() !!}
             </ul>
-        </nav> --}}
+        </nav>
     </div>
 @endsection
 
