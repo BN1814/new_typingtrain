@@ -22,7 +22,7 @@
                             <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผู้ใช้') }}</label>
 
                             <div class="col-md-6">
-                                <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ $user->userid }}"  required autocomplete="userid" autofocus>
+                                <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ $user->userid }}"  required autocomplete="userid">
 
                                 @error('userid')
                                     <span class="invalid-feedback" role="alert">
@@ -36,7 +36,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                             <label for="lname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ $user->lname }}" required autocomplete="lname" autofocus>
+                                <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ $user->lname }}" required autocomplete="lname">
 
                                 @error('lname')
                                     <span class="invalid-feedback" role="alert">

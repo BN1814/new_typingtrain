@@ -56,7 +56,7 @@
       </div>
       <div class="col-md-10">
         <div class="card mt-3">
-            <div class="card-header text-center text-white bg-dark h4">ประวัติการทำแบบทดสอบ</div>
+            <div class="card-header text-center text-white bg-dark h4">ประวัติการทำแบบทดสอบวิชา <p class="d-inline fs-3 text-info fw-bold" style="text-transform: uppercase;">{{ $section->section_name }}</p></div>
             <div class="card-body">
                 @if(count($historys) > 0)
                 <table class="table table-bordered table-striped table-hover text-center" id="dataHistoryScore">
@@ -104,8 +104,8 @@
         $(document).ready(function() {
             $('#dataHistoryScore').DataTable( {
                 lengthMenu: [
-                    [ 5, 10, 25, 50, -1 ],
-                    [ '5', '10', '25', '50', 'All' ]
+                    [ -1, 5, 10, 25, 50, 100 ],
+                    [ 'ทั้งหมด', '5', '10', '25', '50', '100' ]
                 ],
                 "language": {
                     "decimal":        "",

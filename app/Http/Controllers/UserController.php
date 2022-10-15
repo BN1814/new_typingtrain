@@ -22,6 +22,7 @@ class UserController extends Controller
         $historys = HistoryScore::where('history_scores.user_id', $user->id)
                             ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                             ->join('sections', 'history_scores.section_id', '=', 'sections.id')
+                            ->select('history_scores.*', 'exercises.level_name', 'sections.section_name')
                             ->get();
         return view('dashboards.users.history_score', compact('user', 'historys'));
     }
@@ -65,7 +66,9 @@ class UserController extends Controller
                         ->join('users', 'history_scores.user_id', '=', 'users.id')
                         ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                         ->join('sections', 'history_scores.section_id', '=', 'sections.id')
+                        ->select(DB::raw('MAX(history_scores.score)'))
                         ->where('history_scores.section_id','=' , $section->id)
+                        ->groupBy('history_scores.exercise_id', 'history_scores.section_id')
                         ->sum('score');
         // $history_scorecount = DB::table('history_scores')
         //                 ->where('history_scores.user_id', $user_id)

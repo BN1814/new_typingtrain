@@ -3,6 +3,7 @@
 @section('content')
 <style>
     a:hover { color:#fff; }
+    div.container { max-width: 1200px; }
 </style>
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -33,7 +34,6 @@
                             <thead>
                                 <tr style="background: var(--bs-warning)">
                                     <th>ลำดับ</th>
-                                    <th>ไอดี</th>
                                     <th>รหัสนักศึกษา</th>
                                     <th>ชื่อ</th>
                                     <th>นามสกุล</th>
@@ -46,9 +46,7 @@
                                 <tr>
                                 @foreach ($users as $user)
                                     <input type="hidden" class="delete_user_id" value="{{ $user->id }}">
-                                    {{-- <?php dd($user->id); ?> --}}
                                     <td>{{ $i++ }}</td>
-                                    <td>{{ $user->id }}</td>
                                     <td>{{ $user->userid }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->lname }}</td>
@@ -66,7 +64,7 @@
                             </tbody>
                         </table>
                         @else
-                        <p class="text-center fs-5 text-danger" style="margin:0;">{{ __('ห้องเรียนนี้ยังไม่มีนักศึกษาเข้าห้องเรียน') }}</p>
+                        <p class="text-center fs-5 text-danger" style="margin:0;">{{ __('วิชานี้ยังไม่มีนักศึกษาเข้าห้องเรียน') }}</p>
                         @endif
                     </div>
                 </div>
@@ -121,9 +119,10 @@
     });
     $(document).ready(function() {
         $('#dataSTDtable').DataTable( {
+            // responsive: true,
             lengthMenu: [
                 [ 5, 10, 25, 50, -1 ],
-                [ '5', '10', '25', '50', 'All' ]
+                [ '5', '10', '25', '50', 'ทั้งหมด' ]
             ],
             "language": {
                 "decimal":        "",

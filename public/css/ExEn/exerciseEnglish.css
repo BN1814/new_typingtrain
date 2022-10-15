@@ -18,7 +18,7 @@ body {
     background: #fff;
     border-radius: 10px;
     margin-top: 20px;
-    margin: auto;
+    /* margin: auto; */
 }
 .wrapper .input-field {
     z-index: -999;
@@ -39,10 +39,12 @@ body {
 }
 .typing-text p {
     font-size: 34px;
-    text-align: center;
+    /* text-align: center; */
     word-break: break-all;
     font-weight: bold;
-    /* letter-spacing: 12px; */
+    padding-left: 90px;
+    padding-right: 90px;
+    letter-spacing: 3px;
 }
 .typing-text p span {
     position: relative;
@@ -110,9 +112,9 @@ body {
     display: flex;
     list-style: none;
 }
-.result-details li:not(:first-child){
+/* .result-details li:not(:first-child){
     border-left: 1px solid #ccc;
-}
+} */
 .result-details li p {
     font-size: 15px;
     margin: 2px 0 0 0;

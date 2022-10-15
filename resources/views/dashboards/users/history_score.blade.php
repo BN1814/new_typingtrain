@@ -36,7 +36,7 @@
                                     <td>{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
                                     <td>{{ $history->mistake }}  <p class="ms-1 d-inline">ตัว</p></td>
                                     <td>{{ $history->wpm }}  <p class="ms-1 d-inline">ตัวต่อนาที</p></td>
-                                    <td>{{ $history->cpm }}  <p class="ms-1 d-inline">%</p></td>
+                                    <td>{{ $history->cpm }}  <p class="ms-1 d-inline">เปอร์เซ็นต์</p></td>
                                     <td>{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
                                     <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y') }}</td>
                                 </tr>
@@ -58,8 +58,8 @@
     $(document).ready(function() {
         $('#data_history').DataTable( {
             lengthMenu: [
-                [ 5, 10, 25, 50, -1 ],
-                [ '5', '10', '25', '50', 'All' ]
+                [ -1, 5, 10, 25, 50, 100 ],
+                [ 'ทั้งหมด', '5', '10', '25', '50', '100' ]
             ],
             "language": {
                 "decimal":        "",

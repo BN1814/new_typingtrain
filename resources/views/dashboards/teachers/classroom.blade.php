@@ -4,6 +4,7 @@
 <style>
     * { box-sizing: border-box;margin: 0;padding: 0; }
     .card { border: none; }
+    div.container { max-width: 1200px; }
 </style>
 {{-- <link rel="stylesheet" href="{{ asset('css/Teacher/classRoom.css') }}"> --}}
     <div class="container mt-4">
@@ -126,7 +127,8 @@
             lengthMenu: [
                 [ 5, 10, 25, 50, -1 ],
                 [ '5', '10', '25', '50', 'All' ]
-            ],  
+            ],
+            // responsive: true,
             "language": {
                 "decimal":        "",
                 "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
