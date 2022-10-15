@@ -13,10 +13,16 @@ class CreateScoreMaxesTable extends Migration
      */
     public function up()
     {
-        Schema::create('score_maxes', function (Blueprint $table) {
-            $table->id();
-            $table->integer('max')->nullable();
-            $table->timestamps();
+        Schema::create('history_max_scores', function (Blueprint $table) {
+            $table->unsignedBigInteger('section_id');
+            $table->unsignedBigInteger('exercise_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('history_id');
+
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('history_id')->references('id')->on('history_scores')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

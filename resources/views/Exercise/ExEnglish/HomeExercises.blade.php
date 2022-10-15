@@ -24,7 +24,7 @@
             <div class="row mb-3 mt-2">
                 @foreach ($exercises as $exercise)
                     <div class="col-sm-6 col-md-2 mt-4">
-                        <div class="card" style="width: 200px; height: 195px;">
+                        <div class="card" style="width: 150px; height: 150px;">
                             <div class="card-header " style=" height: 40px;">
                                     <p class="fs-5 text-center">
                                         LEVEL : {{$exercise->level}}
@@ -36,9 +36,9 @@
                                         <span>{{$exercise->level_name}}</span>
                                         {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
                                     </p>
-                                    <p class="fs-6 text-center fw-bold" id="name">
+                                    {{-- <p class="fs-6 text-center fw-bold" id="name">
                                         <span>คะแนน : {{$exercise->score}} </span>
-                                    </p>
+                                    </p> --}}
                                     <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 20%;" >start</a>
                                 </div>
                             @elseif($exercise->score == null)
@@ -47,9 +47,9 @@
                                         <span>{{$exercise->level_name}}</span>
                                         {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
                                     </p>
-                                    <p class="fs-6 text-center fw-bold" id="name">
+                                    {{-- <p class="fs-6 text-center fw-bold" id="name">
                                         <span>คะแนน : {{$exercise->score}} </span>
-                                    </p>
+                                    </p> --}}
                                     <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 20%;" >start</a>
                                 </div>
                             @else
@@ -58,9 +58,9 @@
                                         <span>{{$exercise->level_name}}</span>
                                         {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
                                     </p>
-                                    <p class="fs-6 text-center fw-bold" id="name">
+                                    {{-- <p class="fs-6 text-center fw-bold" id="name">
                                         <span>คะแนน : {{$exercise->score}} </span>
-                                    </p>
+                                    </p> --}}
                                     <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 20%;" >start</a>
                                 </div>
                             @endif

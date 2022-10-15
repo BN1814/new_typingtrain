@@ -65,4 +65,7 @@ class User extends Authenticatable
             return $this->hasMany(Section::class);
         }
     }
+    public function student_max_scores() {
+        return $this->belongsToMany(Section::class, 'history_max_scores');
+    }
 }
