@@ -23,25 +23,47 @@
         <h1 class="display-4 text-center fw-bold">EXERCISE ENGLISH</h1>
             <div class="row mb-3 mt-2">
                 @foreach ($exercises as $exercise)
-                    <div class="col-sm-6 col-md-2 mt-4">
-                        <div class="card" style="width: 150px; height: 150px;">
-                            <div class="card-header " style=" height: 40px;">
-                                    <p class="fs-5 text-center">
-                                        LEVEL : {{$exercise->level}}
-                                    </p>
-                            </div>
-                            @if($exercise->score > 2)
-                                <div class="card-body bg-success"> 
-                                    <p class="fs-4 text-center fw-bold" id="name">
-                                        <span>{{$exercise->level_name}}</span>
-                                        {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
-                                    </p>
-                                    {{-- <p class="fs-6 text-center fw-bold" id="name">
-                                        <span>คะแนน : {{$exercise->score}} </span>
-                                    </p> --}}
-                                    <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 20%;" >start</a>
+                    @if($exercise->user_id == $user_id && $exercise->section_id == $section_id)
+                            <div class="col-sm-6 col-md-2 mt-4">
+                                <div class="card" style="width: 150px; height: 150px;">
+                                    <div class="card-header " style=" height: 40px;">
+                                            <p class="fs-5 text-center">
+                                                LEVEL : {{$exercise->level}}
+                                            </p>
+                                    </div>
+                                    @if($exercise->score > 50)
+                                        <div class="card-body bg-success"> 
+                                            <p class="fs-4 text-center fw-bold" id="name">
+                                                <span>{{$exercise->level_name}}</span>
+                                                {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
+                                            </p>
+                                            {{-- <p class="fs-6 text-center fw-bold" id="name">
+                                                <span>คะแนน : {{$exercise->score}} </span>
+                                            </p> --}}
+                                            <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 25%;" >start</a>
+                                        </div>
+                                    @else
+                                        <div class="card-body bg-danger"> 
+                                            <p class="fs-4 text-center fw-bold" id="name">
+                                                <span>{{$exercise->level_name}}</span>
+                                                {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
+                                            </p>
+                                            {{-- <p class="fs-6 text-center fw-bold" id="name">
+                                                <span>คะแนน : {{$exercise->score}} </span>
+                                            </p> --}}
+                                            <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 25%;" >start</a>
+                                        </div>
+                                    @endif
                                 </div>
-                            @elseif($exercise->score == null)
+                            </div>
+                    @elseif($exercise->user_id == null)
+                        <div class="col-sm-6 col-md-2 mt-4">
+                            <div class="card" style="width: 150px; height: 150px;">
+                                <div class="card-header " style=" height: 40px;">
+                                        <p class="fs-5 text-center">
+                                            LEVEL : {{$exercise->level}}
+                                        </p>
+                                </div>
                                 <div class="card-body "> 
                                     <p class="fs-4 text-center fw-bold" id="name">
                                         <span>{{$exercise->level_name}}</span>
@@ -50,22 +72,11 @@
                                     {{-- <p class="fs-6 text-center fw-bold" id="name">
                                         <span>คะแนน : {{$exercise->score}} </span>
                                     </p> --}}
-                                    <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 20%;" >start</a>
+                                    <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 25%;" >start</a>
                                 </div>
-                            @else
-                                <div class="card-body bg-danger"> 
-                                    <p class="fs-4 text-center fw-bold" id="name">
-                                        <span>{{$exercise->level_name}}</span>
-                                        {{-- <span style="margin:0; padding:0; font-size: 12px;">คะแนน : </span> --}}
-                                    </p>
-                                    {{-- <p class="fs-6 text-center fw-bold" id="name">
-                                        <span>คะแนน : {{$exercise->score}} </span>
-                                    </p> --}}
-                                    <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x" style="width: 85%; height: 20%;" >start</a>
-                                </div>
-                            @endif
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
             
