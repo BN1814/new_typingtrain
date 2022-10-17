@@ -13,6 +13,8 @@ use App\Models\User;
 class ExerciseController extends Controller
 {
     public function AllExercises(Section $section, User $user) {
+        $user_id = Auth::user()->id;
+        $section_id = $section->id;
 // SELECT user_id, section_id , exercise_id, MAX(score) AS score
 // FROM history_scores
 // WHERE section_id = 2
@@ -34,19 +36,20 @@ class ExerciseController extends Controller
 // where `history_scores`.`user_id` = 4 and `history_scores`.`section_id` = 2
 // GROUP BY history_scores.exercise_id
 // ORDER BY history_scores.exercise_id
+// dd($history_score);
 
-        $historys = Exercise::Select('exercises.*' ,'history_scores.user_id','history_scores.section_id','history_scores.exercise_id','history_scores.score')
-                            ->LeftJoin('history_scores', 'exercises.id', '=', 'history_scores.exercise_id');
-        $exercises = Exercise::Select('exercises.*' ,'history_scores.user_id','history_scores.section_id','history_scores.exercise_id','history_scores.score')
-                            ->RightJoin('history_scores', 'exercises.id', '=', 'history_scores.exercise_id')                           
-                            ->union($historys)
-                            ->where('history_scores.user_id','=',$user->id)
-                            ->where('history_scores.section_id' ,'=' , $section->id)
+        $historys = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
+                            ->groupBy('user_id', 'section_id', 'exercise_id')
+                            ->where('user_id', $user_id)
+                            ->where('section_id', $section->id);
+        $exercises = Exercise::leftJoinSub($historys, 'historys', function($join){
+                        $join->on('exercises.id', '=', 'historys.exercise_id');
+                    })
                             ->paginate(12);
                             // ->get();
         // $exercises = Exercise::paginate(12);
-        // dd($user->id);
-        return view('Exercise.ExEnglish.HomeExercises', compact('exercises', 'section' ,'historys' ,'user'))->with((request()->input('page',1) - 1) * 12);
+        // dd($exercises);
+        return view('Exercise.ExEnglish.HomeExercises', compact('exercises', 'section' ,'user', 'user_id', 'section_id'))->with((request()->input('page',1) - 1) * 12);
     }
     public function Exercise(Section $section, User $user, $id) {
         $exercises = Exercise::findOrFail($id);

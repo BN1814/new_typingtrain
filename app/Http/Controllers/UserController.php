@@ -61,27 +61,32 @@ class UserController extends Controller
     }
     function HExercise(Section $section, User $user, HistoryScore $history) {
         $user_id = Auth::user()->id;
-        $history = DB::table('history_scores')
-                        ->where('history_scores.user_id', $user_id)
-                        ->join('users', 'history_scores.user_id', '=', 'users.id')
-                        ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
-                        ->join('sections', 'history_scores.section_id', '=', 'sections.id')
-                        ->select(DB::raw('MAX(history_scores.score)'))
-                        ->where('history_scores.section_id','=' , $section->id)
-                        ->groupBy('history_scores.exercise_id', 'history_scores.section_id')
-                        ->sum('score');
-        // $history_scorecount = DB::table('history_scores')
-        //                 ->where('history_scores.user_id', $user_id)
-        //                 ->join('users', 'history_scores.user_id', '=', 'users.id')
-        //                 ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
-        //                 ->join('sections', 'history_scores.section_id', '=', 'sections.id')
-        //                 ->where('history_scores.section_id','=' , $section->id)
-        //                 ->count();
-        //                 // ->max('history_scores.score');
-        //                 // dd($history);
+        $historys = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
+                            ->groupBy('user_id', 'section_id', 'exercise_id')
+                            ->where('user_id', $user_id)
+                            ->where('section_id', $section->id)
+                            ->get()->sum('score');
+        $count_exercises = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
+                            ->groupBy('user_id', 'section_id', 'exercise_id')
+                            ->where('user_id', $user_id)
+                            ->where('section_id', $section->id)
+                            ->get()->count();
+        $count_exercises_pass = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
+                            ->groupBy('user_id', 'section_id', 'exercise_id')
+                            ->where('user_id', $user_id)
+                            ->where('section_id', $section->id)
+                            ->having('score', '>=', '50')
+                            ->get()->count();
+        $count_exercises_fail = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
+                            ->groupBy('user_id', 'section_id', 'exercise_id')
+                            ->where('user_id', $user_id)
+                            ->where('section_id', $section->id)
+                            ->having('score', '<', '50')
+                            ->get()->count();
+                        // dd($historys);
         $checkuser = DB::table('section_users')->where('user_id','=', $user_id)->count();
         if($checkuser > 0){
-            return view('dashboards.users.homeEx', compact('section', 'user', 'history' ));
+            return view('dashboards.users.homeEx', compact('section', 'user', 'historys', 'count_exercises', 'count_exercises_pass', 'count_exercises_fail'));
         }
         else {
             return redirect('user/enterclass');

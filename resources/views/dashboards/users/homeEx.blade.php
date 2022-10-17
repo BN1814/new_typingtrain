@@ -51,7 +51,8 @@
                     {{-- <p class="h5 fw-bold mt-3 text-center">{{ $history->score }}</p> --}}
                 </div>
                 <strong class="text-start ms-4" style="text-transform: uppercase;">วิชา : {{ $section->section_name }}</strong>
-                <strong class="text-start ms-4">คะแนนรวมทั้งหมด : {{ $history }} คะแนน</strong>
+                <strong class="text-start ms-4">คะแนนรวมทั้งหมด : {{ $historys }} คะแนน</strong>
+                <strong class="text-start ms-4">ทำไปแล้ว : {{ $count_exercises }}/60 แบบทดสอบ --- ผ่านแล้ว : {{ $count_exercises_pass }} แบบทดสอบ --- ยังไม่ผ่าน : {{ $count_exercises_fail }} แบบทดสอบ</strong>
                 <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises') }}" class="btn btn-dark btn-block">START</a>
             </div>
         </div>

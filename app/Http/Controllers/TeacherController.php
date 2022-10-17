@@ -10,6 +10,7 @@ use App\Models\Section;
 use App\Models\HistoryScore;
 use Session;
 use DB;
+use Carbon\Carbon;
 
 class TeacherController extends Controller
 {
@@ -51,30 +52,30 @@ class TeacherController extends Controller
     }
     function viewScoreAll($id) {
         $section = Section::findOrFail($id);
-        // $users = User::all();
-        $historys = HistoryScore::select('users.userid', 'users.name', 'exercises.level_name', DB::raw('MIN(history_scores.score) as score_max'), 'history_scores.created_at')
-                                ->join('users', 'history_scores.user_id', 'users.id')
-                                ->join('exercises', 'history_scores.exercise_id', 'exercises.id')
-                                ->join('sections', 'history_scores.section_id', 'sections.id')
-                                ->where('history_scores.section_id', $section->id)
-                                ->groupBy('history_scores.user_id', 'history_scores.exercise_id')
-                                ->orderBy('history_scores.score')
-                                // ->latest('history_scores.created_at')
-                                ->get();
-                                // \DB::raw('MAX(history_scores.score) as score_max')
-                                // MAX(array('history_scores.score'))
-                                // dd($historys);
-                                // ->orderBy('history_scores.created_at', 'desc')
-                                // ->first();
-                                // dd($historys);
-                                // select `history_scores`.`user_id`, exercise_id, score 
-                                //     from `history_scores`
-                                //     inner join `sections` on `history_scores`.`section_id` = `sections`.`id` 
-                                //     inner join `users` on `history_scores`.`user_id` = `users`.`id` 
-                                //     inner join `exercises` on `history_scores`.`exercise_id` = `exercises`.`id` 
-                                //     where `history_scores`.`section_id` = 1 
-                                //     and `history_scores`.`exercise_id` 
-                                //     group by `history_scores`.`user_id`, `history_scores`.`exercise_id`;
+        $historys = DB::table('history_scores')
+                    ->select('users.userid', 'users.name', 'exercises.level_name', DB::raw('MAX(history_scores.score) as score_max'), 'history_scores.created_at')
+                    ->where('history_scores.section_id', $section->id)
+                    // ->whereDate('history_scores.created_at', Carbon::today())
+                    ->join('users', 'history_scores.user_id', '=', 'users.id')
+                    ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
+                    ->join('sections', 'history_scores.section_id', '=', 'sections.id')
+                    ->groupBy('history_scores.user_id', 'history_scores.exercise_id')
+                    ->get();
+        // $check_deadline = Section::where('id', $id)->get();
+                    // \DB::raw('MAX(history_scores.score) as score_max')
+                    // MAX(array('history_scores.score'))
+                    // dd($historys);
+                    // ->orderBy('history_scores.created_at', 'desc')
+                    // ->first();
+                    // dd($check_deadline);
+                    // select `history_scores`.`user_id`, exercise_id, score 
+                    //     from `history_scores`
+                    //     inner join `sections` on `history_scores`.`section_id` = `sections`.`id` 
+                    //     inner join `users` on `history_scores`.`user_id` = `users`.`id` 
+                    //     inner join `exercises` on `history_scores`.`exercise_id` = `exercises`.`id` 
+                    //     where `history_scores`.`section_id` = 1 
+                    //     and `history_scores`.`exercise_id` 
+                    //     group by `history_scores`.`user_id`, `history_scores`.`exercise_id`;
         return view('dashboards.teachers.student.view_score', compact('section', 'historys'));
     }
     public function dataStudent(Request $req, Section $section) {

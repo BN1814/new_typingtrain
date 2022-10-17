@@ -56,6 +56,7 @@
                                 @php($i=1)
                                 <tr>
                                 @foreach ($historys as $history)
+                                    {{-- <td class="bg-danger text-white">{{ $history->userid }}</td> --}}
                                     <td>{{ $history->userid }}</td>
                                     <td>{{ $history->name }}</td>
                                     <td>{{ $history->level_name }}</td>
