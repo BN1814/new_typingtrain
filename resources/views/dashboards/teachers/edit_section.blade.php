@@ -3,7 +3,7 @@
 @section('content')
 <style>
     a {
-        text-decoration: none;
+        text-decoration: none; 
         color: #fff;
     } a:hover {color: #fff;}
     /* .random {

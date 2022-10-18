@@ -2,12 +2,13 @@
 
 @section('content')
 <style>
+    .card { border:none; }
     a:hover { color:#fff; }
     .form-control { background: #fff; }
     .form-control:focus { background: #fff; }
-    .btn-export-excel { background: var(--bs-success) !important; color: #fff !important; border: none !important; width: 100px !important; margin-left: 35px !important; }
+    .btn-export-excel { background: var(--bs-success) !important; color: #fff !important; border: none !important; width: 100px !important; margin-left: 42px !important; }
     /* .btn-export-pdf { background: var(--bs-danger) !important; color: #fff !important; border: none !important; } */
-    .btn-export-print { background: var(--bs-dark) !important; color: var(--bs-warning) !important; border: none !important; width: 100px !important; }
+    .btn-export-print { background: var(--bs-success) !important; color: var(--bs-light) !important; border: none !important; width: 100px !important; }
     div.container { max-width: 1200px; }
     @media screen and (max-width:1500px) {
         .datePicker { margin-left:225px; }
@@ -25,7 +26,7 @@
                         <p class="text-center h4 text-info" style="margin:0; padding:0; font-weight:bold; text-transform:uppercase;">วิชา : {{ $section->section_name }}</p>
                     </div>
                     <div class="card-body">
-                        {{-- @if(count($historys) > 0) --}}
+                        @if(count($historys) > 0)
                         <table cellspacing="5" cellpadding="5" class="datePicker">
                             <tbody>
                                 <tr>
@@ -68,9 +69,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- @else
+                        @else
                             <p class="text-center fs-5 text-danger" style="margin:0;">{{ __('วิชานี้ยังไม่มีนักศึกษาทำแบบทดสอบ') }}</p>
-                        @endif --}}
+                        @endif
                     </div>
                 </div>
             </div>
@@ -90,8 +91,11 @@
         if (
             ( min === null && max === null ) ||
             ( min === null && date <= max ) ||
-            ( min <= date   && max === null ) ||
-            ( min <= date   && date <= max )
+            ( min <= date && max === null ) ||
+            // ( date <= min && max === null ) ||
+            // ( min === date && max === null ) ||
+            ( min <= date && date <= max )
+            // ( date <= min && date <= max )
         ) {
             return true;
         }
@@ -140,7 +144,7 @@
             responsive: true,
             "language": {
                 "decimal":        "",
-                "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
+                // "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
                 "info":           "แสดง _START_ ถึง _END_ จากทั้งหมด _TOTAL_ รายการ",
                 "infoEmpty":      "แสดง 0 ถึง 0 จากทั้งหมด 0 รายการ",
                 "infoFiltered":   "(ค้นหาทั้งหมดจาก _MAX_ รายการ)",

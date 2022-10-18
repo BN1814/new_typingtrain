@@ -122,7 +122,7 @@
         });
     });
     
-    $(document).ready(function() {
+    $(document).ready(function() { 
         var table = $('#classroom_teacher').DataTable( {
             lengthMenu: [
                 [ 5, 10, 25, 50, -1 ],

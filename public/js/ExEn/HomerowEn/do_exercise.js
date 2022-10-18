@@ -80,6 +80,7 @@ function initTyping() {
         scoreTag.innerText = Math.ceil(
             // (charIndex - mistakes) / ((charIndex + mistakes) / 100)
             ((charIndex - mistakes) / (charIndex + mistakes)) * 100
+            // characters[charIndex - mistake].length * 100
         );
         Open_score();
         clearInterval(timer);

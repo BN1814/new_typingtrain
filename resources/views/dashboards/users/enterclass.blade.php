@@ -2,6 +2,7 @@
 
 @section('content')
 <style>
+    .card { border:none; }
 </style>
     <div class="container mt-3">
         <div class="row justify-content-center">
@@ -84,6 +85,7 @@
                             <thead>
                                 <tr class="text-white" style="background: var(--bs-gray-dark);">
                                     <th>ลำดับ</th>
+                                    {{-- <th>ชื่ออาจารย์</th></th> --}}
                                     <th>รหัสวิชา</th>
                                     <th>ชื่อวิชา</th>
                                     <th>รหัสเข้าห้องเรียน</th>
@@ -97,13 +99,14 @@
                                 <tr>
                                     {{-- <input type="hidden" class="outclass" value="{{ $section->id }}"> --}}
                                     <td>{{ $i++ }}</td>
+                                    {{-- <td>{{ $section->name }}</td> --}}
                                     <td>{{ $section->section_sub }}</td>
                                     <td>{{ $section->section_name }}</td>
                                     <td>{{ $section->code_inclass }}</td>
                                     <td>วัน{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('lที่ j F Y') }}</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm">
-                                            <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id) }}">ทำแบบทดสอบ</a>
+                                            <a href="{{ url('user/enterclass/homeEx/'. $section->section_id. '/'. $user->id) }}">ทำแบบทดสอบ</a>
                                         </button>
                                         {{-- <button class="btn btn-sm btn-danger outclassroom" data-name="{{ $section->section_name }}">ออกจากห้องเรียน</button> --}}
                                     </td>

@@ -43,7 +43,7 @@
                                             <p class="fs-4 text-center fw-bold" id="name" style="margin:0">
                                                 <span>{{$exercise->level_name}}
                                             </p>
-                                            <p class="fs-6 text-center fw-bold" style="margin:0">คะแนน : {{$exercise->score}} </p>
+                                            <p class="fs-6 text-center fw-bold" style="margin:0">คะแนน : 0 </p>
                                             <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercise->id)}}" class="btn btn-primary position-absolute bottom-10 start-50 translate-middle-x mt-0" style="width: 95%;" >start</a>
                                         </div>
                                     @else
