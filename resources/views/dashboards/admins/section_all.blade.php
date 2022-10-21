@@ -4,6 +4,7 @@
 <style>
     .fixedHeader { background:var(--bs-gray-dark); color:#fff; border:1px solid #fff }
     .card { border:0; }
+    div.container { max-width: 1200px; }
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -50,7 +51,7 @@
                                     <th>ตัวเลือก</th>
                                 </tr>
                             </thead>
-                            <tbody style="background: var(--bs-warning);">
+                            <tbody>
                                 @php($i=1)
                                 @foreach ($sections as $section)
                                 <tr>
@@ -62,7 +63,7 @@
                                     <td>วัน{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('lที่ j F Y') }}</td>
                                     <td>{{ $section->deadline_time }} น.</td>
                                     <td>
-                                        <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-primary btn-sm">แก้ไข</a>
+                                        <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                         <button class="btn btn-danger btn-sm delete_sect" data-name="{{ $section->section_name }}" data-id="{{ $section->id }}">ลบ</button>
                                     </td>
                                 </tr>
@@ -125,8 +126,8 @@
     $(document).ready(function() {
             $('#dataClassroom').DataTable( {
             lengthMenu: [
-                [ 5, 10, 25, 50, -1 ],
-                [ '5', '10', '25', '50', 'All' ]
+                [ -1, 5, 10, 25, 50, 100 ],
+                [ 'ทั้งหมด', '5', '10', '25', '50', '100' ]
             ],
             "language": {
                 "decimal":        "",

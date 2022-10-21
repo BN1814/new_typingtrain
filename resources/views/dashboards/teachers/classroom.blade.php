@@ -125,8 +125,8 @@
     $(document).ready(function() { 
         var table = $('#classroom_teacher').DataTable( {
             lengthMenu: [
-                [ 5, 10, 25, 50, -1 ],
-                [ '5', '10', '25', '50', 'All' ]
+                [ -1, 5, 10, 25, 50, 100 ],
+                [ 'ทั้งหมด', '5', '10', '25', '50', '100' ]
             ],
             // responsive: true,
             "language": {

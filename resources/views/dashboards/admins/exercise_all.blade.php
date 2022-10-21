@@ -4,10 +4,11 @@
 <style>
     .fixedHeader {background:var(--bs-gray-dark); color:#fff; border:1px solid #fff}
     .card { border:0; }
+    div.container { max-width: 1200px; }
 </style>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-11">
             @if(Auth::user()->role == 'admin')
                 @if(session('message'))
                     <script>
@@ -50,7 +51,7 @@
                                         <th>ตัวเลือก</th>
                                     </tr>
                                 </thead>
-                                <tbody style="background: var(--bs-warning); border: 1px solid #fff">
+                                <tbody>
                                     @php($i=1)
                                     @foreach ($exercises as $exercise)
                                         <tr>
@@ -60,7 +61,7 @@
                                             <td>{{ $exercise->level_name }}</td>
                                             <td>{{ Str::limit($exercise->data_level, 80 )}}</td>
                                             <td>
-                                                <a href="{{ url('admin/add_data_exercises/'.$exercise->id.'/edit') }}" class="btn btn-primary btn-sm">แก้ไข</a>
+                                                <a href="{{ url('admin/add_data_exercises/'.$exercise->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                                 <button class="btn btn-danger btn-sm delete_ex" data-name="{{ $exercise->level_name }}" data-id="{{ $exercise->id }}">ลบ</button>
                                             </td>
                                         </tr>
@@ -123,8 +124,8 @@
     $(document).ready(function() {
         $('#dataExercise').DataTable( {
         lengthMenu: [
-            [ 5, 10, 25, 50, -1 ],
-            [ '5', '10', '25', '50', 'All' ]
+            [ -1, 5, 10, 25, 50, 100 ],
+            [ 'ทั้งหมด', '5', '10', '25', '50', '100' ]
         ],
         "language": {
             "decimal":        "",

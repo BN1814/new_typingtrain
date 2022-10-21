@@ -35,10 +35,10 @@
                                     <td>{{ $history->level_name }}</td>
                                     <td>{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
                                     <td>{{ $history->mistake }}  <p class="ms-1 d-inline">ตัว</p></td>
-                                    <td>{{ $history->wpm }}  <p class="ms-1 d-inline">ตัวต่อนาที</p></td>
+                                    <td>{{ $history->wpm }}  <p class="ms-1 d-inline">คำต่อนาที</p></td>
                                     <td>{{ $history->cpm }}  <p class="ms-1 d-inline">เปอร์เซ็นต์</p></td>
                                     <td>{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
-                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y H:m') }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

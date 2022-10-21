@@ -53,16 +53,23 @@ class TeacherController extends Controller
     }
     function viewScoreAll($id) {
         $section = Section::findOrFail($id);
-        $historys = DB::table('history_scores')
-                    ->select('users.userid', 'users.name', 'exercises.level_name', DB::raw('MAX(history_scores.score) as score_max'), 'history_scores.created_at')
-                    ->where('history_scores.section_id', $section->id)
-                    // ->whereDate('history_scores.created_at', Carbon::today())
-                    ->join('users', 'history_scores.user_id', '=', 'users.id')
-                    ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
-                    ->join('sections', 'history_scores.section_id', '=', 'sections.id')
-                    ->groupBy('history_scores.user_id', 'history_scores.exercise_id')
-                    ->orderBy('history_scores.id','DESC')
+        $historys = DB::table('history_scores as h1')
+                    ->select('users.userid', 'users.name', 'exercises.level_name', DB::raw('MAX(h1.score) as score'), 'h1.created_at')
+                    ->where('h1.section_id', $section->id)
+                    ->join('users', 'h1.user_id', '=', 'users.id')
+                    ->join('exercises', 'h1.exercise_id', '=', 'exercises.id')
+                    ->join('sections', 'h1.section_id', '=', 'sections.id')
+                    ->groupBy('h1.user_id', 'h1.exercise_id')
                     ->get();
+
+                    // ->whereIn('h1.score', function($query) {
+                    //     $query->select(DB::raw('MAX(h2.score) as score'), 'h2.user_id', 'h2.exercise_id')
+                    //         ->from('history_scores as h2')
+                    //         // ->whereIn('h2.section_id', $section->id)
+                    //         ->groupBy('h2.user_id', 'h2.exercise_id', 'h2.section_id');
+                    // })->get();                  
+                    // ->whereDate('history_scores.created_at', Carbon::today())
+                    // dd($historys);
         // $history_createdAt = DB::table('history_scores')
         //                         ->select('id','exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
         //                         ->groupBy('user_id', 'section_id', 'exercise_id');
@@ -103,6 +110,23 @@ class TeacherController extends Controller
                     //     group by `history_scores`.`user_id`, `history_scores`.`exercise_id`;
         return view('dashboards.teachers.student.view_score', compact('section', 'historys'));
     }
+    // function serachDate(Request $req) {
+    //     // $query = DB::table('history_scores')->select()->get();
+    //     $formDate = $req['formDate'];
+    //     $toDate = $req['toDate'];
+    //     $historys = DB::table('history_scores as h1')
+    //                 ->select('users.userid', 'users.name', 'exercises.level_name', DB::raw('MAX(h1.score) as score'), 'h1.created_at')
+    //                 ->where('h1.section_id', $section->id)
+    //                 ->join('users', 'h1.user_id', '=', 'users.id')
+    //                 ->join('exercises', 'h1.exercise_id', '=', 'exercises.id')
+    //                 ->join('sections', 'h1.section_id', '=', 'sections.id')
+    //                 ->where('h1.created_at', '>=', $formDate)
+    //                 ->where('h1.created_at', '<=', $toDate)
+    //                 ->groupBy('h1.user_id', 'h1.exercise_id')
+    //                 ->get();
+    //     dd($historys);
+    //     return view('dashboards.teachers.student.view_score', compact('historys'));
+    // }
     public function dataStudent(Request $req, Section $section) {
         $users = DB::table('sections')
                     ->join('section_users', 'section_users.section_id', '=', 'sections.id')

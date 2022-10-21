@@ -5,6 +5,7 @@
     input { text-align:center; }
     .col-md-6 .form-control:disabled { background:var(--bs-warning); color:var(--bs-dark); border:0; }
     .card { border:none; }
+    div.container { max-width: 1200px; }
     table  { border:1px solid red; }
 </style>
 <div class="container mt-4">

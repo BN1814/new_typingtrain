@@ -5,6 +5,7 @@
 <style>
     .fixedHeader {background:var(--bs-gray-dark); color:#fff; border:1px solid #fff}
     .card { border:0; }
+    div.container { max-width: 1200px; }
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -54,7 +55,7 @@
                                         <th>ตัวเลือก</th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-warning">
+                                <tbody>
                                     @php($i=1)
                                     @foreach ($users as $user)
                                         <tr>
@@ -66,7 +67,7 @@
                                             <td>{{ $user->role }}</td>
                                             <td>
                                                 <a href="{{ url('admin/view_data_teacher_student/'. $user->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
-                                                <a href="{{ url('admin/add_data_teacher_student/'.$user->id.'/edit') }}" class="btn btn-secondary btn-sm">แก้ไข</a>
+                                                <a href="{{ url('admin/add_data_teacher_student/'.$user->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                                 <button class="btn btn-danger btn-sm delete" data-name="{{ $user->name }}" data-id="{{ $user->id }}">ลบ</button>
                                             </td>
                                         </tr>
@@ -131,9 +132,9 @@
 
     $(document).ready(function() {
             $('#dataUser').DataTable({
-            lengthMenu: [
-                [ 5, 10, 25, 50, -1 ],
-                [ '5', '10', '25', '50', 'All' ]
+                lengthMenu: [
+                [ -1, 5, 10, 25, 50, 100 ],
+                [ 'ทั้งหมด', '5', '10', '25', '50', '100' ]
             ],
             "language": {
                 "decimal":        "",
