@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ') }}</label>
+                            <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ : ') }}</label>
 
                             <div class="col-md-6">
                                 <select name="status" class="form-control text-center">

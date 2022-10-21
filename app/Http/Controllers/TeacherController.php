@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Section;
 use App\Models\HistoryScore;
+use App\Models\Exercise;
 use Session;
 use DB;
 use Carbon\Carbon;
@@ -60,7 +61,31 @@ class TeacherController extends Controller
                     ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                     ->join('sections', 'history_scores.section_id', '=', 'sections.id')
                     ->groupBy('history_scores.user_id', 'history_scores.exercise_id')
+                    ->orderBy('history_scores.id','DESC')
                     ->get();
+        // $history_createdAt = DB::table('history_scores')
+        //                         ->select('id','exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
+        //                         ->groupBy('user_id', 'section_id', 'exercise_id');
+            
+        // $check_createdAt = HistoryScore::joinSub($history_createdAt, 'history_createdAt', function($join){
+        //         $join->on('history_scores.id', '=', 'history_createdAt.id');
+        //         // ->on('history_scores.exercise_id', '=', 'history_createdAt.exercise_id')
+        //         // ->on('history_scores.user_id', '=', 'history_createdAt.user_id')
+        //         // ->on('history_scores.section_id', '=', 'history_createdAt.section_id');
+        // })->get();
+        // $historys_1 = DB::table('history_scores as h')
+        //                 ->select('h.*', DB::raw('MAX(h.score) as score_max'))
+        //                 ->groupBy('h.user_id', 'h.exercise_id', 'h.section_id')
+        //                 ->leftJoin('history_scores as h2', function($join){
+        //                     $join->on('h.section_id', '=', 'h2.section_id');
+        //                     $join->on('h.exercise_id', '=', 'h2.exercise_id');
+        //                     $join->on('h.user_id', '=', 'h2.user_id');
+        //                     $join->on('h.score_max', '>', 'h2.score');    
+        //                 })
+        //                 // ->whereNull('h2.created_at')
+        //                 ->get();
+        // dd($$historys_1);
+
         // $check_deadline = Section::where('id', $id)->get();
                     // \DB::raw('MAX(history_scores.score) as score_max')
                     // MAX(array('history_scores.score'))

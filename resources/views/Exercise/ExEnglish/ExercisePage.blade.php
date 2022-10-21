@@ -89,7 +89,7 @@
                                     <li class="wpm" id="wpm">
                                         <p>ความเร็วการพิมพ์ : </p>
                                         <input type="text" id="popwpm" name="wpm" style="width: 70px;">
-                                        <p>ตัว/นาที</p>
+                                        <p>คำ/นาที</p>
                                     </li>
                                     <li class="cpm" id="cpm">
                                         <p>ความถูกต้อง : </p>

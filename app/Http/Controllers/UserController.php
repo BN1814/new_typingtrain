@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Section;
 use App\Models\HistoryScore;
+use App\Models\Exercise;
 use DB;
 use Auth;
 use Str;
@@ -55,8 +56,11 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $sections = DB::table('section_users')
                     ->join('sections', 'section_users.section_id', '=', 'sections.id')
+                    ->join('users', 'sections.user_id', '=', 'users.id')
                     ->where('section_users.user_id', '=', $id)
                     ->get();
+        // dd($sections);
+        // print_r($sections);
         return view('dashboards.users.enterclass', compact('sections', 'user'));
     }
     function HExercise(Section $section, User $user, HistoryScore $history) {
@@ -83,10 +87,11 @@ class UserController extends Controller
                             ->where('section_id', $section->id)
                             ->having('score', '<', '50')
                             ->get()->count();
-                        // dd($historys);
+        $total_scores = Exercise::get()->count()*100;
+                        // dd($total_scores);
         $checkuser = DB::table('section_users')->where('user_id','=', $user_id)->count();
         if($checkuser > 0){
-            return view('dashboards.users.homeEx', compact('section', 'user', 'historys', 'count_exercises', 'count_exercises_pass', 'count_exercises_fail'));
+            return view('dashboards.users.homeEx', compact('section', 'user', 'historys', 'count_exercises', 'count_exercises_pass', 'count_exercises_fail', 'total_scores'));
         }
         else {
             return redirect('user/enterclass');
