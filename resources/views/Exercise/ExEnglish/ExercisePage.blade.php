@@ -24,9 +24,18 @@
             height: 27px;
             pointer-events: none;
         }
+        #sound.active {
+            background: var(--bs-danger);
+            color: #fff;
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
     </style>
         <div class="container mt-1">
-            <p class="head h1 d-block text-center px-2 mb-2">LEVEL {{ $exercises->level }} : {{ $exercises->level_name }}</p>
+            <p class="head h1 d-block text-center px-2 mb-2 d-inline">LEVEL {{ $exercises->level }} : {{ $exercises->level_name }}
+                <button class="btn btn-success float-end" id="sound" onclick="closeSound()">เปิด-ปิดเสียง</button>
+            </p>
         </div>
             {{-- @include('include.includeExEn') --}}
             <div class="form-group">
@@ -122,5 +131,5 @@
 <script src="{{ asset('js/ExEn/HomerowEn/keyboard.js')}}" defer></script>
 <script src="{{ asset('js/ExEn/HomerowEn/popup.js')}}" defer></script>
 <script src="{{ asset('js/ExEn/HomerowEn/changeColor.js')}}" defer></script>
-<script src="{{ asset('js/ExEn/HomerowEn/setDeadline.js')}}" defer></script>
+<script src="{{ asset('js/ExEn/HomerowEn/setDeadline.js')}}" defer></script>\
 @endsection

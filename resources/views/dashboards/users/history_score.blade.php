@@ -38,7 +38,7 @@
                                     <td>{{ $history->wpm }}  <p class="ms-1 d-inline">คำต่อนาที</p></td>
                                     <td>{{ $history->cpm }}  <p class="ms-1 d-inline">เปอร์เซ็นต์</p></td>
                                     <td>{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
-                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y H:m') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y H:i') }} น</td>
                                 </tr>
                             @endforeach
                         </tbody>

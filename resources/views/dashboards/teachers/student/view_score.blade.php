@@ -50,7 +50,7 @@
                                     <th>ชื่อ</th>
                                     <th>ชื่อแบบฝึกหัด</th>
                                     <th>คะแนนสูงสุด</th>
-                                    <th>วันที่ส่งแบบทดสอบ</th>
+                                    <th>วันที่ส่งแบบทดสอบ (ด/ป/ว)</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -62,9 +62,9 @@
                                     <td>{{ $history->name }}</td>
                                     <td>{{ $history->level_name }}</td>
                                     {{-- <td>{{ $history->score }}</td> --}}
-                                    <td>{{ $history->score_max }} <p class="d-inline ms-2">คะแนน</p></td>
-                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->format('m/d/Y') }}</td>
-                                    {{-- <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('D j M Y') }}</td> --}}
+                                    <td>{{ $history->score }} <p class="d-inline ms-2">คะแนน</p></td>
+                                    {{-- <td>{{ \Carbon\Carbon::parse($history->created_at)->format('m/d/Y') }}</td> --}}
+                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('m/d/Y') }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -84,13 +84,11 @@
     var minDate, maxDate;
     $.fn.dataTable.ext.search.push(
     function( settings, data, dataIndex ) {
-        let min = ($('#min').val() == '') ?
-        null :
-        new Date( $('#min').val() ).setUTCHours(0,0,0,0);
+        let min = ($('#min').val() == '') ? null :
+        new Date( $('#min').val() ).setUTCHours(0,0);
  
-        let max = ($('#max').val() == '') ?
-        null :
-        new Date( $('#max').val() ).setUTCHours(23,59,59,999);
+        let max = ($('#max').val() == '') ? null :
+        new Date( $('#max').val() ).setUTCHours(23,59);
         var date = new Date(data[4]);
 
         if (

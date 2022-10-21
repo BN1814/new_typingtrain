@@ -4,7 +4,7 @@ var keydown,
 
 document.addEventListener("keydown", function onKeydown(e1) {
     keydown = e1;
-    
+    document.getElementById('audio').play();
 }, false);
 
 document.addEventListener("keypress", function onKeypress(e2) {
@@ -21,12 +21,12 @@ document.addEventListener("keypress", function onKeypress(e2) {
     if (element) {
         element.style.backgroundColor = "#05e924";
         keypress.push(record);
-        document.getElementById('audio').play();
     }
 }, false);
 
 document.addEventListener("keyup", function onKeyup(e3) {
     var key = e3.key || e3.keyCode || e3.which;
+    // document.getElementById('audio').play();
 
     keypress.forEach(function (record) {
         if (record.key === key && record.shiftKey === e3.shiftKey && record.metaKey === e3.metaKey && record.altKey === e3.altKey && record.ctrlKey === e3.ctrlKey) {
@@ -34,3 +34,9 @@ document.addEventListener("keyup", function onKeyup(e3) {
         }
     });
 }, false);
+
+function closeSound() {
+    var audio = document.getElementById('audio');
+    var sound = document.getElementById('sound').classList.toggle('active');
+    audio.muted = !audio.muted;
+}

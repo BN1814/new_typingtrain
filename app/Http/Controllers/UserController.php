@@ -24,6 +24,7 @@ class UserController extends Controller
                             ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                             ->join('sections', 'history_scores.section_id', '=', 'sections.id')
                             ->select('history_scores.*', 'exercises.level_name', 'sections.section_name')
+                            ->orderBy('history_scores.created_at', 'desc')
                             ->get();
         return view('dashboards.users.history_score', compact('user', 'historys'));
     }
