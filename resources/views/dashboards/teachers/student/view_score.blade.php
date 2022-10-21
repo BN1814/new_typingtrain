@@ -62,7 +62,7 @@
                                     <td>{{ $history->level_name }}</td>
                                     {{-- <td>{{ $history->score }}</td> --}}
                                     <td>{{ $history->score_max }} <p class="d-inline ms-2">คะแนน</p></td>
-                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->format('d M Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->format('m/d/Y') }}</td>
                                     {{-- <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('D j M Y') }}</td> --}}
                                 </tr>
                                 @endforeach
@@ -83,8 +83,13 @@
     var minDate, maxDate;
     $.fn.dataTable.ext.search.push(
     function( settings, data, dataIndex ) {
-        var min = minDate.val();
-        var max = maxDate.val();
+        let min = ($('#min').val() == '') ?
+        null :
+        new Date( $('#min').val() ).setUTCHours(0,0,0,0);
+ 
+        let max = ($('#max').val() == '') ?
+        null :
+        new Date( $('#max').val() ).setUTCHours(23,59,59,999);
         var date = new Date(data[4]);
 
         if (
@@ -99,10 +104,10 @@
     });
     $(document).ready(function() {
         minDate = new DateTime($('#min'), {
-            format: 'D MMM YYYY'
+            format: 'MM/DD/YYYY'
         });
         maxDate = new DateTime($('#max'), {
-            format: 'D MMM YYYY'
+            format: 'MM/DD/YYYY'
         });
 
         var table = $('#dataHistorytable').DataTable({
@@ -151,6 +156,41 @@
                 "processing":     "",
                 "search":         "ค้นหา:",
                 "zeroRecords":    "ไม่มีผลลัพธ์ที่ค้นหา",
+                "datetime": {
+                    "amPm": [
+                        "เที่ยงวัน",
+                        "เที่ยงคืน"
+                    ],
+                    "hours": "ชั่วโมง",
+                    "minutes": "นาที",
+                    "months": {
+                        "0": "มกราคม",
+                        "1": "กุมภาพันธ์",
+                        "10": "พฤศจิกายน",
+                        "11": "ธันวาคม",
+                        "2": "มีนาคม",
+                        "3": "เมษายน",
+                        "4": "พฤษภาคม",
+                        "5": "มิถุนายน",
+                        "6": "กรกฎาคม",
+                        "7": "สิงหาคม",
+                        "8": "กันยายน",
+                        "9": "ตุลาคม"
+                    },
+                    "next": "ถัดไป",
+                    "previous": "ก่อนกน้า",
+                    "seconds": "วินาที",
+                    "unknown": "ไม่ทราบ",
+                    "weekdays": [
+                        "อาทิตย์",
+                        "จันทร์",
+                        "อังคาร",
+                        "พุธ",
+                        "พฤหัส",
+                        "ศุกร์",
+                        "เสาร์"
+                    ]
+                },
                 "paginate": {
                     "first":      "หน้าแรก",
                     "last":       "หน้าสุดท้าย",
@@ -162,6 +202,7 @@
                     "sortDescending": ": activate to sort column descending"
                 }
             },
+            
             // columnDefs: [
             //     {
             //         targets: 4,

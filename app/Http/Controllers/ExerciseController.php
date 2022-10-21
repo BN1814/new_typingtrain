@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Validator;   
 use App\Models\HistoryScore;
 use App\Models\Exercise;
 use App\Models\Section;
@@ -37,7 +37,12 @@ class ExerciseController extends Controller
 // GROUP BY history_scores.exercise_id
 // ORDER BY history_scores.exercise_id
 // dd($history_score);
-
+                        // select  e.id, e.level, e.level_name, h.user_id, h.section_id ,h.score
+                        // from `exercises` e
+                        // LEFT join 
+                        // ( SELECT exercise_id ,section_id , user_id , MAX(score+0) AS score FROM history_scores  
+                        //  GROUP BY user_id , section_id , exercise_id) h 
+                        //  ON e.id = h.exercise_id;
         $historys = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
                             ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->where('user_id', $user_id)
