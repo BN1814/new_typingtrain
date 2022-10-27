@@ -18,10 +18,10 @@ class CreateHistoryScoresTable extends Migration
             $table->unsignedBigInteger('section_id')->nullable();
             $table->unsignedBigInteger('exercise_id')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->string('time')->nullable();
-            $table->string('mistake')->nullable();
-            $table->string('wpm')->nullable();
-            $table->string('cpm')->nullable();
+            $table->Integer('time')->nullable();
+            $table->Integer('mistake')->nullable();
+            $table->Integer('wpm')->nullable();
+            $table->Integer('cpm')->nullable();
             $table->Integer('score')->nullable();
             
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade')->onUpdate('cascade');

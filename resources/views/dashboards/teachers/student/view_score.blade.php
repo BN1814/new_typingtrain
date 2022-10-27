@@ -6,7 +6,7 @@
     a:hover { color:#fff; }
     .form-control { background: #fff; }
     .form-control:focus { background: #fff; }
-    .btn-export-excel { background: var(--bs-success) !important; color: #fff !important; border: none !important; width: 100px !important; margin-left: 42px !important; }
+    .btn-export-excel { background: var(--bs-success) !important; color: #fff !important; border: none !important; margin-left: 42px !important; }
     /* .btn-export-pdf { background: var(--bs-danger) !important; color: #fff !important; border: none !important; } */
     .btn-export-print { background: var(--bs-success) !important; color: var(--bs-light) !important; border: none !important; width: 100px !important; }
     div.container { max-width: 1200px; }
@@ -63,8 +63,8 @@
                                     <td>{{ $history->level_name }}</td>
                                     {{-- <td>{{ $history->score }}</td> --}}
                                     <td>{{ $history->score }} <p class="d-inline ms-2">คะแนน</p></td>
-                                    {{-- <td>{{ \Carbon\Carbon::parse($history->created_at)->format('m/d/Y') }}</td> --}}
-                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('m/d/Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->format('m/d/Y') }}</td>
+                                    {{-- <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('m/d/Y') }}</td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -81,24 +81,23 @@
 
 @section('script')
 <script>
-    var minDate, maxDate;
+    // var minDate, maxDate;
     $.fn.dataTable.ext.search.push(
     function( settings, data, dataIndex ) {
         let min = ($('#min').val() == '') ? null :
-        new Date( $('#min').val() ).setUTCHours(0,0);
- 
+        new Date( $('#min').val() ).setUTCHours(0,0,0,0);
+        
         let max = ($('#max').val() == '') ? null :
-        new Date( $('#max').val() ).setUTCHours(23,59);
-        var date = new Date(data[4]);
-
+        new Date( $('#max').val() ).setUTCHours(23,59,59,59);
+        // var min = minDate.val();
+        // var max = maxDate.val();
+        var date = new Date( data[4] );
+ 
         if (
             ( min === null && max === null ) ||
             ( min === null && date <= max ) ||
-            ( min <= date && max === null ) ||
-            // ( date <= min && max === null ) ||
-            // ( min === date && max === null ) ||
-            ( min <= date && date <= max )
-            // ( date <= min && date <= max )
+            ( min <= date   && max === null ) ||
+            ( min <= date   && date <= max )
         ) {
             return true;
         }
@@ -106,10 +105,10 @@
     });
     $(document).ready(function() {
         minDate = new DateTime($('#min'), {
-            format: 'MM/DD/YYYY'
+            format: 'MM/DD/YYYY',
         });
         maxDate = new DateTime($('#max'), {
-            format: 'MM/DD/YYYY'
+            format: 'MM/DD/YYYY',
         });
 
         var table = $('#dataHistorytable').DataTable({
@@ -125,7 +124,7 @@
                 // 'pageLength',
                 {
                     extend: 'excelHtml5',
-                    text: 'Excel',
+                    text: 'ดาวน์โหลด Excel',
                     filename: 'คะแนนการทำแบบทดสอบรวม',
                     title: '',
                     className: 'btn-export-excel'
