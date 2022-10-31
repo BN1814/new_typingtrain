@@ -30,15 +30,14 @@ class ResetPasswordController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
     protected function rediresctTo(){
         if(Auth()->user()->role == 'admin'){
-            return rout('admin.deshboard');
+            return route('admin.dashboard');
         }
         elseif(Auth()->user()->role == 'teacher'){
-            return rout('teacher.deshboard');
-        }elseif(Auth()->user()->role == 'student'){
-            return rout('student.deshboard');
+            return route('teacher.dashboard');
         }
-        
-
+        elseif(Auth()->user()->role == 'student'){
+            return route('user.dashboard');
+        }
     }
     // protected function ResetPassword()
     // {

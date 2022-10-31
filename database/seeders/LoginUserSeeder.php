@@ -32,14 +32,14 @@ class LoginUserSeeder extends Seeder
                 'role' => 'teacher',
                 'password' => bcrypt('123456'),
             ],
-            [
-                'userid' => 'T002',
-                'name' => 'Teacher2',
-                'lname' => 'teacher',
-                'email' => 'teacher2@teacher.com',
-                'role' => 'teacher',
-                'password' => bcrypt('123456'),
-            ],
+            // [
+            //     'userid' => 'T002',
+            //     'name' => 'Teacher2',
+            //     'lname' => 'teacher',
+            //     'email' => 'teacher2@teacher.com',
+            //     'role' => 'teacher',
+            //     'password' => bcrypt('123456'),
+            // ],
             [
                 'userid' => 'S001',
                 'name' => 'Student',
@@ -48,22 +48,22 @@ class LoginUserSeeder extends Seeder
                 'role' => 'student',
                 'password' => bcrypt('123456'),
             ],
-            [
-                'userid' => 'S002',
-                'name' => 'Student2',
-                'lname' => 'student',
-                'email' => 'student2@student.com',
-                'role' => 'student',
-                'password' => bcrypt('123456'),
-            ],
-            [
-                'userid' => 'S003',
-                'name' => 'Student3',
-                'lname' => 'student',
-                'email' => 'student3@student.com',
-                'role' => 'student',
-                'password' => bcrypt('123456'),
-            ],
+            // [
+            //     'userid' => 'S002',
+            //     'name' => 'Student2',
+            //     'lname' => 'student',
+            //     'email' => 'student2@student.com',
+            //     'role' => 'student',
+            //     'password' => bcrypt('123456'),
+            // ],
+            // [
+            //     'userid' => 'S003',
+            //     'name' => 'Student3',
+            //     'lname' => 'student',
+            //     'email' => 'student3@student.com',
+            //     'role' => 'student',
+            //     'password' => bcrypt('123456'),
+            // ],
         ];
 
         foreach($user as $key => $value) {

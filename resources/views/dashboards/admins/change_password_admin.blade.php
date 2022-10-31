@@ -9,7 +9,7 @@
                         {{ __('เปลี่ยนรหัสผ่าน') }}
                     </div>
 
-                    <form action="{{ url('admin/changePassword/'. $user->id) }}" method="get">
+                    <form action="{{ url('admin/changePassword/'. Auth::user()->id) }}" method="get">
                         {{-- @csrf --}}
 
                         @include('include.changePassword')

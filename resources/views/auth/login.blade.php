@@ -7,6 +7,18 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if(session('error'))
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'warning',
+                        title: '{{ session('error') }}',
+                        showConfirmButton: true,
+                        ConfirmButtonText: 'ตกลง',
+                        // timer: 1500
+                    })
+                </script>
+            @endif
             <div class="card">
                 <div class="card-header text-white bg-dark h3">{{ __('เข้าสู่ระบบ') }}</div>
 
@@ -14,12 +26,12 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        @if($message = Session::get('error'))
+                        {{-- @if($message = Session::get('error'))
                             <div class="alert alert-danger alert-block">
                                 <strong>{{ $message }}</strong>
-                                {{-- <button type="button" class="close" data-dismiss="alert">x</button> --}}
+                                 <button type="button" class="close" data-dismiss="alert">x</button>
                             </div>
-                        @endif
+                        @endif  --}}
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end font-weight-bold">{{ __('อีเมล') }}</label>

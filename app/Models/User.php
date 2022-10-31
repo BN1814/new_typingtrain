@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\User;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -64,8 +64,5 @@ class User extends Authenticatable
         if($teacher){
             return $this->hasMany(Section::class);
         }
-    }
-    public function student_max_scores() {
-        return $this->belongsToMany(Section::class, 'history_max_scores');
     }
 }

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card { border:none; }
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -8,10 +11,9 @@
                 <div class="card mt-5">
                     <div class="card-header bg-dark text-center text-white h1">ยินดีต้อนรับ</div>
                     <div class="card-body">
-                        <p style="text-align: center;" class="h2"> Admin : {{ Auth::user()->name }}</p>
-                    </div>
-                    <div class="col-12" style="padding: 0; margin:0;">
-                        <button class="btn btn-dark m-1 float-end">
+                        <p class="ms-3 h2"> สวัสดีคุณ : {{ Auth::user()->name }}</p>
+
+                        <button class="btn btn-primary btn-sm m-1 float-end">
                             <a href="{{ url('admin/dashboard') }}">ไปหน้าแรก</a>
                         </button>
                     </div>
@@ -20,11 +22,11 @@
                 <div class="card mt-5">
                     <div class="card-header bg-dark text-center text-white h1">ยินดีต้อนรับ</div>
                     <div class="card-body">
-                        <p style="text-align: center;" class="h2"> Teacher : {{ Auth::user()->name }}</p>
-                    </div>
-                    <div class="col-12" style="padding: 0; margin:0;">
-                        <button class="btn btn-dark m-1 float-end">
-                            <a href="{{ url('teacher/dashboard') }}">ไปหน้าแรก</a>
+                        <p class="ms-3 h2"> สวัสดีคุณ : {{ Auth::user()->name }}</p>
+                        <p class="ms-3 h4 d-inline">ยินดีต้อนรับเข้าสู่โปรแกรมฝึกพิมพ์ดีด</p>
+
+                        <button class="btn btn-primary btn-sm m-1 float-end">
+                            <a href="{{ url('teacher/dashboard') }}">สร้างห้องเรียน</a>
                         </button>
                     </div>
                 </div>
@@ -32,11 +34,11 @@
                 <div class="card mt-5">
                     <div class="card-header bg-dark text-center text-white h1">ยินดีต้อนรับ</div>
                     <div class="card-body">
-                        <p style="text-align: center;" class="h2"> Student : {{ Auth::user()->name }}</p>
-                    </div>
-                    <div class="col-12" style="padding: 0; margin:0;">
-                        <button class="btn btn-dark m-1 float-end">
-                            <a href="{{ url('user/enterclass') }}">ไปหน้าแรก</a>
+                        <p class="ms-3 h2"> สวัสดีคุณ : {{ Auth::user()->name }}</p>
+                        <p class="ms-3 h4 d-inline">ยินดีต้อนรับเข้าสู่โปรแกรมฝึกพิมพ์ดีด</p>
+
+                        <button class="btn btn-primary btn-sm m-1 float-end">
+                            <a href="{{ url('user/enterclass') }}">เข้าห้องเรียน</a>
                         </button>
                     </div>
                 </div>

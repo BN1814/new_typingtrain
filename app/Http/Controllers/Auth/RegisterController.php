@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Mail;
+use App\Http\Mail\VerifyEmail;
 
 use Illuminate\Http\Request;
 
@@ -40,7 +42,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest')->except('login');
     }
 
     /**
@@ -89,7 +91,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        // return User::create([
+        //     'userid' => $data['userid'],
+        //     'name' => $data['name'],
+        //     'lname' => $data['lname'],
+        //     'email' => $data['email'],
+        //     'role' => $data['status'],
+        //     'password' => Hash::make($data['password']),
+        // ]);
+        $user =  User::create([
             'userid' => $data['userid'],
             'name' => $data['name'],
             'lname' => $data['lname'],
@@ -98,9 +108,18 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
         
-        if($data->User::create()){
+        $user->save();
+
+        return $user;
+        // Mail::create($data['email'])->send(new VerifyEmail(Auth::user()->email));
+        
+        if($user->save()){
             return redirect()->back()->with('success', 'ลงทะเบียนสำเร็จแล้ว');
         }
+
+        // if($data->User::create()){
+        //     return redirect()->back()->with('success', 'ลงทะเบียนสำเร็จแล้ว');
+        // }
     }
 
     // function register(Request $request) {

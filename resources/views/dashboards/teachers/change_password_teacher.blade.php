@@ -9,7 +9,11 @@
                         {{ __('เปลี่ยนรหัสผ่าน') }}
                     </div>
 
-                    @include('include.changePassword')
+                    <form action="{{ url('teacher/changePassword/'. Auth::user()->id) }}" method="get">
+                        {{-- @csrf --}}
+
+                        @include('include.changePassword')
+                    </form>
                 </div>
             </div>
         </div>

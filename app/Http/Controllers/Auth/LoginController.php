@@ -73,7 +73,7 @@ class LoginController extends Controller
             }
         }
         else {
-            return redirect()->route('login')->with('error', 'อีเมลหรือรหัสผ่านไม่ถูกต้อง');
+            return redirect()->route('login')->with('error', 'อีเมลหรือรหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง');
         }
     }
 }

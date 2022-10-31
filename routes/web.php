@@ -27,7 +27,9 @@ Route::get('/', function () {
 });
 
 Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
-    Auth::routes();
+    Auth::routes([
+        'verify' => true,
+    ]);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -38,7 +40,7 @@ Route::get('/test_typing_2', [App\Http\Controllers\HomeController::class, 'testT
 Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBackHistory']], function() {
     Route::controller(AdminController::class)->group(function() {
         // ADMIN PANEL
-        Route::get('/dashboard', 'index');
+        Route::get('/dashboard', 'index')->name('admin.dashboard');
         Route::get('/exercise_all', 'exercise_all');
         Route::get('/section_all', 'section_all');
         Route::get('/profile/{user}/edit', 'profile');
@@ -65,7 +67,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
     });
 });
 // TEACHER
-Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'PreventBackHistory']], function() {
+Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'PreventBackHistory', 'verified']], function() {
     Route::controller(TeacherController::class)->group(function() {
         // TEACHER PANEL
         Route::get('dashboard', 'index')->name('teacher.dashboard');
@@ -95,7 +97,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
     });
 });
 // STUENT
-Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory']], function() {
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBackHistory', 'verified']], function() {
     Route::controller(UserController::class)->group(function() {
         // STUDENT PANEL
         Route::get('/test_typing', 'testTyping');
@@ -105,7 +107,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
         // STUDENT INPUT CLASS WITH CODE
-        Route::get('/enterclass', 'enterclass');
+        Route::get('/enterclass', 'enterclass')->name('user.dashboard');
         Route::post('/enterclass_std', 'enterclass_std');
         // Route::delete('/enterclass/{id}', 'destroy_enterclass');
         
