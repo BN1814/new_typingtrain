@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Section;
 use App\Models\HistoryScore;
 use App\Models\Exercise;
+use Carbon\Carbon;
 use DB;
 use Auth;
 use Str;
@@ -26,7 +27,12 @@ class UserController extends Controller
                             ->select('history_scores.*', 'exercises.level_name', 'sections.section_name')
                             ->orderBy('history_scores.created_at', 'desc')
                             ->get();
-        return view('dashboards.users.history_score', compact('user', 'historys'));
+        $sectiondeadline = Section::select('id','deadline_date','deadline_time')
+                                ->get();
+        // $datenow = Carbon::now()->format('Y-m-d');
+        // $timenow = Carbon::now()->format('H:i');
+        // dd($sectiondeadline);
+        return view('dashboards.users.history_score', compact('user', 'historys','sectiondeadline'));
     }
     function profile(User $user) {
         return view('dashboards.users.profile', compact('user'));

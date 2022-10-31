@@ -54,17 +54,50 @@
                                 </tr>
                             </thead>
                             <tbody class="text-center">
-                                @php($i=1)
-                                <tr>
+                                @php($i=1)                               
                                 @foreach ($historys as $history)
-                                    {{-- <td class="bg-danger text-white">{{ $history->userid }}</td> --}}
-                                    <td>{{ $history->userid }}</td>
-                                    <td>{{ $history->name }}</td>
-                                    <td>{{ $history->level_name }}</td>
-                                    {{-- <td>{{ $history->score }}</td> --}}
-                                    <td>{{ $history->score }} <p class="d-inline ms-2">คะแนน</p></td>
-                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->format('m/d/Y') }}</td>
-                                    {{-- <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('m/d/Y') }}</td> --}}
+                                <tr>
+                                    @foreach ($sectiondeadlines as $sectiondeadline)
+                                        @if($sectiondeadline->deadline_date == \Carbon\Carbon::parse($history->created_at)->format('Y-m-d'))
+                                            @if($sectiondeadline->deadline_time < \Carbon\Carbon::parse($history->created_at)->format('H:i'))
+                                                {{-- <td class="bg-danger text-white">{{ $history->userid }}</td> --}}
+                                                <td class="bg-danger text-white">{{ $history->userid }}</td>
+                                                <td class="bg-danger text-white">{{ $history->name }}</td>
+                                                <td class="bg-danger text-white">{{ $history->level_name }}</td>
+                                                {{-- <td>{{ $history->score }}</td> --}}
+                                                <td class="bg-danger text-white">{{ $history->score }} <p class="d-inline ms-2">คะแนน</p></td>
+                                                <td class="bg-danger text-white">{{ \Carbon\Carbon::parse($history->created_at)->format('m/d/Y') }}</td>
+                                                {{-- <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('m/d/Y') }}</td> --}}
+                                            @else
+                                                {{-- <td class="bg-danger text-white">{{ $history->userid }}</td> --}}
+                                                <td>{{ $history->userid }}</td>
+                                                <td>{{ $history->name }}</td>
+                                                <td>{{ $history->level_name }}</td>
+                                                {{-- <td>{{ $history->score }}</td> --}}
+                                                <td>{{ $history->score }} <p class="d-inline ms-2">คะแนน</p></td>
+                                                <td>{{ \Carbon\Carbon::parse($history->created_at)->format('m/d/Y') }}</td>
+                                                {{-- <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('m/d/Y') }}</td> --}}
+                                            @endif
+                                        @elseif($sectiondeadline->deadline_date < \Carbon\Carbon::parse($history->created_at)->format('Y-m-d'))
+                                            {{-- <td class="bg-danger text-white">{{ $history->userid }}</td> --}}
+                                            <td class="bg-danger text-white">{{ $history->userid }}</td>
+                                            <td class="bg-danger text-white">{{ $history->name }}</td>
+                                            <td class="bg-danger text-white">{{ $history->level_name }}</td>
+                                            {{-- <td>{{ $history->score }}</td> --}}
+                                            <td class="bg-danger text-white">{{ $history->score }} <p class="d-inline ms-2">คะแนน</p></td>
+                                            <td class="bg-danger text-white">{{ \Carbon\Carbon::parse($history->created_at)->format('m/d/Y') }}</td>
+                                            {{-- <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('m/d/Y') }}</td> --}}
+                                        @else
+                                            {{-- <td class="bg-danger text-white">{{ $history->userid }}</td> --}}
+                                            <td>{{ $history->userid }}</td>
+                                            <td>{{ $history->name }}</td>
+                                            <td>{{ $history->level_name }}</td>
+                                            {{-- <td>{{ $history->score }}</td> --}}
+                                            <td>{{ $history->score }} <p class="d-inline ms-2">คะแนน</p></td>
+                                            <td>{{ \Carbon\Carbon::parse($history->created_at)->format('m/d/Y') }}</td>
+                                            {{-- <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('m/d/Y') }}</td> --}}
+                                        @endif
+                                    @endforeach
                                 </tr>
                                 @endforeach
                             </tbody>

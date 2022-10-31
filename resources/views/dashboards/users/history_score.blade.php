@@ -30,15 +30,53 @@
                             @php($i=1)
                             @foreach ($historys as $history)
                                 <tr>
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $history->section_name }}</td>
-                                    <td>{{ $history->level_name }}</td>
-                                    <td>{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
-                                    <td>{{ $history->mistake }}  <p class="ms-1 d-inline">ตัว</p></td>
-                                    <td>{{ $history->wpm }}  <p class="ms-1 d-inline">คำต่อนาที</p></td>
-                                    <td>{{ $history->cpm }}  <p class="ms-1 d-inline">เปอร์เซ็นต์</p></td>
-                                    <td>{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
-                                <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y H:i') }} น</td>
+                                    @foreach ($sectiondeadline as $deadline)
+                                        @if($history->section_id == $deadline->id)
+                                            @if($deadline->deadline_date == \Carbon\Carbon::parse($history->created_at)->format('Y-m-d'))
+                                                @if($deadline->deadline_time < \Carbon\Carbon::parse($history->created_at)->format('H:i'))
+                                                <td class="bg-danger text-white">{{ $i++ }}</td>
+                                                <td class="bg-danger text-white">{{ $history->section_name }}</td>
+                                                <td class="bg-danger text-white">{{ $history->level_name }}</td>
+                                                <td class="bg-danger text-white">{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
+                                                <td class="bg-danger text-white">{{ $history->mistake }}  <p class="ms-1 d-inline">ตัว</p></td>
+                                                <td class="bg-danger text-white">{{ $history->wpm }}  <p class="ms-1 d-inline">คำต่อนาที</p></td>
+                                                <td class="bg-danger text-white">{{ $history->cpm }}  <p class="ms-1 d-inline">เปอร์เซ็นต์</p></td>
+                                                <td class="bg-danger text-white">{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
+                                                <td class="bg-danger text-white">{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y H:i') }} น</td>
+                                                    @else
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>{{ $history->section_name }}</td>
+                                                    <td>{{ $history->level_name }}</td>
+                                                    <td>{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
+                                                    <td>{{ $history->mistake }}  <p class="ms-1 d-inline">ตัว</p></td>
+                                                    <td>{{ $history->wpm }}  <p class="ms-1 d-inline">คำต่อนาที</p></td>
+                                                    <td>{{ $history->cpm }}  <p class="ms-1 d-inline">เปอร์เซ็นต์</p></td>
+                                                    <td>{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
+                                                    <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y H:i') }} น</td>
+                                                @endif
+                                            @elseif($deadline->deadline_date < \Carbon\Carbon::parse($history->created_at)->format('Y-m-d'))
+                                                <td class="bg-danger text-white">{{ $i++ }}</td>
+                                                <td class="bg-danger text-white">{{ $history->section_name }}</td>
+                                                <td class="bg-danger text-white">{{ $history->level_name }}</td>
+                                                <td class="bg-danger text-white">{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
+                                                <td class="bg-danger text-white">{{ $history->mistake }}  <p class="ms-1 d-inline">ตัว</p></td>
+                                                <td class="bg-danger text-white">{{ $history->wpm }}  <p class="ms-1 d-inline">คำต่อนาที</p></td>
+                                                <td class="bg-danger text-white">{{ $history->cpm }}  <p class="ms-1 d-inline">เปอร์เซ็นต์</p></td>
+                                                <td class="bg-danger text-white">{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
+                                                <td class="bg-danger text-white">{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y H:i') }} น</td>
+                                            @else
+                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $history->section_name }}</td>
+                                                <td>{{ $history->level_name }}</td>
+                                                <td>{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
+                                                <td>{{ $history->mistake }}  <p class="ms-1 d-inline">ตัว</p></td>
+                                                <td>{{ $history->wpm }}  <p class="ms-1 d-inline">คำต่อนาที</p></td>
+                                                <td>{{ $history->cpm }}  <p class="ms-1 d-inline">เปอร์เซ็นต์</p></td>
+                                                <td>{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
+                                                <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('l j F Y H:i') }} น</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                 </tr>
                             @endforeach
                         </tbody>

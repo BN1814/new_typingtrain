@@ -29,7 +29,7 @@ function randomParagraph() {
 function initTyping() {
     const characters = typingText.querySelectorAll("span");
     let typedChar = inpField.value.split("")[charIndex];
-    if (charIndex < characters.length - 1 && timeLeft > 0) {
+    if (charIndex < characters.length && timeLeft > 0) {
         if (!isTyping) {
             timer = setInterval(initTimer, 1000);
             isTyping = true;
@@ -60,14 +60,14 @@ function initTyping() {
         wpmTag.innerText = wpm;
         cpmTag.innerText = charIndex - mistakes;
     } else {
-        if (characters[charIndex].innerText === typedChar) {
-            characters[charIndex].classList.add("correct");
-        } else {
-            mistakes++;
-            characters[charIndex].classList.add("incorrect");
-        }
-        charIndex++;
-        characters.forEach((span) => span.classList.remove("active"));
+        // if (characters[charIndex].innerText === typedChar) {
+        //     characters[charIndex].classList.add("correct");
+        // } else {
+        //     mistakes++;
+        //     characters[charIndex].classList.add("incorrect");
+        // }
+        // charIndex++;
+        // characters.forEach((span) => span.classList.remove("active"));
         let wpm = Math.round(
             ((charIndex - mistakes) / 5 / (maxTime - timeLeft)) * 60
         );

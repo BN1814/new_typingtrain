@@ -33,9 +33,33 @@ class TeacherController extends Controller
         // Session::flash('data_user', 'success');
         return redirect('teacher/profile/'.$user->id.'/edit')->with('update', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
-    function changePassword() {
-        return view('dashboards.teachers.change_password_teacher');
-    }
+    function changePassword(Request $request, $id) {
+        $this->validate($request, [ 
+            'oldpassword' => 'required',
+            'newpassword' => 'required',
+            'cpassword' => 'required',
+        ]);
+ 
+        $hashedPassword = Auth::user()->password;
+        if (\Hash::check($request->oldpassword , $hashedPassword)) {
+            if (\Hash::check($request->newpassword , $hashedPassword)) {
+ 
+                $users = admin::find(Auth::user()->id);
+                $users->password = bcrypt($request->newpassword);
+                $users->save();
+
+                
+                return redirect()->back()->with('updatepass','เปลี่ยนรหัสผ่านสำเร็จ');
+            }
+            else{
+                return redirect()->back()->with('duplicatepass','ไม่สามารถเปลี่ยนรหัสผ่านใหม่ซ้ำกับรหัสผ่านเก่าได้');
+            } 
+        }
+        else{
+            return redirect()->back()->with('oldpassworddoesntmatched','รหัสผ่านเก่าไม่ถูกต้อง');
+        }
+    return view('dashboards.users.change_password_user');
+}
     function settings() {
         return view('dashboards.teachers.settings');
     }
@@ -47,6 +71,8 @@ class TeacherController extends Controller
                                 ->join('exercises', 'history_scores.exercise_id', '=', 'exercises.id')
                                 ->join('sections', 'history_scores.section_id', 'sections.id')
                                 ->select('exercises.level_name', 'history_scores.*')
+                                ->where('section_id',$section->id)
+                                ->orderBy('created_at','DESC')
                                 ->get();
                                 // dd($historys);
         return view('dashboards.teachers.student.view_dataSTD', compact('user', 'section', 'historys', 'id'));
@@ -65,10 +91,12 @@ class TeacherController extends Controller
 // and h.user_id = h2.user_id
 // and h.section_id = h2.section_id
 // and h2.section_id = 1
-    $historys = DB::select(DB::raw("select u.*, s.*, e.*, h.id, h.section_id, h.user_id, h2.exercise_id, h2.score, h.created_at from history_scores as h, (select max(score) as score, exercise_id, user_id, section_id from history_scores group by exercise_id, user_id) as h2 join exercises e on e.id = h2.exercise_id join users u on u.id = h2.user_id join sections s on s.id = h2.section_id where h.score = h2.score and h.exercise_id = h2.exercise_id and h.user_id = h2.user_id and h.section_id = h2.section_id and h.section_id = '$section->id'"));
-
-    // dd($history_total);
-    return view('dashboards.teachers.student.view_score', compact('section', 'historys'));
+    $historys = DB::select(DB::raw("select u.*, s.*, e.*, h.id, h.section_id, h.user_id, h2.exercise_id, h2.score, h.created_at from history_scores as h, (select max(score) as score, exercise_id, user_id, section_id from history_scores where section_id = '$section->id' group by exercise_id, user_id) as h2 join exercises e on e.id = h2.exercise_id join users u on u.id = h2.user_id join sections s on s.id = h2.section_id where h.score = h2.score and h.exercise_id = h2.exercise_id and h.user_id = h2.user_id and h.section_id = h2.section_id "));
+    $sectiondeadlines = Section::select('id','deadline_date','deadline_time')
+                                ->where('id',$section->id)
+                                ->get();
+    // dd($sectiondeadline);
+    return view('dashboards.teachers.student.view_score', compact('section', 'historys','sectiondeadlines'));
     }
     public function dataStudent(Request $req, Section $section) {
         $users = DB::table('sections')
