@@ -38,27 +38,25 @@ class TeacherController extends Controller
     }
     function changePass(Request $request) {
         $request->validate([ 
-            'oldpassword' => ['required'],
-            'newpassword' => ['required, min:8|max:20, confirmed'],
+            'password' => ['required'],
+            'newpassword' => ['required', 'min:8|max:20', 'confirmed'],
             'cnewpassword' => ['required', 'confirmed'],
         ],[
-            'oldpassword.required' => 'กรุณาใส่รหัสผ่านเก่า',
+            'password.required' => 'กรุณาใส่รหัสผ่านเก่า',
             'newpassword.min' => 'กรุณาใส่รหัสผ่านอย่างน้อย 8 ตัว',
             'newpassword.required' => 'กรุณาใส่รหัสผ่านใหม่',
             'newpassword.confirmed' => 'รหัสผ่านไม่ตรงกัน',
-            'cnewpassword.required' => 'ยืนยันรหัสผ่านใหม่อีกครั้ง',
+            'cnewpassword.required' => 'กรุณาใส่รหัสผ่านใหม่อีกครั้ง',
             'cnewpassword.confirmed' => 'รหัสผ่านไม่ตรงกัน',
         ]);
  
         $hashedPassword = Auth::user()->password;
-        if (\Hash::check($request->oldpassword , $hashedPassword)) {
+        if (\Hash::check($request->password , $hashedPassword)) {
             if (\Hash::check($request->newpassword , $hashedPassword)) {
  
                 $users = User::find(Auth::user()->id);
                 $users->password = bcrypt($request->newpassword);
                 $users->save();
-
-                
                 return redirect()->back()->with('updatepass','เปลี่ยนรหัสผ่านสำเร็จ');
             }
             else{
