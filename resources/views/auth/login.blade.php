@@ -34,7 +34,7 @@
                         @endif  --}}
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end font-weight-bold">{{ __('อีเมล') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end font-weight-bold">{{ __('อีเมล : ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email" autofocus>
@@ -48,16 +48,18 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน : ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="current-password">
-
+                                {{-- <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="current-password"> --}}
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="current-password" >
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <input type="checkbox" onclick="blindpasswordFunction()" class="mt-3"><p class="d-inline text-dark" style="font-size: 16px ; color:black"> แสดงรหัสผ่าน</p>
+                                
                             </div>
                         </div>
 
@@ -92,4 +94,16 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    function blindpasswordFunction() {
+      var password = document.getElementById("password");
+      if (password.type === "password") {
+        password.type = "text";
+      } else {
+        password.type = "password";
+      }
+    }
+    </script>
 @endsection
