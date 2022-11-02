@@ -33,7 +33,7 @@
         }
     </style>
         <div class="container mt-1">
-            <p class="head h1 d-block text-center px-2 mb-2 d-inline">LEVEL {{ $exercises->level }} : {{ $exercises->level_name }}
+            <p class="h1 d-block text-center px-2 mb-2 d-inline fw-bold">LEVEL {{ $exercises->level }} : {{ $exercises->level_name }}
                 <button class="btn btn-success float-end" id="sound" onclick="closeSound()">เปิด-ปิดเสียง</button>
             </p>
         </div>
@@ -75,7 +75,7 @@
             </div>
             @include('include.includeKB')
             <div class="pop-up-score shadow-lg" style="color: #fff;">
-                <p id="close_popup">+</p>
+                {{-- <p id="close_popup">+</p> --}}
                 <form action="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises/'. $exercises->id) }}" method="post">
                     @csrf
                     <div class="head-level">

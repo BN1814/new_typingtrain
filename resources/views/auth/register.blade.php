@@ -94,12 +94,17 @@
                                 @enderror
                             </div>
                         </div>
-
+                        
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ยืนยันรหัสผ่าน : ') }}</label>
-
+                            
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password" placeholder="ใส่รหัสผ่านอีกครั้ง">
+                                <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"  autocomplete="new-password" placeholder="ใส่รหัสผ่านอีกครั้ง">
+                                @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -107,11 +112,17 @@
                             <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ : ') }}</label>
 
                             <div class="col-md-6">
-                                <select name="status" class="form-control text-center">
-                                    <option>--- กรุณาเลือกสถานะ ---</option>
+                                <select name="status" class="form-control @error('status') is-invalid @enderror">
+                                    <option value="">--- กรุณาเลือกสถานะ ---</option>
                                     <option value="3">student</option>
                                     <option value="2">teacher</option>
                                 </select>
+
+                                @error('status')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

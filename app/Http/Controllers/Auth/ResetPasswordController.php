@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use App\Models\user;
+use Illuminate\Support\Facades\validator;
 
 class ResetPasswordController extends Controller
 {
@@ -39,6 +40,16 @@ class ResetPasswordController extends Controller
             return route('user.dashboard');
         }
     }
+    // protected function validator(array $data) {
+    //     return Validator::make($data, [
+    //         'email' => ['required', 'string', 'max:255'],
+    //         'password' => ['required', 'string', 'min:6|max:20'],
+    //     ],[
+    //         'email.required' => 'กรุณาใส่อีเมล',
+    //         'password.required' => 'กรุณาใส่รหัสผ่าน',
+    //         'password.min' => 'ใส่รหัสผ่านอย่างน้อย 6 ตัว',
+    //     ]);
+    // }
     // protected function ResetPassword()
     // {
     //     return User::create([

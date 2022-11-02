@@ -35,41 +35,45 @@
                     </script>
                 @endif
                 <div class="card">
-                    <div class="card-header bg-dark text-white h4 text-center">ห้องเรียนทั้งหมด</div>
+                    <div class="card-header bg-dark text-white h2 text-center">ห้องเรียนทั้งหมด</div>
                     <div class="card-body">
-                        <table class="table table-hover table-striped table-bordered" id="classroom_teacher">
-                            <thead>
-                                <tr style="background: var(--bs-warning);">
-                                    <th >ลำดับ</th>
-                                    <th >รหัสวิชา</th>
-                                    <th >ชื่อวิชา</th>
-                                    <th >วันที่กำหนดส่ง</th>
-                                    <th >เวลาที่กำหนดส่ง</th>
-                                    <th >รหัสเข้าห้องเรียน</th>
-                                    <th >ตัวเลือก</th>
-                                    {{-- @sortablelink('section_sub', '.') --}}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php($i=1)
-                                @foreach ($sections as $section)
-                                <tr class="text-center">
-                                    <input type="hidden" class="delete_section_id" value="{{ $section->id }}">
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $section->section_sub }}</td>
-                                    <td>{{ $section->section_name }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('D j M y')}}</td>
-                                    <td>{{ $section->deadline_time }} น.</td>
-                                    <td>{{ $section->code_inclass }}</td>
-                                    <td>
-                                        <a href="{{ url('teacher/dataSTD/'. $section->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
-                                        <a href="{{ url('teacher/classroom/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                        <button class="btn btn-danger btn-sm delete" data-name="{{ $section->section_name }}">ลบ</button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        @if(count($sections) > 0)
+                            <table class="table table-hover table-striped table-bordered" id="classroom_teacher">
+                                <thead>
+                                    <tr style="background: var(--bs-warning);">
+                                        <th >ลำดับ</th>
+                                        <th >รหัสวิชา</th>
+                                        <th >ชื่อวิชา</th>
+                                        <th >วันที่กำหนดส่ง</th>
+                                        <th >เวลาที่กำหนดส่ง</th>
+                                        <th >รหัสเข้าห้องเรียน</th>
+                                        <th >ตัวเลือก</th>
+                                        {{-- @sortablelink('section_sub', '.') --}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php($i=1)
+                                    @foreach ($sections as $section)
+                                    <tr class="text-center">
+                                        <input type="hidden" class="delete_section_id" value="{{ $section->id }}">
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $section->section_sub }}</td>
+                                        <td>{{ $section->section_name }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('D j M y')}}</td>
+                                        <td>{{ $section->deadline_time }} น.</td>
+                                        <td>{{ $section->code_inclass }}</td>
+                                        <td>
+                                            <a href="{{ url('teacher/dataSTD/'. $section->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
+                                            <a href="{{ url('teacher/classroom/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                            <button class="btn btn-danger btn-sm delete" data-name="{{ $section->section_name }}">ลบ</button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <p class="text-center fw-bold mt-3 text-danger fs-5">ห้องเรียนนี้ยังไม่มีนักศึกษาเข้าห้องเรียน</p>
+                        @endif
                     </div>
                 </div>
             </div>

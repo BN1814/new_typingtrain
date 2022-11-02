@@ -1,24 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card { border:none; }
+</style>
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if(session('status'))
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'ลิงก์รีเซ็ตรหัสผ่านถูกส่งสำเร็จแล้ว',
+                        showConfirmButton: true,
+                        ConfirmButtonText: 'ตกลง',
+                        // timer: 1500
+                    })
+                </script>
+            @endif
             <div class="card">
                 <div class="card-header text-white text-center bg-dark h4">{{ __('รีเซ็ตรหัสผ่าน') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    {{-- @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                    @endif
+                    @endif --}}
 
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมล') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมล : ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>

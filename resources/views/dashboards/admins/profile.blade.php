@@ -2,12 +2,8 @@
 
 @section('content')
 <style>
-    .card {
-        border: none;
-    }
-    input {
-      text-align: center;
-    }
+    input { text-align: center; }
+    .card { border:none; }
   </style>
     <div class="container mt-5">
       <div class="row justify-content-center">

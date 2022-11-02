@@ -4,6 +4,7 @@
 <style>
     a:hover { color:#fff; }
     div.container { max-width: 1200px; }
+    .card { border:none; }
 </style>
     <div class="container mt-4">
         <div class="row justify-content-center">

@@ -33,18 +33,28 @@ class TeacherController extends Controller
         // Session::flash('data_user', 'success');
         return redirect('teacher/profile/'.$user->id.'/edit')->with('update', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
-    function changePassword(Request $request, $id) {
-        $this->validate($request, [ 
-            'oldpassword' => 'required',
-            'newpassword' => 'required',
-            'cpassword' => 'required',
+    function changePassword() {
+        return view('dashboards.users.change_password_user');
+    }
+    function changePass(Request $request) {
+        $request->validate([ 
+            'oldpassword' => ['required'],
+            'newpassword' => ['required, min:8|max:20, confirmed'],
+            'cnewpassword' => ['required', 'confirmed'],
+        ],[
+            'oldpassword.required' => 'กรุณาใส่รหัสผ่านเก่า',
+            'newpassword.min' => 'กรุณาใส่รหัสผ่านอย่างน้อย 8 ตัว',
+            'newpassword.required' => 'กรุณาใส่รหัสผ่านใหม่',
+            'newpassword.confirmed' => 'รหัสผ่านไม่ตรงกัน',
+            'cnewpassword.required' => 'ยืนยันรหัสผ่านใหม่อีกครั้ง',
+            'cnewpassword.confirmed' => 'รหัสผ่านไม่ตรงกัน',
         ]);
  
         $hashedPassword = Auth::user()->password;
         if (\Hash::check($request->oldpassword , $hashedPassword)) {
             if (\Hash::check($request->newpassword , $hashedPassword)) {
  
-                $users = admin::find(Auth::user()->id);
+                $users = User::find(Auth::user()->id);
                 $users->password = bcrypt($request->newpassword);
                 $users->save();
 
@@ -52,14 +62,13 @@ class TeacherController extends Controller
                 return redirect()->back()->with('updatepass','เปลี่ยนรหัสผ่านสำเร็จ');
             }
             else{
-                return redirect()->back()->with('duplicatepass','ไม่สามารถเปลี่ยนรหัสผ่านใหม่ซ้ำกับรหัสผ่านเก่าได้');
+                return redirect()->back()->with('duplicatepass','รหัสผ่านใหม่ซ้ำกับรหัสผ่านเก่า');
             } 
         }
         else{
             return redirect()->back()->with('oldpassworddoesntmatched','รหัสผ่านเก่าไม่ถูกต้อง');
         }
-    return view('dashboards.users.change_password_user');
-}
+    }
     function settings() {
         return view('dashboards.teachers.settings');
     }
@@ -166,7 +175,22 @@ class TeacherController extends Controller
             return redirect()->back()->with('message', 'สร้างห้องเรียนสำเร็จ');
         }   
     }
-    function editSection(Section $section) {
+    function editSection(Section $section, Request $req) {
+        // $req->validate([
+        //     'section_sub' => 'required | max:10'. $section->id,
+        //     'section_name' => 'required | max:255'. $section->id,
+        //     'code_inclass' => 'required | string | min:6 | unique:sections'. $section->id,
+        //     'deadline_date' => 'required'. $section->id,
+        //     'deadline_time' => 'required'. $section->id,
+        // ],[
+        //     'section_sub.required' => 'กรุณาใส่รหัสวิชา',
+        //     'section_sub.max' => 'ใส่รหัสวิชาได้ไม่เกิน 10 ตัว',
+        //     'section_name.required' => 'กรุณาใส่ชื่อวิชา',
+        //     'code_inclass.required' => 'กรุณาใส่รหัสเข้าห้องเรียน',
+        //     'code_inclass.min' => 'ใส่รหัสเข้าห้องเรียนอย่างน้อย 6 ตัว',
+        //     'deadline_date.required' => 'กรุณาใส่วันที่ส่ง',
+        //     'deadline_time.required' => 'กรุณาใส่เวลาที่ส่ง',
+        // ]);
         return view('dashboards.teachers.edit_section', compact('section'));
     }
     function updateSection(Section $section, Request $req) {

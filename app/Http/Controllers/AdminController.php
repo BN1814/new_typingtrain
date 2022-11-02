@@ -13,6 +13,7 @@ use App\Models\HistoryScore;
 use App\Models\Exercise;
 use DB;
 use Hash;
+// use Excel;
 
 class AdminController extends Controller
 {
@@ -62,14 +63,17 @@ class AdminController extends Controller
                 'name' => ['required', 'string', 'max:20'],
                 'lname' => ['required', 'string', 'max:20'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:6 | max:20'],
+                'status' => ['required'],
+                'password' => ['required', 'string', 'min:8 | max:20'],
             ],[
                 'userid.required' => 'กรุณาใส่รหัสนักศึกษาหรือรหัสผู้ใช้งาน',
                 'name.required' => 'กรุณาใส่ชื่อผู้ใช้งาน',
                 'lname.required' => 'กรุณาใส่นามสกุลผู้ใช้งาน',
                 'email.required' => 'กรุณาใส่อีเมลผู้ใช้งาน',
+                'status.required' => 'กรุณาใส่สถานะผู้ใช้งาน',
                 'email.unique' => 'มีอีเมลนี้อยู่ในระบบแล้ว',
                 'password.required' => 'กรุณาใส่รหัสผ่าน',
+                'password.min' => 'กรุณาใส่รหัสผ่านมากกว่า 8 ตัว',
             ]);
             $user = User::create([
                 'userid' => $request['userid'],
@@ -103,8 +107,38 @@ class AdminController extends Controller
 
     // CRUD EXERCISE
     function homeExercise() {
-        return view('dashboards.admins.student.home_exercise');
+        $data_exercises = DB::table('exercises')->orderBy('created_at', 'DESC')->get();
+        return view('dashboards.admins.student.home_exercise', compact('data_exercises'));
     }
+    // function importExercise(Request $req) {
+    //     $this->validate($req, [
+    //         'import_ex' => 'required|mimes:xls,xlsx',
+    //     ],[
+    //         'import_ex.required' => 'กรุณาเลือกไฟล์',
+    //     ]);
+    //     $path = $req->file('import_ex')->getRealPath();
+
+    //     $data = Excel::load($path)->get();
+
+    //     if($data->count() > 0) {
+    //         foreach($data->toArray() as $key => $value) {
+    //             foreach($value as $row) {
+    //                 $insert_data[] = array(
+    //                     'level' => $row['level'],
+    //                     'level_name' => $row['level_name'],
+    //                     'data_level' => $row['data_level'],
+    //                 );
+    //             }
+    //         }
+    //         if(!empty($insert_data)){
+    //             Exercise::insert($insert_data);
+    //         }
+    //         else{
+    //             return back()->with('import_fail', 'กรุณาใส่ข้อมูลอีกครั้ง');
+    //         }
+    //     }
+    //     return back()->with('import_success', 'เพิ่มข้อมูลสำเร็จ');
+    // }
     function storeExercise(Request $request) {
         $request->validate([
             'level' => ['required', 'string', 'max:20'],
@@ -162,6 +196,9 @@ class AdminController extends Controller
         $section->delete();
         return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']); 
     }
+
+    // IMPORT EXCEL
+    
 }
 
 // Search By LIKE

@@ -138,7 +138,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @if(auth()->user()->role == 'admin')
                                         <a href="{{ url('admin/profile/'.auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
-                                        <a href="{{ url('admin/changePassword/'.auth()->user()->id) }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
+                                        {{-- <a href="{{ url('admin/changePassword/'.auth()->user()->id) }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a> --}}
                                     @elseif (auth()->user()->role == 'teacher')
                                         <a href="{{ url('teacher/profile/'.auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
                                         <a href="{{ url('teacher/changePassword') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>

@@ -7,6 +7,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if(session('success'))
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: '{{ session('success') }}',
+                        showConfirmButton: false,
+                        ConfirmButtonText: 'ตกลง',
+                        timer: 1500
+                    })
+                </script>
+            @endif
             @if(Auth::user()->role == 'admin')
                 <div class="card mt-5">
                     <div class="card-header bg-dark text-center text-white h1">ยินดีต้อนรับ</div>

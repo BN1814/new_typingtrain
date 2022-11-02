@@ -2,26 +2,13 @@
 
 @section('content')
 <style>
-    a {
-        text-decoration: none; 
-        color: #fff;
-    } a:hover {color: #fff;}
-    /* .random {
-        margin: 10px 0 10px 45%;
-    } */
-    /* .save {
-        margin: 0 10px 0 40%;
-    } */
-    .card-header {
-        height: 70px;
-    } .card-header p {line-height: 50px; font-weight: bold;}
-    label p {
-        margin: 0; padding: 0;
-        font-weight: bold;
-    }
-    .form-control {
-        color: red;
-    }
+    a { text-decoration: none; color: #fff;} 
+    a:hover {color: #fff;}
+    .card { border:none; }
+    .card-header { height: 70px; } 
+    .card-header p {line-height: 50px; font-weight: bold;}
+    label p { margin: 0; padding: 0; font-weight: bold; }
+    .form-control { color: red; }
 </style>
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -37,7 +24,7 @@
                         @method('put')
 
                         <div class="row mb-2">
-                            <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสวิชา') }}</label>
+                            <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสวิชา : ') }}</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="section_sub" value="{{ ($section->section_sub) }}" autocomplete="off" placeholder="รหัสวิชา">
                                     @error('section_sub')
@@ -48,7 +35,7 @@
                             </div>
                         </div>
                         <div class="row mb-2">
-                            <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อวิชา') }}</label>
+                            <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อวิชา : ') }}</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="section_name" value="{{ ($section->section_name) }}" autocomplete="off" placeholder="ชื่อวิชา">
                                     @error('section_name')
@@ -59,7 +46,7 @@
                             </div>
                         </div>
                         <div class="row mb-2">
-                            <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสเข้าห้อง') }}</label>
+                            <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสเข้าห้อง : ') }}</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control inpGencode" name="code_inclass" value="{{ ($section->code_inclass) }}" autocomplete="off" placeholder="รหัสเข้าห้อง">
                                 @error('code-inclass')
@@ -73,7 +60,7 @@
                             </div>
                         </div>
                         <div class="row mb-2">
-                            <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('วันที่ส่ง') }}</label>
+                            <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('วันที่ส่ง : ') }}</label>
                             <div class="col-md-6">
                                 <input type="date" class="form-control" name="deadline_date"
                                 value="{{ ($section->deadline_date) }}" autocomplete="off">
@@ -85,7 +72,7 @@
                             </div>
                         </div>
                         <div class="row mb-2">
-                            <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('เวลาที่ส่ง') }}</label>
+                            <label for="stdid" class="col-md-4 col-form-label text-md-end">{{ __('เวลาที่ส่ง : ') }}</label>
                             <div class="col-md-6">
                                 <input type="time" class="form-control" name="deadline_time" value="{{ ($section->deadline_time) }}" autocomplete="off">
                                     @error('deadline_time')
@@ -97,8 +84,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 offset-md-4">
-                                <button class="btn btn-success mt-2 form-control" type="submit" style="color: white; width: 100%;">
-                                    {{ __('อัพเดต') }}
+                                <button class="btn btn-warning text-dark mt-2 form-control" type="submit" style="color: white; width: 100%;">
+                                    {{ __('อัพเดตข้อมูล') }}
                                 </button>
                             </div>
                         </div>

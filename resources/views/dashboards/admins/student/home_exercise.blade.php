@@ -5,9 +5,30 @@
     .card { border:none; }
     .form-control { text-align:center; }
 </style>
-<div class="container mt-5">
+<div class="container mt-3">
     <div class="row justify-content-center">
-        <div class="col-md-8    ">
+        <div class="col-md-8">
+            @if(session('import_success'))
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: '{{ session('import_success') }}',
+                        showConfirmButton: true,
+                        ConfirmButtonText: 'ตกลง',
+                    })
+                </script>
+            @elseif(session('import_fail'))
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: '{{ session('import_fail') }}',
+                        showConfirmButton: true,
+                        ConfirmButtonText: 'ตกลง',
+                    })
+                </script>
+            @endif
             <div class="card">
                 <div class="card-header text-center text-white bg-dark h4">เพื่มข้อมูลแบบฝึกหัด</div>
                 <div class="card-body">
@@ -72,5 +93,53 @@
                 </div>
             </div>
         </div>
+
+        {{-- <div class="col-md-10">
+            <form action="{{ url('admin/import_exercise') }}" method="POST" enctype="multipart/form-data">
+            <form action="" method="GET" enctype="multipart/form-data">
+                @csrf
+                <div class="card mt-2">
+                    <div class="row mb-3 mt-2">
+                        <label for="file" class="col-md-3 col-form-label text-md-end font-weight-bold">{{ __('เลือกไฟล์ข้อมูล : ') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="file" type="file" class="form-control @error('import_ex') is-invalid @enderror d-inline" name="import_ex">
+
+                            @error('import_ex')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <button type="submit" name="upload" class="btn btn-primary col-md-2">
+                            {{ __('บันทึก') }}
+                        </button>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-hover table-striped table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>ระดับ</th>
+                                    <th>ชื่อแบบฝึกหัด</th>
+                                    <th>ข้อมูลแบบฝึกหัด</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($data_exercises as $exercise)
+                                <tr>
+                                    <td>{{ $exercise->level }}</td>
+                                    <td>{{ $exercise->level_name }}</td>
+                                    <td>{{ $exercise->data_level }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div> --}}
     </div>
+</div>
 @endsection

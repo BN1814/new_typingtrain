@@ -86,11 +86,17 @@
                                 <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ : ') }}</label>
     
                                 <div class="col-md-6">
-                                    <select name="status" class="form-control">
-                                        <option>--- กรุณาเลือกสถานะ ---</option>
+                                    <select name="status" class="form-control @error('status') is-invalid @enderror">
+                                        <option value="">--- กรุณาเลือกสถานะ ---</option>
+                                        <option value="1">admin</option>
                                         <option value="2">teacher</option>
                                         <option value="3">student</option>
                                     </select>
+                                    @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -114,16 +120,8 @@
             </div>
         </div>
     </div>
-    {{-- <nav aria-label="Page navigation example" class="mt-3">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-            <a class="page-link" href="{{ route('hExTH')}}" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="{{ route('hExTH')}}">1</a></li>
-            <li class="page-item"><a class="page-link" href="{{ route('hExTH02')}}">2</a></li>
-            <li class="page-item">
-            <a class="page-link" href="{{ route('hExTH02')}}">Next</a>
-            </li>
-        </ul>
-    </nav> --}}
+@endsection
+
+@section('script')
+    
 @endsection

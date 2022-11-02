@@ -45,7 +45,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         Route::get('/section_all', 'section_all');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
-        Route::get('/changePassword/{user}', 'changePassword');
+        // Route::get('/changePassword/{user}', 'changePassword');
         Route::get('/settings', 'settings');
         // ADD DATA TEACHER/STUDENT AND CRUD
         Route::get('/view_data_teacher_student/{user}', 'view_dataTeachSTD');
@@ -57,6 +57,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         // ADD EXERCISE AND CRUD
         Route::get('/add_data_exercises', 'homeExercise');
         Route::post('/add_data_exercises', 'storeExercise');
+        // Route::post('/import_exercise', 'importExercise')->name('importExercise');
         Route::get('/add_data_exercises/{exercise}/edit', 'editExercise');
         Route::put('/add_data_exercises/{exercise}', 'updateExercise');
         Route::delete('/add_data_exercises/{id}', 'destroyExercise');
@@ -64,6 +65,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         Route::get('/data_section/{section}/edit', 'editSection');
         Route::put('/data_section/{section}', 'updateSection');
         Route::delete('/data_section/{id}', 'destroySection');
+
+        // IMPORT EXCEL
     });
 });
 // TEACHER
@@ -73,7 +76,8 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::get('dashboard', 'index')->name('teacher.dashboard');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
-        Route::get('/changePassword', 'changePassword'); 
+        Route::get('/changePassword', 'changePassword');
+        Route::post('/changePassword', 'changePass');
         Route::get('/settings', 'settings');
         // CRUD DATA STUDENT
         Route::get('/dataSTD/{section}', 'dataStudent');

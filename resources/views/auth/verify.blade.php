@@ -12,7 +12,7 @@
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'ลิงก์การยืนยันใหม่ถูกส่งไปยังที่อยู่อีเมลของคุณแล้ว',
+                        title: 'ลิงก์การยืนยันตัวตนใหม่ถูกส่งไปยังที่อยู่อีเมลของคุณแล้ว',
                         showConfirmButton: true,
                         ConfirmButtonText: 'ตกลง',
                         // timer: 1500
