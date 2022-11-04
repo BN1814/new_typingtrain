@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\EmailOtp;
 use App\Models\User;
 use App\Models\Section;
 use App\Models\HistoryScore;
@@ -12,9 +13,15 @@ use App\Models\Exercise;
 use Session;
 use DB;
 use Carbon\Carbon;
+use Hash;
+use Mail;
+use App\Mail\SendOtp;
 
 class TeacherController extends Controller
 {
+    function __construct() {
+        $this->middleware('auth');
+    }
     function index() {
         $sections = Section::all();
         $users = User::all();
@@ -34,38 +41,76 @@ class TeacherController extends Controller
         return redirect('teacher/profile/'.$user->id.'/edit')->with('update', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
     function changePassword() {
-        return view('dashboards.users.change_password_user');
+        return view('dashboards.teachers.change_password_teacher');
     }
-    function changePass(Request $request) {
-        $request->validate([ 
-            'password' => ['required'],
-            'newpassword' => ['required', 'min:8|max:20', 'confirmed'],
-            'cnewpassword' => ['required', 'confirmed'],
+    function confirmOtp() {
+        if(auth()->user()->otp->count() <= 0) {
+            return redirect('teacher/dashboard');
+        }
+        return view('dashboards.teachers.comfirm-otp-teacher');
+    }
+    function validateOtp(Request $request) {
+        $otp = EmailOtp::where(['user_id'=> auth()->user()->id, 'otp' => $otp])->first();
+        if($otp != null) {
+            auth()->user()->update([
+                'password' => Hash::make(session('newpassword'))
+            ]);
+            $otp->delete();
+            return redirect('teacher/dashboard');
+        }
+        else {
+            return back()->with('errorOtp', 'รหัส otp ไม่ถูกต้อง');
+        }
+    }
+    function updatePass(Request $request) {
+        $this->validate($request, [ 
+            'oldpassword' => ['required', 'string'],
+            'newpassword' => ['required', 'string', 'min:8'],
+            'cnewpassword' => ['required', 'string', 'min:8'],
         ],[
-            'password.required' => 'กรุณาใส่รหัสผ่านเก่า',
+            'oldpassword.required' => 'กรุณาใส่รหัสผ่าน',
             'newpassword.min' => 'กรุณาใส่รหัสผ่านอย่างน้อย 8 ตัว',
             'newpassword.required' => 'กรุณาใส่รหัสผ่านใหม่',
-            'newpassword.confirmed' => 'รหัสผ่านไม่ตรงกัน',
-            'cnewpassword.required' => 'กรุณาใส่รหัสผ่านใหม่อีกครั้ง',
-            'cnewpassword.confirmed' => 'รหัสผ่านไม่ตรงกัน',
+            // 'newpassword.confirmed' => 'รหัสผ่านไม่ตรงกัน',
         ]);
- 
-        $hashedPassword = Auth::user()->password;
-        if (\Hash::check($request->password , $hashedPassword)) {
-            if (\Hash::check($request->newpassword , $hashedPassword)) {
- 
-                $users = User::find(Auth::user()->id);
-                $users->password = bcrypt($request->newpassword);
-                $users->save();
-                return redirect()->back()->with('updatepass','เปลี่ยนรหัสผ่านสำเร็จ');
+
+        if(password_verify($request->oldpassword, auth()->user()->password)){
+            if($request->newpassword == $request->cnewpassword){
+                $otp = rand(10, 9999);
+                EmailOtp::create(['user_id'=> auth()->user()->id, 'otp' => $otp]);
+                session(['newpassword' => $request->newpassword]);
+                if(Mail::to(auth()->user()->email)->send(new SendOtp($otp))){
+                    return redirect()->route('otpTeach');
+                }
             }
-            else{
-                return redirect()->back()->with('duplicatepass','รหัสผ่านใหม่ซ้ำกับรหัสผ่านเก่า');
-            } 
+            else {
+                return back()->with('errorpass', 'รหัสผ่านไม่ตรงกัน');
+            }
         }
-        else{
-            return redirect()->back()->with('oldpassworddoesntmatched','รหัสผ่านเก่าไม่ถูกต้อง');
+        else {
+            return back()->with('error', 'รหัสผ่านเก่าและรหัสผ่านใหม่ไม่ตรงกัน');
         }
+        
+    //     $hashedPassword = auth()->user()->password;
+    //     if (!Hash::check($request->password ,$hashedPassword)) {
+    //         if (Hash::check($request->newpassword ,$hashedPassword)) {
+                
+    //             $users = User::find(Auth::user()->id);
+    //             $users->password = bcrypt($request->newpassword);
+    //             $users->save();
+    //             $hashedPassword->update([
+    //                     'password' => bcrypt($request->newpassword),
+    //                 ]);
+    //                 return redirect('teacher/changePassword/'. $user->id)->with('updatepass','เปลี่ยนรหัสผ่านสำเร็จ');
+    //                 }
+    //                 else{
+    //                         return back()->with('errorpass','รหัสผ่านเก่าไม่ตรงกับรหัสผ่านใหม่');
+    //                     } 
+    //     }
+    //     User::whereId(Auth::user()->id)->update([
+    //         'password' => Hash::make($request->newpassword)
+    //     ]);
+    //     return back()->with('updatepass','เปลี่ยนรหัสผ่านสำเร็จ');
     }
     function settings() {
         return view('dashboards.teachers.settings');

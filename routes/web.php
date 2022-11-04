@@ -77,7 +77,9 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
         Route::get('/changePassword', 'changePassword');
-        Route::post('/changePassword', 'changePass');
+        Route::post('/update-password', 'confirmOtp')->name('updatePassTeach');
+        Route::get('/confirm-otp-teacher', 'updatePass')->name('otpTeach');
+        Route::post('/validate-otp', 'validateOtp')->name('validateOTP');
         Route::get('/settings', 'settings');
         // CRUD DATA STUDENT
         Route::get('/dataSTD/{section}', 'dataStudent');
@@ -106,6 +108,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
         // STUDENT PANEL
         Route::get('/test_typing', 'testTyping');
         Route::get('/changePassword', 'changePassword');
+        Route::post('/changePassword', 'changePass')->name('changePassStudent');
         Route::get('/histories_score/{user}', 'History_STD');
         // STUDENT CRUD
         Route::get('/profile/{user}/edit', 'profile');

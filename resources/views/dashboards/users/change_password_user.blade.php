@@ -8,79 +8,94 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-10">
+                @if(session('updatepass'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '{{ session('updatepass') }}',
+                            showConfirmButton: false,
+                            ConfirmButtonText: 'ตกลง',
+                            timer: 1500
+                        })
+                    </script>
+                @elseif(session('duplicatepass'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: '{{ session('duplicatepass') }}',
+                            showConfirmButton: true,
+                            ConfirmButtonText: 'ตกลง',
+                        })
+                    </script>
+                @elseif(session('errorpass'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: '{{ session('errorpass') }}',
+                            showConfirmButton: true,
+                            ConfirmButtonText: 'ตกลง',
+                        })
+                    </script>
+                @endif
                 <div class="card">
                     <div class="card-header text-white bg-dark text-center h3">
                         {{ __('เปลี่ยนรหัสผ่าน') }}
                     </div>
-                    @if(Auth::user()->role == 'teacher')
-                        <form action="{{ url('teacher/changePassword')}}" method="post">
-                            @csrf
-                            @include('include.changePassword')
-                            {{-- <div class="card-body">
-                                <div class="row mb-4">
-                                    <label class="col-md-4 col-form-label text-end">รหัสผ่านเก่า : </label>
-                                    <div class="col-md-6" id="oldpassword">
-                                        <input class="form-control" type="password" placeholder="ใส่รหัสผ่านเก่า" name="oldpassword" >
-                                    </div>
+
+                    <form action="{{ route('changePassStudent') }}" method="post">
+                        @csrf
+
+                        <div class="card-body">
+                            <div class="row mb-4">
+                                <label class="col-md-4 col-form-label text-end">รหัสผ่านเก่า : </label>
+                                <div class="col-md-6">
+                                    <input class="form-control @error('password') is-invalid @enderror" type="password" placeholder="ใส่รหัสผ่านเก่า" name="oldpassword" id="password" value="{{ old('password') }}">
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    {{-- <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a> --}}
                                 </div>
-                                <div class="row mb-4">
-                                    <label class="col-md-4 col-form-label text-end">รหัสผ่านใหม่ : </label>
-                                    <div class="col-md-6" id="oldpassword">
-                                        <input class="form-control" type="password" placeholder="ใส่รหัสผ่านใหม่" name="newpassword">
-                                    </div>
+                            </div>
+                            <div class="row mb-4">
+                                <label class="col-md-4 col-form-label text-end">รหัสผ่านใหม่ : </label>
+                                <div class="col-md-6">
+                                    <input class="form-control @error('newpassword') is-invalid @enderror" type="password" placeholder="ใส่รหัสผ่านใหม่" name="newpassword" id="newpassword">
+                                    @error('newpassword')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    {{-- <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a> --}}
                                 </div>
-                                <div class="row mb-4">
-                                    <label class="col-md-4 col-form-label text-end">ยืนยันรหัสผ่านใหม่ : </label>
-                                    <div class="col-md-6" id="oldpassword">
-                                        <input class="form-control" type="password" placeholder="ใส่รหัสผ่านใหม่อีกครั้ง" name="cnewpassword">
-                                        <a href=""><i class="fa fa-eye-slash float-end mt-1" aria-hidden="true"></i></a>
-                                    </div>
+                            </div>
+                            <div class="row mb-4">
+                                <label class="col-md-4 col-form-label text-end">ยืนยันรหัสผ่านใหม่ : </label>
+                                <div class="col-md-6">
+                                    <input class="form-control @error('cnewpassword') is-invalid @enderror" type="password" placeholder="ใส่รหัสผ่านใหม่อีกครั้ง" name="cnewpassword" id="cnewpassword">
+                                    @error('cnewpassword')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    {{-- <a href=""><i class="fa fa-eye-slash float-end mt-1" aria-hidden="true"></i></a> --}}
+                                    <input type="checkbox" onclick="blindpasswordFunction()" class="mt-1" style="margin:0;"><p class="d-inline ms-1" style="font-size: 16px; color:black; height:10px;">แสดงรหัสผ่าน</p>
                                 </div>
-                            
-                                <div class="row">
-                                    <div class="col-md-4 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('เปลี่ยนรหัสผ่าน') }}
-                                        </button>
-                                    </div>
+                            </div>
+                    
+                            <div class="row">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary form-control">
+                                        {{ __('เปลี่ยนรหัสผ่าน') }}
+                                    </button>
                                 </div>
-                            </div> --}}
-                        </form>
-                    @elseif(Auth::user()->role == 'user')
-                        <form action="{{ url('user/changePassword') }}" method="post">
-                            @csrf
-                            @include('include.changePassword')
-                            {{-- <div class="card-body">
-                                <div class="row mb-4">
-                                    <label class="col-md-4 col-form-label text-end">รหัสผ่านเก่า : </label>
-                                    <div class="col-md-6" id="oldpassword">
-                                        <input class="form-control" type="password" placeholder="ใส่รหัสผ่านเก่า" name="oldpassword" >
-                                    </div>
-                                </div>
-                                <div class="row mb-4">
-                                    <label class="col-md-4 col-form-label text-end">รหัสผ่านใหม่ : </label>
-                                    <div class="col-md-6" id="oldpassword">
-                                        <input class="form-control" type="password" placeholder="ใส่รหัสผ่านใหม่" name="newpassword">
-                                    </div>
-                                </div>
-                                <div class="row mb-4">
-                                    <label class="col-md-4 col-form-label text-end">ยืนยันรหัสผ่านใหม่ : </label>
-                                    <div class="col-md-6" id="oldpassword">
-                                        <input class="form-control" type="password" placeholder="ใส่รหัสผ่านใหม่อีกครั้ง" name="cnewpassword">
-                                        <a href=""><i class="fa fa-eye-slash float-end mt-1" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                            
-                                <div class="row">
-                                    <div class="col-md-4 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('เปลี่ยนรหัสผ่าน') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div> --}}
-                        </form>
-                    @endif
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

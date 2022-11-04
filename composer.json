@@ -13,7 +13,6 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "maatwebsite/excel": "*",
         "phattarachai/thaidate": "^12.1"
     },
     "require-dev": {

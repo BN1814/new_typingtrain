@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\User;
+use App\Models\EmailOtp;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -64,5 +65,8 @@ class User extends Authenticatable implements MustVerifyEmail
         if($teacher){
             return $this->hasMany(Section::class);
         }
+    }
+    public function otp() {
+        return $this->hasMany(EmailOtp::class);
     }
 }

@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'status' => ['required'],
             'password' => ['required', 'string', 'min:8 | max:20', 'confirmed'],
-            'password_confirmation' => ['required', 'string', 'min:8 | max:20', 'confirmed'],
+            'password_confirmation' => ['required', 'string', 'min:8 | max:20'],
         ],[
             'userid.required' => 'กรุณาใส่รหัสนักศึกษาหรือรหัสผู้ใช้งาน',
             'name.required' => 'กรุณาใส่ชื่อผู้ใช้งาน',
@@ -72,7 +72,6 @@ class RegisterController extends Controller
             'password.min' => 'ใส่รหัสผ่านอย่างน้อย 8 ตัว',
             'password.confirmed' => 'รหัสผ่านไม่ตรงกัน',
             'password_confirmation.required' => 'กรุณาใส่รหัสผ่านอีกครั้ง',
-            'password_confirmation.confirmed' => 'รหัสผ่านไม่ตรงกัน',
         ]);
 
         // $user = new User();
