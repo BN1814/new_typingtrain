@@ -97,8 +97,16 @@ class UserController extends Controller
         $total_scores = Exercise::get()->count()*100;
                         // dd($total_scores);
         $checkuser = DB::table('section_users')->where('user_id','=', $user_id)->count();
-        if($checkuser > 0){
-            return view('dashboards.users.homeEx', compact('section', 'user', 'historys', 'count_exercises', 'count_exercises_pass', 'count_exercises_fail', 'total_scores'));
+        $checkusersub = DB::table('section_users')
+                            ->where('user_id','=', $user_id)
+                            ->where('section_id','=', $section->id)
+                            ->count();
+        if($checkuser > 0 ){
+            if($checkusersub == 0){
+                return redirect('user/enterclass');
+            }else {
+                return view('dashboards.users.homeEx', compact('section', 'user', 'historys', 'count_exercises', 'count_exercises_pass', 'count_exercises_fail', 'total_scores','checkuser','checkusersub'));
+            }      
         }
         else {
             return redirect('user/enterclass');
