@@ -8,16 +8,14 @@ use App\Models\User;
 use App\Models\Section;
 use App\Models\HistoryScore;
 use App\Models\Exercise;
+use App\Models\EmailOtp;
 use Carbon\Carbon;
 use DB;
 use Auth;
-use Str;
-// dd($historys);
-// SELECT section_name, level_name, score, wpm, cpm
-// FROM `history_scores` 
-// inner join `exercises` on `history_scores`.`exercise_id` = `exercises`. `id`
-// inner join `sections` on `history_scores`.`section_id` = `sections`. `id`
-// where `history_scores`. `user_id` = 4;
+use Hash;
+use Mail;
+use App\Mail\SendOtp;
+
 class UserController extends Controller
 {
     function History_STD(User $user) {
@@ -46,18 +44,66 @@ class UserController extends Controller
         ]);
         return redirect('user/profile/'.$user->id.'/edit')->with('update', 'แก้ไขข้อมูลสำเร็จแล้ว');
     }
-    function changePassword(Request $req) {
-        // $request->validate([
-        //     'changePass' => 'required',
-        // ],
-        // [
-        //     'changePass.required' => 'กรุณาใส่อีเมล',
-        // ]);
+    // เปลี่ยนรหัสผ่าน
+    function changePassword() {
         return view('dashboards.users.change_password_user');
     }
-    function testTyping() {
-        return view('dashboards.users.test_typing');
+    function confirmOtp() {
+        if(auth()->user()->otp->count() <= 0) {
+            return redirect()->route('user.dashboard');
+        }
+        return view('dashboards.users.confirm-otp-user');
     }
+    function validateOtp(Request $request) {
+        $otp = EmailOtp::where(['user_id'=> auth()->user()->id, 'otp' => $request->otp])->first();
+        if($otp != null) {
+            auth()->user()->update([
+                'password' => Hash::make(session('newpassword'))
+            ]);
+            $otp->delete();
+            return redirect()->route('change-password')->with('success', 'เปลี่ยนรหัสผ่านสำเร็จ');
+        }
+        else {
+            return back()->with('errorOtp', 'รหัส otp ไม่ถูกต้อง');
+        }
+    }
+    function updatePass(Request $request) {
+        $this->validate($request, [ 
+            'oldpassword' => ['required', 'string'],
+            'newpassword' => ['required', 'string', 'min:8'],
+            'cnewpassword' => ['required', 'string', 'min:8'],
+        ],[
+            'oldpassword.required' => 'กรุณาใส่รหัสผ่าน',
+            'newpassword.min' => 'กรุณาใส่รหัสผ่านอย่างน้อย 8 ตัว',
+            'newpassword.required' => 'กรุณาใส่รหัสผ่านใหม่',
+            'cnewpassword.required' => 'กรุณาใส่รหัสผ่านใหม่อีกครั้ง',
+        ]);
+
+        if(password_verify($request->oldpassword, auth()->user()->password)){
+            if($request->newpassword == $request->cnewpassword){
+                $otp = rand(10, 999999);
+                EmailOtp::create([
+                    'user_id'=> auth()->user()->id,
+                    'otp' => $otp
+                ]);
+                session(['newpassword' => $request->newpassword]);
+                if(!Mail::to(auth()->user()->email)->send(new SendOtp($otp))){
+                    return redirect()->route('otpStudent');
+                }
+                else {
+                    return redirect()->route('change-password');
+                }
+            }
+            else {
+                return back()->with('errorpass', 'รหัสผ่านไม่ตรงกัน');
+            }
+        }
+        else {
+            return back()->with('error', 'รหัสผ่านเก่าไม่ถูกต้อง');
+        }
+    }
+
+    // เข้าห้องเรียน
     function enterclass() {
         $id = Auth::user()->id;
         $user = User::findOrFail($id);

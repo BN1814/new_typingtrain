@@ -20,6 +20,7 @@
     @endif
     <div class="container-sm">
         <!-- <p class="score">SCORE : <span>0</span></p> -->
+        vdavnana
         <h1 class="display-4 text-center fw-bold">EXERCISE ENGLISH</h1>
             <div class="row mb-3 mt-2">
                 @foreach ($exercises as $exercise)
@@ -72,14 +73,4 @@
             </ul>
         </nav>
     </div>
-@endsection
-
-@section('script')
-{{-- <script>
-    let card_body = document.querySelector('.card-body');
-    let name = document.querySelector('#name');
-    card_body.style.backgroundColor = 'var(--bs-teal)';
-    name.style.color = "var(--bs-light)";
-    name.style.fontWeight = "bold";
-</script>     --}}
 @endsection

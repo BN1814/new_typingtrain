@@ -23,11 +23,6 @@
                 <div class="card-header text-white text-center bg-dark h4">{{ __('ยืนยันตัวตนของคุณ') }}</div>
 
                 <div class="card-body">
-                    {{-- @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('ลิงก์การยืนยันใหม่ถูกส่งไปยังที่อยู่อีเมลของคุณแล้ว') }}
-                        </div>
-                    @endif --}}
 
                     {{ __('ก่อนดำเนินการต่อ โปรดตรวจสอบอีเมลของคุณสำหรับลิงก์ยืนยัน') }}
                     {{ __('หากคุณไม่ได้รับอีเมล ') }}

@@ -76,9 +76,9 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::get('dashboard', 'index')->name('teacher.dashboard');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
-        Route::get('/changePassword', 'changePassword');
-        Route::post('/update-password', 'confirmOtp')->name('updatePassTeach');
-        Route::get('/confirm-otp-teacher', 'updatePass')->name('otpTeach');
+        Route::get('/changePassword', 'changePassword')->name('change-password');
+        Route::post('/update-password', 'updatePass')->name('updatePassTeach');
+        Route::get('/confirm-otp-teacher', 'confirmOtp')->name('otpTeach');
         Route::post('/validate-otp', 'validateOtp')->name('validateOTP');
         Route::get('/settings', 'settings');
         // CRUD DATA STUDENT
@@ -107,8 +107,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     Route::controller(UserController::class)->group(function() {
         // STUDENT PANEL
         Route::get('/test_typing', 'testTyping');
-        Route::get('/changePassword', 'changePassword');
-        Route::post('/changePassword', 'changePass')->name('changePassStudent');
+        Route::get('/changePassword', 'changePassword')->name('change-password');
+        Route::post('/update-password', 'updatePass')->name('update-password');
+        Route::get('/confirm-otp-student', 'confirmOtp')->name('otpStudent');
+        Route::post('/validate-otp', 'validateOtp')->name('validateOTP');
         Route::get('/histories_score/{user}', 'History_STD');
         // STUDENT CRUD
         Route::get('/profile/{user}/edit', 'profile');
@@ -122,7 +124,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
     });
     Route::controller(ExerciseController::class)->group(function(){
         // Exercise of Student form ExerciseController
-        Route::get('/enterclass/homeEx/{section}/{user}/AllExercises', 'AllExercises')->name('allExercise');
+        Route::get('/enterclass/homeEx/{section}/{user}/AllExercises', 'AllExercises');
         Route::get('/enterclass/homeEx/{section}/{user}/AllExercises/{id}', 'Exercise');
         //SAVE EXERCISE TO DATABASE
         Route::post('/enterclass/homeEx/{section}/{user}/AllExercises/{id}', 'saveExercise');

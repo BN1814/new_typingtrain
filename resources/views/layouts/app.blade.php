@@ -144,7 +144,7 @@
                                         <a href="{{ url('teacher/changePassword') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
                                     @else
                                         <a href="{{ url('user/profile/'. auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
-                                        <a href="{{ url('user/changePassword') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
+                                        <a href="{{ route('change-password') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

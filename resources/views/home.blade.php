@@ -18,6 +18,16 @@
                         timer: 1500
                     })
                 </script>
+            @elseif(session('login-success'))
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: '{{ session('login-success') }}',
+                        showConfirmButton: false,
+                        ConfirmButtonText: 'ตกลง',
+                    })
+                </script>
             @endif
             @if(Auth::user()->role == 'admin')
                 <div class="card mt-5">

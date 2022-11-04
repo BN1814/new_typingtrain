@@ -45,18 +45,18 @@ class TeacherController extends Controller
     }
     function confirmOtp() {
         if(auth()->user()->otp->count() <= 0) {
-            return redirect('teacher/dashboard');
+            return redirect()->route('teacher.dashboard');
         }
         return view('dashboards.teachers.comfirm-otp-teacher');
     }
     function validateOtp(Request $request) {
-        $otp = EmailOtp::where(['user_id'=> auth()->user()->id, 'otp' => $otp])->first();
+        $otp = EmailOtp::where(['user_id'=> auth()->user()->id, 'otp' => $request->otp])->first();
         if($otp != null) {
             auth()->user()->update([
                 'password' => Hash::make(session('newpassword'))
             ]);
             $otp->delete();
-            return redirect('teacher/dashboard');
+            return redirect()->route('change-password')->with('success', 'เปลี่ยนรหัสผ่านสำเร็จ');
         }
         else {
             return back()->with('errorOtp', 'รหัส otp ไม่ถูกต้อง');
@@ -71,16 +71,22 @@ class TeacherController extends Controller
             'oldpassword.required' => 'กรุณาใส่รหัสผ่าน',
             'newpassword.min' => 'กรุณาใส่รหัสผ่านอย่างน้อย 8 ตัว',
             'newpassword.required' => 'กรุณาใส่รหัสผ่านใหม่',
-            // 'newpassword.confirmed' => 'รหัสผ่านไม่ตรงกัน',
+            'cnewpassword.required' => 'กรุณาใส่รหัสผ่านใหม่อีกครั้ง',
         ]);
 
         if(password_verify($request->oldpassword, auth()->user()->password)){
             if($request->newpassword == $request->cnewpassword){
-                $otp = rand(10, 9999);
-                EmailOtp::create(['user_id'=> auth()->user()->id, 'otp' => $otp]);
+                $otp = rand(10, 999999);
+                EmailOtp::create([
+                    'user_id'=> auth()->user()->id,
+                    'otp' => $otp
+                ]);
                 session(['newpassword' => $request->newpassword]);
-                if(Mail::to(auth()->user()->email)->send(new SendOtp($otp))){
-                    return redirect()->route('otpTeach');
+                if(!Mail::to(auth()->user()->email)->send(new SendOtp($otp))){
+                    return redirect('teacher/confirm-otp-teacher');
+                }
+                else {
+                    return redirect()->route('change-password');
                 }
             }
             else {
@@ -88,7 +94,7 @@ class TeacherController extends Controller
             }
         }
         else {
-            return back()->with('error', 'รหัสผ่านเก่าและรหัสผ่านใหม่ไม่ตรงกัน');
+            return back()->with('error', 'รหัสผ่านเก่าไม่ถูกต้อง');
         }
         
     //     $hashedPassword = auth()->user()->password;

@@ -8,23 +8,23 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                @if(session('updatepass'))
+                @if(session('success'))
                     <script>
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: '{{ session('updatepass') }}',
+                            title: '{{ session('success') }}',
                             showConfirmButton: false,
                             ConfirmButtonText: 'ตกลง',
                             timer: 1500
                         })
                     </script>
-                @elseif(session('errorpass'))
+                @elseif(session('errorOtp'))
                     <script>
                         Swal.fire({
                             position: 'center',
                             icon: 'error',
-                            title: '{{ session('errorpass') }}',
+                            title: '{{ session('errorOtp') }}',
                             showConfirmButton: true,
                             ConfirmButtonText: 'ตกลง',
                         })
@@ -42,7 +42,7 @@
                             <div class="row mb-4">
                                 <label class="col-md-4 col-form-label text-end">รหัส otp : </label>
                                 <div class="col-md-6">
-                                    <input class="form-control @error('otp') is-invalid @enderror" type="number" placeholder="ใส่รหัส otp" name="otp">
+                                    <input class="form-control @error('otp') is-invalid @enderror" type="string" placeholder="ใส่รหัส otp" name="otp" id="otp">
                                     @error('otp')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
