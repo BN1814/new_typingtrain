@@ -35,7 +35,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน : ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" value="{{ old('password') }}" autofocus>
+                                <input id="passwords" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" value="{{ old('password') }}" autofocus>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -49,15 +49,16 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ยืนยันรหัสผ่าน : ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+                                <input id="passwordconfirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
                             </div>
+                            <input type="checkbox" onclick="blindpasswordFunction()" class="mt-3" style="margin:0;"><p class="d-inline ms-1" style="font-size: 16px; color:black; height:10px;">แสดงรหัสผ่าน</p>
                         </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-dark text-white">
                                     {{ __('รีเซ็ตรหัสผ่าน') }}
-                                </button>
+                                </button>                   
                             </div>
                         </div>
                     </form>
@@ -66,4 +67,22 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        function blindpasswordFunction() {
+            var passwords = document.getElementById('passwords');
+            var passwordconfirm = document.getElementById('passwordconfirm');
+            if(passwords.type === 'password' || passwordconfirm.type === 'password'){
+                passwords.type = 'text';
+                passwordconfirm.type = 'text';
+       
+            }
+            else {
+                passwords.type = 'password';
+                passwordconfirm.type = 'password';
+               
+            }
+        }
+    </script>
 @endsection

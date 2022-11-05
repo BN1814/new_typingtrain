@@ -85,7 +85,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผ่าน : ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="ใส่รหัสผ่าน">
+                                <input id="passwords" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="ใส่รหัสผ่าน">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -99,12 +99,13 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ยืนยันรหัสผ่าน : ') }}</label>
                             
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"  autocomplete="new-password" placeholder="ใส่รหัสผ่านอีกครั้ง">
+                                <input id="passwordconfirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"  autocomplete="new-password" placeholder="ใส่รหัสผ่านอีกครั้ง">
                                 @error('password_confirmation')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <input type="checkbox" onclick="blindpasswordFunction()" class="mt-2" style="margin:0;"><p class="d-inline ms-1" style="font-size: 16px; color:black; height:10px;">แสดงรหัสผ่าน</p>
                             </div>
                         </div>
 
@@ -139,4 +140,22 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        function blindpasswordFunction() {
+            var passwords = document.getElementById('passwords');
+            var passwordconfirm = document.getElementById('passwordconfirm');
+            if(passwords.type === 'password' || passwordconfirm.type === 'password'){
+                passwords.type = 'text';
+                passwordconfirm.type = 'text';
+       
+            }
+            else {
+                passwords.type = 'password';
+                passwordconfirm.type = 'password';
+               
+            }
+        }
+    </script>
 @endsection
