@@ -47,7 +47,7 @@ class TeacherController extends Controller
         if(auth()->user()->otp->count() <= 0) {
             return redirect()->route('teacher.dashboard');
         }
-        return view('dashboards.teachers.comfirm-otp-teacher');
+        return view('dashboards.teachers.confirm-otp-teacher');
     }
     function validateOtp(Request $request) {
         $otp = EmailOtp::where(['user_id'=> auth()->user()->id, 'otp' => $request->otp])->first();

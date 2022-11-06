@@ -1,27 +1,15 @@
 @extends('layouts.app')
+@section('title', ' | แก้ไขข้อมูลห้องเรียน')
 
 @section('content')
 <style>
-    a {
-        text-decoration: none;
-        color: #fff;
-    } a:hover {color: #fff;}
-    /* .random {
-        margin: 10px 0 10px 45%;
-    } */
-    /* .save {
-        margin: 0 10px 0 40%;
-    } */
-    .card-header {
-        height: 70px;
-    } .card-header p {line-height: 50px; font-weight: bold;}
-    label p {
-        margin: 0; padding: 0;
-        font-weight: bold;
-    }
-    .form-control {
-        color: red;
-    }
+    a {text-decoration: none;color: #fff;} 
+    a:hover {color: #fff;}
+    .card { border:none; }
+    .card-header {height: 70px;} 
+    .card-header p {line-height: 50px; font-weight: bold;}
+    label p {margin: 0; padding: 0;font-weight: bold;}
+    .form-control {color: red;}
 </style>
 <div class="container mt-5">
     <div class="row justify-content-center">

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | แบบทดสอบ')
 
 @section('content')
 <style>
@@ -30,7 +31,7 @@
                 <strong class="text-start ms-4 text-center">คะแนนรวมทั้งหมด : {{ $historys }}/{{ $total_scores }} คะแนน</strong>
                 <strong class="text-start ms-4 text-center">ทำไปแล้ว : {{ $count_exercises }}/60 แบบทดสอบ <<-->> ผ่านแล้ว : {{ $count_exercises_pass }} แบบทดสอบ <<-->> ยังไม่ผ่าน : {{ $count_exercises_fail }} แบบทดสอบ</strong>
 
-                <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises') }}" class="btn btn-primary btn-block">START</a>
+                <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises') }}" class="btn btn-dark btn-block">START</a>
             </div>
         </div>
     </div>

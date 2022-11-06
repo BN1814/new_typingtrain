@@ -1,11 +1,15 @@
 @extends('layouts.app')
-{{-- @section('title', 'Dashboard') --}}
+@section('title', ' | ผู้ใช้งานทั้งหมด')
 
 @section('content')
 <style>
     .fixedHeader {background:var(--bs-gray-dark); color:#fff; border:1px solid #fff}
     .card { border:0; }
     div.container { max-width: 1200px; }
+    .btn-export-excel { background: var(--bs-success) !important; color: #fff !important; border: none !important; margin-left: -160px !important; }
+    @media screen and (max-width: 768px) {
+        .btn-export-excel { background: var(--bs-success) !important; color: #fff !important; border: none !important; margin-left: 230px !important; display: inline !important;}
+    }
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -44,7 +48,7 @@
                     </div>
                     <div class="card-body">
                         {{-- @if(count($users) > 0) --}}
-                            <table class="table table-hover table-bordered text-center"id="dataUser">
+                            <table class="table table-hover table-striped table-bordered text-center"id="dataUser">
                                 <thead>
                                     <tr class="fixedHeader">
                                         <th>ลำดับที่</th>
@@ -66,7 +70,7 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->role }}</td>
                                             <td>
-                                                <a href="{{ url('admin/view_data_teacher_student/'. $user->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
+                                                {{-- <a href="{{ url('admin/view_data_teacher_student/'. $user->id) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a> --}}
                                                 <a href="{{ url('admin/add_data_teacher_student/'.$user->id.'/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                                 <button class="btn btn-danger btn-sm delete" data-name="{{ $user->name }}" data-id="{{ $user->id }}">ลบ</button>
                                             </td>
@@ -132,10 +136,24 @@
 
     $(document).ready(function() {
             $('#dataUser').DataTable({
-                lengthMenu: [
+            lengthMenu: [
                 [ -1, 5, 10, 25, 50, 100 ],
                 [ 'ทั้งหมด', '5', '10', '25', '50', '100' ]
             ],
+            dom: "<'row'<'col-sm-12 col-md-4'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            buttons: [
+                // 'pageLength',
+                {
+                    extend: 'excelHtml5',
+                    text: 'ดาวน์โหลด Excel',
+                    filename: 'ผู้ใช้งานทั้งหมด',
+                    title: '',
+                    className: 'btn-export-excel'
+                },
+            ],
+            responsive: true,
             "language": {
                 "decimal":        "",
                 "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
@@ -162,6 +180,5 @@
             }
         });
     });
-
 </script>
 @endsection

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | แบบทดสอบทั้งหมด')
 
 @section('content')
     <style>

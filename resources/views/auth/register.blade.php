@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | ลงทะเบียน')
 
 @section('content')
 <style>
@@ -25,6 +26,24 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+                        
+                        <div class="row mb-3">
+                            <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ : ') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="status" class="form-control @error('status') is-invalid @enderror">
+                                    <option value="">--- กรุณาเลือกสถานะ ---</option>
+                                    <option value="3">student</option>
+                                    <option value="2">teacher</option>
+                                </select>
+
+                                @error('status')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __(' รหัสผู้ใช้งาน : ') }}</label>
@@ -106,24 +125,6 @@
                                     </span>
                                 @enderror
                                 <input type="checkbox" onclick="blindpasswordFunction()" class="mt-2" style="margin:0;"><p class="d-inline ms-1" style="font-size: 16px; color:black; height:10px;">แสดงรหัสผ่าน</p>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label class="col-md-4 col-form-label text-md-end">{{ __('สถานะ : ') }}</label>
-
-                            <div class="col-md-6">
-                                <select name="status" class="form-control @error('status') is-invalid @enderror">
-                                    <option value="">--- กรุณาเลือกสถานะ ---</option>
-                                    <option value="3">student</option>
-                                    <option value="2">teacher</option>
-                                </select>
-
-                                @error('status')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 

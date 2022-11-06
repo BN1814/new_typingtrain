@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | รีเซ็ตรหัสผ่าน')
 
 @section('content')
 <style>
@@ -13,9 +14,9 @@
                         position: 'center',
                         icon: 'success',
                         title: 'ลิงก์รีเซ็ตรหัสผ่านถูกส่งสำเร็จแล้ว',
-                        showConfirmButton: true,
+                        showConfirmButton: false,
                         ConfirmButtonText: 'ตกลง',
-                        // timer: 1500
+                        timer: 2000
                     })
                 </script>
             @endif
@@ -23,12 +24,6 @@
                 <div class="card-header text-white text-center bg-dark h4">{{ __('รีเซ็ตรหัสผ่าน') }}</div>
 
                 <div class="card-body">
-                    {{-- @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif --}}
-
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
@@ -36,7 +31,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมล : ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -49,7 +44,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-dark">
-                                    {{ __('ส่งรหัสผ่าน') }}
+                                    {{ __('ส่งอีเมล') }}
                                 </button>
                             </div>
                         </div>

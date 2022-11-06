@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | หน้าแรก - เข้าห้องเรียน')
 
 @section('content')
 <style>

@@ -48,7 +48,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         // Route::get('/changePassword/{user}', 'changePassword');
         Route::get('/settings', 'settings');
         // ADD DATA TEACHER/STUDENT AND CRUD
-        Route::get('/view_data_teacher_student/{user}', 'view_dataTeachSTD');
+        // Route::get('/view_data_teacher_student/{user}', 'view_dataTeachSTD');
         Route::get('/add_data_teacher_student', 'createTeachStd');
         Route::post('/dashboard', 'storeTeachStd');
         Route::get('/add_data_teacher_student/{user}/edit', 'editTeachStd');
@@ -57,7 +57,10 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         // ADD EXERCISE AND CRUD
         Route::get('/add_data_exercises', 'homeExercise');
         Route::post('/add_data_exercises', 'storeExercise');
-        // Route::post('/import_exercise', 'importExercise')->name('importExercise');
+        Route::get('/add-user-file', 'addUserFile');
+        Route::post('/import-user', 'importUser')->name('import-user');
+        Route::get('/add-exercise-file', 'addExerciseFile');
+        Route::post('/import-exercise', 'importExercise')->name('import-exercise');
         Route::get('/add_data_exercises/{exercise}/edit', 'editExercise');
         Route::put('/add_data_exercises/{exercise}', 'updateExercise');
         Route::delete('/add_data_exercises/{id}', 'destroyExercise');

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | เพิ่มข้อมูลอาจารย์และนักศึกษา')
 
 @section('content')
 <style>
@@ -7,9 +8,13 @@
 </style>
     <div class="container mt-4">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header text-center text-white bg-dark h4">เพื่มข้อมูลอาจารย์/นักศึกษา</div>
+                    <div class="card-header text-white bg-dark">
+                        <h4>เพื่มข้อมูลอาจารย์/นักศึกษา
+                            <a href="{{ url('admin/add-user-file') }}" class="btn btn-primary btn-sm float-end">เพิ่มด้วย file excel</a>
+                        </h4>
+                    </div>
                     <div class="card-body">
                         <form action="{{ url('admin/dashboard') }}" method="POST">
                             @csrf

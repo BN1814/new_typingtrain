@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | เพิ่มข้อมูลแบบทดสอบ')
 
 @section('content')
 <style>
@@ -30,7 +31,11 @@
                 </script>
             @endif
             <div class="card">
-                <div class="card-header text-center text-white bg-dark h4">เพื่มข้อมูลแบบฝึกหัด</div>
+                <div class="card-header text-white bg-dark">
+                    <h4>เพื่มข้อมูลแบบฝึกหัด
+                        <a href="{{ url('admin/add-exercise-file') }}" class="btn btn-primary btn-sm float-end">เพิ่มด้วย file excel</a>
+                    </h4>
+                </div>
                 <div class="card-body">
                     <form action="{{ url('admin/add_data_exercises') }}" method="POST">
                         @csrf

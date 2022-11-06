@@ -13,16 +13,19 @@ use App\Models\HistoryScore;
 use App\Models\Exercise;
 use DB;
 use Hash;
+use App\Imports\UsersImport;
+use App\Imports\ExercisesImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
     function index(Request $request) {
-        $users = User::get();
+        $users = DB::table('users')->get();
         $data = compact('users');
         return view('dashboards.admins.index')->with($data);
     }
     function exercise_all() {
-        $exercises = Exercise::all();
+        $exercises = DB::table('exercises')->get();
         $data = compact('exercises');
         return view('dashboards.admins.exercise_all')->with($data);
     }
@@ -50,9 +53,9 @@ class AdminController extends Controller
         return view('dashboards.admins.settings');
     }
     // CRUD TEACHER AND STUDENT
-        function view_dataTeachSTD(User $user) {
-            return view('dashboards.admins.view_data_teacher_student', compact('user'));
-        }
+        // function view_dataTeachSTD(User $user) {
+        //     return view('dashboards.admins.view_data_teacher_student', compact('user'));
+        // }
         function createTeachStd() {
             return view('dashboards.admins.teacher.add_data_teacher_student');
         }
@@ -103,41 +106,34 @@ class AdminController extends Controller
             $user->delete();
             return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']);
         }
+        // IMPORT FILE STUDENT AND TEACHER
+        function addUserFile() {
+            $users = DB::table('users')->orderBy('id', 'DESC')->get();
+            return view('dashboards.admins.teacher.add_data_teacher_student_file', compact('users')); 
+        }
+        function importUser(Request $request) {
+            $this->validate($request, [
+                'import-user' => 'required|mimes:xls,xlsx,csv',
+            ],[
+                'import-user.required' => 'กรุณาเลือกไฟล์',
+                'import-user.mimes' => 'กรุณาเลือกไฟล์นามสกุล .xls, .xlsx หรือ .csv เท่านั้น',
+            ]);
+            try {
+                Excel::import(new UsersImport, $request->file('import-user'));
+                return redirect()->back()->with('import-success', 'เพิ่มข้อมูลสำเร็จ');
+            } 
+            catch(\Maatwebsite\Excel\Validators\ValidationException $e) {
+                $failures = $e->failures();
+                // dd($failures);
+                return redirect()->back()->with('import-fail', $failures);
+            }
+        }
 
     // CRUD EXERCISE
     function homeExercise() {
         $data_exercises = DB::table('exercises')->orderBy('created_at', 'DESC')->get();
         return view('dashboards.admins.student.home_exercise', compact('data_exercises'));
     }
-    // function importExercise(Request $req) {
-    //     $this->validate($req, [
-    //         'import_ex' => 'required|mimes:xls,xlsx',
-    //     ],[
-    //         'import_ex.required' => 'กรุณาเลือกไฟล์',
-    //     ]);
-    //     $path = $req->file('import_ex')->getRealPath();
-
-    //     $data = Excel::load($path)->get();
-
-    //     if($data->count() > 0) {
-    //         foreach($data->toArray() as $key => $value) {
-    //             foreach($value as $row) {
-    //                 $insert_data[] = array(
-    //                     'level' => $row['level'],
-    //                     'level_name' => $row['level_name'],
-    //                     'data_level' => $row['data_level'],
-    //                 );
-    //             }
-    //         }
-    //         if(!empty($insert_data)){
-    //             Exercise::insert($insert_data);
-    //         }
-    //         else{
-    //             return back()->with('import_fail', 'กรุณาใส่ข้อมูลอีกครั้ง');
-    //         }
-    //     }
-    //     return back()->with('import_success', 'เพิ่มข้อมูลสำเร็จ');
-    // }
     function storeExercise(Request $request) {
         $request->validate([
             'level' => ['required', 'string', 'max:20'],
@@ -174,6 +170,28 @@ class AdminController extends Controller
         $exercise->delete();
         return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']);
     }
+    // IMPORT FILE EXERCISE
+    function addExerciseFile() {
+        $exercises = DB::table('exercises')->orderBy('id', 'DESC')->get();
+        return view('dashboards.admins.exercises.import_exercise', compact('exercises')); 
+    }
+    function importExercise(Request $req) {
+        $this->validate($req, [
+            'import-ex' => 'required|mimes:xls,xlsx,csv',
+        ],[
+            'import-ex.required' => 'กรุณาเลือกไฟล์',
+            'import-ex.mimes' => 'กรุณาเลือกไฟล์นามสกุล .xls, .xlsx หรือ .csv เท่านั้น',
+        ]);
+        try {
+            Excel::import(new ExercisesImport, $req->file('import-ex'));
+            return redirect()->back()->with('import-success', 'เพิ่มข้อมูลสำเร็จ');
+        } 
+        catch(\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            // dd($failures);
+            return redirect()->back()->with('import-fail', $failures);
+        }
+    }
 
     // CRUD Section
     function editSection(Section $section) {
@@ -195,8 +213,6 @@ class AdminController extends Controller
         $section->delete();
         return response()->json(['delete' => 'ลบข้อมูลสำเร็จแล้ว']); 
     }
-
-    // IMPORT EXCEL
     
 }
 

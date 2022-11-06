@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | ประวัติการทำแบบทดสอบ')
 
 @section('content')
 <style>
@@ -14,7 +15,7 @@
                     @if(count($historys) > 0)
                     <table class="table table-bordered table-striped table-hover text-center" id="data_history">
                         <thead>
-                            <tr class="text-dark" style="background: rgb(247, 191, 70);">
+                            <tr class="text-dark bg-warning">
                                 <th>ครั้งที่</th>
                                 <th>ชื่อวิชา</th>
                                 <th>ชื่อแบบฝึกหัด</th>

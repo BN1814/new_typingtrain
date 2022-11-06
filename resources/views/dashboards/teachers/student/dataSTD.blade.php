@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | ข้อมูลห้องเรียน')
 
 @section('content')
 <style>

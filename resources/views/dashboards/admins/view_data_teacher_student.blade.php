@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | ข้อมูลผู้ใช้งาน')
 
 @section('content')
 <style>
@@ -10,6 +11,7 @@
         color: #000;
         border: 0;
     }
+    .card { border: none; }
 </style>
 <div class="container mt-5">
     <div class="row justify-content-center">

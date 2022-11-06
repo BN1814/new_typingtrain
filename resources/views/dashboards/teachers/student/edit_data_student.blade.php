@@ -1,11 +1,11 @@
 @extends('layouts.app')
+@section('title', ' | แก้ไขข้อมูลนักศึกษา')
 
 @section('content')
 {{-- <link rel="stylesheet" href=" {{ asset('bootstrap.min.css') }} "> --}}
 <style>
-    input {
-        text-align: center;
-    }
+    input { text-align: center; }
+    .card { border: none; }
 </style>
 <div class="container mt-3">
     <div class="row justify-content-center">

@@ -1,10 +1,12 @@
 @extends('layouts.app')
+@section('title', ' | แก้ไขข้อมูลผู้ใช้งาน')
 
 @section('content')
 <style>
     .form-control {
         text-align: center;
     }
+    .card { border: none; }
 </style>
     <div class="container mt-3">
         <div class="row justify-content-center">

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | เปลี่ยนรหัสผ่าน')
 
 @section('content')
 <style>

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', ' | ข้อมูลการทำแบบทดสอบทั้งหมด')
 
 @section('content')
 <style>
@@ -50,7 +51,7 @@
                                     <th>ชื่อ</th>
                                     <th>ชื่อแบบฝึกหัด</th>
                                     <th>คะแนนสูงสุด</th>
-                                    <th>วันที่ส่งแบบทดสอบ (ด/ป/ว)</th>
+                                    <th>วันที่ส่งแบบทดสอบ (เดือน/วัน/ปี)</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">

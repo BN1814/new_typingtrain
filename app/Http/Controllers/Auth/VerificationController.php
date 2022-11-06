@@ -28,11 +28,6 @@ class VerificationController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    // protected function verified(Request $request)
-    // {
-    //     $request->session()->with('login-success','เข้าสู่ระบบสำเร็จแล้ว');
-    // }
-
     /**
      * Create a new controller instance.
      *

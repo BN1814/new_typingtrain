@@ -1,10 +1,15 @@
 @extends('layouts.app')
+@section('title', ' | แบบทดสอบทั้งหมด')
 
 @section('content')
 <style>
     .fixedHeader {background:var(--bs-gray-dark); color:#fff; border:1px solid #fff}
     .card { border:0; }
     div.container { max-width: 1200px; }
+    .btn-export-excel { background: var(--bs-success) !important; color: #fff !important; border: none !important; margin-left: -190px !important; }
+    @media screen and (max-width: 768px) {
+        .btn-export-excel { background: var(--bs-success) !important; color: #fff !important; border: none !important; margin-left: 230px !important; display: inline !important;}
+    }
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -127,6 +132,20 @@
             [ -1, 5, 10, 25, 50, 100 ],
             [ 'ทั้งหมด', '5', '10', '25', '50', '100' ]
         ],
+        dom: "<'row'<'col-sm-12 col-md-4'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        buttons: [
+            // 'pageLength',
+            {
+                extend: 'excelHtml5',
+                text: 'ดาวน์โหลด Excel',
+                filename: 'แบบทดสอบทั้งหมด',
+                title: '',
+                className: 'btn-export-excel'
+            },
+        ],
+        // responsive: true,
         "language": {
             "decimal":        "",
             "emptyTable":     "ไม่มีผลลัพธ์ที่ค้นหา",
