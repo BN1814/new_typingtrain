@@ -46,6 +46,7 @@
                         </h4>
                     </div>
                     <div class="card-body">
+                        @if(count($exercises) > 0)
                             <table class="table table-hover table-bordered text-center" id="dataExercise">
                                 <thead>
                                     <tr class="fixedHeader">
@@ -73,6 +74,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        @else
+                            <p class="text-center fw-bold mt-3 text-danger fs-5">{{ __('ไม่มีข้อมูลแบบทดสอบ')}}</p>
+                        @endif
                     </div>
                 </div>
             @endif

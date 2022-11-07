@@ -40,37 +40,41 @@
                         <h4>ห้องเรียนทั้งหมด</h4>
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover table-bordered text-center" id="dataClassroom">
-                            <thead>
-                                <tr class="fixedHeader">
-                                    <th>ลำดับ</th>
-                                    <th>ชื่ออาจารย์</th>
-                                    <th>ชื่อห้องเรียน</th>
-                                    <th>รหัสเข้าห้อง</th>
-                                    <th>วันที่ส่ง</th>
-                                    <th>เวลาที่ส่ง</th>
-                                    <th>ตัวเลือก</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php($i=1)
-                                @foreach ($sections as $section)
-                                <tr>
-                                    <input type="hidden" class="delete_section_id" value="{{ $section->id }}">
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $section->name }}</td>
-                                    <td>{{ $section->section_name }}</td>
-                                    <td>{{ $section->code_inclass }}</td>
-                                    <td>วัน{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('lที่ j F Y') }}</td>
-                                    <td>{{ $section->deadline_time }} น.</td>
-                                    <td>
-                                        <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                        <button class="btn btn-danger btn-sm delete_sect" data-name="{{ $section->section_name }}" data-id="{{ $section->id }}">ลบ</button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        @if(count($sections) > 0)
+                            <table class="table table-hover table-bordered text-center" id="dataClassroom">
+                                <thead>
+                                    <tr class="fixedHeader">
+                                        <th>ลำดับ</th>
+                                        <th>ชื่ออาจารย์</th>
+                                        <th>ชื่อห้องเรียน</th>
+                                        <th>รหัสเข้าห้อง</th>
+                                        <th>วันที่ส่ง</th>
+                                        <th>เวลาที่ส่ง</th>
+                                        <th>ตัวเลือก</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php($i=1)
+                                    @foreach ($sections as $section)
+                                    <tr>
+                                        <input type="hidden" class="delete_section_id" value="{{ $section->id }}">
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $section->name }}</td>
+                                        <td>{{ $section->section_name }}</td>
+                                        <td>{{ $section->code_inclass }}</td>
+                                        <td>วัน{{ \Carbon\Carbon::parse($section->deadline_date)->thaidate('lที่ j F Y') }}</td>
+                                        <td>{{ $section->deadline_time }} น.</td>
+                                        <td>
+                                            <a href="{{ url('admin/data_section/'. $section->id . '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                            <button class="btn btn-danger btn-sm delete_sect" data-name="{{ $section->section_name }}" data-id="{{ $section->id }}">ลบ</button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <p class="text-center fw-bold mt-3 text-danger fs-5">{{ __('ไม่มีข้อมูลห้องเรียน')}}</p>
+                        @endif
                     </div>
                 </div>
             @endif

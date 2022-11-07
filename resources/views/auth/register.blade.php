@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __(' รหัสผู้ใช้งาน : ') }}</label>
+                            <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสผู้ใช้งาน : ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ old('userid') }}"  autocomplete="userid" placeholder="ใส่รหัสนักศึกษาหรือรหัสผู้ใช้งาน">

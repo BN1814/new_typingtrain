@@ -33,6 +33,8 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'Contact'])->name('contact')->middleware('verified');
+Route::post('/send-contact', [App\Http\Controllers\ContactController::class, 'sendContact'])->name('send-contact')->middleware('verified');
 Route::get('/test_typing_2', [App\Http\Controllers\HomeController::class, 'testTyping']);
 // CLASSROOM ALL
 // Route::get('/classroomAll', [UserController::class, 'classroomAll']);

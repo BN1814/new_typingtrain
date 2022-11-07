@@ -47,7 +47,7 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        {{-- @if(count($users) > 0) --}}
+                        @if(count($users) > 0)
                             <table class="table table-hover table-striped table-bordered text-center"id="dataUser">
                                 <thead>
                                     <tr class="fixedHeader">
@@ -78,9 +78,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        {{-- @else
-                            <p class="text-center mt-2">{{ __('ไม่มีผู้ใช้งาน')}}</p>
-                        @endif --}}
+                        @else
+                            <p class="text-center fw-bold mt-3 text-danger fs-5">{{ __('ไม่มีข้อมูลผู้ใช้งาน')}}</p>
+                        @endif
                     </div>
                 </div>
             @endif

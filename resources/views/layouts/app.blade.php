@@ -142,9 +142,11 @@
                                     @elseif (auth()->user()->role == 'teacher')
                                         <a href="{{ url('teacher/profile/'.auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
                                         <a href="{{ url('teacher/changePassword') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
+                                        <a href="{{ route('contact') }}" class="dropdown-item">ติดต่อเรา</a>
                                     @else
                                         <a href="{{ url('user/profile/'. auth()->user()->id.'/edit') }}" class="dropdown-item">ข้อมูลส่วนตัว</a>
                                         <a href="{{ route('change-password') }}" class="dropdown-item">เปลี่ยนรหัสผ่าน</a>
+                                        <a href="{{ route('contact') }}" class="dropdown-item">ติดต่อเรา</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
