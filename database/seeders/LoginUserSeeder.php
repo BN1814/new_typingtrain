@@ -24,14 +24,14 @@ class LoginUserSeeder extends Seeder
                 'role' => 'admin',
                 'password' => bcrypt('123456')
             ],
-            [
-                'userid' => 'T001',
-                'name' => 'Teacher',
-                'lname' => 'teacher',
-                'email' => 'teacher@teacher.com',
-                'role' => 'teacher',
-                'password' => bcrypt('123456'),
-            ],
+            // [
+            //     'userid' => 'T001',
+            //     'name' => 'Teacher',
+            //     'lname' => 'teacher',
+            //     'email' => 'teacher@teacher.com',
+            //     'role' => 'teacher',
+            //     'password' => bcrypt('123456'),
+            // ],
             // [
             //     'userid' => 'T002',
             //     'name' => 'Teacher2',
@@ -40,14 +40,14 @@ class LoginUserSeeder extends Seeder
             //     'role' => 'teacher',
             //     'password' => bcrypt('123456'),
             // ],
-            [
-                'userid' => 'S001',
-                'name' => 'Student',
-                'lname' => 'student',
-                'email' => 'student@student.com',
-                'role' => 'student',
-                'password' => bcrypt('123456'),
-            ],
+            // [
+            //     'userid' => 'S001',
+            //     'name' => 'Student',
+            //     'lname' => 'student',
+            //     'email' => 'student@student.com',
+            //     'role' => 'student',
+            //     'password' => bcrypt('123456'),
+            // ],
             // [
             //     'userid' => 'S002',
             //     'name' => 'Student2',

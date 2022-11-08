@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LoginUserSeeder::class);
         $this->call(ExerciseSeeder::class);
         // $this->call(HistorySeeder::class);
-        $this->call(SectionSeeder::class);
+        // $this->call(SectionSeeder::class);
     }
 }
