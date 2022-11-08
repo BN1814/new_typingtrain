@@ -3,18 +3,36 @@
     margin: 0;
     box-sizing: border-box;
 }
-.bt {
+.keys {
     width: 40px;
     height: 40px;
     background: white;
     font-weight: bold;
-    border: 1px solid gray;
+    border: none;
+    /* border: 1px solid gray; */
     border-radius: 8px;
     font-size: 12px;
 }
+.keys.active {
+    background: #05e924;
+    color: black;
+}
+.keys.remove {
+    animation: keys_animation 0.5s forwards;
+}
+@keyframes keys_animation {
+    0% {
+        background: #05e924;
+        color: black;
+    }
+    0% {
+        background: #fff;
+        color: #000;
+    }
+}
 
 #spacebar {
-    width: 303px;
+    width: 450px;
 }
 #backspace {
     width: 100px;
@@ -39,14 +57,14 @@
     width: 100px;
 }
 @media (max-width: 768px) {
-    .bt {
+    .keys {
         width: 25px;
         height: 25px;
         font-size: 10px;
         border-radius: 6px;
     }
     #spacebar {
-        width: 250px;
+        width: 350px;
     }
     #ctrl {
         width: 40px;
@@ -55,7 +73,7 @@
         width: 40px;
     }
     #shift {
-        width: 64px;
+        width: 80px;
     }
     #capLock {
         width: 80px;
@@ -67,6 +85,6 @@
         width: 58px;
     }
     #backspace {
-        width: 128px;
+        width: 110px;
     }
 }

@@ -32,6 +32,13 @@
             outline: none;
             box-shadow: none;
         }
+        #sound.remove {
+            background: var(--bs-success);
+            color: #fff;
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
     </style>
         <div class="container mt-1">
             <p class="h1 d-block text-center px-2 mb-2 d-inline fw-bold">LEVEL {{ $exercises->level }} : {{ $exercises->level_name }}
@@ -116,10 +123,10 @@
                         </div>
                     </div>
                     <div class="foot-score d-inline justify-content-center align-items-center">
-                        <button class="btn btn-dark text-white  pn-score try_again" type="button">
+                        <button class="btn btn-dark text-white  pn-score try_again" type="button" id="close_popup" onclick="openSound()">
                             {{ __('เล่นอีกครั้ง') }}
                         </button>
-                        <button type="submit" class="btn btn-dark text-white  pn-score submit">
+                        <button type="submit" class="btn btn-dark text-white pn-score submit" id="save_static">
                             {{ __('บันทึกสถิติ') }}
                         </button>
                     </div>

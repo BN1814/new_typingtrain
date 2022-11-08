@@ -20,6 +20,7 @@ function Open_score() {
     popwpm.value = wpmTag.innerHTML;
     popcpm.value = cpmTag.innerHTML;
     popscore.value = scoreTag.innerHTML;
+    closeSound();
 }
 
 popup.addEventListener("click", Close_score);
@@ -27,10 +28,10 @@ tryAgainScore.addEventListener("click", function () {
     resetTyping();
     Close_score();
 });
-next.addEventListener("click", Close_score);
+// next.addEventListener("click", Close_score);
 // POPUP_SCORE_KEYCODE
-document.addEventListener("keydown", function (e) {
-    if (e.keyCode === 27) {
-        Close_score();
-    }
-});
+// document.addEventListener("keydown", function (e) {
+//     if (e.keyCode === 27) {
+//         Close_score();
+//     }
+// });
