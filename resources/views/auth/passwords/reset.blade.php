@@ -50,8 +50,9 @@
 
                             <div class="col-md-6">
                                 <input id="passwordconfirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+
+                                <input type="checkbox" onclick="blindpasswordFunction()" class="mt-3" style="margin:0;"><p class="d-inline ms-1" style="font-size: 16px; color:black; height:10px;">แสดงรหัสผ่าน</p>
                             </div>
-                            <input type="checkbox" onclick="blindpasswordFunction()" class="mt-3" style="margin:0;"><p class="d-inline ms-1" style="font-size: 16px; color:black; height:10px;">แสดงรหัสผ่าน</p>
                         </div>
 
                         <div class="row mb-0">
