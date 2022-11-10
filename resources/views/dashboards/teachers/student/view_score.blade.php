@@ -177,6 +177,7 @@
                     className: 'btn-export-print'
                 }
             ],
+            order: [[4, 'desc']],
             responsive: true,
             "language": {
                 "decimal":        "",

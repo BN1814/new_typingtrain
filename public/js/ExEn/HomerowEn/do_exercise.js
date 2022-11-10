@@ -60,6 +60,7 @@ function initTyping() {
         wpmTag.innerText = wpm;
         cpmTag.innerText = charIndex - mistakes;
     } else {
+        if(charIndex < characters.length  && timeLeft > 0){
         if (characters[charIndex].innerText === typedChar) {
             characters[charIndex].classList.add("correct");
         } else {
@@ -84,6 +85,24 @@ function initTyping() {
         );
         Open_score();
         clearInterval(timer);
+        }else if(timeLeft < 0){
+        let wpm = Math.round(
+            ((charIndex - mistakes) / 5 / (maxTime - timeLeft)) * 60
+        );
+        wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
+        mistakeTag.innerText = mistakes;
+        wpmTag.innerText = wpm;
+        cpmTag.innerText = Math.ceil(
+            ((charIndex - mistakes) / (charIndex + mistakes)) * 100
+        );
+        scoreTag.innerText = Math.ceil(
+            // (charIndex - mistakes) / ((charIndex + mistakes) / 100)
+            ((charIndex - mistakes) / (charIndex + mistakes)) * 100
+            // characters[charIndex - mistake].length * 100
+        );
+        Open_score();
+        clearInterval(timer);
+        }
     }
 }
 // จับเวลา

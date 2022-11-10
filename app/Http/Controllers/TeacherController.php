@@ -153,7 +153,7 @@ class TeacherController extends Controller
     $sectiondeadlines = Section::select('id','deadline_date','deadline_time')
                                 ->where('id',$section->id)
                                 ->get();
-    // dd($sectiondeadline);
+    dd($historys);
     return view('dashboards.teachers.student.view_score', compact('section', 'historys','sectiondeadlines'));
     }
     public function dataStudent(Request $req, Section $section) {
