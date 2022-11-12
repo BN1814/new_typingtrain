@@ -48,7 +48,8 @@ for(let i = 0 ; i < keys.length ; i++) {
 }
 window.addEventListener('keydown', function(e){
     for(let i = 0 ; i < keys.length ; i++) {
-        openSound();
+        // openSound();
+        document.getElementById('audio').play();
         if(e.key == keys[i].getAttribute('keyname') || e.key == keys[i].getAttribute('lowerCaseName')) {
             // console.log(keys[i]);
             keys[i].classList.add('active');
@@ -105,13 +106,13 @@ window.addEventListener('keyup', function(e){
         // }, 200)
     }
 })
-function openSound() {
-    document.getElementById('audio').play();
-    var sound = document.getElementById('sound').classList.toggle('remove');
-    audio.muted = !audio.muted;
-}
+// function openSound() {
+//     // document.getElementById('audio').play();
+//     var sound = document.getElementById('sound').classList.toggle('remove');
+//     audio.muted = !audio.muted;
+// }
 function closeSound() {
-    var audio = document.getElementById('audio');
+    // var audio = document.getElementById('audio');
     var sound = document.getElementById('sound').classList.toggle('active');
     audio.muted = !audio.muted;
 }

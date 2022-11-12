@@ -20,7 +20,7 @@ function Open_score() {
     popwpm.value = wpmTag.innerHTML;
     popcpm.value = cpmTag.innerHTML;
     popscore.value = scoreTag.innerHTML;
-    closeSound();
+    // closeSound();
 }
 
 popup.addEventListener("click", Close_score);
