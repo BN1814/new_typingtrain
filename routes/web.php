@@ -47,8 +47,6 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         Route::get('/section_all', 'section_all');
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
-        // Route::get('/changePassword/{user}', 'changePassword');
-        Route::get('/settings', 'settings');
         // ADD DATA TEACHER/STUDENT AND CRUD
         // Route::get('/view_data_teacher_student/{user}', 'view_dataTeachSTD');
         Route::get('/add_data_teacher_student', 'createTeachStd');
@@ -85,7 +83,6 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::post('/update-password', 'updatePass')->name('updatePassTeach');
         Route::get('/confirm-otp-teacher', 'confirmOtp')->name('otpTeach');
         Route::post('/validate-otp', 'validateOtp')->name('validateOTP');
-        Route::get('/settings', 'settings');
         // CRUD DATA STUDENT
         Route::get('/dataSTD/{section}', 'dataStudent');
         Route::get('/dataSTD/{id}/{user}/edit', 'editDataStudent');
@@ -100,11 +97,6 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth', 'isTeacher', 'Prev
         Route::post('/createCode', 'createCode');
         Route::put('/classroom/{section}', 'updateSection');
         Route::delete('/classroom/{id}', 'destroySection');
-        
-        // REPORT
-        // Route::post('/report', 'serachDate')->name('searchDate');
-
-        Route::get('/test_alert', 'testAlert');
     });
 });
 // STUENT
@@ -123,7 +115,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser', 'PreventBac
         // STUDENT INPUT CLASS WITH CODE
         Route::get('/enterclass', 'enterclass')->name('user.dashboard');
         Route::post('/enterclass_std', 'enterclass_std');
-        // Route::delete('/enterclass/{id}', 'destroy_enterclass');
         
         Route::get('/enterclass/homeEx/{section}/{user}', 'HExercise');
     });
