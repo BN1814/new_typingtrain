@@ -83,8 +83,12 @@ function initTyping() {
             ((charIndex - mistakes) / (charIndex + mistakes)) * 100
             // characters[charIndex - mistake].length * 100
         );
-        Open_score();
-        clearInterval(timer);
+        setTimeout(function(){
+            Open_score();
+            clearInterval(timer);
+        }, 500);
+        // Open_score();
+        // clearInterval(timer);
         }else if(timeLeft < 0){
         let wpm = Math.round(
             ((charIndex - mistakes) / 5 / (maxTime - timeLeft)) * 60
@@ -100,8 +104,12 @@ function initTyping() {
             ((charIndex - mistakes) / (charIndex + mistakes)) * 100
             // characters[charIndex - mistake].length * 100
         );
-        Open_score();
-        clearInterval(timer);
+        setTimeout(function(){
+            Open_score();
+            clearInterval(timer);
+        }, 500);
+        // Open_score();
+        // clearInterval(timer);
         }
     }
 }
