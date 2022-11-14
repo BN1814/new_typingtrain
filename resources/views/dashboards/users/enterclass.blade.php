@@ -50,7 +50,7 @@
                        <form action="{{ url('user/enterclass_std') }}" method="post">
                         @csrf
                             <div class="row mb-3">
-                                <label for="entclass" class="col-md-3 col-form-label text-md-end">{{ __('รหัสเข้าห้องเรียน') }}</label>
+                                <label for="entclass" class="col-md-3 col-form-label text-md-end">{{ __('รหัสเข้าห้องเรียน : ') }}</label>
         
                                 <div class="col-md-6">
                                     <input type="text" class="form-control text-center enterclass" name="entclass">
@@ -79,7 +79,8 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header text-center text-white bg-dark h4">ห้องเรียนของ <strong class="d-inline text-warning h3">{{ $user->name }}</strong> ทั้งหมด</div>
+                    <div class="card-header text-center text-white bg-dark h4">ห้องเรียนของ <strong class="d-inline text-warning h3">{{ $user->name }}</strong> ทั้งหมด
+                    </div>
                     <div class="card-body">
                         @if(count($sections) > 0)
                         <table class="table table-bordered table-hover text-center" id="enterclassroom">

@@ -35,7 +35,7 @@
                                         @if($history->section_id == $deadline->id)
                                             @if($deadline->deadline_date == \Carbon\Carbon::parse($history->created_at)->format('Y-m-d'))
                                                 @if($deadline->deadline_time < \Carbon\Carbon::parse($history->created_at)->format('H:i'))
-                                                <td class="bg-danger text-white">{{ $i++ }}</td>
+                                                <td class="bg-danger text-white">{{ $history->id }}</td>
                                                 <td class="bg-danger text-white">{{ $history->section_name }}</td>
                                                 <td class="bg-danger text-white">{{ $history->level_name }}</td>
                                                 <td class="bg-danger text-white">{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
@@ -45,7 +45,7 @@
                                                 <td class="bg-danger text-white">{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
                                                 <td class="bg-danger text-white">{{ \Carbon\Carbon::parse($history->created_at)->thaidate('D j M y H:i') }} น.</td>
                                                     @else
-                                                    <td>{{ $i++ }}</td>
+                                                    <td>{{ $history->id }}</td>
                                                     <td>{{ $history->section_name }}</td>
                                                     <td>{{ $history->level_name }}</td>
                                                     <td>{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
@@ -56,7 +56,7 @@
                                                     <td>{{ \Carbon\Carbon::parse($history->created_at)->thaidate('D j M y H:i') }} น.</td>
                                                 @endif
                                             @elseif($deadline->deadline_date < \Carbon\Carbon::parse($history->created_at)->format('Y-m-d'))
-                                                <td class="bg-danger text-white">{{ $i++ }}</td>
+                                                <td class="bg-danger text-white">{{ $history->id }}</td>
                                                 <td class="bg-danger text-white">{{ $history->section_name }}</td>
                                                 <td class="bg-danger text-white">{{ $history->level_name }}</td>
                                                 <td class="bg-danger text-white">{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
@@ -66,7 +66,7 @@
                                                 <td class="bg-danger text-white">{{ $history->score }}  <p class="ms-1 d-inline">คะแนน</p></td>
                                                 <td class="bg-danger text-white">{{ \Carbon\Carbon::parse($history->created_at)->thaidate('D j M y H:i') }} น.</td>
                                             @else
-                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $history->id }}</td>
                                                 <td>{{ $history->section_name }}</td>
                                                 <td>{{ $history->level_name }}</td>
                                                 <td>{{ $history->time }} <p class="ms-1 d-inline">วินาที</p></td>
@@ -100,6 +100,7 @@
                 [ -1, 5, 10, 25, 50, 100 ],
                 [ 'ทั้งหมด', '5', '10', '25', '50', '100' ]
             ],
+            order: [[0, 'desc']],
             "language": {
                 "decimal":        "",
                 // "emptyTable":     "ไม่มีประวัติการทำแบบทดสอบ",

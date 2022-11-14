@@ -32,17 +32,18 @@
             outline: none;
             box-shadow: none;
         }
-        #sound.remove {
-            background: var(--bs-success);
-            color: #fff;
-            border: none;
-            outline: none;
-            box-shadow: none;
+        #capLock.press {
+            background: #05e924;
+            color: black;
+        }
+        #capLock.unpress {
+            background: #fff;
+            color: #000;
         }
     </style>
         <div class="container mt-1">
-            <p class="h1 d-block text-center px-2 mb-2 d-inline fw-bold">LEVEL {{ $exercises->level }} : {{ $exercises->level_name }}
-                <button class="btn btn-success float-end" id="sound" onclick="closeSound()">เปิด-ปิดเสียง</button>
+            <p class="h1 d-block text-center px-2 mb-2 d-inline fw-bold" style="margin-left: 95px;">LEVEL {{ $exercises->level }} : {{ $exercises->level_name }}
+                <button class="btn btn-success float-end mt-1" id="sound" style="outline: none; border: none; box-shadow: none;" onclick="closeSound()">เปิด-ปิดเสียง</button>
             </p>
         </div>
             {{-- @include('include.includeExEn') --}}
@@ -123,7 +124,7 @@
                         </div>
                     </div>
                     <div class="foot-score d-inline justify-content-center align-items-center">
-                        <button class="btn btn-dark text-white  pn-score try_again" type="button" id="close_popup" onclick="openSound()">
+                        <button class="btn btn-dark text-white  pn-score try_again" type="button" id="close_popup">
                             {{ __('เล่นอีกครั้ง') }}
                         </button>
                         <button type="submit" class="btn btn-dark text-white pn-score submit" id="save_static">

@@ -21,10 +21,10 @@
     <div class="row mt-2">
         <div class="col-sm">
             <button type="button" class="keys tab_key" id="tab">tabs</button>
-            <button type="button" class="keys" id="q" name="Q">Q</button>
-            <button type="button" class="keys" id="w" name="W">W</button>
-            <button type="button" class="keys" id="e" name="E">E</button>
-            <button type="button" class="keys" id="r" name="R">R</button>
+            <button type="button" class="keys" id="q">Q</button>
+            <button type="button" class="keys" id="w">W</button>
+            <button type="button" class="keys" id="e">E</button>
+            <button type="button" class="keys" id="r">R</button>
             <button type="button" class="keys" id="t">T</button>
             <button type="button" class="keys" id="y">Y</button>
             <button type="button" class="keys" id="u">U</button>
