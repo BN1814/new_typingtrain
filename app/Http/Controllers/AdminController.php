@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use App\Models\Section;
 use App\Models\User;
 use App\Models\HistoryScore;
@@ -15,6 +19,8 @@ use DB;
 use Hash;
 use App\Imports\UsersImport;
 use App\Imports\ExercisesImport;
+use App\Exports\UserTemplateExport;
+use App\Exports\ExerciseTemplateExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
@@ -48,9 +54,6 @@ class AdminController extends Controller
     }
     function changePassword(User $user) {
         return view('dashboards.admins.change_password_admin', compact('user'));
-    }
-    function settings() {
-        return view('dashboards.admins.settings');
     }
     // CRUD TEACHER AND STUDENT
         // function view_dataTeachSTD(User $user) {
@@ -127,6 +130,12 @@ class AdminController extends Controller
                 // dd($failures);
                 return redirect()->back()->with('import-fail', $failures);
             }
+        }
+        function templateUser() {
+            return Excel::download(new UserTemplateExport(), 'Template-Add-User.xlsx');
+        }
+        function templateExercise() {
+            return Excel::download(new ExerciseTemplateExport(), 'Template-Exercise.xlsx');
         }
 
     // CRUD EXERCISE

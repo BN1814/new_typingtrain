@@ -39,6 +39,9 @@
                                     @enderror
                                 </div>
                                 <button type="submit" class="col-md-1 btn btn-primary d-inline mb-2">เพิ่มข้อมูล</button>
+                                <button class="col-md-1 ms-1 btn btn-danger mb-2" style="width: 200px;">
+                                    <a href="{{ route('template-exercise') }}">ดาวน์โหลด template</a>
+                                </button>
                                 @if(Session::has('import-fail'))
                                     <div class="col-md-8 alert alert-danger text-center" style="margin: 0 auto;">
                                         @foreach (Session::get('import-fail') as $failure)

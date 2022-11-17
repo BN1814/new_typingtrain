@@ -33,12 +33,11 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/contact', [App\Http\Controllers\ContactController::class, 'Contact'])->name('contact')->middleware('verified');
-Route::post('/send-contact', [App\Http\Controllers\ContactController::class, 'sendContact'])->name('send-contact')->middleware('verified');
-Route::get('/test_typing_2', [App\Http\Controllers\HomeController::class, 'testTyping']);
-// CLASSROOM ALL
-// Route::get('/classroomAll', [UserController::class, 'classroomAll']);
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'Contact'])->name('contact');
+Route::post('/send-contact', [App\Http\Controllers\ContactController::class, 'sendContact'])->name('send-contact');
 // ADMIN
+Route::get('/template-exercise', [App\Http\Controllers\AdminController::class, 'templateExercise'])->name('template-exercise')->middleware(['auth', 'isAdmin']);
+Route::get('/export-template-user', [App\Http\Controllers\AdminController::class, 'templateUser'])->name('export-template-user')->middleware(['auth', 'isAdmin']);
 Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBackHistory']], function() {
     Route::controller(AdminController::class)->group(function() {
         // ADMIN PANEL
@@ -48,12 +47,12 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         Route::get('/profile/{user}/edit', 'profile');
         Route::put('/profile/{user}', 'updateProfile');
         // ADD DATA TEACHER/STUDENT AND CRUD
-        // Route::get('/view_data_teacher_student/{user}', 'view_dataTeachSTD');
         Route::get('/add_data_teacher_student', 'createTeachStd');
         Route::post('/dashboard', 'storeTeachStd');
         Route::get('/add_data_teacher_student/{user}/edit', 'editTeachStd');
         Route::put('/add_data_teacher_student/{user}', 'updateTeachStd');
         Route::delete('/dashboard/{id}', 'destroyTeachStd');
+        // Route::get('/template-user', 'templateUser')->name('template-user');
         // ADD EXERCISE AND CRUD
         Route::get('/add_data_exercises', 'homeExercise');
         Route::post('/add_data_exercises', 'storeExercise');
@@ -64,6 +63,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         Route::get('/add_data_exercises/{exercise}/edit', 'editExercise');
         Route::put('/add_data_exercises/{exercise}', 'updateExercise');
         Route::delete('/add_data_exercises/{id}', 'destroyExercise');
+        // Route::get('/template-exercise', 'templateExercise')->name('template-exercise');
         // ADD SECTION AND CRUD
         Route::get('/data_section/{section}/edit', 'editSection');
         Route::put('/data_section/{section}', 'updateSection');

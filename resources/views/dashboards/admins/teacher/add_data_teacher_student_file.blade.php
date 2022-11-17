@@ -37,7 +37,12 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="col-md-1 btn btn-primary d-inline mb-2">เพิ่มข้อมูล</button>
+                                <button type="submit" class="col-md-1 btn btn-primary mb-2">เพิ่มข้อมูล</button>
+                                <button type="button" class="col-md-1 ms-1 btn btn-danger mb-2" style="width: 200px;">
+                                    <a href="{{ url('/export-template-user') }}">ดาวน์โหลด Template</a>
+                                </button>
+                                
+                                {{-- <a href="{{ route('export-template-user') }}" class="col-md-1 ms-1 btn btn-danger" style="width: 200px;">ดาวน์โหลด Template</a> --}}
                                 @if(Session::has('import-fail'))
                                     <div class="col-md-8 alert alert-danger text-center" style="margin: 0 auto;">
                                         @foreach (Session::get('import-fail') as $failure)
@@ -48,7 +53,7 @@
                             </div>
                         </form>
 
-                        <table class="table table-hover table-striped table-bordered text-center">
+                        <table class="table table-hover table-striped text-center">
                             <thead>
                                 <tr style="background: var(--bs-warning);">
                                     <th >รหัสนักศึกษา</th>
