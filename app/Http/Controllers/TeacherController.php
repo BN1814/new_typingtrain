@@ -132,8 +132,10 @@ class TeacherController extends Controller
                                 ->where('section_id',$section->id)
                                 ->orderBy('created_at','DESC')
                                 ->get();
+        $sectiondeadlines = Section::select('id','deadline_date','deadline_time')
+                                ->get();
                                 // dd($historys);
-        return view('dashboards.teachers.student.view_dataSTD', compact('user', 'section', 'historys', 'id'));
+        return view('dashboards.teachers.student.view_dataSTD', compact('user', 'section', 'historys', 'id','sectiondeadlines'));
     }
     function viewScoreAll($id) {
         $section = Section::findOrFail($id);
