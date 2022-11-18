@@ -65,7 +65,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'isAdmin', 'PreventBa
         Route::delete('/add_data_exercises/{id}', 'destroyExercise');
         // Route::get('/template-exercise', 'templateExercise')->name('template-exercise');
         // ADD SECTION AND CRUD
-        Route::get('/data_section/{section}/edit', 'editSection');
+        Route::get('/data_section/{id}/edit', 'editSection');
         Route::put('/data_section/{section}', 'updateSection');
         Route::delete('/data_section/{id}', 'destroySection');
 

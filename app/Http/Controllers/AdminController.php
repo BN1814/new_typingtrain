@@ -36,7 +36,7 @@ class AdminController extends Controller
         return view('dashboards.admins.exercise_all')->with($data);
     }
     function section_all() {
-        $sections = Section::join('users', 'sections.user_id' , '=', 'users.id')->get();
+        $sections = User::join('sections', 'sections.user_id' , '=', 'users.id')->get();
         $data = compact('sections');
         return view('dashboards.admins.section_all')->with($data);
     }
@@ -203,7 +203,8 @@ class AdminController extends Controller
     }
 
     // CRUD Section
-    function editSection(Section $section) {
+    function editSection($id) {
+        $section = Section::findOrFail($id);
         return view('dashboards.admins.teacher.edit_section', compact('section'));
     }
     function updateSection(Section $section, Request $req){
