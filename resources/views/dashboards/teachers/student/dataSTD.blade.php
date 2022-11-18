@@ -45,23 +45,23 @@
                             </thead>
                             <tbody class="text-center">
                                 @php($i=1)
-                                <tr>
                                 @foreach ($users as $user)
-                                    <input type="hidden" class="delete_user_id" value="{{ $user->id }}">
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $user->userid }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->lname }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td class="text-center">
-                                        {{-- View --}}
-                                        <a href="{{ url('teacher/dataSTD/'.$section->id .'/'.'view_data_student/'. $user->id ) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
-                                        {{-- Update --}}
-                                        <a href="{{ url('teacher/dataSTD/'. $section->id .'/'. $user->id. '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
-                                        {{-- Delete --}}
-                                        <button class="btn btn-danger btn-sm delete" data-name="{{ $user->name }}" data-id="{{ $user->id }}">ลบ</button>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <input type="hidden" class="delete_user_id" value="{{ $user->id }}">
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $user->userid }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->lname }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td class="text-center">
+                                            {{-- View --}}
+                                            <a href="{{ url('teacher/dataSTD/'.$section->id .'/'.'view_data_student/'. $user->id ) }}" class="btn btn-primary btn-sm">ดูข้อมูล</a>
+                                            {{-- Update --}}
+                                            <a href="{{ url('teacher/dataSTD/'. $section->id .'/'. $user->id. '/edit') }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                            {{-- Delete --}}
+                                            <button class="btn btn-danger btn-sm delete" data-name="{{ $user->name }}" data-id="{{ $user->id }}">ลบ</button>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
