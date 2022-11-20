@@ -28,7 +28,7 @@
                         @csrf
                         @method('put')
                         <div class="row mb-3">
-                            <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสนักศึกษา') }}</label>
+                            <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('รหัสนักศึกษา : ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" autocomplete="userid" value="{{ $user->userid }}">
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ : ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" autocomplete="name" value="{{ $user->name }}">
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="lname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล') }}</label>
+                            <label for="lname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล : ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" autocomplete="lname" value="{{ $user->lname }}">
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมล') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('อีเมล : ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" autocomplete="email" value="{{ $user->email }}">
