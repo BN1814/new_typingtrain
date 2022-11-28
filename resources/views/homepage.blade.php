@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Typing Train</title>
+    <title>Typing Practice</title>
 
     {{-- FONTS --}}
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -43,7 +43,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="hp col-md-6">
-                <div class="logo display-2 my-5 mb-2 text-center text-warning bg-dark" style="font-weight: bold;">TYPING TRAIN</div>
+                <div class="logo display-2 my-5 mb-2 text-center text-warning bg-dark" style="font-weight: bold;">TYPING PRACTICE</div>
                 
                 <div class="butLog row mb-3">
                     <div class="col-md-12 text-center">

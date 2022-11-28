@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>TypingTrain @yield('title')</title>
+    <title>TypingPractice @yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -50,21 +50,21 @@
             <div class="container">
                 @guest
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <p style="margin: 0; padding: 0;">TypingTrain</p>
+                        <p style="margin: 0; padding: 0;">TypingPractice</p>
                     </a>
                 @endguest
                 @auth
                     @if(auth()->user()->role == 'admin')
                         <a class="navbar-brand" href="{{ url('admin/dashboard') }}">
-                            <p style="margin: 0; padding: 0;">TypingTrain</p>
+                            <p style="margin: 0; padding: 0;">TypingPractice</p>
                         </a>
                     @elseif(auth()->user()->role == 'teacher')
                         <a class="navbar-brand" href="{{ url('teacher/dashboard') }}">
-                            <p style="margin: 0; padding: 0;">TypingTrain</p>
+                            <p style="margin: 0; padding: 0;">TypingPractice</p>
                         </a>
                     @else
                         <a class="navbar-brand" href="{{ url('user/enterclass') }}">
-                            <p style="margin: 0; padding: 0;">TypingTrain</p>
+                            <p style="margin: 0; padding: 0;">TypingPractice</p>
                         </a>
                     @endif
                 @endguest
