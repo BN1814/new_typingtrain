@@ -158,7 +158,7 @@ class AdminController extends Controller
             'level_name' => $request['level_name'],
             'data_level' => $request['data_level'],
         ]);
-        return redirect('admin/exercise_all')->with('message', 'เพิ่มข้อมูลแบบฝึกหัดสำเร็จแล้ว');
+        return redirect('admin/exercise_all')->with('message', 'เพิ่มข้อมูลแบบทดสอบสำเร็จแล้ว');
     }
     
     function editExercise(Exercise $exercise) {
@@ -171,7 +171,7 @@ class AdminController extends Controller
             'level_name' => $request['level_name'],
             'data_level' => $request['data_level'],
         ]);
-        return redirect('admin/exercise_all')->with('update', 'แก้ไขแบบฝึกหัดสำเร็จแล้ว');
+        return redirect('admin/exercise_all')->with('update', 'แก้ไขแบบทดสอบสำเร็จแล้ว');
     }
 
     function destroyExercise($id) {

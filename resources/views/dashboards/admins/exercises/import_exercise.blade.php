@@ -24,7 +24,7 @@
                     </script>
                 @endif
                 <div class="card justify-content-center">
-                    <div class="card-header text-white bg-dark text-center h3">เพิ่มข้อมูลแบบฝึกหัด</div>
+                    <div class="card-header text-white bg-dark text-center h3">เพิ่มข้อมูลแบบทดสอบ</div>
                     <div class="card-body">
                         <form action="{{ route('import-exercise') }}" method="POST" enctype="multipart/form-data"> 
                             @csrf

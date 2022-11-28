@@ -41,8 +41,8 @@
                 {{-- Exercise Table --}}
                 <div class="card mb-3">
                     <div class="card-header text-white bg-dark">
-                        <h4>แบบฝึกหัดทั้งหมด
-                            <a href="{{ url('admin/add_data_exercises') }}" class="btn btn-primary float-end">เพิ่มแบบฝึกหัด</a>
+                        <h4>แบบทดสอบทั้งหมด
+                            <a href="{{ url('admin/add_data_exercises') }}" class="btn btn-primary float-end">เพิ่มแบบทดสอบ</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -52,8 +52,8 @@
                                     <tr class="fixedHeader">
                                         {{-- <th>ลำดับที่</th> --}}
                                         <th>ระดับ</th>
-                                        <th>ชื่อแบบฝึกหัด</th>
-                                        <th>ข้อมูลแบบฝึกหัด</th>
+                                        <th>ชื่อแบบทดสอบ</th>
+                                        <th>ข้อมูลแบบทดสอบ</th>
                                         <th>ตัวเลือก</th>
                                     </tr>
                                 </thead>

@@ -96,7 +96,7 @@
                         @else
                             @if(auth()->user()->role == 'admin')
                                 {{-- <li><a href="{{ url('admin/dashboard') }}" class="nav-link">ผู้ใช้งานทั้งหมด</a></li>
-                                <li><a href="{{ url('admin/exercise_all') }}" class="nav-link">แบบฝึกหัดทั้งหมด</a></li>
+                                <li><a href="{{ url('admin/exercise_all') }}" class="nav-link">แบบทดสอบทั้งหมด</a></li>
                                 <li><a href="{{ url('admin/section_all') }}" class="nav-link">ห้องเรียนทั้งหมด</a></li> --}}
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

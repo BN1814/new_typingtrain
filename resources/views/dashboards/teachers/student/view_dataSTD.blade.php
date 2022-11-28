@@ -65,7 +65,7 @@
                     <thead>
                         <tr style="background: var(--bs-warning)">
                             <th>ครั้งที่</th>
-                            <th>ชื่อแบบฝึกหัด</th>
+                            <th>ชื่อแบบทดสอบ</th>
                             <th>เวลา</th>
                             <th>คำที่พิมพ์ผิด</th>
                             <th>ความเร็วการพิมพ์</th>

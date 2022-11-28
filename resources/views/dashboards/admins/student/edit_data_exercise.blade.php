@@ -14,7 +14,7 @@
                     <h4 class="alert alert-success">{{ session('message') }}</h4>
                 @endif
                 <div class="card">
-                    <div class="card-header text-center text-white bg-dark h4">แก้ไขข้อมูลแบบฝึกหัด</div>
+                    <div class="card-header text-center text-white bg-dark h4">แก้ไขข้อมูลแบบทดสอบ</div>
                     <div class="card-body">
                         <form action="{{ url('admin/add_data_exercises/'. $exercise->id) }}" method="POST">
                             @csrf
@@ -51,7 +51,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-warning form-control">
-                                        {{ __('อัพเดตแบบฝึกหัด') }}
+                                        {{ __('อัพเดตแบบทดสอบ') }}
                                     </button>
                                 </div>
                             </div>
