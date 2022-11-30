@@ -93,9 +93,9 @@
                                 <div class="col-md-6">
                                     <select name="status" class="form-control @error('status') is-invalid @enderror">
                                         <option value="">--- กรุณาเลือกสถานะ ---</option>
-                                        <option value="1">admin</option>
-                                        <option value="2">teacher</option>
-                                        <option value="3">student</option>
+                                        <option value="admin">admin</option>
+                                        <option value="teacher">teacher</option>
+                                        <option value="student">student</option>
                                     </select>
                                     @error('status')
                                         <span class="invalid-feedback" role="alert">
