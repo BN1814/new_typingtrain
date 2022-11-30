@@ -122,24 +122,24 @@ class UserController extends Controller
                             ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->where('user_id', $user_id)
                             ->where('section_id', $section->id)
-                            ->sum('score');
+                            ->get()->sum('score');
         $count_exercises = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
                             ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->where('user_id', $user_id)
                             ->where('section_id', $section->id)
-                            ->count();
+                            ->get()->count();
         $count_exercises_pass = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
                             ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->where('user_id', $user_id)
                             ->where('section_id', $section->id)
                             ->having('score', '>=', '50')
-                            ->count();
+                            ->get()->count();
         $count_exercises_fail = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
                             ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->where('user_id', $user_id)
                             ->where('section_id', $section->id)
                             ->having('score', '<', '50')
-                            ->count();
+                            ->get()->count();
         $total_scores = Exercise::get()->count()*100;
                         // dd($total_scores);
         $checkuser = DB::table('section_users')->where('user_id','=', $user_id)->count();
