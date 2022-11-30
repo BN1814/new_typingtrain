@@ -119,23 +119,23 @@ class UserController extends Controller
     function HExercise(Section $section, User $user, HistoryScore $history) {
         $user_id = Auth::user()->id;
         $historys = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
-                            ->groupBy('user_id', 'section_id', 'exercise_id')
+                            // ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->where('user_id', $user_id)
                             ->where('section_id', $section->id)
                             ->get()->sum('score');
         $count_exercises = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
-                            ->groupBy('user_id', 'section_id', 'exercise_id')
+                            // ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->where('user_id', $user_id)
                             ->where('section_id', $section->id)
                             ->get()->count();
         $count_exercises_pass = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
-                            ->groupBy('user_id', 'section_id', 'exercise_id')
+                            // ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->where('user_id', $user_id)
                             ->where('section_id', $section->id)
                             ->having('score', '>=', '50')
                             ->get()->count();
         $count_exercises_fail = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
-                            ->groupBy('user_id', 'section_id', 'exercise_id')
+                            // ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->where('user_id', $user_id)
                             ->where('section_id', $section->id)
                             ->having('score', '<', '50')
