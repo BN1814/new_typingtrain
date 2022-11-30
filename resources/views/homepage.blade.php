@@ -18,15 +18,9 @@
             margin: 0; padding: 0; box-sizing: border-box;
             font-family: 'Itim', cursive;
         }
-        a {
-            text-decoration: none;
-        }
-        body {
-            background: rgb(135, 188, 231);
-        }
-        .btn {
-            width: 120px;
-        }
+        a { text-decoration: none; }
+        body { background: rgb(135, 188, 231); }
+        .btn { width: 120px; }
         .logo {
             width: 100%;
             height: 120px;
@@ -34,16 +28,16 @@
             /* background: #333; */
             border-radius: 15px;
         }
-        .hp {
-            margin-top: 170px;
-        }
+        .hp { margin-top: 170px; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row justify-content-center">
             <div class="hp col-md-6">
-                <div class="logo display-2 my-5 mb-2 text-center text-warning bg-dark" style="font-weight: bold;">TYPING PRACTICE</div>
+                <div class="logo display-3 my-5 mb-2 text-center text-warning bg-dark" style="font-weight: bold;">
+                    <p>TYPING PRACTICE</p>
+                </div>
                 
                 <div class="butLog row mb-3">
                     <div class="col-md-12 text-center">
