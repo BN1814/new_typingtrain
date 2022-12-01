@@ -131,8 +131,8 @@ class UserController extends Controller
         $count_exercises_pass = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
                             ->where('user_id', $user_id)
                             ->where('section_id', $section->id)
-                            ->where('score', '>=', '50')
                             ->groupBy('user_id', 'section_id', 'exercise_id')
+                            ->where('score', '>=', '50')
                             ->get()->count();
         $count_exercises_fail = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
                             ->where('user_id', $user_id)
