@@ -135,10 +135,10 @@ class UserController extends Controller
                             ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->get()->count();
         $count_exercises_fail = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
+                            ->groupBy('user_id', 'section_id', 'exercise_id')
                             ->where('user_id', $user_id)
                             ->where('section_id', $section->id)
-                            ->where('score', '<', '50')
-                            ->groupBy('user_id', 'section_id', 'exercise_id')
+                            ->where('score', '<', '50')                            
                             ->get()->count();
         $total_scores = Exercise::get()->count()*100;
         $total_exercises = Exercise::get()->count();
