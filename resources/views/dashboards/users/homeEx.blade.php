@@ -29,7 +29,8 @@
                 </div>
                 <strong class="text-start ms-4 text-center" style="text-transform: uppercase;">วิชา : {{ $section->section_name }}</strong>
                 <strong class="text-start ms-4 text-center">คะแนนรวมทั้งหมด : {{ $historys }}/{{ $total_scores }} คะแนน</strong>
-                <strong class="text-start ms-4 text-center">ทำไปแล้ว : {{ $count_exercises }}/{{ $total_exercises }} แบบทดสอบ <<-->> ผ่านแล้ว : {{ $count_exercises_pass }} แบบทดสอบ <<-->> ยังไม่ผ่าน : {{ $count_exercises_fail }} แบบทดสอบ</strong>
+                <strong class="text-start ms-4 text-center">ทำไปแล้ว : {{ $count_exercises }}/{{ $total_exercises }} แบบทดสอบ <<-->> ผ่านแล้ว : {{ $count_exercises_pass }}</strong>
+                {{-- <strong class="text-start ms-4 text-center">ทำไปแล้ว : {{ $count_exercises }}/{{ $total_exercises }} แบบทดสอบ <<-->> ผ่านแล้ว : {{ $count_exercises_pass }} แบบทดสอบ <<-->> ยังไม่ผ่าน : {{ $count_exercises_fail }} แบบทดสอบ</strong> --}}
 
                 <a href="{{ url('user/enterclass/homeEx/'. $section->id. '/'. $user->id. '/'. 'AllExercises') }}" class="btn btn-dark btn-block">START</a>
             </div>

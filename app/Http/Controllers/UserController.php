@@ -134,12 +134,12 @@ class UserController extends Controller
                             ->where('section_id', $section->id)
                             ->where('score', '>=', '50')
                             ->get()->count();
-        $count_exercises_fail = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
-                            ->groupBy('user_id', 'section_id', 'exercise_id')
-                            ->where('user_id', $user_id)
-                            ->where('section_id', $section->id)
-                            ->where('score', '<', '50')                           
-                            ->get()->count();
+        // $count_exercises_fail = HistoryScore::select('exercise_id', 'user_id', 'section_id', \DB::raw('MAX(history_scores.score) as score'))
+        //                     ->groupBy('user_id', 'section_id', 'exercise_id')
+        //                     ->where('user_id', $user_id)
+        //                     ->where('section_id', $section->id)
+        //                     ->where('score', '<', '50')                           
+        //                     ->get()->count();
         $total_scores = Exercise::get()->count()*100;
         $total_exercises = Exercise::get()->count();
                         // dd($total_scores);
@@ -152,7 +152,8 @@ class UserController extends Controller
             if($checkusersub == 0){
                 return redirect('user/enterclass');
             }else {
-                return view('dashboards.users.homeEx', compact('section', 'user', 'historys', 'count_exercises_pass' , 'count_exercises_fail' ,'count_exercises' , 'total_exercises' , 'total_scores','checkuser','checkusersub'));
+                return view('dashboards.users.homeEx', compact('section', 'user', 'historys', 'count_exercises_pass' , 'count_exercises' , 'total_exercises' , 'total_scores','checkuser','checkusersub'));
+                // return view('dashboards.users.homeEx', compact('section', 'user', 'historys', 'count_exercises_pass' , 'count_exercises_fail' ,'count_exercises' , 'total_exercises' , 'total_scores','checkuser','checkusersub'));
             }      
         }
         else {
