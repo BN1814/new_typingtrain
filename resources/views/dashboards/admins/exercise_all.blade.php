@@ -146,7 +146,10 @@
                 text: 'ดาวน์โหลด Excel',
                 filename: 'แบบทดสอบทั้งหมด',
                 title: '',
-                className: 'btn-export-excel'
+                className: 'btn-export-excel',
+                exportOptions: {
+                    columns: [ 0, 1, 2 ]
+                }
             },
         ],
         // responsive: true,
