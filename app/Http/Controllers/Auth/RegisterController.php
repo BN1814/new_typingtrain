@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'status' => ['required'],
             'password' => ['required', 'string', 'min:7 | max:20', 'confirmed'],
-            'password_confirmation' => ['required', 'string', 'min:7 | max:20'],
+            'password_confirmation' => ['required', 'string', 'min:8 | max:20'],
         ],[
             'userid.required' => 'กรุณาใส่รหัสนักศึกษาหรือรหัสผู้ใช้งาน',
             'name.required' => 'กรุณาใส่ชื่อผู้ใช้งาน',
