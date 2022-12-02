@@ -150,8 +150,10 @@
                     text: 'ดาวน์โหลด Excel',
                     filename: 'ผู้ใช้งานทั้งหมด',
                     title: '',
-                    className: 'btn-export-excel'
-                    columns: [ 0, 1, 2, 5 ]
+                    className: 'btn-export-excel',
+                    exportOptions: {
+                    columns: [ 0, 1, 2, 3 , 4 ]
+                }
                 },
             ],
             responsive: true,
