@@ -152,7 +152,7 @@
                     title: '',
                     className: 'btn-export-excel'
                     exportOptions: {
-                    columns: [ 0, ':4' ]
+                    columns: [ 0, 1, 2, 5 ]
                 }
                 },
             ],
