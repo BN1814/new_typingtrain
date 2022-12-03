@@ -72,6 +72,7 @@ class RegisterController extends Controller
             'password.min' => 'ใส่รหัสผ่านอย่างน้อย 8 ตัว',
             'password.confirmed' => 'รหัสผ่านไม่ตรงกัน',
             'password_confirmation.required' => 'กรุณาใส่รหัสผ่านอีกครั้ง',
+            'password_confirmation.min' => 'ใส่รหัสผ่านอย่างน้อย 8 ตัว'
         ]);
 
         // $user = new User();
