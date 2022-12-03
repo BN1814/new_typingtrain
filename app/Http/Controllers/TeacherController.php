@@ -151,15 +151,27 @@ class TeacherController extends Controller
 // and h.user_id = h2.user_id
 // and h.section_id = h2.section_id
 // and h2.section_id = 1
-    $historys = DB::select(\DB::raw("select u.*, s.*, e.*, h.id, h.section_id, h.user_id, h2.exercise_id, h2.score, h.created_at 
-    from history_scores as h, 
-    (select max(score) as score, exercise_id, user_id, section_id from history_scores group by exercise_id, user_id 
-    ) as h2 
-    join exercises e on e.id = h2.exercise_id 
-    join users u on u.id = h2.user_id 
-    join sections s on s.id = h2.section_id 
-    where h.score = h2.score and h.exercise_id = h2.exercise_id and h.user_id = h2.user_id and h.section_id = h2.section_id and h.section_id = '$section->id'
-    order by h.created_at desc"));
+    $historys = DB::select(\DB::raw("select u.name,s.section_name, h.id, h2.section_id, h.user_id, h2.exercise_id, h2.score, h.created_at from history_scores as h,
+           (select max(score) as score, exercise_id, user_id, section_id
+           from history_scores
+           group by exercise_id, user_id) as h2
+     join exercises e on e.id = h2.exercise_id
+     join users u on u.id = h2.user_id
+     join sections s on s.id = h2.section_id
+     where h.score = h2.score 
+     and h.exercise_id = h2.exercise_id 
+     and h.user_id = h2.user_id
+     and h.section_id = h2.section_id
+     and h2.section_id = 1 "));
+    // $historys = DB::select(\DB::raw("select u.*, s.*, e.*, h.id, h.section_id, h.user_id, h2.exercise_id, h2.score, h.created_at 
+    // from history_scores as h, 
+    // (select max(score) as score, exercise_id, user_id, section_id from history_scores where section_id = '$section->id' group by exercise_id, user_id 
+    // ) as h2 
+    // join exercises e on e.id = h2.exercise_id 
+    // join users u on u.id = h2.user_id 
+    // join sections s on s.id = h2.section_id 
+    // where h.score = h2.score and h.exercise_id = h2.exercise_id and h.user_id = h2.user_id and h.section_id = h2.section_id
+    // order by h.created_at desc"));
     $sectiondeadlines = Section::select('id','deadline_date','deadline_time')
                                 ->where('id',$section->id)
                                 ->get();
